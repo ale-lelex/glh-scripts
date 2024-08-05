@@ -107,7 +107,7 @@ const TwitchLink = "twitch.tv/stefano365p";	// Link de tu canal de Twitch
 
 var MensajeDeBienvenida = ""; // Escribe el mensaje de bienvenida que quieras (Dentro de las comillas)
 
-var Anuncio = "✨ ÚNETE AL DISCORD DE GLH Y APRENDE A CREAR TU PROPIO HOST CON SCRIPT: discord.gg/tDEUbJU8QB"; // Anuncio que viene por Defecto (Se envía a los 10 segundos del inicio de cada partido)
+var Anuncio = "✨ JOIN THE GLH DISCORD AND LEARN HOW TO CREATE YOUR OWN HOST WITH THE SCRIPT: discord.gg/tDEUbJU8QB"; // Anuncio que viene por Defecto (Se envía a los 10 segundos del inicio de cada partido)
 var AnuncioMinuto = 0; //  Representa el minuto del partido en el que se desea mostrar el anuncio.
 var AnuncioSegundos = 10; // Representa los segundos en el minuto del partido en el que se desea mostrar el anuncio.
 
@@ -21583,20 +21583,6 @@ function LinkDiscordFun(player) { // !1
     room.sendAnnouncement("                                        💬👥 𝑼𝑵𝑨𝑵𝑺𝑬 𝑨𝑳 𝑫𝑰𝑺𝑪𝑶𝑹𝑫 ➡ " + DiscordLink + " ⬅", player.id, 0xF6FF43, "normal", 0);
 }
 
-function LinkTwitchFun(player) { // !1
-    room.sendAnnouncement("                                        ▀▀█▀▀ ▒█░░▒█ ▀█▀ ▀▀█▀▀ ▒█▀▀█ ▒█░▒█  ", player.id, 0x9146FF, "normal", 0)
-    room.sendAnnouncement("                                        ░▒█░░ ▒█▒█▒█ ▒█░ ░▒█░░ ▒█░░░ ▒█▀▀█  ", player.id, 0x9146FF, "normal", 0)
-    room.sendAnnouncement("                                        ░▒█░░ ▒█▄▀▄█ ▄█▄ ░▒█░░ ▒█▄▄█ ▒█░▒█ ", player.id, 0x9146FF, "normal", 0);
-    room.sendAnnouncement("                                        💜🎮 𝑼𝑵𝑬𝑻𝑬 𝑨 𝑻𝑾𝑰𝑻𝑪𝑯 ➡ " + TwitchLink + " ⬅", player.id, 0xF6FF43, "normal", 0);
-}
-
-function LinkYoutubeFun(player) { // !1
-    room.sendAnnouncement("                                        ▒█░░▒█ ▒█▀▀▀█ ▒█░▒█ ▀▀█▀▀ ▒█░▒█ ▒█▀▀█ ▒█▀▀▀   ", player.id, 0xe52d27, "normal", 0)
-    room.sendAnnouncement("                                        ▒█▄▄▄█ ▒█░░▒█ ▒█░▒█ ░▒█░░ ▒█░▒█ ▒█▀▀▄ ▒█▀▀▀   ", player.id, 0xe52d27, "normal", 0)
-    room.sendAnnouncement("                                        ░░▒█░░ ▒█▄▄▄█ ░▀▄▄▀ ░▒█░░ ░▀▄▄▀ ▒█▄▄█ ▒█▄▄▄ ", player.id, 0xe52d27, "normal", 0);
-    room.sendAnnouncement("                                        🔴📺 𝑼𝑵𝑬𝑻𝑬 𝑨 𝒀𝑶𝑼𝑻𝑼𝑩𝑬 ➡ " + YoutubeLink + " ⬅", player.id, 0xF6FF43, "normal", 0);
-}
-
 
 
 function LinkScriptFun(player) { // !1
@@ -24259,265 +24245,19 @@ async function applyMapConfiguration(winningMap, message) {
     // Esperar 500 milisegundos antes de cambiar la configuración
     await new Promise(resolve => setTimeout(resolve, 300));
 
-    if (winningMap === 'rs') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerMap2());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-    } else if (winningMap === 'handball') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getHandballMap());
-				room.setScoreLimit(0);
-				room.setTimeLimit(4);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'rs2') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerMap());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-    }
- else if (winningMap === 'rsevo') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerMap4());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-    }
- else if (winningMap === 'realfutsal') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealFutsal());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-    }
- else if (winningMap === 'entrenamiento') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerMap3());
-                automatizadoActivado = false;
-				RSRMap = true;
-    }
- else if (winningMap === 'estadiogl') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerGL());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-    }
- else if (winningMap === 'rsoveja') {
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getRealSoccerMapOveja());
-                automatizadoActivado = false;
-				RSRMap = true;
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);
-    }
- else if (winningMap === 'pensred') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getPenaltyRedMap());
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'pensblue') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getPenaltyBlueMap());
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-			powerShotMode = false;	
-    }
- else if (winningMap === 'basket') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getBasquetMap());
-	room.setScoreLimit(0);
-	room.setTimeLimit(5);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'futx5') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx5Map());
-	room.setScoreLimit(5);
-	room.setTimeLimit(5);
-    }
- else if (winningMap === 'futx5cesped') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx5cespedMap());
-	room.setScoreLimit(3);
-	room.setTimeLimit(4);
-    }
- else if (winningMap === 'futx7') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx7Map());
-	room.setScoreLimit(4);
-	room.setTimeLimit(10);
-    }
- else if (winningMap === 'minirs') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getMiniRSMap());
-		room.setScoreLimit(3);
-		room.setTimeLimit(4);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'big') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getBigMap());
-		room.setScoreLimit(3);
-		room.setTimeLimit(3);	
-    }
- else if (winningMap === 'champions') {
+  if (winningMap === 'champions') {
 				RSRMap = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getCampeonesMap());
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
     }
- else if (winningMap === 'voley2d') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getVoley2DMap());
-		room.setScoreLimit(25);
-		room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'voley3d') {
+  else if (winningMap === 'volleyball') {
 				RSRMap = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getVoley3DMap());
 			room.setScoreLimit(12);
 			room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'futx2') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx2Map());
-				room.setScoreLimit(3);
-				room.setTimeLimit(3);
-    }
- else if (winningMap === 'futx3') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx3Map());
-				room.setScoreLimit(3);
-				room.setTimeLimit(3);
-    }
- else if (winningMap === 'futx4') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getFutx4Map());
-				room.setScoreLimit(4);
-				room.setTimeLimit(4);
-    }
- else if (winningMap === 'escuela') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getEscuelaMap());
-			room.setScoreLimit(0);
-			room.setTimeLimit(0);	
-			powerShotMode = false;	
-    }
- else if (winningMap === 'sk8') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getSkateMap());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '2man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get2Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '3man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get3Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '4man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get4Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '5man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get5Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '6man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get6Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '7man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get7Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === '8man') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(get8Man());
-				room.setScoreLimit(0);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'tenis-cemento') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getTenisCementoMap());
-				room.setScoreLimit(6);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'tenis-pasto') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getTenisPastoMap());
-				room.setScoreLimit(6);
-				room.setTimeLimit(0);
-			powerShotMode = false;	
-    }
- else if (winningMap === 'tenis-ladrillo') {
-				RSRMap = false;
-				currentMap = getMapName(message); 
-				room.setCustomStadium(getTenisLadrilloMap());
-			room.setScoreLimit(6);
-			room.setTimeLimit(0);	
 			powerShotMode = false;	
     }
 
@@ -24719,7 +24459,7 @@ function handleCooldown(player) {
 
     // Si el jugador está en cooldown, enviar un mensaje y salir
     if (playerCooldowns[player.id] && now < playerCooldowns[player.id]) {
-        whisper(`[⚠️] Estás escribiendo demasiado rápido. Espera unos segundos antes de enviar otro mensaje.`, player.id);
+        whisper(`[⚠️] You are typing too fast. Wait a few seconds before sending another message.`, player.id);
         return false;
     }
 
@@ -24732,7 +24472,7 @@ function handleCooldown(player) {
             room.kickPlayer(player.id, "Has sido expulsado por spam.", false);
             return false;
         } else {
-            whisper(`[⚠️] Has enviado demasiados mensajes rápidamente. Estás en cooldown por ${COOLDOWN_TIME / 1000} segundos. Advertencia ${spamWarnings[player.id]} de ${KICK_THRESHOLD}.`, player.id);
+            whisper(`[⚠️] You have sent too many messages quickly. You are in cooldown for ${COOLDOWN_TIME / 1000} seconds. Warning ${spamWarnings[player.id]} from ${KICK_THRESHOLD}.`, player.id);
         }
 
         return false;
