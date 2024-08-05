@@ -1,7 +1,7 @@
 // ▇▇▇▇▇▇▇▇▇ ⚙️ CONFIGURACIÓN BÁSICA 😀 ▇▇▇▇▇▇▇▇▇
 
 
-var NombreHost = '🏐 [𝙑𝙃𝙋𝙇] 𝗩𝗼𝗹𝗹𝗲𝘆𝗯𝗮𝗹𝗹 𝘅2, 𝘅3, 𝘅4 [𝘽𝙀𝙏𝘼] 🏐' 	// Definimos el nombre del host (dentro de las comillas)
+var NombreHost = '🏐 [𝙑𝙃𝙋𝙇] Voleyball x2, x3, x4 [𝘽𝙀𝙏𝘼] 🏐' 	// Definimos el nombre del host (dentro de las comillas)
 
 
 var CantidadDeJugadores = 16;  		// Cantidad máxima de jugadores que permitirás ingresar a tu Host. Puedes elegir entre 1 y 30 jugadores
@@ -642,7 +642,7 @@ var throwTimeOut = 0x1a4,
 	mapBGColor = _0x3c81f9(0x15c),
 	superAdminCode = _0x3c81f9(0x13c);
 var powerShotMode = false;
-var allowPublicAdmin = true; // if true then !admin command is enabled
+var allowPublicAdmin = false; // if true then !admin command is enabled
 
 
 /*-------------------------------- STADIUMS ---------------------------------*/
@@ -2710,8 +2710,8 @@ let autoBalancePaused = false; // Variable para controlar si la función autoBal
 
 
 room.setTeamsLock(true);
-var redAngle = 66, redTextColor = 0xFFA649, redColor = [0xDE0019, 0xB80017, 0x820217];
-var blueAngle = 55, blueTextColor = 0xc1ff00, blueColor = [0x052647, 0x005DB3, 0x03B2F0];
+var redAngle = 60, redTextColor = 0xFFFFFF, redColor = [0x9C0000, 0x700202, 0x4A0000];
+var blueAngle = 60, blueTextColor = 0xFFFFFF, blueColor = [0x006DD9, 0x004077, 0x002033];
 
 room.setTeamColors(1, redAngle, redTextColor, redColor); // Establecer colores iniciales del equipo rojo
 room.setTeamColors(2, blueAngle, blueTextColor, blueColor); // Establecer colores iniciales del equipo azul
