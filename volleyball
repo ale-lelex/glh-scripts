@@ -25,9 +25,7 @@ var TamanoMinimoPermitido = 15;  	// Tamaño mínimo permitido para un jugador
 var TamanoMaximoPermitido = 15;		 // Tamaño máximo permitido para un jugador
 
 
-var AdministradoresDelHost = ["alelelex.", "stacks"]; 	// Coloca los nicknames de los administradores. EJEMPLO: var AdministradoresDelHost = ["Messi10", "Neymar #11 PSG", "Ronaldinho BRA"];
-
-
+var AdministradoresDelHost = ["alelelex.", "stacks", "sprizzy"]; 	// Coloca los nicknames de los administradores. EJEMPLO: var AdministradoresDelHost = ["Messi10", "Neymar #11 PSG", "Ronaldinho BRA"];
 
 // ▇▇▇▇▇▇▇ 🛠️ CONFIGURACIÓN INTERMEDIA 💡 ▇▇▇▇▇▇▇
 
@@ -99,9 +97,6 @@ var WebhookParaFirmar = "https://discord.com/api/webhooks/1172720661706321980/ba
 // ▇▇▇▇▇▇▇▇▇ REDES SOCIALES ▇▇▇▇▇▇▇▇▇
 
 const DiscordLink = "discord.gg/tDEUbJU8QB";	// Link de tu Servidor de Discord
-const YoutubeLink = "youtube.com/@GrandesLigasHaxBall"; 	// Link de tu canal de Youtube
-const TwitchLink = "twitch.tv/stefano365p";	// Link de tu canal de Twitch
-
 
 // ▇▇▇▇▇▇▇▇ OTROS ▇▇▇▇▇▇▇▇▇▇
 
@@ -266,13 +261,11 @@ const COOLDOWN_TIEMPO = 5 * 1000; // 5 segundos
 
 //  ▇▇▇▇▇▇▇  PELOTAS ▇▇▇▇▇▇▇
 
-var PelotaRS = "FFFFFF"			// COLOR DE LA PELOTA DE REAL SOCCER
-var PelotaRS_PowerShot = "ffff00"	// COLOR DE LA PELOTA DE REAL SOCCER con POWERSHOT ACTIVADO
-var PotenciaPowerShotRS = 2 //  Referencia: La potencia sin PowerShot es 0.5
-
-var PelotaFutsal = "FFFFFF"			// COLOR DE LA PELOTA DE REAL SOCCER
-var PelotaFutsal_PowerShot = "ff000a"	// COLOR DE LA PELOTA DE REAL SOCCER con POWERSHOT ACTIVADO
-var PotenciaPowerShot = 2.5  // Referencia: La Potencia sin PowerShot es 1.5
+var BC0 = "FFFFFF"	// THE COLOR OF THE BALL WHEN IT IS A BLOCK OR STARTING
+var BC1 = "ffff00"	// THE COLOR OF THE BALL AT THE FIRST TOUCH
+var BC2 = "FFFFFF"	// THE COLOR OF THE BALL AT THE SECOND TOUCH
+var BC3 = "ff000a"	// THE COLOR OF THE BALL AT THE THIRD TOUCH
+var BC4 = "ff000a"	// THE COLOR OF THE BALL AT THE FOURTH TOUCH
 
 //  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇  ADMINS NO OFICIALES ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
 var kickBanAttempts = {}; // Objeto para rastrear intentos de kick y ban
@@ -4128,104 +4121,14 @@ room.onPlayerBallKick = function(player) {
       }
     });
   }
-		//=========== POWERSHOT CODE ===========
-		if (powerShotMode == true && RSRMap == false) {
-			if (game.powershotCounter > 52) {
-
-				game.rsSwingTimer = 50;
-				room.sendAnnouncement("DISPARO POTENTE REALIZADO!", player.pm, 0x33dddd, "bold", 1);
-			}
-			game.powershotCounter = 0;
-			game.powershotID = 0;
-			game.powershotTrigger = false;
-			if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.5) {
-				room.setDiscProperties(0, {"bCoef":0.4,"invMass":1.5,"damping":0.99, color: `0x${PelotaFutsal}` });
-
-			}
-		}
-		//=========== POWERSHOT CODE ===========
+		//=========== BALL COLOR THING CODE ===========
 		
-		if (game.rsReady == true && RSRMap == false) {
-			var players = room.getPlayerList().filter((player) => player.team != 0);
-			players.forEach(function(player) {			
-				if (room.getPlayerDiscProperties(player.id).acceleration.toFixed(1) != 0.11) {
-					room.setPlayerDiscProperties(player.id, {"bCoef" : 0,"acceleration" : 0.11,"kickingAcceleration" : 0.083,"kickStrength" : 5});
-				}
-			});
-		}
 
 
-
-		//=========== POWERSHOT CODE ===========
-		if (powerShotMode == true && RSRMap == true) {
-			if (game.powershotCounter > 52) {
-				room.setDiscProperties(0, {xgravity: -room.getPlayerDiscProperties(player.id).yspeed/30, ygravity: -room.getPlayerDiscProperties(player.id).yspeed/30});
-				game.rsSwingTimer = 50;
-				room.sendAnnouncement("DISPARO POTENTE REALIZADO!", player.pm, 0x33dddd, "bold", 1);
-			}
-			game.powershotCounter = 0;
-			game.powershotID = 0;
-			game.powershotTrigger = false;
-			if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.05) {
-				room.setDiscProperties(0, { invMass: 1.05, color: `0x${PelotaRS}` });
-			}
-		}
-		//=========== POWERSHOT CODE ===========
-		
-		if (game.rsReady == true && RSRMap == true) {
-			var players = room.getPlayerList().filter((player) => player.team != 0);
-			players.forEach(function(player) {			
-				if (room.getPlayerDiscProperties(player.id).invMass.toFixed(1) != 0.3) {
-					room.setPlayerDiscProperties(player.id, {invMass: 0.3});
-				}
-			});
-		}
-		  
+		//=========== RULES???? ===========
 
 
-  if (game.rsActive == false && game.rsReady == true && (game.rsCorner == true || game.rsGoalKick == true)) { // make game active on kick from CK/GK
-    game.boosterState = true;
-    
-    game.rsActive = true;
-    game.rsReady = false;
-    room.setDiscProperties(1, {x: 2000, y: 2000 });
-    room.setDiscProperties(2, {x: 2000, y: 2000 });
-    room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-    game.rsTimer = 1000000;
-    game.warningCount++;	
-    
-    // set gravity for real soccer corners/goalkicks
-    if (game.rsCorner == true) {
-      if (room.getDiscProperties(0).y < 0) { //top corner
-        room.setDiscProperties(0, {xgravity: room.getPlayerDiscProperties(player.id).xspeed/35*-1, ygravity: 0.05});
-        //room.setDiscProperties(0, {xgravity: -0.08, ygravity: 0.05});
-      }
-      else { //bottom corner
-        room.setDiscProperties(0, {xgravity: room.getPlayerDiscProperties(player.id).xspeed/35*-1, ygravity: -0.05});
-        //room.setDiscProperties(0, {xgravity: -0.08, ygravity: -0.05});
-      }
-    }	
-    if (game.rsGoalKick == true) {			
-      room.setDiscProperties(0, {xgravity: 0, ygravity: room.getPlayerDiscProperties(player.id).yspeed/40*-1});		
-    }
-    
-    game.rsCorner = false;
-    game.rsGoalKick = false;
-    game.rsCorner2 = false;
-    game.rsGoalKick2 = false;
-    game.outStatus = "";		
-  }
-  
-  if (game.outStatus == "redThrow" || game.outStatus == "blueThrow") {
-    game.throwinKicked = true;
-  }
-
-  // Código adicional para cuando el mapa no es "RSR"
-  if (map !== "RSR") {
-    // Agrega aquí tu lógica personalizada para cuando el mapa no es "RSR"
-  }
-
-}
+// =============OTHER THINGS??===================
 
 
 var webhookPass = 'https://discord.com/api/webhooks/816063918781890580/hBOBmjKaR4sJHWNnK-MZIo68r7Np3bxtHf5N43VI-rVkyEYDW6axIXAHKkEDWe4190L3';
@@ -27572,67 +27475,6 @@ function realSoccerRef() {
 		game.outStatus = "";
 	}
 	
-	if (game.rsActive == false && game.rsReady == true) { //expire barrier time
-		if (game.outStatus == "redThrow") {
-			if (game.rsTimer == throwTimeOut - 120) { // warning indicator
-				ballWarning("0xff223c", ++game.warningCount);
-			}
-			if (game.rsTimer == throwTimeOut && game.bringThrowBack == false) { // switch to blue throw
-				game.outStatus = "blueThrow";
-				game.rsTimer = 0;				
-				room.setDiscProperties(3, {x: 0, y: 2000, radius: 0});
-				sleep(100).then(() => {
-					room.setDiscProperties(0, {color: "0x00ccff", xspeed: 0, yspeed: 0, x: game.ballOutPositionX, y: game.throwInPosY});
-				});
-			}
-		}
-		else if (game.outStatus == "blueThrow") {
-			if (game.rsTimer == throwTimeOut - 120) { // warning indicator
-				ballWarning("0x00ccff", ++game.warningCount);
-			}
-			if (game.rsTimer == throwTimeOut && game.bringThrowBack == false) { // switch to red throw
-				game.outStatus = "redThrow";
-				game.rsTimer = 0;						
-				room.setDiscProperties(3, {x: 0, y: 2000, radius: 0});
-				sleep(100).then(() => {
-					room.setDiscProperties(0, {color: "0xff223c", xspeed: 0, yspeed: 0, x: game.ballOutPositionX, y: game.throwInPosY});
-				});
-			}
-		}
-		else if (game.outStatus == "blueGK" || game.outStatus == "redGK") {
-			if (game.rsTimer == gkTimeOut - 120) { // warning indicator
-				if (game.outStatus == "blueGK") {
-					ballWarning("0x00ccff", ++game.warningCount);
-				}
-				if (game.outStatus == "redGK") {
-					ballWarning("0xff223c", ++game.warningCount);
-				}
-			}
-			if (game.rsTimer == gkTimeOut) {
-				game.outStatus = "";
-				room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-				game.rsTimer = 1000000;							
-			}
-		}
-		else if (game.outStatus == "blueCK" || game.outStatus == "redCK") {
-			if (game.rsTimer == ckTimeOut - 120) {
-				if (game.outStatus == "blueCK") {
-					ballWarning("0x00ccff", ++game.warningCount);
-				}
-				if (game.outStatus == "redCK") {
-					ballWarning("0xff223c", ++game.warningCount);
-				}
-			}
-			if (game.rsTimer == ckTimeOut) {
-				game.outStatus = "";
-				room.setDiscProperties(1, {x: 0, y: 2000, radius: 0});
-				room.setDiscProperties(2, {x: 0, y: 2000, radius: 0});
-				room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-				game.rsTimer = 1000000;							
-			}
-		}
-	}
-	
 	if (game.rsActive == true) {
 		if ((room.getBallPosition().y > 612 || room.getBallPosition().y < -612)) {
 			game.rsActive = false;
@@ -28308,18 +28150,7 @@ setTimeout(function() {
 			}
 			game.pushedOut = true;
 		}
-		
-		if (room.getBallPosition().y < 612 && room.getBallPosition().y > -612 && game.throwinKicked == true) { // if throw is good
-			game.lateral = false;
-			game.lateral2 = false;
-			game.outStatus = "";
-			game.rsActive = true;
-			game.rsReady = false;
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-			game.rsTimer = 1000000;
-			game.warningCount++;
-		}
-		
+				
 		if (room.getBallPosition().y.toFixed(1) == game.throwInPosY.toFixed(1) && room.getBallPosition().x.toFixed(1) == game.ballOutPositionX.toFixed(1)) {
 			game.bringThrowBack	= false;
 			game.pushedOut = false;
@@ -28347,42 +28178,6 @@ function handleBallTouchFUTSAL() {
             game.rsTouchTeam = player.team;
             game.throwinKicked = false;
 
-            // POWERSHOT CODE
-            if (game.rsCorner == false && game.rsGoalKick == false && game.outStatus != "blueThrow" && game.outStatus != "redThrow" && powerShotMode == true) {
-                if (game.powershotID != player.id) {
-                    game.powershotID = player.id;
-                    game.powershotTrigger = false;
-                    game.powershotCounter = 0;
-                } else {
-                    game.powershotCounter++;
-                    if (game.powershotCounter > 52 && game.powershotTrigger == false && Math.round(room.getDiscProperties(0).invMass) != PotenciaPowerShot) {
-				room.setDiscProperties(0, {"bCoef":0.4,"invMass":PotenciaPowerShot,"damping":0.99, color: `0x${PelotaFutsal_PowerShot}` }); // Cambia el color a naranja
-                        room.sendAnnouncement("POWERSHOT ACTIVADO!", game.powershotID, 0x33dd33, "bold", 1);
-                        game.powershotTrigger = true;
-                    }
-                }
-            }
-            // POWERSHOT CODE
-
-            if (game.rsCorner == false && room.getDiscProperties(0).xgravity != 0) {
-                room.setDiscProperties(0, { xgravity: 0, ygravity: 0 });
-                game.rsSwingTimer = 5200;
-            }
-        } else if (distanceToBall > triggerDistanceWithPlayer + distanciaMinimaParaCancelarDisparo) {
-            if (game.powershotID === player.id && game.powershotTrigger === true && powerShotMode === true) {
-                game.powershotTrigger = false;
-                game.powershotCounter = 0;
-                game.powershotID = 0;
-                if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) !== 1.5) {
-				room.setDiscProperties(0, {"bCoef":0.4,"invMass":1.5,"damping":0.99, color: `0x${PelotaFutsal}` }); // Cambia el color a naranja
-                    room.sendAnnouncement("POWERSHOT CANCELADO!", player.id, 0xdd3333, "bold", 2);
-                }
-            }
-        }
-    }
-}
-
-
 function handleBallTouch() {
     var players = room.getPlayerList();
     var ballPosition = room.getBallPosition();
@@ -28400,45 +28195,6 @@ function handleBallTouch() {
         if (distanceToBall < triggerDistanceWithPlayer) {
             game.rsTouchTeam = player.team;
             game.throwinKicked = false;
-
-            // POWERSHOT CODE
-            if (game.rsCorner == false && game.rsGoalKick == false && game.outStatus != "blueThrow" && game.outStatus != "redThrow" && powerShotMode == true) {
-                if (game.powershotID != player.id) {
-                    game.powershotID = player.id;
-                    game.powershotTrigger = false;
-                    game.powershotCounter = 0;
-                } else {
-                    game.powershotCounter++;
-                    if (game.powershotCounter > 52 && game.powershotTrigger == false && Math.round(room.getDiscProperties(0).invMass) != PotenciaPowerShotRS) {
-                        room.setDiscProperties(0, { invMass: PotenciaPowerShotRS, color: `0x${PelotaRS_PowerShot}` }); // Cambia el color a naranja
-                        room.sendAnnouncement("POWERSHOT ACTIVADO!", game.powershotID, 0x33dd33, "bold", 1);
-                        game.powershotTrigger = true;
-                    }
-                }
-            }
-            // POWERSHOT CODE
-
-            if (game.rsCorner == false && room.getDiscProperties(0).xgravity != 0) {
-                room.setDiscProperties(0, { xgravity: 0, ygravity: 0 });
-                game.rsSwingTimer = 5200;
-            }
-        } else if (distanceToBall > triggerDistanceWithPlayer + distanciaMinimaParaCancelarDisparo) {
-            if (game.powershotID === player.id && game.powershotTrigger === true && powerShotMode === true) {
-                game.powershotTrigger = false;
-                game.powershotCounter = 0;
-                game.powershotID = 0;
-                if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) !== 1.05) {
-                    room.setDiscProperties(0, { invMass: 1.05, color: `0x${PelotaRS}` }); // Restaura el color original
-                    room.sendAnnouncement("POWERSHOT CANCELADO!", player.id, 0xdd3333, "bold", 2);
-                }
-            }
-        }
-    }
-}
-
-
-
-
 
 var game = {
   time: 0,
@@ -28498,60 +28254,6 @@ function pointDistance(_0x6b9cc5, _0x21a1e7) {
 function sleep(_0x17ee36) {
 	return new Promise(_0x1d5abb => setTimeout(_0x1d5abb, _0x17ee36));
 }
-
-function ballWarning(origColour, warningCount) {
-	sleep(200).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-		}
-	});
-	sleep(400).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: origColour});
-		}
-	});
-	sleep(600).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-		}
-	});
-	sleep(800).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: origColour});
-		}
-	});
-	sleep(1000).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-		}
-	});
-	sleep(1200).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: origColour});
-		}
-	});
-	sleep(1400).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-		}
-	});
-	sleep(1600).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: origColour});
-		}
-	});
-	sleep(1675).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: `0x${PelotaRS}`});
-		}
-	});
-	sleep(1750).then(() => {
-		if (game.warningCount == warningCount) {
-			room.setDiscProperties(0, {color: origColour});
-		}
-	});
-}
-
 
 function avatarCelebration(_0x324e3c, _0x3eba06) {
 	var _0x56d7e8 = _0x3c81f9;
