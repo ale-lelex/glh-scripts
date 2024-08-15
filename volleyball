@@ -47,9 +47,6 @@ var MostrarIps = "No"; // Cambia "Si" por "No" si no deseas mostrar las IPs a lo
 
 const SegundosPermitidosAFK = 15; // Establece el tiempo permitido en segundos para estar AFK (Cuando están en el Red o en el Blue)
 
-const MinutosPermitidosAFK = 5;  // Establece el tiempo permitido en minutos para estar AFK (Cuando se encuentran Espectadores)
-
-
 // ▇▇▇▇▇▇▇▇▇ FUNCIONES DE DISCORD ▇▇▇▇▇▇▇▇▇
 
 
