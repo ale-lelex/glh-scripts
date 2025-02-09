@@ -1,371 +1,237 @@
-// ▇▇▇▇▇▇▇▇▇ ⚙️ CONFIGURACIÓN BÁSICA 😀 ▇▇▇▇▇▇▇▇▇
+// ▇▇▇▇▇▇▇▇▇ ⚙️ BASIC CONFIGURATION 😀 ▇▇▇▇▇▇▇▇▇
 
 
-// 📝 NOMBRE DEL HOST
-var NombreHost = '▶️▶️🟦🟩  UNETE Y JUEGA 🟩🟦◀️◀️';
-// Definimos el nombre del host (dentro de las comillas)
+var NombreHost = '🟥🟨🟦 𝙷 𝙰 𝚇 𝙷 𝙾 𝚂 𝚃 🟥🟨🟦'; // Define the host name (within the quotes)
 
 
-// 👤 VISIBILIDAD DEL BOT
-var BotVisible = false; 
-// Elige true si quieres que el bot sea visible como jugador o false para que esté oculto.
+var CantidadDeJugadores = 16; // Maximum number of players allowed to join your host. You can choose between 1 and 30 players
 
 
-// 🚩 NOMBRE DEL BOT
-var NombreBot = "🚩 Árbitro Bot 🤖"; 
-// Define el nombre del bot.
+var ClaveParaSerAdmin = "!axeso5"; // Password to become an administrator. Enter the password within quotes.
 
 
-// 🔒 CONTRASEÑA DEL HOST
-var PasswordDelHost = null;
-// Contraseña para acceder al Host (dejar null si no quieres colocarle una contraseña). Si quieres una contraseña, reemplaza null y coloca la contraseña entre comillas (Ejemplo: var PasswordDelHost = "123";)
+var MapaPorDefecto = "Real Soccer"; // OPTIONS: Futsal x2, Futsal x3, Futsal x4, Futsal x5, Futsal x5 Grass, Futsal x7, Real Soccer, Real Soccer Evo, Real Futsal, Training, Basketball, Mini RS, Champions, Awards, Big, Volleyball 2D, Volleyball 3D, School, Skate, Handball, Clay Tennis, Grass Tennis, Cement Tennis, Realistic RS, Sheep RS, Penalty Red, Penalty Blue, 2 Man, 3 Man, 4 Man, 5 Man, 6 Man, 7 Man, 8 Man
 
 
-// 👁️ VISIBILIDAD DEL HOST 
-var VisibilidadDelHost = true; 
-// La sala es pública si está en "true", privada si está en "false"
+var TiempoDeJuego = 5; // Default game duration (in minutes)
 
 
-// 👥 CANTIDAD MÁXIMA DE JUGADORES
-var CantidadDeJugadores = 16; 
-// Cantidad máxima de jugadores que permitirás ingresar a tu Host. Puedes elegir entre 1 y 30 jugadores
+var LimiteDeGoles = 0; // Default goal limit
 
 
-// 🔑 CONTRASEÑA PARA SER ADMINISTRADOR
-var ClaveParaSerAdmin = "!axeso5"; 
-// Clave para ser administrador. Pon la contraseña entre comillas.
+var TamanoMinimoPermitido = 15; // Minimum size allowed for a player
 
 
-// 🗺️ MAPA POR DEFECTO
-var MapaPorDefecto = "Real Soccer"; 
-// OPCIONES: Futsal x2, Futsal x3, Futsal x4, Futsal x5, Futsal x5 cesped, Futsal x7, Real Soccer, Real Soccer Evo, Real Futsal, Entrenamiento, Basquet, Mini RS, Campeones, Premios, Big, Voley 2d, Voley 3d, Escuela, Skate, Handball, Tenis Ladrillo, Tenis Pasto, Tenis Cemento, RS Realista, RS Oveja, Penales Red, Penales Blue, 2 Man, 3 Man, 4 Man, 5 Man, 6 Man, 7 Man, 8 Man
-
-// ⏱️ TIEMPO DE JUEGO
-var TiempoDeJuego = 5;
-// Duración por defecto de las partidas (En minutos)
+var TamanoMaximoPermitido = 15; // Maximum size allowed for a player
 
 
-// ⚽ LÍMITE DE GOLES
-var LimiteDeGoles = 0;
-// Limite de Goles por defecto
+var AdministradoresDelHost = [""]; // Enter the nicknames of the administrators. EXAMPLE: var AdministradoresDelHost = ["Messi10", "Neymar #11 PSG", "Ronaldinho BRA"];
+var contrasena = "reservado"; // Password to reserve space for Administrators
 
 
-// 📏 TAMAÑO DE LOS JUGADORES
-
-var TamanoMinimoPermitido = 15;
-// Tamaño mínimo permitido para un jugador 
-
-var TamanoMaximoPermitido = 15;
-// Tamaño máximo permitido para un jugador
-
-
-// 👑 ADMINISTRADORES DEL HOST
-var AdministradoresDelHost = [""];
-// Coloca los nicknames de los administradores. EJEMPLO: var AdministradoresDelHost = ["Messi10", "Neymar #11 PSG", "Ronaldinho BRA"];
-
-// 🔐 CONTRASEÑA PARA ADMINISTRADORES
-var contrasena = "reservado";
-// Contraseña para reservar el espacio a los Administradores
-
-
-// 🗳️ VOTACIONES
-
-// Variable configurable para el porcentaje de votos requeridos
-
-var PorcentajeDeVotosBan = 40; 
-// Cambia este valor al porcentaje deseado (por ejemplo, 30 para 30% de los votos)
-
-var PorcentajeDeVotosAdmin = 40; 
-// Cambia este valor al porcentaje deseado (por ejemplo, 30 para 30% de los votos)
-
-
-
-
-// ▇▇▇▇▇▇▇ 🚫 RESTRICCIONES DE ACCESO 🚫 ▇▇▇▇▇▇▇
-
-// 🚫 BANEO DE IPs DUPLICADAS
-var BanearIPsDuplicadas = "Si";
-// Cambia "Si" por "No" si no deseas banear IPs duplicadas
-
-
-// 🚫🌎 PAISES PROHIBIDOS
+// List of banned countries
+// If a player is from any of these countries, they will be automatically kicked upon joining.
+// Example of use: const PaisesProhibidos = ["Argentina", "Brazil", "Chile"];
 const PaisesProhibidos = [];
-// Si un jugador es de alguno de estos países, será expulsado automáticamente al ingresar.
-// EJEMPLO DE USO: const PaisesProhibidos = ["Argentina", "Brazil", "Chile"];
- 
-
-// 🚫📶 IPS BANEADAS
-let IpPlayers = []; // Añade entre comillas las Ips de los jugadores que quieras prohibir su ingreso. EJEMPLO: let IpPlayers = ["123.456.789", "987.654.321"];
-
-var MensajeBaneoPorIp = "❌ El admin ha baneado tu IP 📶"
-
-
-// ❌📛 NICKNAMES PROHIBIDOS
-const NicknamesPROHIBIDOS = ["@everyone", "@here", "@"]; 
-// Lista de nicknames prohibidos
-// Define los nicknames que no pueden ser utilizados
-
-// ▇▇▇▇▇▇▇ 🎮 MODOS DE JUEGO  ▇▇▇▇▇▇▇
-
-
-let autoBalanceEnabled = false; // true para ACTIVARLO - false para DESACTIVARLO | Equilibrar equipos en cantidad de jugadores
-
-var cambioCami = false; // true para ACTIVARLO - false para DESACTIVARLO | Cambiar camisetas automáticamente cada vez que se reinicia un partido.
-
-var powerShotMode = false; // true para ACTIVARLO - false para DESACTIVARLO | Activar el Disparo Potente (PowerShot)
-
-var JabulaniMode = false; // true para ACTIVARLO - false para DESACTIVARLO | Activar el Disparo Potente (PowerShot) con comba
-
-var combaMode = false; // true para ACTIVARLO - false para DESACTIVARLO | Activar sólo la Comba (cada vez que se patea la pelota)
-
-var GolDeOroActivado = false; // true para ACTIVARLO - false para DESACTIVARLO | Activar Gol de Oro
-
-var FairPlayActivado = false; // true para ACTIVARLO - false para DESACTIVARLO | Modo FairPlay
-
-var automatizadoActivado = false; // true para ACTIVARLO - false para DESACTIVARLO | Modo Automatizado
-
-var tiempoLimiteCambio = 30; // Tiempo límite (en segundos) para permitir cambiar mapa automaticamente
-
-let ganasigueEnabled = false; // true para ACTIVARLO - false para DESACTIVARLO | Modo Gana Sigue
-
-let modoJueganTodos = false; // true para ACTIVARLO - false para DESACTIVARLO | Modo Juegan Todos
-
-let modoJueganAlgunos = false; // true para ACTIVARLO - false para DESACTIVARLO |Modo Juegan Algunos
-
-let maxPlayersPerTeam = 1; // Establecer el número máximo de jugadores por equipo (Modo Juegan Algunos)
-
-let isAFKpaused = false; // Estado inicial del detector de AFK
 
 
 
+// ▇▇▇▇▇▇▇ ⚽👕 DEFAULT JERSEYS ⚽👕 ▇▇▇▇▇▇▇
 
-// ▇▇▇▇▇▇▇ ⚽👕 CAMISETAS POR DEFECTO ⚽👕 ▇▇▇▇▇▇▇
-
-// CAMISETA EQUIPO RED 🔴
 var camisetaRed = "/colors red 66 FFA649 DE0019 B80017 820217";
 var NombreEquipoRojo = "RED";
 
-// CAMISETA EQUIPO BLUE 🔵
 var camisetaBlue = "/colors blue 55 c1ff00 052647 005DB3 03B2F0";
 var NombreEquipoAzul = "BLUE";
 
-// ▇▇▇▇▇▇▇ ⚽👕 AÑADIR CAMISETAS DE EQUIPOS ⚽👕 ▇▇▇▇▇▇▇
+// ▇▇▇▇▇▇▇ 🛠️ INTERMEDIATE CONFIGURATION 💡 ▇▇▇▇▇▇▇
 
-var camisetasEquipos = {
-
-// BARCELONA
-    "barcelona/titular/red": {
-        codigo: "/colors red 180 F5B606 011EDE C80056",
-        nombreEquipo: "BARCELONA FC"
-    },
-    "barcelona/titular/blue": {
-        codigo: "/colors blue 180 F5B606 011EDE C80056",
-        nombreEquipo: "BARCELONA FC"
-    },
-
-// REAL MADRID
-    "realmadrid/titular/red": {
-        codigo: "/colors red 73 0F2145 FFC10A FFFFFF FFFFFF",
-        nombreEquipo: "REAL MADRID"
-    },
-    "realmadrid/titular/blue": {
-        codigo: "/colors blue 73 0F2145 FFC10A FFFFFF FFFFFF",
-        nombreEquipo: "REAL MADRID"
-    }
-};
+var PasswordDelHost = null; // Password to access the host (leave null if you don't want to set a password). If you want a password, replace null and enter the password within quotes (Example: var PasswordDelHost = "123";)
 
 
-// ▇▇▇▇▇▇▇▇▇ 🌐 FUNCIONES DE DISCORD 🤖 ▇▇▇▇▇▇▇▇▇
+var VisibilidadDelHost = true; // The room is public if set to "true," private if set to "false"
 
 
-// 🔥 Webhook para ANUNCIAR que has CREADO UNA SALA. Reemplaza con tu propia URL de webhook.
-var AnuncioHostAbierto = "https://discord.com/api/webhooks/1201825912958767134/g1BEoP1RNO_zSrQmf0nhkQRP_z3BnR2bJXfKYkK7CCPLk-KZf86tn-bPq_mDZ2UHwRMf";
-var MensajeHostAbierto = 
-`# 🚀 ¡NUEVO HOST ABIERTO! 🎮
-## ⚽ ¡No te lo pierdas! Únete al partido ahora y demuestra tus habilidades en la cancha.
-¡La diversión está por comenzar, no faltes! 🔥`;
-var TagHostAbierto = "@here"; //  Dejar "@here" o Colocar el "ID del Rol de Discord" al que quieres avisarle que creaste Host
+var BanearIPsDuplicadas = "Si"; // Change "Si" to "No" if you don't want to ban duplicate IPs
 
 
-// 🎥 Webhook para GRABACIONES y RESÚMENES de las Partidas jugadas. Reemplaza con tu propia URL de webhook.
-const WebhookGrabaciones = "https://discord.com/api/webhooks/1322348400531738835/oKP4BL4iz8XhKgjzufGqUYfV7owjVlsyOgrlCyhhnX0Dcu3rJTiBUeVZI_53-QIBAaeI";
+var MostrarIps = "No"; // Change "Si" to "No" if you don't want to show IPs to administrators when a player joins the room
 
 
-// 📂 Link del servidor de Discord donde se subirán las GRABACIONES DE LAS PARTIDAS
-const GrabacionesDiscord = "https://discord.gg/8x9e2uyeWX";
+
+// ▇▇▇▇▇▇▇ 🎮 GAME MODES ▇▇▇▇▇▇▇
+
+let autoBalanceEnabled = false; // true to ENABLE - false to DISABLE | Balance teams by the number of players
+
+var cambioCami = false; // true to ENABLE - false to DISABLE | Automatically change jerseys every time a match is restarted
+
+var powerShotMode = false; // true to ENABLE - false to DISABLE | Activate the Power Shot
+
+var GolDeOroActivado = false; // true to ENABLE - false to DISABLE | Activate Golden Goal
+
+var FairPlayActivado = false; // true to ENABLE - false to DISABLE | Fair Play Mode
+
+var automatizadoActivado = false; // true to ENABLE - false to DISABLE | Automated Mode
+
+var tiempoLimiteCambio = 30; // Time limit (in seconds) to allow automatic map changes
+
+let ganasigueEnabled = false; // true to ENABLE - false to DISABLE | Winner Stays Mode
+
+let modoJueganTodos = false; // true to ENABLE - false to DISABLE | Everyone Plays Mode
+
+let modoJueganAlgunos = false; // true to ENABLE - false to DISABLE | Some Play Mode
+
+let maxPlayersPerTeam = 1; // Set the maximum number of players per team (Some Play Mode)
+
+let isAFKpaused = false; // Initial state of the AFK detector
 
 
-// 📞 Webhook para recibir el mensaje que han llamado a los Administradores. Reemplaza con tu propia URL de webhook.
-var WebhookParaLlamarAdmins = "https://discord.com/api/webhooks/1201852308569464873/FPoPAp2x3kxHpS4XWLcMIASHBu-zl1C7IbMTQYpCxOmyM_ARRVpsFEU71W-x8PFwbNBv";
+// ▇▇▇▇▇▇▇ AFK TIME ▇▇▇▇▇▇▇
 
+const SegundosPermitidosAFK = 15; // Set the allowed time in seconds to be AFK (when in Red or Blue)
 
-// 👮‍ Rol de Admin en Discord que se quiere llamar
-var RolAdminHost = "@here"; // Dejar '@here' o colocar el ID del rol de Discord que se quiere llamar
-var tiempoEsperaAdminsEnMinutos = 2;  // CANTIDAD DE MINUTOS A ESPERAR PARA REALIZAR UNA NUEVA LLAMADA A LOS ADMINS
+const MinutosPermitidosAFK = 5;  // Set the allowed time in minutes to be AFK (when Spectators)
 
+// ▇▇▇▇▇▇▇▇▇ DISCORD FUNCTIONS ▇▇▇▇▇▇▇▇▇
 
-// 🚫 Webhook para anunciar los KICKS y BANS de la sala. Reemplaza con tu propia URL de webhook.
+// Webhook link to announce Kicks and Bans from the room. Replace with your own webhook URL.
 const AnuncioKicksBans = "https://discord.com/api/webhooks/1304191735512961134/MIrXKhZrca3z1X-QYZL4czQY1FuK9EhehfMESJHqz6b3TJnRcchD9Z0JrMbC0hpDQYkI";
 
+// Webhook link for Match Recordings and Summaries. Replace with your own webhook URL.
+const WebhookGrabaciones = "https://discord.com/api/webhooks/1201828073587355718/jhqr8Qx6ULMpXQeVpPrHpGMoSJUBzliPAFDUZeM3hnCv_q941NRfLaaTVsv_yklJ2je8";
 
-// 💬 Webhook para ver los MENSAJES DE LOS JUGADORES. Reemplaza con tu propia URL de webhook.
-var webhookMensajesJugadores  = "https://discord.com/api/webhooks/1304184937070465045/MPx9I_v6w4_cngpuVwES6nMZNoDKJWT4DXOvBzvehM8K6K8F3U4WBTXvS27YbPG7th0p";
+const GrabacionesDiscord = "https://discord.gg/8x9e2uyeWX"; // Discord server link where match recordings will be uploaded
 
+// Webhook to announce that a room has been opened. Replace with your own webhook URL.
+var AnuncioHostAbierto = "https://discord.com/api/webhooks/1201825912958767134/g1BEoP1RNO_zSrQmf0nhkQRP_z3BnR2bJXfKYkK7CCPLk-KZf86tn-bPq_mDZ2UHwRMf";
+var MensajeHostAbierto = 
+`# 🚀 NEW HOST OPENED! 🎮
+## ⚽ Don't miss it! Join the game now and show off your skills on the field.
+The fun is about to begin, don't miss out! 🔥`;
+var TagHostAbierto = "@here"; // Leave "@here" or place the "ID of the Discord role" you want to notify that you created the host
 
+// Webhook to view player messages. Replace with your own webhook URL.
+var webhookMensajesJugadores = "https://discord.com/api/webhooks/1304184937070465045/MPx9I_v6w4_cngpuVwES6nMZNoDKJWT4DXOvBzvehM8K6K8F3U4WBTXvS27YbPG7th0p";
 
-// 🎟️ Webhook para enviar los INGRESOS y SALIDAS de los jugadores a Discord
+// Webhook to send player entries and exits to Discord.
 var webhookBoletero = "https://discord.com/api/webhooks/1215904770699690104/Cuk8W0gJLVhE9gSw54YseGe6KR5PnkeHcB7dvD_GGoGAO6f-JoAsQfMiOQnieiAfU84D";
 
+// Webhook to receive messages when administrators are called. Replace with your own webhook URL.
+var WebhookParaLlamarAdmins = "https://discord.com/api/webhooks/1201852308569464873/FPoPAp2x3kxHpS4XWLcMIASHBu-zl1C7IbMTQYpCxOmyM_ARRVpsFEU71W-x8PFwbNBv";
 
-// 🖊️ Webhook para firmar en partidos oficiales. Reemplaza con tu propia URL de webhook.
+var RolAdminHost = "@here"; // Leave '@here' or place the ID of the Discord role to be called
+var tiempoEsperaAdminsEnMinutos = 2; // NUMBER OF MINUTES TO WAIT BEFORE MAKING A NEW CALL TO ADMINS
+
+// Webhook for signing in official matches. Replace with your own webhook URL.
 var WebhookParaFirmar = "https://discord.com/api/webhooks/1172720661706321980/bafHm5CRFCH4aQKlYnyTn2D2dJrct2vI8QFwGs9OYxQMYL3f-ksGhzPdDZZMdIMqteCj";
 
 
-// 🔒 Webhook para enviar la IP de un jugador cuando se retire de la sala.
-var webhookIPJugadores  = "https://discord.com/api/webhooks/1329078558857101374/ZyjKtX_NsleSgWex_-sLZ2ukjv3Mo6cy0M-zLXTwLMu3v6svJo8CxJtrokjcPj7aejbp";
 
+// ▇▇▇▇▇▇▇▇▇ SOCIAL NETWORKS ▇▇▇▇▇▇▇▇▇
 
-// ▇▇▇▇▇▇▇ 🛠️ CONFIGURACIÓN INTERMEDIA 💡 ▇▇▇▇▇▇▇
+const DiscordLink = "discord.gg/tDEUbJU8QB"; // Your Discord server link
+const YoutubeLink = "youtube.com/@GrandesLigasHaxBall"; // Your YouTube channel link
+const TwitchLink = "twitch.tv/stefano365p"; // Your Twitch channel link
 
-// 👁️‍🗨️ MOSTRAR IPs A ADMINISTRADORES
-var MostrarIps = "No"; 
-// Cambia "Si" por "No" si no deseas mostrar las IPs a los administradores cuando un jugador se una a la sala
+// ▇▇▇▇▇▇▇▇ OTHER ▇▇▇▇▇▇▇▇▇
 
-const ColocarJuntoAlNickname = "ID"; // Opciones disponibles: "ID", "Nivel" o "" (sin nada)
-
-
-// ▇▇▇▇▇▇▇ TIEMPO AFK ▇▇▇▇▇▇▇
-
-
-const SegundosPermitidosAFK = 15; // Establece el tiempo permitido en segundos para estar AFK (Cuando están en el Red o en el Blue)
-
-const MinutosPermitidosAFK = 5;  // Establece el tiempo permitido en minutos para estar AFK (Cuando se encuentran Espectadores)
-
-
-// ▇▇▇▇▇▇▇▇▇ REDES SOCIALES ▇▇▇▇▇▇▇▇▇
-
-const DiscordLink = "discord.gg/tDEUbJU8QB";	// Link de tu Servidor de Discord
-const YoutubeLink = "youtube.com/@GrandesLigasHaxBall"; 	// Link de tu canal de Youtube
-const TwitchLink = "twitch.tv/stefano365p";	// Link de tu canal de Twitch
-
-
-// ▇▇▇▇▇▇▇▇ 📢 ANUNCIOS Y MENSAJE DE BIENVENIDA ▇▇▇▇▇▇▇▇▇▇
-
-// 🎉 MENSAJE DE BIENVENIDA  (Se envía al jugador que recién ingresa al host)
-
+// WELCOME MESSAGE (Sent to the player who just joins the host)
 var MensajeDeBienvenida = `
-Para ver estadísticas: !me, !stats ID, !goleadores, !asistidores, !vallas-invictas, !mvp, !racha-historica, !racha-actual, !viciosos, !ganadores, !presencias
-Puedes utilizar el comando: !memide | AVATAR ANIMADO CON: !avatar 😈,👿  | !avatar HO,LA
-`; 
-// Escribe el mensaje de bienvenida que quieras (Dentro de las comillas)
+To see stats: !me, !stats ID, !goleadores, !asistidores, !vallas-invictas, !mvp, !racha-historica, !racha-actual, !viciosos, !ganadores, !presencias
+You can use the command: !memide
+`; // Write the welcome message you want (inside the quotes)
+var colormensaje = "FF69B4"; // Hex color code for the message
+var TipoDeLetra = "bold"; // You can change this option to: "normal", "bold", "italic", "small", "small-bold", and "small-italic"
 
+// ANNOUNCEMENT (Sent each time the match starts)
+var Anuncio = "✨ JOIN THE GLH DISCORD AND LEARN HOW TO CREATE YOUR OWN HOST WITH SCRIPT: discord.gg/tDEUbJU8QB"; // Default announcement (sent 10 seconds after the match starts)
+var AnuncioMinuto = 0; // Represents the minute of the match in which the announcement is to be displayed
+var AnuncioSegundos = 10; // Represents the seconds within the minute of the match in which the announcement is to be displayed
 
-// 🎨 PERSONALIZACIÓN DEL MENSAJE DE BIENVENIDA
-var colormensaje = "FF69B4";
-
-var TipoDeLetra = "bold"; 
-// Puedes cambiar esta opción por: "normal", "bold", "italic", "small", "small-bold", y "small-italic"
-
-
-// 📢 ANUNCIO (Se envía cada vez que inicia el partido)
-
-var Anuncio = "✨ ÚNETE AL DISCORD DE GLH Y APRENDE A CREAR TU PROPIO HOST CON SCRIPT: discord.gg/tDEUbJU8QB"; 
-// Anuncio que viene por Defecto (Se envía a los 10 segundos del inicio de cada partido)
-
-
-// ⏲️ TIEMPO DEL ANUNCIO
-var AnuncioMinuto = 0; 
-//  Representa el minuto del partido en el que se desea mostrar el anuncio.
-
-var AnuncioSegundos = 10; 
-// Representa los segundos en el minuto del partido en el que se desea mostrar el anuncio.
+// PROHIBITED NICKNAMES
+const NicknamesPROHIBIDOS = ["@everyone", "@here", "@"]; // Defines the prohibited nicknames
 
 
 
+// ▇▇▇▇▇▇▇ 📍 HOST LOCATION ▇▇▇▇▇▇▇
 
-// ▇▇▇▇▇▇▇ 📍 UBICACIÓN DEL HOST ▇▇▇▇▇▇▇
-
-	var UbicacionDelHost = "myubication"; 
-
-
-	// ES LA UBICACIÓN EN LA QUE APARECERÁ TU HOST | Puedes reemplazar "argentina" por alguna de estas opciones.
+var UbicacionDelHost = "myubication"; // THIS IS THE LOCATION WHERE YOUR HOST WILL APPEAR | You can replace "argentina" with one of these options.
 
 
-	// OPCIONES DISPONIBLES:
+// AVAILABLE OPTIONS:
 
-// TU GEOLOCALIZACIÓN POR DEFECTO: myubication
+// YOUR DEFAULT GEOLOCATION: myubication
 
-		// AMÉRICA:
+// AMERICAS:
 
-			// argentina, haxarg, uruguay, brasil, colombia, chile, mexico
+    // argentina, haxarg, uruguay, brasil, colombia, chile, mexico
 
-			// bolivia, peru, paraguay, venezuela, costa rica, united states, canada
+    // bolivia, peru, paraguay, venezuela, costa rica, united states, canada
 
-		// EUROPA:
+// EUROPE:
 
-			// france, spain, italy, germany, netherlands, portugal
+    // france, spain, italy, germany, netherlands, portugal
 
-			// croatia, macedonia, serbia, poland, ukraine, russia, marruecos, united kingdom, turkey
+    // croatia, macedonia, serbia, poland, ukraine, russia, morocco, united kingdom, turkey
 
-		
-		// ASIA:
-
-			// south korea, japan, china, vietnam, israel
-
-
-// ▇▇▇▇▇▇▇ BANDERA DEL HOST 🏳️ ▇▇▇▇▇▇▇
-
-
-	var BanderaDelHost = 'Germany';  // Elige el país con la bandera que quieres para tu Sala
-
-
-// OPCIONES DISPONIBLES POR CONTINENTE:
-
-// ÁFRICA:
-	// Algeria, Angola, Benin, Botswana, BurkinaFaso, Burundi, Cameroon, CapeVerde, CentralAfricanRepublic, Chad, Comoros,
-	// Congo, CongoTheDemocraticRepublicOfThe, CoteDIvoire, Djibouti, Egypt, EquatorialGuinea, Eritrea, Ethiopia, Gabon,
-	// Gambia, Ghana, Guinea, GuineaBissau, Kenya, Lesotho, Liberia, LibyanArabJamahiriya, Madagascar, Malawi, Mali, Mauritania,
-	// Mauritius, Morocco, Mozambique, Namibia, Niger, Nigeria, Rwanda, SaoTomeAndPrincipe, Senegal, Seychelles, SierraLeone,
-	// Somalia, SouthAfrica, SouthSudan, Sudan, Swaziland, Tanzania, Togo, Tunisia, Uganda, Zambia, Zimbabwe
-
-// AMÉRICA:
-	// AntiguaAndBarbuda, Argentina, Aruba, Bahamas, Barbados, Belize, Bermuda, Bolivia, BonaireSaintEustatiusAndSaba, Brazil,
-	// BritishIndianOceanTerritory, Canada, CaymanIslands, Chile, Colombia, CostaRica, Cuba, Curacao, Dominica, DominicanRepublic,
-	// Ecuador, ElSalvador, FalklandIslandsMalvinas, FrenchGuiana, Grenada, Guadeloupe, Guatemala, Guyana, Haiti, Honduras,
-	// Jamaica, Martinique, Mexico, Montserrat, Nicaragua, Panama, Paraguay, Peru, PuertoRico, SaintBarthelemy, SaintKittsAndNevis,
-	// SaintLucia, SaintMartin, SaintPierreAndMiquelon, SaintVincentAndTheGrenadines, SintMaartenDutchPart, Suriname, TrinidadAndTobago,
-	// TurksAndCaicosIslands, UnitedStates, UnitedStatesMinorOutlyingIslands, Uruguay, Venezuela, VirginIslandsBritish, VirginIslandsUS
 
 // ASIA:
-	// Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, ChristmasIsland, CocosKeelingIslands,
-	// HongKong, India, Indonesia, Iran, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, LaoPeoplesDemocraticRepublic,
-	// Lebanon, Macao, Malaysia, Maldives, Mongolia, Myanmar, Nepal, NorthKorea, Oman, Pakistan, Palestine, Philippines, Qatar,
-	// SaudiArabia, Singapore, SouthKorea, SriLanka, Syria, Taiwan, Tajikistan, Thailand, TimorLeste, Turkey, Turkmenistan,
-	// UnitedArabEmirates, Uzbekistan, VietNam, Yemen
 
-// EUROPA:
-	// Albania, Andorra, Austria, Belarus, Belgium, BosniaAndHerzegovina, Bulgaria, Croatia, Cyprus, CzechRepublic, Denmark,
-	// Estonia, FaroeIslands, Finland, France, Germany, Gibraltar, Greece, Greenland, Hungary, Iceland, Ireland, Italy, Kosovo,
-	// Latvia, Liechtenstein, Lithuania, Luxembourg, MacedoniaTheFormerYugoslavRepublicOf, Malta, Moldova, Monaco, Montenegro,
-	// Netherlands, Norway, Poland, Portugal, Romania, Russia, SanMarino, Serbia, Slovakia, Slovenia, Spain, SvalbardAndJanMayen,
-	// Sweden, Switzerland, Ukraine, UnitedKingdom
-
-// OCEANÍA:
-	// Australia, Fiji, FrenchPolynesia, Guam, Kiribati, MarshallIslands, MicronesiaFederatedStatesOf, Nauru, NewCaledonia,
-	// NewZealand, Niue, NorfolkIsland, Palau, PapuaNewGuinea, Pitcairn, Samoa, SolomonIslands, Tokelau, Tonga, Tuvalu, Vanuatu
-
-// OTROS:
-	// Haxball, Antarctica, Anguilla, Antarctica, Bermuda, BouvetIsland, BritishIndianOceanTerritory, HeardIslandAndMcDonaldIslands,
-	// HolySeeVaticanCityState, IsleOfMan, Jersey, Mayotte, Monaco, Montserrat, SouthGeorgiaAndTheSouthSandwichIslands
+    // south korea, japan, china, vietnam, israel
 
 
+// ▇▇▇▇▇▇▇ HOST FLAG 🏳️ ▇▇▇▇▇▇▇
+
+var BanderaDelHost = 'Germany';  // Choose the country with the flag you want for your Room
+
+
+// AVAILABLE OPTIONS BY CONTINENT:
+
+// AFRICA:
+    // Algeria, Angola, Benin, Botswana, BurkinaFaso, Burundi, Cameroon, CapeVerde, CentralAfricanRepublic, Chad, Comoros,
+    // Congo, CongoTheDemocraticRepublicOfThe, CoteDIvoire, Djibouti, Egypt, EquatorialGuinea, Eritrea, Ethiopia, Gabon,
+    // Gambia, Ghana, Guinea, GuineaBissau, Kenya, Lesotho, Liberia, LibyanArabJamahiriya, Madagascar, Malawi, Mali, Mauritania,
+    // Mauritius, Morocco, Mozambique, Namibia, Niger, Nigeria, Rwanda, SaoTomeAndPrincipe, Senegal, Seychelles, SierraLeone,
+    // Somalia, SouthAfrica, SouthSudan, Sudan, Swaziland, Tanzania, Togo, Tunisia, Uganda, Zambia, Zimbabwe
+
+// AMERICAS:
+    // AntiguaAndBarbuda, Argentina, Aruba, Bahamas, Barbados, Belize, Bermuda, Bolivia, BonaireSaintEustatiusAndSaba, Brazil,
+    // BritishIndianOceanTerritory, Canada, CaymanIslands, Chile, Colombia, CostaRica, Cuba, Curacao, Dominica, DominicanRepublic,
+    // Ecuador, ElSalvador, FalklandIslandsMalvinas, FrenchGuiana, Grenada, Guadeloupe, Guatemala, Guyana, Haiti, Honduras,
+    // Jamaica, Martinique, Mexico, Montserrat, Nicaragua, Panama, Paraguay, Peru, PuertoRico, SaintBarthelemy, SaintKittsAndNevis,
+    // SaintLucia, SaintMartin, SaintPierreAndMiquelon, SaintVincentAndTheGrenadines, SintMaartenDutchPart, Suriname, TrinidadAndTobago,
+    // TurksAndCaicosIslands, UnitedStates, UnitedStatesMinorOutlyingIslands, Uruguay, Venezuela, VirginIslandsBritish, VirginIslandsUS
+
+// ASIA:
+    // Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, ChristmasIsland, CocosKeelingIslands,
+    // HongKong, India, Indonesia, Iran, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, LaoPeoplesDemocraticRepublic,
+    // Lebanon, Macao, Malaysia, Maldives, Mongolia, Myanmar, Nepal, NorthKorea, Oman, Pakistan, Palestine, Philippines, Qatar,
+    // SaudiArabia, Singapore, SouthKorea, SriLanka, Syria, Taiwan, Tajikistan, Thailand, TimorLeste, Turkey, Turkmenistan,
+    // UnitedArabEmirates, Uzbekistan, VietNam, Yemen
+
+// EUROPE:
+    // Albania, Andorra, Austria, Belarus, Belgium, BosniaAndHerzegovina, Bulgaria, Croatia, Cyprus, CzechRepublic, Denmark,
+    // Estonia, FaroeIslands, Finland, France, Germany, Gibraltar, Greece, Greenland, Hungary, Iceland, Ireland, Italy, Kosovo,
+    // Latvia, Liechtenstein, Lithuania, Luxembourg, MacedoniaTheFormerYugoslavRepublicOf, Malta, Moldova, Monaco, Montenegro,
+    // Netherlands, Norway, Poland, Portugal, Romania, Russia, SanMarino, Serbia, Slovakia, Slovenia, Spain, SvalbardAndJanMayen,
+    // Sweden, Switzerland, Ukraine, UnitedKingdom
+
+// OCEANIA:
+    // Australia, Fiji, FrenchPolynesia, Guam, Kiribati, MarshallIslands, MicronesiaFederatedStatesOf, Nauru, NewCaledonia,
+    // NewZealand, Niue, NorfolkIsland, Palau, PapuaNewGuinea, Pitcairn, Samoa, SolomonIslands, Tokelau, Tonga, Tuvalu, Vanuatu
+
+// OTHERS:
+    // Haxball, Antarctica, Anguilla, Antarctica, Bermuda, BouvetIsland, BritishIndianOceanTerritory, HeardIslandAndMcDonaldIslands,
+    // HolySeeVaticanCityState, IsleOfMan, Jersey, Mayotte, Monaco, Montserrat, SouthGeorgiaAndTheSouthSandwichIslands
 
 
 
-//  ▇▇▇▇▇▇▇  ASIGNAR ROLES ▇▇▇▇▇▇▇
 
 
-// Definiciones de colores
+// ▇▇▇▇▇▇▇  ASSIGN ROLES ▇▇▇▇▇▇▇
+
+
+// Color definitions
 const ColorDelChatROL1 = 0xFFD700;
 const ColorDelChatROL2 = 0xffffff;
 const ColorDelChatROL3 = 0xffffff;
@@ -374,23 +240,21 @@ const ColorDelChatROL5 = 0xffffff;
 const adminChatColor = 0xffdb72;
 const RedChatColor = 0xff6363;
 const BlueChatColor = 0x63f2ff;
-const RedTeamChatColor = 0xFD2C2D;
-const BlueTeamChatColor = 0x18fde8;
-const SpectChatColor = 0xD3D3D3; // Color del chat para espectadores
+const SpectChatColor = 0xD3D3D3; // Chat color for spectators
 
-// Listas de nombres de usuario por rol
-const NickNamesRol1 = []; // Añadir nombres de usuarios para ROL1 entre comillas | EJEMPLO: const NickNamesRol1 = ["Messi", "Neymar"];
-const NickNamesRol2 = []; // Añadir nombres de usuarios para ROL2 entre comillas | EJEMPLO: const NickNamesRol2 = ["ROMAN #10", "Martín Palermo 9"];
-const NickNamesRol3 = []; // Añadir nombres de usuarios para ROL3 entre comillas | EJEMPLO: const NickNamesRol3 = ["Burrito Ortega"];
-const NickNamesRol4 = []; // Añadir nombres de usuarios para ROL4 entre comillas
-const NickNamesRol5 = []; // Añadir nombres de usuarios para ROL5 entre comillas
+// Lists of usernames by role
+const NickNamesRol1 = []; // Add usernames for ROLE1 in quotes | EXAMPLE: const NickNamesRol1 = ["Messi", "Neymar"];
+const NickNamesRol2 = []; // Add usernames for ROLE2 in quotes | EXAMPLE: const NickNamesRol2 = ["ROMAN #10", "Martín Palermo 9"];
+const NickNamesRol3 = []; // Add usernames for ROLE3 in quotes | EXAMPLE: const NickNamesRol3 = ["Burrito Ortega"];
+const NickNamesRol4 = []; // Add usernames for ROLE4 in quotes
+const NickNamesRol5 = []; // Add usernames for ROLE5 in quotes
 
-// Nombres de roles
+// Role names
 const NombreROL1 = "🗦👑🗧𝗢𝗪𝗡𝗘𝗥";
 const NombreROL2 = "🤝 CO-OWNER";
 const NombreROL3 = "🌐 HOSTER";
-const NombreROL4 = "🛠️ AYUDANTE";
-const NombreROL5 = "🔧 SUBAYUDANTE";
+const NombreROL4 = "🛠️ HELPER";
+const NombreROL5 = "🔧 SUBHELPER";
 const NombreROLAdmin = "👑 ADMIN";
 const NombreROLRed = "🔴";
 const NombreROLBlue = "🔵";
@@ -409,61 +273,60 @@ const RoleAttributes = {
 };
 
 
-//  ▇▇▇▇▇▇▇  COOLDOWN CHAT ▇▇▇▇▇▇▇
+//  ▇▇▇▇▇▇▇  CHAT COOLDOWN ▇▇▇▇▇▇▇
 
-let MESSAGE_COOLDOWN = 5000; // 5 segundos de cooldown
-let SPAM_LIMIT = 5; // Mensajes permitidos antes de activar el cooldown
-let COOLDOWN_TIME = 10000; // 10 segundos de cooldown después de enviar muchos mensajes
-let cooldownEnabled = true; // Cooldown habilitado por defecto
-let KICK_THRESHOLD = 3; // Número de advertencias antes de kickear por spam
+let MESSAGE_COOLDOWN = 5000; // 5 seconds cooldown
+let SPAM_LIMIT = 5; // Messages allowed before activating cooldown
+let COOLDOWN_TIME = 10000; // 10 seconds cooldown after sending too many messages
+let cooldownEnabled = true; // Cooldown enabled by default
+let KICK_THRESHOLD = 3; // Number of warnings before kicking for spam
 
-// Variables para rastrear mensajes y cooldowns
+// Variables to track messages and cooldowns
 let messageTimestamps = {};
 let playerCooldowns = {};
-let spamWarnings = {}; // Contador de advertencias por spam
+let spamWarnings = {}; // Counter for spam warnings
 
 
 
-//  ▇▇▇▇▇▇▇  COOLDOWN PARA EL USO DE COMANDOS ▇▇▇▇▇▇▇
-// COOLDOWN PARA USO DE COMANDOS
-let lastCommandTime = {}; // Objeto para registrar el tiempo del último comando enviado por cada jugador
-const commandCooldown = 5000; // Tiempo de espera en milisegundos (5 segundos)
+//  ▇▇▇▇▇▇▇  COMMAND USAGE COOLDOWN ▇▇▇▇▇▇▇
+// COMMAND USAGE COOLDOWN
+let lastCommandTime = {}; // Object to record the time of the last command sent by each player
+const commandCooldown = 5000; // Wait time in milliseconds (5 seconds)
 
-// COOLDOWN PARA COMANDOS
+// COMMAND COOLDOWN
 const cooldowns = {};
-const COOLDOWN_TIEMPO = 5 * 1000; // 5 segundos
+const COOLDOWN_TIEMPO = 5 * 1000; // 5 seconds
 
-//  ▇▇▇▇▇▇▇  PELOTAS ▇▇▇▇▇▇▇
+//  ▇▇▇▇▇▇▇  BALLS ▇▇▇▇▇▇▇
 
-var PelotaRS = "FFFFFF"			// COLOR DE LA PELOTA DE REAL SOCCER
-var PelotaRS_PowerShot = "FF4500"	// COLOR DE LA PELOTA DE REAL SOCCER con POWERSHOT ACTIVADO
-var PotenciaPowerShotRS = 2 //  Referencia: La potencia sin PowerShot es 0.5
+var PelotaRS = "FFFFFF"			// COLOR OF THE REAL SOCCER BALL
+var PelotaRS_PowerShot = "FF4500"	// COLOR OF THE REAL SOCCER BALL WITH POWERSHOT ACTIVATED
+var PotenciaPowerShotRS = 2 // Reference: The power without PowerShot is 0.5
 
-var PelotaFutsal = "FFFFFF"			// COLOR DE LA PELOTA DE REAL SOCCER
-var PelotaFutsal_PowerShot = "FF4500"	// COLOR DE LA PELOTA DE REAL SOCCER con POWERSHOT ACTIVADO
-var PotenciaPowerShot = 2.5  // Referencia: La Potencia sin PowerShot es 1.5
-
-
+var PelotaFutsal = "FFFFFF"			// COLOR OF THE FUTSAL BALL
+var PelotaFutsal_PowerShot = "FF4500"	// COLOR OF THE FUTSAL BALL WITH POWERSHOT ACTIVATED
+var PotenciaPowerShot = 2.5  // Reference: The power without PowerShot is 1.5
 
 
-// ▇▇▇▇▇▇▇  PARA TORNEOS  ▇▇▇▇▇▇▇
 
-var ChallongeLink = 'challonge.com/es/' // Link de tu torneo
+
+// ▇▇▇▇▇▇▇  FOR TOURNAMENTS ▇▇▇▇▇▇▇
+
+var ChallongeLink = 'challonge.com/es/' // Link to your tournament
 var regla1 = '⯌ 4 vs 4'
-var regla2 = '⯌ Equipo que gana el partido, continua jugando. 🏆'
-var regla3 = '⯌ Dos jugadores ingresan por orden de Espectadores. Los otros dos restantes, los puede elegir.'
-var regla4 = '⯌ El equipo ganador le toca el país con más probabilidades de ganar.'
-var regla5 = '⯌ Si empatan, salen ambos equipos. Y los primeros cuatro jugadores de la lista de Espectadores pasan a ser capitanes, 2 en el Team Red y los otros 2 en el Team Blue.'
+var regla2 = '⯌ The team that wins the match continues playing. 🏆'
+var regla3 = '⯌ Two players enter by the order of Spectators. The other two can be chosen.'
+var regla4 = '⯌ The winning team plays with the country with the highest chances of winning.'
+var regla5 = '⯌ If it’s a tie, both teams are eliminated. The first four players in the Spectators list become captains, 2 in the Red Team and the other 2 in the Blue Team.'
 
+//  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇  NON-OFFICIAL ADMINS ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+var kickBanAttempts = {}; // Object to track kick and ban attempts
+var maxAttempts = 1; // Maximum number of attempts allowed within the time interval
+var interval = 30000; // Time interval in milliseconds (30 seconds)
+var alertThreshold = 2; // Alert threshold after the second attempt
+var cooldownTime = 40000; // Cooldown time in milliseconds
+var cooldownActive = {}; // Object to track the cooldown status of each admin
 
-
-//  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇  ADMINS NO OFICIALES ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
-var kickBanAttempts = {}; // Objeto para rastrear intentos de kick y ban
-var maxAttempts = 1; // Número máximo de intentos permitidos en el intervalo de tiempo
-var interval = 30000; // Intervalo de tiempo en milisegundos (30 segundos)
-var alertThreshold = 2; // Umbral de alerta después del segundo intento
-var cooldownTime = 40000; // Tiempo de cooldown en milisegundos 
-var cooldownActive = {}; // Objeto para rastrear el estado de cooldown de cada administrador
 
 
 
@@ -763,7 +626,7 @@ var countryCoords = {
 
 };
 
-var VersionDelScript = "``📅 ᴠᴇʀsɪᴏ́ɴ ᴅᴇʟ sᴄʀɪᴘᴛ 25.01.25  | RSR by GLH (Full Version)``"
+var VersionDelScript = "``📅 ᴠᴇʀsɪᴏ́ɴ ᴅᴇʟ sᴄʀɪᴘᴛ 24.11.7  | RSR by GLH (Full Version)``"
 
 let equipoAzulPosesion = 0;
 let equipoRojoPosesion = 0;
@@ -776,6 +639,7 @@ var RSRMap;
 var PartidoArrancado;
 const afkPlayerIDs = new Set()
 var mutedPlayers = []; // Array where will be added muted players
+let IpPlayers = []; // Array where will be added muted players
 var isTimeAddedShownseis = false;
 var DetenerAnuncio = false;
 var DetenerAviso = false;
@@ -1522,7 +1386,7 @@ function getRealSoccerMap4() {
 
 `;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return realSoccerMap4;
 }
 
@@ -1538,230 +1402,230 @@ function getFutx5cespedMap() {
 	"bg" : { "kickOffRadius" : 6, "color" : "2B591C" },
 
 	"vertexes" : [
-		/* 0 */ { "x" : -950, "y" : 460, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : 12 },
-		/* 1 */ { "x" : -950, "y" : 90, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : -12 },
-		/* 2 */ { "x" : -950, "y" : -90, "bCoef" : 0.9, "cMask" : ["ball" ], "curve" : 0, "bias" : 12 },
-		/* 3 */ { "x" : -950, "y" : -460, "bCoef" : 0.9, "cMask" : ["ball" ], "curve" : 0, "bias" : -12 },
-		/* 4 */ { "x" : 950, "y" : 460, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : -12 },
-		/* 5 */ { "x" : 950, "y" : 90, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : 12 },
-		/* 6 */ { "x" : 950, "y" : -90, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : -12 },
-		/* 7 */ { "x" : 950, "y" : -460, "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : 12 },
+		/* 0 */ { "x" : -950, "y" : 460, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 1 */ { "x" : -950, "y" : 90, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 2 */ { "x" : -950, "y" : -90, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 3 */ { "x" : -950, "y" : -460, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 4 */ { "x" : 950, "y" : 460, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 5 */ { "x" : 950, "y" : 90, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 6 */ { "x" : 950, "y" : -90, "bCoef" : 0.9, "cMask" : ["ball" ] },
+		/* 7 */ { "x" : 950, "y" : -460, "bCoef" : 0.9, "cMask" : ["ball" ] },
 		/* 8 */ { "x" : 0, "y" : 508, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
 		/* 9 */ { "x" : 0, "y" : 150, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
 		/* 10 */ { "x" : 0, "y" : -150, "bCoef" : 0, "cMask" : [ ] },
 		/* 11 */ { "x" : 0, "y" : -508, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
-		/* 12 */ { "x" : -995, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
-		/* 13 */ { "x" : 995, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : -12 },
-		/* 14 */ { "x" : -995, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
-		/* 15 */ { "x" : 995, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
+		/* 12 */ { "x" : -995, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 13 */ { "x" : 995, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 14 */ { "x" : -995, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 15 */ { "x" : 995, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
 		/* 16 */ { "x" : 951, "y" : 460, "bCoef" : 0.9, "cMask" : ["ball" ] },
 		/* 17 */ { "x" : 951, "y" : -460, "bCoef" : 0.9, "cMask" : ["ball" ] },
 		/* 18 */ { "x" : 0, "y" : 460, "bCoef" : 0, "cMask" : [ ] },
 		/* 19 */ { "x" : 0, "y" : -460, "bCoef" : 0, "cMask" : [ ] },
 		/* 20 */ { "x" : 0, "y" : 150, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
 		/* 21 */ { "x" : 0, "y" : -150, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
-		/* 22 */ { "x" : -950, "y" : 435, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 23 */ { "x" : -925, "y" : 460, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 24 */ { "x" : -950, "y" : -435, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 25 */ { "x" : -925, "y" : -460, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 26 */ { "x" : 950, "y" : -435, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 27 */ { "x" : 925, "y" : -460, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 28 */ { "x" : 950, "y" : 435, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 29 */ { "x" : 925, "y" : 460, "bCoef" : 0.1, "cMask" : [ ] },
-		/* 30 */ { "x" : 948, "y" : -166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 31 */ { "x" : -948, "y" : -166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 32 */ { "x" : 948, "y" : -198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 33 */ { "x" : -948, "y" : -198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 34 */ { "x" : 948, "y" : 166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 35 */ { "x" : -948, "y" : 166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 36 */ { "x" : 948, "y" : 198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 37 */ { "x" : -948, "y" : 198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 38 */ { "x" : 948, "y" : 348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 39 */ { "x" : -948, "y" : 348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 40 */ { "x" : 948, "y" : 380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 41 */ { "x" : -948, "y" : 380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 42 */ { "x" : 948, "y" : -348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 43 */ { "x" : -948, "y" : -348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 44 */ { "x" : 948, "y" : -380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 45 */ { "x" : -948, "y" : -380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
-		/* 46 */ { "x" : 948, "y" : 16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
-		/* 47 */ { "x" : -948, "y" : 16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
-		/* 48 */ { "x" : 948, "y" : 14, "bCoef" : 0, "cMask" : [ ] },
-		/* 49 */ { "x" : -948, "y" : 14, "bCoef" : 0, "cMask" : [ ] },
-		/* 50 */ { "x" : 948, "y" : 12, "bCoef" : 0, "cMask" : [ ] },
-		/* 51 */ { "x" : -948, "y" : 12, "bCoef" : 0, "cMask" : [ ] },
-		/* 52 */ { "x" : 948, "y" : 10, "bCoef" : 0, "cMask" : [ ] },
-		/* 53 */ { "x" : -948, "y" : 10, "bCoef" : 0, "cMask" : [ ] },
-		/* 54 */ { "x" : 948, "y" : 8, "bCoef" : 0, "cMask" : [ ] },
-		/* 55 */ { "x" : -948, "y" : 8, "bCoef" : 0, "cMask" : [ ] },
-		/* 56 */ { "x" : 948, "y" : 6, "bCoef" : 0, "cMask" : [ ] },
-		/* 57 */ { "x" : -948, "y" : 6, "bCoef" : 0, "cMask" : [ ] },
-		/* 58 */ { "x" : 948, "y" : 4, "bCoef" : 0, "cMask" : [ ] },
-		/* 59 */ { "x" : -948, "y" : 4, "bCoef" : 0, "cMask" : [ ] },
-		/* 60 */ { "x" : 948, "y" : 2, "bCoef" : 0, "cMask" : [ ] },
-		/* 61 */ { "x" : -948, "y" : 2, "bCoef" : 0, "cMask" : [ ] },
-		/* 62 */ { "x" : 948, "y" : 0, "bCoef" : 0, "cMask" : [ ] },
-		/* 63 */ { "x" : -948, "y" : 0, "bCoef" : 0, "cMask" : [ ] },
-		/* 64 */ { "x" : 948, "y" : -2, "bCoef" : 0, "cMask" : [ ] },
-		/* 65 */ { "x" : -948, "y" : -2, "bCoef" : 0, "cMask" : [ ] },
-		/* 66 */ { "x" : 948, "y" : -4, "bCoef" : 0, "cMask" : [ ] },
-		/* 67 */ { "x" : -948, "y" : -4, "bCoef" : 0, "cMask" : [ ] },
-		/* 68 */ { "x" : 948, "y" : -6, "bCoef" : 0, "cMask" : [ ] },
-		/* 69 */ { "x" : -948, "y" : -6, "bCoef" : 0, "cMask" : [ ] },
-		/* 70 */ { "x" : 948, "y" : -8, "bCoef" : 0, "cMask" : [ ] },
-		/* 71 */ { "x" : -948, "y" : -8, "bCoef" : 0, "cMask" : [ ] },
-		/* 72 */ { "x" : 948, "y" : -10, "bCoef" : 0, "cMask" : [ ] },
-		/* 73 */ { "x" : -948, "y" : -10, "bCoef" : 0, "cMask" : [ ] },
-		/* 74 */ { "x" : 948, "y" : -12, "bCoef" : 0, "cMask" : [ ] },
-		/* 75 */ { "x" : -948, "y" : -12, "bCoef" : 0, "cMask" : [ ] },
-		/* 76 */ { "x" : 948, "y" : -16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
-		/* 77 */ { "x" : -948, "y" : -16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
-		/* 78 */ { "x" : 0, "y" : 150, "bCoef" : 0, "cMask" : [ ] },
-		/* 79 */ { "x" : 0, "y" : -150, "bCoef" : 0, "cMask" : [ ] },
-		/* 80 */ { "x" : 0, "y" : 150, "bCoef" : 0, "cMask" : [ ] },
-		/* 81 */ { "x" : 0, "y" : -150, "bCoef" : 0, "cMask" : [ ] },
-		/* 82 */ { "x" : 948, "y" : 168, "bCoef" : 0, "cMask" : [ ] },
-		/* 83 */ { "x" : -948, "y" : 168, "bCoef" : 0, "cMask" : [ ] },
-		/* 84 */ { "x" : 948, "y" : 170, "bCoef" : 0, "cMask" : [ ] },
-		/* 85 */ { "x" : -948, "y" : 170, "bCoef" : 0, "cMask" : [ ] },
-		/* 86 */ { "x" : 948, "y" : 172, "bCoef" : 0, "cMask" : [ ] },
-		/* 87 */ { "x" : -948, "y" : 172, "bCoef" : 0, "cMask" : [ ] },
-		/* 88 */ { "x" : 948, "y" : 174, "bCoef" : 0, "cMask" : [ ] },
-		/* 89 */ { "x" : -948, "y" : 174, "bCoef" : 0, "cMask" : [ ] },
-		/* 90 */ { "x" : 948, "y" : 176, "bCoef" : 0, "cMask" : [ ] },
-		/* 91 */ { "x" : -948, "y" : 176, "bCoef" : 0, "cMask" : [ ] },
-		/* 92 */ { "x" : 948, "y" : 178, "bCoef" : 0, "cMask" : [ ] },
-		/* 93 */ { "x" : -948, "y" : 178, "bCoef" : 0, "cMask" : [ ] },
-		/* 94 */ { "x" : 948, "y" : 180, "bCoef" : 0, "cMask" : [ ] },
-		/* 95 */ { "x" : -948, "y" : 180, "bCoef" : 0, "cMask" : [ ] },
-		/* 96 */ { "x" : 948, "y" : 182, "bCoef" : 0, "cMask" : [ ] },
-		/* 97 */ { "x" : -948, "y" : 182, "bCoef" : 0, "cMask" : [ ] },
-		/* 98 */ { "x" : 948, "y" : 184, "bCoef" : 0, "cMask" : [ ] },
-		/* 99 */ { "x" : -948, "y" : 184, "bCoef" : 0, "cMask" : [ ] },
-		/* 100 */ { "x" : 948, "y" : 186, "bCoef" : 0, "cMask" : [ ] },
-		/* 101 */ { "x" : -948, "y" : 186, "bCoef" : 0, "cMask" : [ ] },
-		/* 102 */ { "x" : 948, "y" : 188, "bCoef" : 0, "cMask" : [ ] },
-		/* 103 */ { "x" : -948, "y" : 188, "bCoef" : 0, "cMask" : [ ] },
-		/* 104 */ { "x" : 948, "y" : 190, "bCoef" : 0, "cMask" : [ ] },
-		/* 105 */ { "x" : -948, "y" : 190, "bCoef" : 0, "cMask" : [ ] },
-		/* 106 */ { "x" : 948, "y" : 192, "bCoef" : 0, "cMask" : [ ] },
-		/* 107 */ { "x" : -948, "y" : 192, "bCoef" : 0, "cMask" : [ ] },
-		/* 108 */ { "x" : 948, "y" : 194, "bCoef" : 0, "cMask" : [ ] },
-		/* 109 */ { "x" : -948, "y" : 194, "bCoef" : 0, "cMask" : [ ] },
-		/* 110 */ { "x" : 948, "y" : 350, "bCoef" : 0, "cMask" : [ ] },
-		/* 111 */ { "x" : -948, "y" : 350, "bCoef" : 0, "cMask" : [ ] },
-		/* 112 */ { "x" : 948, "y" : 352, "bCoef" : 0, "cMask" : [ ] },
-		/* 113 */ { "x" : -948, "y" : 352, "bCoef" : 0, "cMask" : [ ] },
-		/* 114 */ { "x" : 948, "y" : 354, "bCoef" : 0, "cMask" : [ ] },
-		/* 115 */ { "x" : -948, "y" : 354, "bCoef" : 0, "cMask" : [ ] },
-		/* 116 */ { "x" : 948, "y" : 356, "bCoef" : 0, "cMask" : [ ] },
-		/* 117 */ { "x" : -948, "y" : 356, "bCoef" : 0, "cMask" : [ ] },
-		/* 118 */ { "x" : 948, "y" : 358, "bCoef" : 0, "cMask" : [ ] },
-		/* 119 */ { "x" : -948, "y" : 358, "bCoef" : 0, "cMask" : [ ] },
-		/* 120 */ { "x" : 948, "y" : 360, "bCoef" : 0, "cMask" : [ ] },
-		/* 121 */ { "x" : -948, "y" : 360, "bCoef" : 0, "cMask" : [ ] },
-		/* 122 */ { "x" : 948, "y" : 362, "bCoef" : 0, "cMask" : [ ] },
-		/* 123 */ { "x" : -948, "y" : 362, "bCoef" : 0, "cMask" : [ ] },
-		/* 124 */ { "x" : 948, "y" : 364, "bCoef" : 0, "cMask" : [ ] },
-		/* 125 */ { "x" : -948, "y" : 364, "bCoef" : 0, "cMask" : [ ] },
-		/* 126 */ { "x" : 948, "y" : 366, "bCoef" : 0, "cMask" : [ ] },
-		/* 127 */ { "x" : -948, "y" : 366, "bCoef" : 0, "cMask" : [ ] },
-		/* 128 */ { "x" : 948, "y" : 368, "bCoef" : 0, "cMask" : [ ] },
-		/* 129 */ { "x" : -948, "y" : 368, "bCoef" : 0, "cMask" : [ ] },
-		/* 130 */ { "x" : 948, "y" : 370, "bCoef" : 0, "cMask" : [ ] },
-		/* 131 */ { "x" : -948, "y" : 370, "bCoef" : 0, "cMask" : [ ] },
-		/* 132 */ { "x" : 948, "y" : 372, "bCoef" : 0, "cMask" : [ ] },
-		/* 133 */ { "x" : -948, "y" : 372, "bCoef" : 0, "cMask" : [ ] },
-		/* 134 */ { "x" : 948, "y" : 374, "bCoef" : 0, "cMask" : [ ] },
-		/* 135 */ { "x" : -948, "y" : 374, "bCoef" : 0, "cMask" : [ ] },
-		/* 136 */ { "x" : 948, "y" : 376, "bCoef" : 0, "cMask" : [ ] },
-		/* 137 */ { "x" : -948, "y" : 376, "bCoef" : 0, "cMask" : [ ] },
-		/* 138 */ { "x" : 948, "y" : -168, "bCoef" : 0, "cMask" : [ ] },
-		/* 139 */ { "x" : -948, "y" : -168, "bCoef" : 0, "cMask" : [ ] },
-		/* 140 */ { "x" : 948, "y" : -170, "bCoef" : 0, "cMask" : [ ] },
-		/* 141 */ { "x" : -948, "y" : -170, "bCoef" : 0, "cMask" : [ ] },
-		/* 142 */ { "x" : 948, "y" : -172, "bCoef" : 0, "cMask" : [ ] },
-		/* 143 */ { "x" : -948, "y" : -172, "bCoef" : 0, "cMask" : [ ] },
-		/* 144 */ { "x" : 948, "y" : -174, "bCoef" : 0, "cMask" : [ ] },
-		/* 145 */ { "x" : -948, "y" : -174, "bCoef" : 0, "cMask" : [ ] },
-		/* 146 */ { "x" : 948, "y" : -176, "bCoef" : 0, "cMask" : [ ] },
-		/* 147 */ { "x" : -948, "y" : -176, "bCoef" : 0, "cMask" : [ ] },
-		/* 148 */ { "x" : 948, "y" : -178, "bCoef" : 0, "cMask" : [ ] },
-		/* 149 */ { "x" : -948, "y" : -178, "bCoef" : 0, "cMask" : [ ] },
-		/* 150 */ { "x" : 948, "y" : -180, "bCoef" : 0, "cMask" : [ ] },
-		/* 151 */ { "x" : -948, "y" : -180, "bCoef" : 0, "cMask" : [ ] },
-		/* 152 */ { "x" : 948, "y" : -182, "bCoef" : 0, "cMask" : [ ] },
-		/* 153 */ { "x" : -948, "y" : -182, "bCoef" : 0, "cMask" : [ ] },
-		/* 154 */ { "x" : 948, "y" : -184, "bCoef" : 0, "cMask" : [ ] },
-		/* 155 */ { "x" : -948, "y" : -184, "bCoef" : 0, "cMask" : [ ] },
-		/* 156 */ { "x" : 948, "y" : -186, "bCoef" : 0, "cMask" : [ ] },
-		/* 157 */ { "x" : -948, "y" : -186, "bCoef" : 0, "cMask" : [ ] },
-		/* 158 */ { "x" : 948, "y" : -188, "bCoef" : 0, "cMask" : [ ] },
-		/* 159 */ { "x" : -948, "y" : -188, "bCoef" : 0, "cMask" : [ ] },
-		/* 160 */ { "x" : 948, "y" : -190, "bCoef" : 0, "cMask" : [ ] },
-		/* 161 */ { "x" : -948, "y" : -190, "bCoef" : 0, "cMask" : [ ] },
-		/* 162 */ { "x" : 948, "y" : -192, "bCoef" : 0, "cMask" : [ ] },
-		/* 163 */ { "x" : -948, "y" : -192, "bCoef" : 0, "cMask" : [ ] },
-		/* 164 */ { "x" : 948, "y" : -194, "bCoef" : 0, "cMask" : [ ] },
-		/* 165 */ { "x" : -948, "y" : -194, "bCoef" : 0, "cMask" : [ ] },
-		/* 166 */ { "x" : 948, "y" : -350, "bCoef" : 0, "cMask" : [ ] },
-		/* 167 */ { "x" : -948, "y" : -350, "bCoef" : 0, "cMask" : [ ] },
-		/* 168 */ { "x" : 948, "y" : -352, "bCoef" : 0, "cMask" : [ ] },
-		/* 169 */ { "x" : -948, "y" : -352, "bCoef" : 0, "cMask" : [ ] },
-		/* 170 */ { "x" : 948, "y" : -354, "bCoef" : 0, "cMask" : [ ] },
-		/* 171 */ { "x" : -948, "y" : -354, "bCoef" : 0, "cMask" : [ ] },
-		/* 172 */ { "x" : 948, "y" : -356, "bCoef" : 0, "cMask" : [ ] },
-		/* 173 */ { "x" : -948, "y" : -356, "bCoef" : 0, "cMask" : [ ] },
-		/* 174 */ { "x" : 948, "y" : -358, "bCoef" : 0, "cMask" : [ ] },
-		/* 175 */ { "x" : -948, "y" : -358, "bCoef" : 0, "cMask" : [ ] },
-		/* 176 */ { "x" : 948, "y" : -360, "bCoef" : 0, "cMask" : [ ] },
-		/* 177 */ { "x" : -948, "y" : -360, "bCoef" : 0, "cMask" : [ ] },
-		/* 178 */ { "x" : 948, "y" : -362, "bCoef" : 0, "cMask" : [ ] },
-		/* 179 */ { "x" : -948, "y" : -362, "bCoef" : 0, "cMask" : [ ] },
-		/* 180 */ { "x" : 948, "y" : -364, "bCoef" : 0, "cMask" : [ ] },
-		/* 181 */ { "x" : -948, "y" : -364, "bCoef" : 0, "cMask" : [ ] },
-		/* 182 */ { "x" : 948, "y" : -366, "bCoef" : 0, "cMask" : [ ] },
-		/* 183 */ { "x" : -948, "y" : -366, "bCoef" : 0, "cMask" : [ ] },
-		/* 184 */ { "x" : 948, "y" : -368, "bCoef" : 0, "cMask" : [ ] },
-		/* 185 */ { "x" : -948, "y" : -368, "bCoef" : 0, "cMask" : [ ] },
-		/* 186 */ { "x" : 948, "y" : -370, "bCoef" : 0, "cMask" : [ ] },
-		/* 187 */ { "x" : -948, "y" : -370, "bCoef" : 0, "cMask" : [ ] },
-		/* 188 */ { "x" : 948, "y" : -372, "bCoef" : 0, "cMask" : [ ] },
-		/* 189 */ { "x" : -948, "y" : -372, "bCoef" : 0, "cMask" : [ ] },
-		/* 190 */ { "x" : 948, "y" : -374, "bCoef" : 0, "cMask" : [ ] },
-		/* 191 */ { "x" : -948, "y" : -374, "bCoef" : 0, "cMask" : [ ] },
-		/* 192 */ { "x" : 948, "y" : -376, "bCoef" : 0, "cMask" : [ ] },
-		/* 193 */ { "x" : -948, "y" : -376, "bCoef" : 0, "cMask" : [ ] },
-		/* 194 */ { "x" : 0, "y" : -460, "bCoef" : 0, "cMask" : [ ] },
-		/* 195 */ { "x" : 0, "y" : 460, "bCoef" : 0, "cMask" : [ ] },
-		/* 196 */ { "x" : 0, "y" : 1, "bCoef" : 0, "cMask" : [ ] },
-		/* 197 */ { "x" : 0, "y" : -1, "bCoef" : 0, "cMask" : [ ] },
-		/* 198 */ { "x" : 0, "y" : 3, "bCoef" : 0, "cMask" : [ ] },
-		/* 199 */ { "x" : 0, "y" : -3, "bCoef" : 0, "cMask" : [ ] },
-		/* 200 */ { "x" : 0, "y" : 1, "bCoef" : 0, "cMask" : [ ] },
-		/* 201 */ { "x" : 0, "y" : -1, "bCoef" : 0, "cMask" : [ ] },
-		/* 202 */ { "x" : 0, "y" : 3, "bCoef" : 0, "cMask" : [ ] },
-		/* 203 */ { "x" : 0, "y" : -3, "bCoef" : 0, "cMask" : [ ] },
+		/* 22 */ { "x" : 958, "y" : -90, "cMask" : ["ball" ] },
+		/* 23 */ { "x" : 958, "y" : -456, "cMask" : ["ball" ] },
+		/* 24 */ { "x" : -958, "y" : -90, "cMask" : ["ball" ] },
+		/* 25 */ { "x" : -958, "y" : -456, "cMask" : ["ball" ] },
+		/* 26 */ { "x" : -958, "y" : 90, "cMask" : ["ball" ] },
+		/* 27 */ { "x" : -958, "y" : 456, "cMask" : ["ball" ] },
+		/* 28 */ { "x" : 958, "y" : 90, "cMask" : ["ball" ] },
+		/* 29 */ { "x" : 958, "y" : 456, "cMask" : ["ball" ] },
+		/* 30 */ { "x" : -950, "y" : 435, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 31 */ { "x" : -925, "y" : 460, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 32 */ { "x" : -950, "y" : -435, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 33 */ { "x" : -925, "y" : -460, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 34 */ { "x" : 950, "y" : -435, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 35 */ { "x" : 925, "y" : -460, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 36 */ { "x" : 950, "y" : 435, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 37 */ { "x" : 925, "y" : 460, "bCoef" : 0.1, "cMask" : [ ] },
+		/* 38 */ { "x" : 948, "y" : -166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 39 */ { "x" : -948, "y" : -166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 40 */ { "x" : 948, "y" : -198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 41 */ { "x" : -948, "y" : -198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 42 */ { "x" : 948, "y" : 166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 43 */ { "x" : -948, "y" : 166, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 44 */ { "x" : 948, "y" : 198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 45 */ { "x" : -948, "y" : 198, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 46 */ { "x" : 948, "y" : 348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 47 */ { "x" : -948, "y" : 348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 48 */ { "x" : 948, "y" : 380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 49 */ { "x" : -948, "y" : 380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 50 */ { "x" : 948, "y" : -348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 51 */ { "x" : -948, "y" : -348, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 52 */ { "x" : 948, "y" : -380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 53 */ { "x" : -948, "y" : -380, "bCoef" : 0, "cMask" : [ ], "color" : "377324" },
+		/* 54 */ { "x" : 948, "y" : 16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
+		/* 55 */ { "x" : -948, "y" : 16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
+		/* 56 */ { "x" : 948, "y" : 14, "bCoef" : 0, "cMask" : [ ] },
+		/* 57 */ { "x" : -948, "y" : 14, "bCoef" : 0, "cMask" : [ ] },
+		/* 58 */ { "x" : 948, "y" : 12, "bCoef" : 0, "cMask" : [ ] },
+		/* 59 */ { "x" : -948, "y" : 12, "bCoef" : 0, "cMask" : [ ] },
+		/* 60 */ { "x" : 948, "y" : 10, "bCoef" : 0, "cMask" : [ ] },
+		/* 61 */ { "x" : -948, "y" : 10, "bCoef" : 0, "cMask" : [ ] },
+		/* 62 */ { "x" : 948, "y" : 8, "bCoef" : 0, "cMask" : [ ] },
+		/* 63 */ { "x" : -948, "y" : 8, "bCoef" : 0, "cMask" : [ ] },
+		/* 64 */ { "x" : 948, "y" : 6, "bCoef" : 0, "cMask" : [ ] },
+		/* 65 */ { "x" : -948, "y" : 6, "bCoef" : 0, "cMask" : [ ] },
+		/* 66 */ { "x" : 948, "y" : 4, "bCoef" : 0, "cMask" : [ ] },
+		/* 67 */ { "x" : -948, "y" : 4, "bCoef" : 0, "cMask" : [ ] },
+		/* 68 */ { "x" : 948, "y" : 2, "bCoef" : 0, "cMask" : [ ] },
+		/* 69 */ { "x" : -948, "y" : 2, "bCoef" : 0, "cMask" : [ ] },
+		/* 70 */ { "x" : 948, "y" : 0, "bCoef" : 0, "cMask" : [ ] },
+		/* 71 */ { "x" : -948, "y" : 0, "bCoef" : 0, "cMask" : [ ] },
+		/* 72 */ { "x" : 948, "y" : -2, "bCoef" : 0, "cMask" : [ ] },
+		/* 73 */ { "x" : -948, "y" : -2, "bCoef" : 0, "cMask" : [ ] },
+		/* 74 */ { "x" : 948, "y" : -4, "bCoef" : 0, "cMask" : [ ] },
+		/* 75 */ { "x" : -948, "y" : -4, "bCoef" : 0, "cMask" : [ ] },
+		/* 76 */ { "x" : 948, "y" : -6, "bCoef" : 0, "cMask" : [ ] },
+		/* 77 */ { "x" : -948, "y" : -6, "bCoef" : 0, "cMask" : [ ] },
+		/* 78 */ { "x" : 948, "y" : -8, "bCoef" : 0, "cMask" : [ ] },
+		/* 79 */ { "x" : -948, "y" : -8, "bCoef" : 0, "cMask" : [ ] },
+		/* 80 */ { "x" : 948, "y" : -10, "bCoef" : 0, "cMask" : [ ] },
+		/* 81 */ { "x" : -948, "y" : -10, "bCoef" : 0, "cMask" : [ ] },
+		/* 82 */ { "x" : 948, "y" : -12, "bCoef" : 0, "cMask" : [ ] },
+		/* 83 */ { "x" : -948, "y" : -12, "bCoef" : 0, "cMask" : [ ] },
+		/* 84 */ { "x" : 948, "y" : -16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
+		/* 85 */ { "x" : -948, "y" : -16, "bCoef" : 0, "cMask" : [ ], "color" : "123456" },
+		/* 86 */ { "x" : 0, "y" : 150, "bCoef" : 0, "cMask" : [ ] },
+		/* 87 */ { "x" : 0, "y" : -150, "bCoef" : 0, "cMask" : [ ] },
+		/* 88 */ { "x" : 0, "y" : 150, "bCoef" : 0, "cMask" : [ ] },
+		/* 89 */ { "x" : 0, "y" : -150, "bCoef" : 0, "cMask" : [ ] },
+		/* 90 */ { "x" : 948, "y" : 168, "bCoef" : 0, "cMask" : [ ] },
+		/* 91 */ { "x" : -948, "y" : 168, "bCoef" : 0, "cMask" : [ ] },
+		/* 92 */ { "x" : 948, "y" : 170, "bCoef" : 0, "cMask" : [ ] },
+		/* 93 */ { "x" : -948, "y" : 170, "bCoef" : 0, "cMask" : [ ] },
+		/* 94 */ { "x" : 948, "y" : 172, "bCoef" : 0, "cMask" : [ ] },
+		/* 95 */ { "x" : -948, "y" : 172, "bCoef" : 0, "cMask" : [ ] },
+		/* 96 */ { "x" : 948, "y" : 174, "bCoef" : 0, "cMask" : [ ] },
+		/* 97 */ { "x" : -948, "y" : 174, "bCoef" : 0, "cMask" : [ ] },
+		/* 98 */ { "x" : 948, "y" : 176, "bCoef" : 0, "cMask" : [ ] },
+		/* 99 */ { "x" : -948, "y" : 176, "bCoef" : 0, "cMask" : [ ] },
+		/* 100 */ { "x" : 948, "y" : 178, "bCoef" : 0, "cMask" : [ ] },
+		/* 101 */ { "x" : -948, "y" : 178, "bCoef" : 0, "cMask" : [ ] },
+		/* 102 */ { "x" : 948, "y" : 180, "bCoef" : 0, "cMask" : [ ] },
+		/* 103 */ { "x" : -948, "y" : 180, "bCoef" : 0, "cMask" : [ ] },
+		/* 104 */ { "x" : 948, "y" : 182, "bCoef" : 0, "cMask" : [ ] },
+		/* 105 */ { "x" : -948, "y" : 182, "bCoef" : 0, "cMask" : [ ] },
+		/* 106 */ { "x" : 948, "y" : 184, "bCoef" : 0, "cMask" : [ ] },
+		/* 107 */ { "x" : -948, "y" : 184, "bCoef" : 0, "cMask" : [ ] },
+		/* 108 */ { "x" : 948, "y" : 186, "bCoef" : 0, "cMask" : [ ] },
+		/* 109 */ { "x" : -948, "y" : 186, "bCoef" : 0, "cMask" : [ ] },
+		/* 110 */ { "x" : 948, "y" : 188, "bCoef" : 0, "cMask" : [ ] },
+		/* 111 */ { "x" : -948, "y" : 188, "bCoef" : 0, "cMask" : [ ] },
+		/* 112 */ { "x" : 948, "y" : 190, "bCoef" : 0, "cMask" : [ ] },
+		/* 113 */ { "x" : -948, "y" : 190, "bCoef" : 0, "cMask" : [ ] },
+		/* 114 */ { "x" : 948, "y" : 192, "bCoef" : 0, "cMask" : [ ] },
+		/* 115 */ { "x" : -948, "y" : 192, "bCoef" : 0, "cMask" : [ ] },
+		/* 116 */ { "x" : 948, "y" : 194, "bCoef" : 0, "cMask" : [ ] },
+		/* 117 */ { "x" : -948, "y" : 194, "bCoef" : 0, "cMask" : [ ] },
+		/* 118 */ { "x" : 948, "y" : 350, "bCoef" : 0, "cMask" : [ ] },
+		/* 119 */ { "x" : -948, "y" : 350, "bCoef" : 0, "cMask" : [ ] },
+		/* 120 */ { "x" : 948, "y" : 352, "bCoef" : 0, "cMask" : [ ] },
+		/* 121 */ { "x" : -948, "y" : 352, "bCoef" : 0, "cMask" : [ ] },
+		/* 122 */ { "x" : 948, "y" : 354, "bCoef" : 0, "cMask" : [ ] },
+		/* 123 */ { "x" : -948, "y" : 354, "bCoef" : 0, "cMask" : [ ] },
+		/* 124 */ { "x" : 948, "y" : 356, "bCoef" : 0, "cMask" : [ ] },
+		/* 125 */ { "x" : -948, "y" : 356, "bCoef" : 0, "cMask" : [ ] },
+		/* 126 */ { "x" : 948, "y" : 358, "bCoef" : 0, "cMask" : [ ] },
+		/* 127 */ { "x" : -948, "y" : 358, "bCoef" : 0, "cMask" : [ ] },
+		/* 128 */ { "x" : 948, "y" : 360, "bCoef" : 0, "cMask" : [ ] },
+		/* 129 */ { "x" : -948, "y" : 360, "bCoef" : 0, "cMask" : [ ] },
+		/* 130 */ { "x" : 948, "y" : 362, "bCoef" : 0, "cMask" : [ ] },
+		/* 131 */ { "x" : -948, "y" : 362, "bCoef" : 0, "cMask" : [ ] },
+		/* 132 */ { "x" : 948, "y" : 364, "bCoef" : 0, "cMask" : [ ] },
+		/* 133 */ { "x" : -948, "y" : 364, "bCoef" : 0, "cMask" : [ ] },
+		/* 134 */ { "x" : 948, "y" : 366, "bCoef" : 0, "cMask" : [ ] },
+		/* 135 */ { "x" : -948, "y" : 366, "bCoef" : 0, "cMask" : [ ] },
+		/* 136 */ { "x" : 948, "y" : 368, "bCoef" : 0, "cMask" : [ ] },
+		/* 137 */ { "x" : -948, "y" : 368, "bCoef" : 0, "cMask" : [ ] },
+		/* 138 */ { "x" : 948, "y" : 370, "bCoef" : 0, "cMask" : [ ] },
+		/* 139 */ { "x" : -948, "y" : 370, "bCoef" : 0, "cMask" : [ ] },
+		/* 140 */ { "x" : 948, "y" : 372, "bCoef" : 0, "cMask" : [ ] },
+		/* 141 */ { "x" : -948, "y" : 372, "bCoef" : 0, "cMask" : [ ] },
+		/* 142 */ { "x" : 948, "y" : 374, "bCoef" : 0, "cMask" : [ ] },
+		/* 143 */ { "x" : -948, "y" : 374, "bCoef" : 0, "cMask" : [ ] },
+		/* 144 */ { "x" : 948, "y" : 376, "bCoef" : 0, "cMask" : [ ] },
+		/* 145 */ { "x" : -948, "y" : 376, "bCoef" : 0, "cMask" : [ ] },
+		/* 146 */ { "x" : 948, "y" : -168, "bCoef" : 0, "cMask" : [ ] },
+		/* 147 */ { "x" : -948, "y" : -168, "bCoef" : 0, "cMask" : [ ] },
+		/* 148 */ { "x" : 948, "y" : -170, "bCoef" : 0, "cMask" : [ ] },
+		/* 149 */ { "x" : -948, "y" : -170, "bCoef" : 0, "cMask" : [ ] },
+		/* 150 */ { "x" : 948, "y" : -172, "bCoef" : 0, "cMask" : [ ] },
+		/* 151 */ { "x" : -948, "y" : -172, "bCoef" : 0, "cMask" : [ ] },
+		/* 152 */ { "x" : 948, "y" : -174, "bCoef" : 0, "cMask" : [ ] },
+		/* 153 */ { "x" : -948, "y" : -174, "bCoef" : 0, "cMask" : [ ] },
+		/* 154 */ { "x" : 948, "y" : -176, "bCoef" : 0, "cMask" : [ ] },
+		/* 155 */ { "x" : -948, "y" : -176, "bCoef" : 0, "cMask" : [ ] },
+		/* 156 */ { "x" : 948, "y" : -178, "bCoef" : 0, "cMask" : [ ] },
+		/* 157 */ { "x" : -948, "y" : -178, "bCoef" : 0, "cMask" : [ ] },
+		/* 158 */ { "x" : 948, "y" : -180, "bCoef" : 0, "cMask" : [ ] },
+		/* 159 */ { "x" : -948, "y" : -180, "bCoef" : 0, "cMask" : [ ] },
+		/* 160 */ { "x" : 948, "y" : -182, "bCoef" : 0, "cMask" : [ ] },
+		/* 161 */ { "x" : -948, "y" : -182, "bCoef" : 0, "cMask" : [ ] },
+		/* 162 */ { "x" : 948, "y" : -184, "bCoef" : 0, "cMask" : [ ] },
+		/* 163 */ { "x" : -948, "y" : -184, "bCoef" : 0, "cMask" : [ ] },
+		/* 164 */ { "x" : 948, "y" : -186, "bCoef" : 0, "cMask" : [ ] },
+		/* 165 */ { "x" : -948, "y" : -186, "bCoef" : 0, "cMask" : [ ] },
+		/* 166 */ { "x" : 948, "y" : -188, "bCoef" : 0, "cMask" : [ ] },
+		/* 167 */ { "x" : -948, "y" : -188, "bCoef" : 0, "cMask" : [ ] },
+		/* 168 */ { "x" : 948, "y" : -190, "bCoef" : 0, "cMask" : [ ] },
+		/* 169 */ { "x" : -948, "y" : -190, "bCoef" : 0, "cMask" : [ ] },
+		/* 170 */ { "x" : 948, "y" : -192, "bCoef" : 0, "cMask" : [ ] },
+		/* 171 */ { "x" : -948, "y" : -192, "bCoef" : 0, "cMask" : [ ] },
+		/* 172 */ { "x" : 948, "y" : -194, "bCoef" : 0, "cMask" : [ ] },
+		/* 173 */ { "x" : -948, "y" : -194, "bCoef" : 0, "cMask" : [ ] },
+		/* 174 */ { "x" : 948, "y" : -350, "bCoef" : 0, "cMask" : [ ] },
+		/* 175 */ { "x" : -948, "y" : -350, "bCoef" : 0, "cMask" : [ ] },
+		/* 176 */ { "x" : 948, "y" : -352, "bCoef" : 0, "cMask" : [ ] },
+		/* 177 */ { "x" : -948, "y" : -352, "bCoef" : 0, "cMask" : [ ] },
+		/* 178 */ { "x" : 948, "y" : -354, "bCoef" : 0, "cMask" : [ ] },
+		/* 179 */ { "x" : -948, "y" : -354, "bCoef" : 0, "cMask" : [ ] },
+		/* 180 */ { "x" : 948, "y" : -356, "bCoef" : 0, "cMask" : [ ] },
+		/* 181 */ { "x" : -948, "y" : -356, "bCoef" : 0, "cMask" : [ ] },
+		/* 182 */ { "x" : 948, "y" : -358, "bCoef" : 0, "cMask" : [ ] },
+		/* 183 */ { "x" : -948, "y" : -358, "bCoef" : 0, "cMask" : [ ] },
+		/* 184 */ { "x" : 948, "y" : -360, "bCoef" : 0, "cMask" : [ ] },
+		/* 185 */ { "x" : -948, "y" : -360, "bCoef" : 0, "cMask" : [ ] },
+		/* 186 */ { "x" : 948, "y" : -362, "bCoef" : 0, "cMask" : [ ] },
+		/* 187 */ { "x" : -948, "y" : -362, "bCoef" : 0, "cMask" : [ ] },
+		/* 188 */ { "x" : 948, "y" : -364, "bCoef" : 0, "cMask" : [ ] },
+		/* 189 */ { "x" : -948, "y" : -364, "bCoef" : 0, "cMask" : [ ] },
+		/* 190 */ { "x" : 948, "y" : -366, "bCoef" : 0, "cMask" : [ ] },
+		/* 191 */ { "x" : -948, "y" : -366, "bCoef" : 0, "cMask" : [ ] },
+		/* 192 */ { "x" : 948, "y" : -368, "bCoef" : 0, "cMask" : [ ] },
+		/* 193 */ { "x" : -948, "y" : -368, "bCoef" : 0, "cMask" : [ ] },
+		/* 194 */ { "x" : 948, "y" : -370, "bCoef" : 0, "cMask" : [ ] },
+		/* 195 */ { "x" : -948, "y" : -370, "bCoef" : 0, "cMask" : [ ] },
+		/* 196 */ { "x" : 948, "y" : -372, "bCoef" : 0, "cMask" : [ ] },
+		/* 197 */ { "x" : -948, "y" : -372, "bCoef" : 0, "cMask" : [ ] },
+		/* 198 */ { "x" : 948, "y" : -374, "bCoef" : 0, "cMask" : [ ] },
+		/* 199 */ { "x" : -948, "y" : -374, "bCoef" : 0, "cMask" : [ ] },
+		/* 200 */ { "x" : 948, "y" : -376, "bCoef" : 0, "cMask" : [ ] },
+		/* 201 */ { "x" : -948, "y" : -376, "bCoef" : 0, "cMask" : [ ] },
+		/* 202 */ { "x" : 0, "y" : -460, "bCoef" : 0, "cMask" : [ ] },
+		/* 203 */ { "x" : 0, "y" : 460, "bCoef" : 0, "cMask" : [ ] },
+		/* 204 */ { "x" : 0, "y" : 1, "bCoef" : 0, "cMask" : [ ] },
+		/* 205 */ { "x" : 0, "y" : -1, "bCoef" : 0, "cMask" : [ ] },
+		/* 206 */ { "x" : 0, "y" : 3, "bCoef" : 0, "cMask" : [ ] },
+		/* 207 */ { "x" : 0, "y" : -3, "bCoef" : 0, "cMask" : [ ] },
+		/* 208 */ { "x" : 0, "y" : 1, "bCoef" : 0, "cMask" : [ ] },
+		/* 209 */ { "x" : 0, "y" : -1, "bCoef" : 0, "cMask" : [ ] },
+		/* 210 */ { "x" : 0, "y" : 3, "bCoef" : 0, "cMask" : [ ] },
+		/* 211 */ { "x" : 0, "y" : -3, "bCoef" : 0, "cMask" : [ ] },
 		
-		/* 204 */ { "x" : -950, "y" : -300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
-		/* 205 */ { "x" : -680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
-		/* 206 */ { "x" : -950, "y" : 300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
-		/* 207 */ { "x" : -680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
-		/* 208 */ { "x" : 950, "y" : -300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
-		/* 209 */ { "x" : 680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
-		/* 210 */ { "x" : 950, "y" : 300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
-		/* 211 */ { "x" : 680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
-		/* 212 */ { "x" : 680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 0 },
-		/* 213 */ { "x" : 680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 0 },
+		/* 212 */ { "x" : -950, "y" : -300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
+		/* 213 */ { "x" : -680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
+		/* 214 */ { "x" : -950, "y" : 300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
+		/* 215 */ { "x" : -680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
+		/* 216 */ { "x" : 950, "y" : -300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
+		/* 217 */ { "x" : 680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : -90 },
+		/* 218 */ { "x" : 950, "y" : 300, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
+		/* 219 */ { "x" : 680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 90 },
+		/* 220 */ { "x" : 680, "y" : -90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 0 },
+		/* 221 */ { "x" : 680, "y" : 90, "bCoef" : 0.1, "trait" : "line", "color" : "C5F0C9", "curve" : 0 },
 		
-		/* 214 */ { "x" : 680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
-		/* 215 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
-		/* 216 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
-		/* 217 */ { "x" : 680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
-		/* 218 */ { "x" : 680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
-		/* 219 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
-		/* 220 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
-		/* 221 */ { "x" : 680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
 		/* 222 */ { "x" : 680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
 		/* 223 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
 		/* 224 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
@@ -1770,14 +1634,14 @@ function getFutx5cespedMap() {
 		/* 227 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
 		/* 228 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
 		/* 229 */ { "x" : 680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
-		/* 230 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
-		/* 231 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
-		/* 232 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
-		/* 233 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
-		/* 234 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
-		/* 235 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
-		/* 236 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
-		/* 237 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
+		/* 230 */ { "x" : 680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
+		/* 231 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
+		/* 232 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
+		/* 233 */ { "x" : 680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
+		/* 234 */ { "x" : 680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
+		/* 235 */ { "x" : 680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
+		/* 236 */ { "x" : 680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
+		/* 237 */ { "x" : 680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
 		/* 238 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
 		/* 239 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
 		/* 240 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
@@ -1785,7 +1649,15 @@ function getFutx5cespedMap() {
 		/* 242 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
 		/* 243 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
 		/* 244 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
-		/* 245 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] }
+		/* 245 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
+		/* 246 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
+		/* 247 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
+		/* 248 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
+		/* 249 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] },
+		/* 250 */ { "x" : -680, "y" : 1.626567905410815, "bCoef" : 0, "cMask" : [ ] },
+		/* 251 */ { "x" : -680, "y" : -0.8375518938041127, "bCoef" : 0, "cMask" : [ ] },
+		/* 252 */ { "x" : -680, "y" : 4.090687704625744, "bCoef" : 0, "cMask" : [ ] },
+		/* 253 */ { "x" : -680, "y" : -3.30167169301904, "bCoef" : 0, "cMask" : [ ] }
 
 	],
 
@@ -1798,16 +1670,16 @@ function getFutx5cespedMap() {
 		{ "v0" : 9, "v1" : 10, "curve" : 180, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["blueKO" ], "curveF" : 6.123233995736766e-17 },
 		{ "v0" : 10, "v1" : 9, "curve" : 180, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO" ], "curveF" : 6.123233995736766e-17 },
 		{ "v0" : 10, "v1" : 11, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
-		{ "v0" : 2, "v1" : 12, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
-		{ "v0" : 6, "v1" : 13, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : -12 },
-		{ "v0" : 1, "v1" : 14, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : -12 },
-		{ "v0" : 5, "v1" : 15, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
-		{ "v0" : 12, "v1" : 14, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : 12 },
-		{ "v0" : 13, "v1" : 15, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ], "bias" : -12 },
-		{ "v0" : 1, "v1" : 0, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : 12 },
-		{ "v0" : 5, "v1" : 4, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : -12 },
-		{ "v0" : 2, "v1" : 3, "curve" : 0, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : -12 },
-		{ "v0" : 6, "v1" : 7, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ], "bias" : 12 },
+		{ "v0" : 2, "v1" : 12, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 6, "v1" : 13, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 1, "v1" : 14, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 5, "v1" : 15, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 12, "v1" : 14, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 13, "v1" : 15, "color" : "FFFFFF", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 1, "v1" : 0, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
+		{ "v0" : 5, "v1" : 4, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
+		{ "v0" : 2, "v1" : 3, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
+		{ "v0" : 6, "v1" : 7, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
 		{ "v0" : 0, "v1" : 16, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
 		{ "v0" : 3, "v1" : 17, "color" : "C5F0C9", "bCoef" : 0.9, "cMask" : ["ball" ] },
 		{ "v0" : 18, "v1" : 19, "vis" : false, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ] },
@@ -1815,111 +1687,115 @@ function getFutx5cespedMap() {
 		{ "v0" : 21, "v1" : 20, "curve" : 180, "vis" : false, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
 		{ "v0" : 2, "v1" : 1, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ] },
 		{ "v0" : 6, "v1" : 5, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 22, "v1" : 23, "curve" : 91.636910923379, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859154628 },
-		{ "v0" : 25, "v1" : 24, "curve" : 91.636910923384, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859153781 },
-		{ "v0" : 26, "v1" : 27, "curve" : 91.636910923386, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859153441 },
-		{ "v0" : 29, "v1" : 28, "curve" : 91.636910923367, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859156665 },
-		{ "v0" : 48, "v1" : 49, "color" : "376d21", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 50, "v1" : 51, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 52, "v1" : 53, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 54, "v1" : 55, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 56, "v1" : 57, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 58, "v1" : 59, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 60, "v1" : 61, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 62, "v1" : 63, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 64, "v1" : 65, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 66, "v1" : 67, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 68, "v1" : 69, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 70, "v1" : 71, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 72, "v1" : 73, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 74, "v1" : 75, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 78, "v1" : 79, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
-		{ "v0" : 81, "v1" : 80, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
-		{ "v0" : 82, "v1" : 83, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 84, "v1" : 85, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 86, "v1" : 87, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 88, "v1" : 89, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 90, "v1" : 91, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 92, "v1" : 93, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 94, "v1" : 95, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 96, "v1" : 97, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 98, "v1" : 99, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 100, "v1" : 101, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 102, "v1" : 103, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 104, "v1" : 105, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 106, "v1" : 107, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 108, "v1" : 109, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 110, "v1" : 111, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 112, "v1" : 113, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 114, "v1" : 115, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 116, "v1" : 117, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 118, "v1" : 119, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 120, "v1" : 121, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 122, "v1" : 123, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 124, "v1" : 125, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 126, "v1" : 127, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 128, "v1" : 129, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 130, "v1" : 131, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 132, "v1" : 133, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 134, "v1" : 135, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 136, "v1" : 137, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 138, "v1" : 139, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 140, "v1" : 141, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 142, "v1" : 143, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 144, "v1" : 145, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 146, "v1" : 147, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 148, "v1" : 149, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 150, "v1" : 151, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 152, "v1" : 153, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 154, "v1" : 155, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 156, "v1" : 157, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 158, "v1" : 159, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 160, "v1" : 161, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 162, "v1" : 163, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 164, "v1" : 165, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 166, "v1" : 167, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 168, "v1" : 169, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 170, "v1" : 171, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 172, "v1" : 173, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 174, "v1" : 175, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 176, "v1" : 177, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 178, "v1" : 179, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 180, "v1" : 181, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 182, "v1" : 183, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 184, "v1" : 185, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 186, "v1" : 187, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 188, "v1" : 189, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 190, "v1" : 191, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 192, "v1" : 193, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 194, "v1" : 195, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ] },
-		{ "v0" : 196, "v1" : 197, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
-		{ "v0" : 198, "v1" : 199, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
-		{ "v0" : 201, "v1" : 200, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
-		{ "v0" : 203, "v1" : 202, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 22, "v1" : 23, "vis" : false, "color" : "FFFFFF", "cMask" : ["ball" ] },
+		{ "v0" : 24, "v1" : 25, "vis" : false, "color" : "FFFFFF", "cMask" : ["ball" ] },
+		{ "v0" : 26, "v1" : 27, "vis" : false, "color" : "FFFFFF", "cMask" : ["ball" ] },
+		{ "v0" : 28, "v1" : 29, "vis" : false, "color" : "FFFFFF", "cMask" : ["ball" ] },
+		{ "v0" : 30, "v1" : 31, "curve" : 91.636910923379, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859154628 },
+		{ "v0" : 33, "v1" : 32, "curve" : 91.636910923384, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859153781 },
+		{ "v0" : 34, "v1" : 35, "curve" : 91.636910923386, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859153441 },
+		{ "v0" : 37, "v1" : 36, "curve" : 91.636910923367, "color" : "C5F0C9", "bCoef" : 0.1, "cMask" : [ ], "curveF" : 0.9718309859156665 },
+		{ "v0" : 56, "v1" : 57, "color" : "376d21", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 58, "v1" : 59, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 60, "v1" : 61, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 62, "v1" : 63, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 64, "v1" : 65, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 66, "v1" : 67, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 68, "v1" : 69, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 70, "v1" : 71, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 72, "v1" : 73, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 74, "v1" : 75, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 76, "v1" : 77, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 78, "v1" : 79, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 80, "v1" : 81, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 82, "v1" : 83, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 86, "v1" : 87, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 89, "v1" : 88, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 90, "v1" : 91, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 92, "v1" : 93, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 94, "v1" : 95, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 96, "v1" : 97, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 98, "v1" : 99, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 100, "v1" : 101, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 102, "v1" : 103, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 104, "v1" : 105, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 106, "v1" : 107, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 108, "v1" : 109, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 110, "v1" : 111, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 112, "v1" : 113, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 114, "v1" : 115, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 116, "v1" : 117, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 118, "v1" : 119, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 120, "v1" : 121, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 122, "v1" : 123, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 124, "v1" : 125, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 126, "v1" : 127, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 128, "v1" : 129, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 130, "v1" : 131, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 132, "v1" : 133, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 134, "v1" : 135, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 136, "v1" : 137, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 138, "v1" : 139, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 140, "v1" : 141, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 142, "v1" : 143, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 144, "v1" : 145, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 146, "v1" : 147, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 148, "v1" : 149, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 150, "v1" : 151, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 152, "v1" : 153, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 154, "v1" : 155, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 156, "v1" : 157, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 158, "v1" : 159, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 160, "v1" : 161, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 162, "v1" : 163, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 164, "v1" : 165, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 166, "v1" : 167, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 168, "v1" : 169, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 170, "v1" : 171, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 172, "v1" : 173, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 174, "v1" : 175, "color" : "376f23", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 176, "v1" : 177, "color" : "377125", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 178, "v1" : 179, "color" : "377327", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 180, "v1" : 181, "color" : "377529", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 182, "v1" : 183, "color" : "37772b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 184, "v1" : 185, "color" : "37792d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 186, "v1" : 187, "color" : "377b2f", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 188, "v1" : 189, "color" : "377d31", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 190, "v1" : 191, "color" : "377f33", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 192, "v1" : 193, "color" : "377f35", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 194, "v1" : 195, "color" : "377f37", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 196, "v1" : 197, "color" : "377f39", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 198, "v1" : 199, "color" : "377f3b", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 200, "v1" : 201, "color" : "377f3d", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 202, "v1" : 203, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ] },
+		{ "v0" : 204, "v1" : 205, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 206, "v1" : 207, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 209, "v1" : 208, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 211, "v1" : 210, "curve" : 180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17 },
 		
-		{ "v0" : 204, "v1" : 205, "curve" : 90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 206, "v1" : 207, "curve" : -90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 205, "v1" : 207, "curve" : 0, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line", "x" : -680 },
-		{ "v0" : 208, "v1" : 209, "curve" : -90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 210, "v1" : 211, "curve" : 90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 212, "v1" : 213, "curve" : 0, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line", "x" : 680 },
+		{ "v0" : 212, "v1" : 213, "curve" : 90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 214, "v1" : 215, "curve" : -90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 213, "v1" : 215, "curve" : 0, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line", "x" : -680 },
+		{ "v0" : 216, "v1" : 217, "curve" : -90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 218, "v1" : 219, "curve" : 90, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 220, "v1" : 221, "curve" : 0, "vis" : true, "color" : "C5F0C9", "bCoef" : 0.1, "trait" : "line", "x" : 680 },
 		
-		{ "v0" : 214, "v1" : 215, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
-		{ "v0" : 216, "v1" : 217, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
-		{ "v0" : 219, "v1" : 218, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
-		{ "v0" : 221, "v1" : 220, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
 		{ "v0" : 222, "v1" : 223, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
 		{ "v0" : 224, "v1" : 225, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
 		{ "v0" : 227, "v1" : 226, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
 		{ "v0" : 229, "v1" : 228, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
-		{ "v0" : 230, "v1" : 231, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
-		{ "v0" : 232, "v1" : 233, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
-		{ "v0" : 235, "v1" : 234, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
-		{ "v0" : 237, "v1" : 236, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
+		{ "v0" : 230, "v1" : 231, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
+		{ "v0" : 232, "v1" : 233, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
+		{ "v0" : 235, "v1" : 234, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
+		{ "v0" : 237, "v1" : 236, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : 680 },
 		{ "v0" : 238, "v1" : 239, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
 		{ "v0" : 240, "v1" : 241, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
 		{ "v0" : 243, "v1" : 242, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
-		{ "v0" : 245, "v1" : 244, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 }
+		{ "v0" : 245, "v1" : 244, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
+		{ "v0" : 246, "v1" : 247, "curve" : -180, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
+		{ "v0" : 248, "v1" : 249, "curve" : -180.00000000000267, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
+		{ "v0" : 251, "v1" : 250, "curve" : -180.00000000000816, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 },
+		{ "v0" : 253, "v1" : 252, "curve" : -179.9999999999973, "color" : "C5F0C9", "bCoef" : 0, "cMask" : [ ], "curveF" : 6.123233995736766e-17, "x" : -680 }
 
 	],
 
@@ -2002,7 +1878,7 @@ function getFutx5cespedMap() {
 	]
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx5cespedMap;
 }
 
@@ -2776,16 +2652,16 @@ function getRealFutsal() {
 		/* 66 */ { "x" : 750, "y" : -320, "cMask" : ["c0" ], "cGroup" : ["red","blue" ], "curve" : 0 },
 		/* 67 */ { "x" : 750, "y" : 320, "cMask" : ["c0" ], "cGroup" : ["red","blue" ], "curve" : 0 },
 		/* 68 */ { "x" : 1295, "y" : 320, "cMask" : ["c0" ], "cGroup" : ["red","blue" ] },
-		/* 69 */ { "x" : -1150, "y" : -110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0 },
-		/* 70 */ { "x" : -1210, "y" : -110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "curve" : 5, "radius" : 4.5, "color" : "f2d8d8" },
-		/* 71 */ { "x" : -1150, "y" : 110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0 },
-		/* 72 */ { "x" : -1210, "y" : 110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "curve" : 5, "radius" : 4.5, "vis" : false, "color" : "f2d8d8" },
+		/* 69 */ { "x" : -1150, "y" : -109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
+		/* 70 */ { "x" : -1210, "y" : -109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "curve" : 5, "radius" : 4.5, "color" : "f2d8d8" },
+		/* 71 */ { "x" : -1150, "y" : 109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
+		/* 72 */ { "x" : -1210, "y" : 109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "curve" : 5, "radius" : 4.5, "vis" : false, "color" : "f2d8d8" },
 		/* 73 */ { "x" : -1250, "y" : -158, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "f2d8d8" },
 		/* 74 */ { "x" : -1250, "y" : 158, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "f2d8d8" },
-		/* 75 */ { "x" : 1150, "y" : 110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "ffffff" },
-		/* 76 */ { "x" : 1210, "y" : 110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "curve" : -5, "color" : "ffffff", "bias" : 12 },
-		/* 77 */ { "x" : 1150, "y" : -110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "ffffff", "bias" : 0 },
-		/* 78 */ { "x" : 1210, "y" : -110, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "curve" : -5, "radius" : 6, "color" : "ffffff", "bias" : 0 },
+		/* 75 */ { "x" : 1150, "y" : 109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "ffffff" },
+		/* 76 */ { "x" : 1210, "y" : 109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "curve" : -5, "color" : "ffffff" },
+		/* 77 */ { "x" : 1150, "y" : -109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "ffffff" },
+		/* 78 */ { "x" : 1210, "y" : -109.5, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "curve" : -5, "radius" : 6, "color" : "ffffff" },
 		/* 79 */ { "x" : 1250, "y" : -158, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "e3f9fe" },
 		/* 80 */ { "x" : 1250, "y" : 158, "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "color" : "e3f9fe" },
 		
@@ -2889,26 +2765,26 @@ function getRealFutsal() {
 		/* 175 */ { "x" : 584.0799673349616, "y" : -304.7206484236199, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
 		/* 176 */ { "x" : 584.0799673349616, "y" : 304.50532273344214, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
 		/* 177 */ { "x" : 584.0799673349616, "y" : 307.59261650619754, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 178 */ { "x" : -1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
-		/* 179 */ { "x" : -1150, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
-		/* 180 */ { "x" : -1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 181 */ { "x" : -1150, "y" : 78.58, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 182 */ { "x" : -1150, "y" : 47.15, "bCoef" : 0, "trait" : "line", "color" : "ffffff", "radius" : 6.4 },
-		/* 183 */ { "x" : -1150, "y" : 15.72, "bCoef" : 0, "trait" : "line", "color" : "ffffff", "radius" : 6.4 },
-		/* 184 */ { "x" : -1150, "y" : -78.57, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 185 */ { "x" : -1150, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 186 */ { "x" : -1150, "y" : -15.71, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 187 */ { "x" : -1150, "y" : -47.14, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 188 */ { "x" : 1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 189 */ { "x" : 1150, "y" : -109.5, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 190 */ { "x" : 1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 191 */ { "x" : 1150, "y" : 78.58, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 192 */ { "x" : 1150, "y" : 47.15, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 193 */ { "x" : 1150, "y" : 15.72, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 194 */ { "x" : 1150, "y" : -78.57, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 195 */ { "x" : 1150, "y" : -109.5, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 196 */ { "x" : 1150, "y" : -15.71, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 197 */ { "x" : 1150, "y" : -47.14, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" }
+		/* 178 */ { "x" : -1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "FF6B6B" },
+		/* 179 */ { "x" : -1150, "y" : -103.04554872658493, "bCoef" : 0, "trait" : "line", "color" : "FF6B6B" },
+		/* 180 */ { "x" : -1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 181 */ { "x" : -1150, "y" : 72.95445127341507, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 182 */ { "x" : -1150, "y" : 45.954451273415074, "bCoef" : 0, "trait" : "line", "color" : "D70040", "radius" : 6.4 },
+		/* 183 */ { "x" : -1150, "y" : 18.954451273415074, "bCoef" : 0, "trait" : "line", "color" : "D70040", "radius" : 6.4 },
+		/* 184 */ { "x" : -1150, "y" : -62.045548726584926, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 185 */ { "x" : -1150, "y" : -103.04554872658493, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 186 */ { "x" : -1150, "y" : -8.045548726584927, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 187 */ { "x" : -1150, "y" : -35.045548726584926, "bCoef" : 0, "trait" : "line", "color" : "D70040" },
+		/* 188 */ { "x" : 1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "007FFF" },
+		/* 189 */ { "x" : 1150, "y" : -109.5, "bCoef" : 0, "trait" : "line", "color" : "007FFF" },
+		/* 190 */ { "x" : 1150, "y" : 109.5, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 191 */ { "x" : 1150, "y" : 72.22783429020198, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 192 */ { "x" : 1150, "y" : 45.22783429020198, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 193 */ { "x" : 1150, "y" : 18.227834290201983, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 194 */ { "x" : 1150, "y" : -62.77216570979802, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 195 */ { "x" : 1150, "y" : -109.5, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 196 */ { "x" : 1150, "y" : -8.772165709798017, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" },
+		/* 197 */ { "x" : 1150, "y" : -35.77216570979802, "bCoef" : 0, "trait" : "line", "color" : "0F52BA" }
 
 	],
 
@@ -2973,12 +2849,12 @@ function getRealFutsal() {
 		{ "v0" : 65, "v1" : 66, "vis" : false, "cMask" : ["c0" ], "cGroup" : ["red","blue" ] },
 		{ "v0" : 66, "v1" : 67, "curve" : 0, "vis" : false, "cMask" : ["c0" ], "cGroup" : ["red","blue" ], "x" : 750 },
 		{ "v0" : 67, "v1" : 68, "vis" : false, "cMask" : ["c0" ], "cGroup" : ["red","blue" ] },
-		{ "v0" : 69, "v1" : 70, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "y" : -110 },
-		{ "v0" : 71, "v1" : 72, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "y" : 110 },
+		{ "v0" : 69, "v1" : 70, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "y" : -109.5 },
+		{ "v0" : 71, "v1" : 72, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "y" : 109.5 },
 		{ "v0" : 70, "v1" : 73, "color" : "f2d8d8", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
 		{ "v0" : 72, "v1" : 74, "color" : "f2d8d8", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
-		{ "v0" : 75, "v1" : 76, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "y" : 110 },
-		{ "v0" : 77, "v1" : 78, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 0, "y" : -110 },
+		{ "v0" : 75, "v1" : 76, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "y" : 109.5 },
+		{ "v0" : 77, "v1" : 78, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "y" : -109.5 },
 		{ "v0" : 78, "v1" : 79, "color" : "e3f9fe", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
 		{ "v0" : 76, "v1" : 80, "color" : "e3f9fe", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
 		
@@ -2988,8 +2864,8 @@ function getRealFutsal() {
 		{ "v0" : 87, "v1" : 88, "vis" : true, "color" : "b3b6b6", "trait" : "line", "x" : 1150 },
 		{ "v0" : 85, "v1" : 84, "vis" : true, "color" : "b3b6b6", "trait" : "line" },
 		
-		{ "v0" : 76, "v1" : 78, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 12 },
-		{ "v0" : 70, "v1" : 72, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ], "bias" : 12 },
+		{ "v0" : 76, "v1" : 78, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
+		{ "v0" : 70, "v1" : 72, "color" : "FFFFFF", "bCoef" : 0, "cMask" : ["ball" ], "cGroup" : ["red","blue" ] },
 		
 		{ "v0" : 93, "v1" : 94, "vis" : false, "color" : "C7E6BD", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "x" : 0 },
 		{ "v0" : 3, "v1" : 95, "vis" : false, "color" : "C7E6BD", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "x" : 0 },
@@ -3057,16 +2933,16 @@ function getRealFutsal() {
 		{ "v0" : 175, "v1" : 174, "curve" : -215.63800238592762, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
 		{ "v0" : 176, "v1" : 177, "curve" : -198.66364834380988, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
 		{ "v0" : 177, "v1" : 176, "curve" : -215.63800238564397, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 178, "v1" : 179, "curve" : 0, "vis" : true, "color" : "ff3030", "bCoef" : 0, "trait" : "line", "x" : -1150 },
-		{ "v0" : 180, "v1" : 181, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1150 },
-		{ "v0" : 182, "v1" : 183, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1150, "radius" : 6.4 },
-		{ "v0" : 184, "v1" : 185, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1150 },
-		{ "v0" : 186, "v1" : 187, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1150 },
-		{ "v0" : 188, "v1" : 189, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1150 },
-		{ "v0" : 190, "v1" : 191, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1150 },
-		{ "v0" : 192, "v1" : 193, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1150 },
-		{ "v0" : 194, "v1" : 195, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1150 },
-		{ "v0" : 196, "v1" : 197, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1150 }
+		{ "v0" : 178, "v1" : 179, "curve" : 0, "vis" : true, "color" : "FF6B6B", "bCoef" : 0, "trait" : "line", "x" : -1150 },
+		{ "v0" : 180, "v1" : 181, "curve" : 0, "vis" : true, "color" : "D70040", "bCoef" : 0, "trait" : "line", "x" : -1150 },
+		{ "v0" : 182, "v1" : 183, "curve" : 0, "vis" : true, "color" : "D70040", "bCoef" : 0, "trait" : "line", "x" : -1150, "radius" : 6.4 },
+		{ "v0" : 184, "v1" : 185, "curve" : 0, "vis" : true, "color" : "D70040", "bCoef" : 0, "trait" : "line", "x" : -1150 },
+		{ "v0" : 186, "v1" : 187, "curve" : 0, "vis" : true, "color" : "D70040", "bCoef" : 0, "trait" : "line", "x" : -1150 },
+		{ "v0" : 188, "v1" : 189, "curve" : 0, "vis" : true, "color" : "007FFF", "bCoef" : 0, "trait" : "line", "x" : 1150 },
+		{ "v0" : 190, "v1" : 191, "curve" : 0, "vis" : true, "color" : "0F52BA", "bCoef" : 0, "trait" : "line", "x" : 1150 },
+		{ "v0" : 192, "v1" : 193, "curve" : 0, "vis" : true, "color" : "0F52BA", "bCoef" : 0, "trait" : "line", "x" : 1150 },
+		{ "v0" : 194, "v1" : 195, "curve" : 0, "vis" : true, "color" : "0F52BA", "bCoef" : 0, "trait" : "line", "x" : 1150 },
+		{ "v0" : 196, "v1" : 197, "curve" : 0, "vis" : true, "color" : "0F52BA", "bCoef" : 0, "trait" : "line", "x" : 1150 }
 
 	],
 
@@ -3085,12 +2961,12 @@ function getRealFutsal() {
 		{ "radius" : 2.7, "pos" : [1150,-600 ], "cGroup" : ["ball" ], "trait" : "cornerflag" },
 		{ "radius" : 2.7, "pos" : [1150,600 ], "cGroup" : ["ball" ], "trait" : "cornerflag" },
 		
-		{ "radius" : 6, "invMass" : 0, "pos" : [-1150,-110 ], "color" : "ff3030", "bCoef" : 1, "trait" : "goalPost" },
-		{ "radius" : 6, "invMass" : 0, "pos" : [-1150,110 ], "color" : "ff3030", "bCoef" : 1, "trait" : "goalPost" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [-1150,-109.5 ], "color" : "fff000", "bCoef" : 1, "trait" : "goalPost" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [-1150,109.5 ], "color" : "fff000", "bCoef" : 1, "trait" : "goalPost" },
 		{ "radius" : 2, "invMass" : 0, "pos" : [-1250,-158 ], "color" : "000000", "bCoef" : 1, "trait" : "goalPost" },
 		{ "radius" : 2, "invMass" : 0, "pos" : [-1250,158 ], "color" : "000000", "bCoef" : 1, "trait" : "goalPost" },
-		{ "radius" : 6, "invMass" : 0, "pos" : [1150,-110 ], "color" : "33b4ff", "bCoef" : 1, "trait" : "goalPost" },
-		{ "radius" : 6, "invMass" : 0, "pos" : [1150,110 ], "color" : "33b4ff", "bCoef" : 1, "trait" : "goalPost" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [1150,-109.5 ], "color" : "fff000", "bCoef" : 1, "trait" : "goalPost" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [1150,109.5 ], "color" : "fff000", "bCoef" : 1, "trait" : "goalPost" },
 		{ "radius" : 2, "invMass" : 0, "pos" : [1250,-158 ], "color" : "000000", "bCoef" : 1, "trait" : "goalPost" },
 		{ "radius" : 2, "invMass" : 0, "pos" : [1250,158 ], "color" : "000000", "bCoef" : 1, "trait" : "goalPost" },
 		
@@ -3145,7 +3021,7 @@ function getRealFutsal() {
 }
 `;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return RealFutsalMap;
 }
 
@@ -3830,7 +3706,7 @@ function getRealSoccerMap3() {
 
 `;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return realSoccerMap3;
 }
 
@@ -5575,7 +5451,7 @@ function getBasquetMap() {
   ]
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return BasquetMap;
 }
 
@@ -5977,7 +5853,7 @@ function getMiniRSMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return MiniRSMap;
 }
 
@@ -6773,7 +6649,7 @@ function getBigMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return BigMap;
 }
 
@@ -6972,7 +6848,7 @@ function getVoley2DMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Voley2DMap;
 }
 
@@ -7529,7 +7405,7 @@ function getVoley3DMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Voley3DMap;
 }
 
@@ -7583,205 +7459,258 @@ function getFutx2Map() {
 	"bg" : { "type" : "", "height" : 0, "width" : 0, "color" : "2a3a40" },
 
 	"vertexes" : [
-		/* 0 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 0 */ { "x" : -368, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 1 */ { "x" : -368, "y" : 65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 2 */ { "x" : -368, "y" : -65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 3 */ { "x" : -368, "y" : -171, "trait" : "ballArea", "bCoef" : 1, "cMask" : ["ball" ], "color" : "b3b6b6" },
+		/* 4 */ { "x" : 368, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 5 */ { "x" : 368, "y" : 65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 6 */ { "x" : 368, "y" : -65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
+		/* 7 */ { "x" : 368, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1, "color" : "b3b6b6" },
 		
-		/* 1 */ { "x" : 0, "y" : -65, "trait" : "line", "color" : "b3b6b6" },
+		/* 8 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
 		
-		/* 2 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
-		/* 3 */ { "x" : 0, "y" : -65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
-		/* 4 */ { "x" : 0, "y" : 230, "trait" : "kickOffBarrier" },
-		/* 5 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "00ff00" },
-		/* 6 */ { "x" : 0, "y" : -65, "trait" : "kickOffBarrier", "color" : "00ff00" },
-		/* 7 */ { "x" : 0, "y" : -230, "trait" : "kickOffBarrier" },
+		/* 9 */ { "x" : 0, "y" : -65, "trait" : "line", "color" : "b3b6b6" },
 		
-		/* 8 */ { "x" : -368.53340356886, "y" : -64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ], "bias" : 12 },
-		/* 9 */ { "x" : -400, "y" : -64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ], "bias" : 12 },
-		/* 10 */ { "x" : -400, "y" : 64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ], "bias" : 12 },
-		/* 11 */ { "x" : -368.53340356886, "y" : 64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ], "bias" : 12 },
-		/* 12 */ { "x" : 368.09926357786, "y" : 64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ], "bias" : 12 },
-		/* 13 */ { "x" : 400, "y" : 64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ], "bias" : 12 },
-		/* 14 */ { "x" : 400, "y" : -64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ], "bias" : 12 },
-		/* 15 */ { "x" : 368.9681846993, "y" : -64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ], "bias" : 12 },
+		/* 10 */ { "bCoef" : 1, "trait" : "ballArea", "x" : 368, "y" : 171, "color" : "b3b6b6" },
+		/* 11 */ { "bCoef" : 1, "trait" : "ballArea", "x" : 368, "y" : -171, "color" : "b3b6b6" },
 		
-		/* 16 */ { "x" : -368, "y" : -142.37229643041, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : -90 },
-		/* 17 */ { "x" : -260.90035258157, "y" : -50.168480548544, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 0 },
-		/* 18 */ { "x" : -368, "y" : -160.81305960678, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 19 */ { "x" : -358.5379338963, "y" : -171, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 20 */ { "x" : -368, "y" : 141.33175243687, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 90 },
-		/* 21 */ { "x" : -260.90035258157, "y" : 49.127936555002, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 0 },
-		/* 22 */ { "x" : -368, "y" : 159.77251561324, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 23 */ { "x" : -358.5379338963, "y" : 171, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 24 */ { "x" : 368, "y" : 159.77251561324, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 25 */ { "x" : 358.36266315432, "y" : 171, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 26 */ { "x" : 368, "y" : -160.81305960678, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 27 */ { "x" : 358.36266315432, "y" : -171, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 28 */ { "x" : 368, "y" : -142.37229643041, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 90 },
-		/* 29 */ { "x" : 260.72508183959, "y" : -50.168480548544, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 0 },
-		/* 30 */ { "x" : 368, "y" : 141.33175243687, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : -90 },
-		/* 31 */ { "x" : 260.72508183959, "y" : 49.127936555002, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 0 },
-		/* 32 */ { "x" : -250.86909422732, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 33 */ { "x" : -250.86909422732, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 34 */ { "x" : -250.86909422732, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 35 */ { "x" : -250.86909422732, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 36 */ { "x" : -250.86909422732, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 37 */ { "x" : -250.86909422732, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 38 */ { "x" : -250.86909422732, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 39 */ { "x" : -250.86909422732, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 40 */ { "x" : 250.69382348534, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 41 */ { "x" : 250.69382348534, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 42 */ { "x" : 250.69382348534, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 43 */ { "x" : 250.69382348534, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 44 */ { "x" : 250.69382348534, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 45 */ { "x" : 250.69382348534, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 46 */ { "x" : 250.69382348534, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 47 */ { "x" : 250.69382348534, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 48 */ { "x" : -185.66591492467, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 49 */ { "x" : -185.66591492467, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 50 */ { "x" : -185.66591492467, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 51 */ { "x" : -185.66591492467, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 52 */ { "x" : -185.66591492467, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 53 */ { "x" : -185.66591492467, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 54 */ { "x" : -185.66591492467, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 55 */ { "x" : -185.66591492467, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 56 */ { "x" : 185.49064418269, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 57 */ { "x" : 185.49064418269, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 58 */ { "x" : 185.49064418269, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 59 */ { "x" : 185.49064418269, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 60 */ { "x" : 185.49064418269, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 61 */ { "x" : 185.49064418269, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 62 */ { "x" : 185.49064418269, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 63 */ { "x" : 185.49064418269, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 64 */ { "x" : -160.58776903904, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 65 */ { "x" : -160.58776903904, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 66 */ { "x" : -80.337702205015, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 67 */ { "x" : -80.337702205015, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 68 */ { "x" : 160.41249829706, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 69 */ { "x" : 160.41249829706, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 70 */ { "x" : 80.162431463036, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 71 */ { "x" : 80.162431463036, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 72 */ { "x" : -254.88159756902, "y" : -171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 73 */ { "x" : -254.88159756902, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 74 */ { "x" : -371.91294503531, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 75 */ { "x" : -384.61920561736, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 76 */ { "x" : 371.73767429333, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 77 */ { "x" : 384.44393487538, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 78 */ { "x" : -371.91294503531, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 79 */ { "x" : -384.61920561736, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 80 */ { "x" : 371.73767429333, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 81 */ { "x" : 384.44393487538, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 82 */ { "x" : -254.88159756902, "y" : 171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 83 */ { "x" : -254.88159756902, "y" : 181.05031927829, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 84 */ { "x" : 254.70632682704, "y" : -171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 85 */ { "x" : 254.70632682704, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 86 */ { "x" : 254.70632682704, "y" : 171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 87 */ { "x" : 254.70632682704, "y" : 181.05031927829, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 12 */ { "bCoef" : 0, "trait" : "line", "x" : 0, "y" : 171, "color" : "b3b6b6" },
+		/* 13 */ { "bCoef" : 0, "trait" : "line", "x" : 0, "y" : -171, "color" : "b3b6b6" },
 		
-		/* 88 */ { "x" : -368, "y" : 171, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 89 */ { "x" : 368, "y" : 171, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 90 */ { "x" : 368, "y" : 64, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 91 */ { "x" : 368, "y" : -64, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 92 */ { "x" : 368, "y" : -171, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 93 */ { "x" : -368, "y" : -171, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 94 */ { "x" : -368, "y" : -64, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : true, "color" : "b3b6b6", "bias" : 12 },
-		/* 95 */ { "x" : -368, "y" : 64, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "vis" : true, "bias" : -12 },
+		/* 14 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 15 */ { "x" : 0, "y" : -65, "trait" : "kickOffBarrier", "color" : "b3b6b6" },
 		
-		/* 96 */ { "x" : -368, "y" : 64, "bCoef" : 0, "trait" : "line" },
-		/* 97 */ { "x" : -368, "y" : -64, "bCoef" : 0, "trait" : "line" },
-		/* 98 */ { "x" : 368, "y" : 64, "bCoef" : 0, "trait" : "line" },
-		/* 99 */ { "x" : 368, "y" : -64, "bCoef" : 0, "trait" : "line" },
-		/* 100 */ { "x" : 0, "y" : 65, "bCoef" : 0, "trait" : "line" },
-		/* 101 */ { "x" : 0, "y" : 171, "bCoef" : 0, "trait" : "line" },
-		/* 102 */ { "x" : 0, "y" : -171, "bCoef" : 0, "trait" : "line" },
-		/* 103 */ { "x" : 0, "y" : -65, "bCoef" : 0, "trait" : "line" },
-		/* 104 */ { "x" : 0, "y" : -65, "bCoef" : 0, "trait" : "line" },
-		/* 105 */ { "x" : 0, "y" : 65, "bCoef" : 0, "trait" : "line" }
+		/* 16 */ { "x" : 377, "y" : -65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 17 */ { "x" : 377, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 18 */ { "x" : -377, "y" : -65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 19 */ { "x" : -377, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 20 */ { "x" : -377, "y" : 65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 21 */ { "x" : -377, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 22 */ { "x" : 377, "y" : 65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 23 */ { "x" : 377, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 24 */ { "x" : 0, "y" : 230, "trait" : "kickOffBarrier" },
+		/* 25 */ { "x" : 0, "y" : 65, "trait" : "kickOffBarrier", "color" : "00ff00" },
+		/* 26 */ { "x" : 0, "y" : -65, "trait" : "kickOffBarrier", "color" : "00ff00" },
+		/* 27 */ { "x" : 0, "y" : -230, "trait" : "kickOffBarrier" },
+		
+		/* 28 */ { "x" : -368.53340356886, "y" : -62.053454903872, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ] },
+		/* 29 */ { "x" : -400.05760771891, "y" : -62.053454903872, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ] },
+		/* 30 */ { "x" : -400.05760771891, "y" : 64.043361696331, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ] },
+		/* 31 */ { "x" : -368.53340356886, "y" : 64.043361696331, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ] },
+		/* 32 */ { "x" : 368.09926357786, "y" : 63.94882446641, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ] },
+		/* 33 */ { "x" : 400, "y" : 64, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,-80 ] },
+		/* 34 */ { "x" : 400, "y" : -61.927767991658, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ] },
+		/* 35 */ { "x" : 368.9681846993, "y" : -62.144998272018, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "F8F8F8", "pos" : [-700,80 ] },
+		
+		/* 36 */ { "x" : -368, "y" : -142.37229643041, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : -90 },
+		/* 37 */ { "x" : -260.90035258157, "y" : -50.168480548544, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 0 },
+		/* 38 */ { "x" : -368, "y" : -160.81305960678, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 39 */ { "x" : -358.5379338963, "y" : -171, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 40 */ { "x" : -368, "y" : 141.33175243687, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 90 },
+		/* 41 */ { "x" : -260.90035258157, "y" : 49.127936555002, "bCoef" : 0.1, "trait" : "line", "color" : "ff6363", "curve" : 0 },
+		/* 42 */ { "x" : -368, "y" : 159.77251561324, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 43 */ { "x" : -358.5379338963, "y" : 171, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 44 */ { "x" : 368, "y" : 159.77251561324, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 45 */ { "x" : 358.36266315432, "y" : 171, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 46 */ { "x" : 368, "y" : -160.81305960678, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 47 */ { "x" : 358.36266315432, "y" : -171, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 48 */ { "x" : 368, "y" : -142.37229643041, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 90 },
+		/* 49 */ { "x" : 260.72508183959, "y" : -50.168480548544, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 90 },
+		/* 50 */ { "x" : 368, "y" : 141.33175243687, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : -90 },
+		/* 51 */ { "x" : 260.72508183959, "y" : 49.127936555002, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : -90 },
+		/* 52 */ { "x" : 260.72508183959, "y" : -50.168480548544, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 0 },
+		/* 53 */ { "x" : 260.72508183959, "y" : 49.127936555002, "bCoef" : 0.1, "trait" : "line", "color" : "0099ff", "curve" : 0 },
+		/* 54 */ { "x" : -250.86909422732, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 55 */ { "x" : -250.86909422732, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 56 */ { "x" : -250.86909422732, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 57 */ { "x" : -250.86909422732, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 58 */ { "x" : -250.86909422732, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 59 */ { "x" : -250.86909422732, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 60 */ { "x" : -250.86909422732, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 61 */ { "x" : -250.86909422732, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 62 */ { "x" : 250.69382348534, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 63 */ { "x" : 250.69382348534, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 64 */ { "x" : 250.69382348534, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 65 */ { "x" : 250.69382348534, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 66 */ { "x" : 250.69382348534, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 67 */ { "x" : 250.69382348534, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 68 */ { "x" : 250.69382348534, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 69 */ { "x" : 250.69382348534, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 70 */ { "x" : -185.66591492467, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 71 */ { "x" : -185.66591492467, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 72 */ { "x" : -185.66591492467, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 73 */ { "x" : -185.66591492467, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 74 */ { "x" : -185.66591492467, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 75 */ { "x" : -185.66591492467, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 76 */ { "x" : -185.66591492467, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 77 */ { "x" : -185.66591492467, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 78 */ { "x" : 185.49064418269, "y" : -1.2295321189394, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 79 */ { "x" : 185.49064418269, "y" : 0.18898812539692, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 80 */ { "x" : 185.49064418269, "y" : -2.6480523632758, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 81 */ { "x" : 185.49064418269, "y" : 1.6075083697333, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 82 */ { "x" : 185.49064418269, "y" : 0.89824824756514, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 83 */ { "x" : 185.49064418269, "y" : -1.9387922411076, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 84 */ { "x" : 185.49064418269, "y" : 1.9621384308174, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 85 */ { "x" : 185.49064418269, "y" : -3.0026824243599, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 86 */ { "x" : -160.58776903904, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 87 */ { "x" : -160.58776903904, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 88 */ { "x" : -80.337702205015, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 89 */ { "x" : -80.337702205015, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 90 */ { "x" : 160.41249829706, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 91 */ { "x" : 160.41249829706, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 92 */ { "x" : 80.162431463036, "y" : -159.39453936245, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 93 */ { "x" : 80.162431463036, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 94 */ { "x" : -254.88159756902, "y" : -171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 95 */ { "x" : -254.88159756902, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 96 */ { "x" : -371.91294503531, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 97 */ { "x" : -384.61920561736, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 98 */ { "x" : 371.73767429333, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 99 */ { "x" : 384.44393487538, "y" : -87.759267023458, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 100 */ { "x" : -371.91294503531, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 101 */ { "x" : -384.61920561736, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 102 */ { "x" : 371.73767429333, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 103 */ { "x" : 384.44393487538, "y" : 86.718723029916, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 104 */ { "x" : -254.88159756902, "y" : 171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 105 */ { "x" : -254.88159756902, "y" : 181.05031927829, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 106 */ { "x" : 254.70632682704, "y" : -171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 107 */ { "x" : 254.70632682704, "y" : -182.09086327183, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 108 */ { "x" : 254.70632682704, "y" : 171, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 109 */ { "x" : 254.70632682704, "y" : 181.05031927829, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 110 */ { "x" : 377, "y" : -65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 111 */ { "x" : 377, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 112 */ { "x" : -377, "y" : -65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 113 */ { "x" : -377, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 114 */ { "x" : -377, "y" : 65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 115 */ { "x" : -377, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 116 */ { "x" : 377, "y" : 65, "trait" : "line", "cMask" : ["ball" ], "bCoef" : 1 },
+		
+		/* 117 */ { "x" : 377, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 1 },
+		/* 118 */ { "x" : 371, "y" : -65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 119 */ { "x" : 371, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 120 */ { "x" : 371, "y" : 65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 121 */ { "x" : 371, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 122 */ { "x" : -371, "y" : 65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 123 */ { "x" : -371, "y" : 171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 124 */ { "x" : -371, "y" : -65, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 },
+		/* 125 */ { "x" : -371, "y" : -171, "trait" : "ballArea", "cMask" : ["ball" ], "bCoef" : 0 }
 
 	],
 
 	"segments" : [
-		{ "v0" : 0, "v1" : 1, "curve" : 180, "color" : "b3b6b6", "cGroup" : ["blueKO" ], "trait" : "kickOffBarrier" },
-		{ "v0" : 0, "v1" : 1, "curve" : -180, "color" : "b3b6b6", "cGroup" : ["redKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 0, "v1" : 1, "trait" : "ballArea", "color" : "b3b6b6" },
+		{ "v0" : 2, "v1" : 3, "trait" : "ballArea", "color" : "b3b6b6" },
+		{ "v0" : 4, "v1" : 5, "trait" : "ballArea", "color" : "00ff00" },
+		{ "v0" : 6, "v1" : 7, "trait" : "ballArea", "color" : "b3b6b6" },
 		
-		{ "v0" : 1, "v1" : 0, "curve" : -180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line" },
-		{ "v0" : 3, "v1" : 2, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line" },
+		{ "v0" : 8, "v1" : 9, "trait" : "kickOffBarrier", "curve" : 180, "cGroup" : ["blueKO" ], "color" : "b3b6b6" },
+		{ "v0" : 8, "v1" : 9, "trait" : "kickOffBarrier", "curve" : -180, "cGroup" : ["redKO" ], "color" : "b3b6b6" },
 		
-		{ "v0" : 4, "v1" : 5, "trait" : "kickOffBarrier" },
-		{ "v0" : 6, "v1" : 7, "trait" : "kickOffBarrier" },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 1, "v1" : 0, "cMask" : ["ball" ], "x" : -368 },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 5, "v1" : 4, "cMask" : ["ball" ], "x" : 368 },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 2, "v1" : 3, "cMask" : ["ball" ], "x" : -368 },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 6, "v1" : 7, "cMask" : ["ball" ], "x" : 368 },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 0, "v1" : 10, "y" : 171 },
+		{ "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "trait" : "ballArea", "v0" : 3, "v1" : 11, "y" : -171 },
 		
-		{ "v0" : 8, "v1" : 9, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "pos" : [-700,-80 ], "y" : -64 },
-		{ "v0" : 9, "v1" : 10, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "x" : -400 },
-		{ "v0" : 10, "v1" : 11, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "pos" : [-700,80 ], "y" : 64 },
-		{ "v0" : 12, "v1" : 13, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "pos" : [-700,-80 ], "y" : 64 },
-		{ "v0" : 13, "v1" : 14, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "x" : -590 },
-		{ "v0" : 14, "v1" : 15, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "bias" : 12, "pos" : [-700,80 ], "y" : -64 },
+		{ "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "v0" : 12, "v1" : 13 },
+		{ "curve" : -180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "v0" : 9, "v1" : 8 },
+		{ "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "v0" : 15, "v1" : 14 },
+		{ "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "v0" : 2, "v1" : 1 },
+		{ "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "v0" : 6, "v1" : 5 },
 		
-		{ "v0" : 16, "v1" : 17, "curve" : 94.0263701017, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 19, "v1" : 18, "curve" : 86.632306418889, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 20, "v1" : 21, "curve" : -94.026370101699, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 17, "v1" : 21, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 23, "v1" : 22, "curve" : -86.632306418888, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 25, "v1" : 24, "curve" : 86.632306418884, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 27, "v1" : 26, "curve" : -86.632306418899, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 28, "v1" : 29, "curve" : -94.026370101699, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 30, "v1" : 31, "curve" : 94.026370101699, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 33, "v1" : 32, "curve" : -180.00692920292, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 32, "v1" : 33, "curve" : -180.00218240614, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 35, "v1" : 34, "curve" : -179.64823645332, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 34, "v1" : 35, "curve" : -180.35758668147, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 37, "v1" : 36, "curve" : -180.02357323962, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 36, "v1" : 37, "curve" : -180.00924102399, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 39, "v1" : 38, "curve" : -180.06885755885, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 38, "v1" : 39, "curve" : -180.02948353257, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
-		{ "v0" : 41, "v1" : 40, "curve" : -179.99869069543, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 40, "v1" : 41, "curve" : -179.99939258776, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 43, "v1" : 42, "curve" : -180.08826047163, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 42, "v1" : 43, "curve" : -179.91186753664, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 45, "v1" : 44, "curve" : -179.99528711105, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 44, "v1" : 45, "curve" : -179.99743836358, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 47, "v1" : 46, "curve" : -179.98626041101, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 46, "v1" : 47, "curve" : -179.99175181595, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
-		{ "v0" : 49, "v1" : 48, "curve" : -180.04715562398, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 48, "v1" : 49, "curve" : -179.95294709391, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 51, "v1" : 50, "curve" : -179.95715750564, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 50, "v1" : 51, "curve" : -179.89943871875, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 53, "v1" : 52, "curve" : -179.94773754738, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 52, "v1" : 53, "curve" : -179.98221351296, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 55, "v1" : 54, "curve" : -180.4151727218, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 54, "v1" : 55, "curve" : -179.58764458796, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
-		{ "v0" : 57, "v1" : 56, "curve" : -180.00086646359, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 56, "v1" : 57, "curve" : -180.01965986376, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 59, "v1" : 58, "curve" : -180.03532601389, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 58, "v1" : 59, "curve" : -179.99380079, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 61, "v1" : 60, "curve" : -180.0044468452, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 60, "v1" : 61, "curve" : -180.01386779847, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 63, "v1" : 62, "curve" : -180.05158287563, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 62, "v1" : 63, "curve" : -180.01212223878, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
-		{ "v0" : 64, "v1" : 65, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240 },
-		{ "v0" : 66, "v1" : 67, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -120 },
-		{ "v0" : 68, "v1" : 69, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 240 },
-		{ "v0" : 70, "v1" : 71, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 120 },
-		{ "v0" : 72, "v1" : 73, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
-		{ "v0" : 74, "v1" : 75, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
-		{ "v0" : 76, "v1" : 77, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
-		{ "v0" : 78, "v1" : 79, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -123 },
-		{ "v0" : 80, "v1" : 81, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -123 },
-		{ "v0" : 82, "v1" : 83, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
-		{ "v0" : 84, "v1" : 85, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
-		{ "v0" : 86, "v1" : 87, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
-		{ "v0" : 31, "v1" : 29, "curve" : 0, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line" },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 16, "v1" : 17, "cMask" : ["ball" ], "x" : 330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 18, "v1" : 19, "cMask" : ["ball" ], "x" : -330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 20, "v1" : 21, "cMask" : ["ball" ], "x" : -330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 22, "v1" : 23, "cMask" : ["ball" ], "x" : 330 },
 		
-		{ "v0" : 88, "v1" : 89, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12, "y" : 171 },
-		{ "v0" : 89, "v1" : 90, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12, "x" : 368 },
-		{ "v0" : 91, "v1" : 92, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12, "x" : 368 },
-		{ "v0" : 92, "v1" : 93, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12, "y" : -171 },
-		{ "v0" : 93, "v1" : 94, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12, "x" : -368 },
-		{ "v0" : 88, "v1" : 95, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : -12, "x" : -368 },
+		{ "v0" : 24, "v1" : 25, "trait" : "kickOffBarrier" },
+		{ "v0" : 26, "v1" : 27, "trait" : "kickOffBarrier" },
 		
-		{ "v0" : 96, "v1" : 97, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "x" : -368 },
-		{ "v0" : 98, "v1" : 99, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "x" : 368 },
-		{ "v0" : 100, "v1" : 101, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "x" : 0 },
-		{ "v0" : 102, "v1" : 103, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "x" : 0 },
-		{ "v0" : 104, "v1" : 105, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line", "x" : 0 }
+		{ "v0" : 28, "v1" : 29, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "pos" : [-700,-80 ], "y" : -80 },
+		{ "v0" : 29, "v1" : 30, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "x" : -590 },
+		{ "v0" : 30, "v1" : 31, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "pos" : [-700,80 ], "y" : 80 },
+		{ "v0" : 32, "v1" : 33, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "pos" : [-700,-80 ], "y" : -80 },
+		{ "v0" : 33, "v1" : 34, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "x" : -590 },
+		{ "v0" : 34, "v1" : 35, "curve" : 0, "color" : "F8F8F8", "cMask" : ["ball" ], "trait" : "goalNet", "pos" : [-700,80 ], "y" : 80 },
+		
+		{ "v0" : 36, "v1" : 37, "curve" : 94.0263701017, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 39, "v1" : 38, "curve" : 86.632306418889, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 40, "v1" : 41, "curve" : -94.026370101699, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 37, "v1" : 41, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 43, "v1" : 42, "curve" : -86.632306418888, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 45, "v1" : 44, "curve" : 86.632306418884, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 47, "v1" : 46, "curve" : -86.632306418899, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 48, "v1" : 49, "curve" : -94.026370101699, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 50, "v1" : 51, "curve" : 94.026370101699, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 52, "v1" : 53, "curve" : 0, "vis" : true, "color" : "0099ff", "bCoef" : 0.1, "trait" : "line", "x" : 390 },
+		{ "v0" : 55, "v1" : 54, "curve" : -180.00692920292, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 54, "v1" : 55, "curve" : -180.00218240614, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 57, "v1" : 56, "curve" : -179.64823645332, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 56, "v1" : 57, "curve" : -180.35758668147, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 59, "v1" : 58, "curve" : -180.02357323962, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 58, "v1" : 59, "curve" : -180.00924102399, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 61, "v1" : 60, "curve" : -180.06885755885, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 60, "v1" : 61, "curve" : -180.02948353257, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -375 },
+		{ "v0" : 63, "v1" : 62, "curve" : -179.99869069543, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 62, "v1" : 63, "curve" : -179.99939258776, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 65, "v1" : 64, "curve" : -180.08826047163, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 64, "v1" : 65, "curve" : -179.91186753664, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 67, "v1" : 66, "curve" : -179.99528711105, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 66, "v1" : 67, "curve" : -179.99743836358, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 69, "v1" : 68, "curve" : -179.98626041101, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 68, "v1" : 69, "curve" : -179.99175181595, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 375 },
+		{ "v0" : 71, "v1" : 70, "curve" : -180.04715562398, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 70, "v1" : 71, "curve" : -179.95294709391, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 73, "v1" : 72, "curve" : -179.95715750564, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 72, "v1" : 73, "curve" : -179.89943871875, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 75, "v1" : 74, "curve" : -179.94773754738, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 74, "v1" : 75, "curve" : -179.98221351296, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 77, "v1" : 76, "curve" : -180.4151727218, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 76, "v1" : 77, "curve" : -179.58764458796, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -277.5 },
+		{ "v0" : 79, "v1" : 78, "curve" : -180.00086646359, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 78, "v1" : 79, "curve" : -180.01965986376, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 81, "v1" : 80, "curve" : -180.03532601389, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 80, "v1" : 81, "curve" : -179.99380079, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 83, "v1" : 82, "curve" : -180.0044468452, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 82, "v1" : 83, "curve" : -180.01386779847, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 85, "v1" : 84, "curve" : -180.05158287563, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 84, "v1" : 85, "curve" : -180.01212223878, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 277.5 },
+		{ "v0" : 86, "v1" : 87, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240 },
+		{ "v0" : 88, "v1" : 89, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -120 },
+		{ "v0" : 90, "v1" : 91, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 240 },
+		{ "v0" : 92, "v1" : 93, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 120 },
+		{ "v0" : 94, "v1" : 95, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
+		{ "v0" : 96, "v1" : 97, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
+		{ "v0" : 98, "v1" : 99, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
+		{ "v0" : 100, "v1" : 101, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -123 },
+		{ "v0" : 102, "v1" : 103, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -123 },
+		{ "v0" : 104, "v1" : 105, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
+		{ "v0" : 106, "v1" : 107, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
+		{ "v0" : 108, "v1" : 109, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
+		
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 110, "v1" : 111, "cMask" : ["ball" ], "x" : 330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 112, "v1" : 113, "cMask" : ["ball" ], "x" : -330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 114, "v1" : 115, "cMask" : ["ball" ], "x" : -330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 1, "trait" : "ballArea", "v0" : 116, "v1" : 117, "cMask" : ["ball" ], "x" : 330 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 0, "trait" : "ballArea", "v0" : 118, "v1" : 119, "cMask" : ["ball" ], "x" : 371 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 0, "trait" : "ballArea", "v0" : 120, "v1" : 121, "cMask" : ["ball" ], "x" : 371 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 0, "trait" : "ballArea", "v0" : 122, "v1" : 123, "cMask" : ["ball" ], "x" : -371 },
+		{ "vis" : false, "color" : "FFFFFF", "bCoef" : 0, "trait" : "ballArea", "v0" : 124, "v1" : 125, "cMask" : ["ball" ], "x" : -371 }
 
 	],
 
@@ -7791,19 +7720,19 @@ function getFutx2Map() {
 
 	],
 
+
 	"discs" : [
-		{ "radius" : 6.4, "invMass" : 1.5, "pos" : [0,0 ], "color" : "FFFFFF", "bCoef" : 0.4, "cGroup" : ["ball","kick","score" ], "damping" : 0.99 },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [-5,-1 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [5,-1 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [0,-5 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [-3,4 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [3,4 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		{ "radius" : 0.4, "invMass" : 1e+300, "pos" : [0,0 ], "color" : "0", "cMask" : [ ], "cGroup" : [ ] },
-		
-		{ "radius" : 3.9405255187564, "pos" : [-368,64 ], "color" : "FFFF00", "trait" : "goalPost", "y" : 80 },
-		{ "radius" : 3.9405255187564, "pos" : [-368,-64 ], "color" : "FFFF00", "trait" : "goalPost", "y" : -80, "x" : -560 },
-		{ "radius" : 3.9405255187564, "pos" : [368,-64 ], "color" : "FFFF00", "trait" : "goalPost", "y" : 80 },
-		{ "radius" : 3.9405255187564, "pos" : [368,64 ], "color" : "FFFF00", "trait" : "goalPost", "y" : -80, "x" : -560 },
+		{"radius":6.4,"color":"${PelotaFutsal}","bCoef":0.4,"invMass":1.5,"damping":0.99,"cGroup":["ball","kick","score"]},
+		{"pos":[-5,-1],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{"pos":[5,-1],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{"pos":[0,-5],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{"pos":[-3,4],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{"pos":[3,4],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{"radius":1.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
+		{ "radius" : 3.9405255187564, "pos" : [-368.53340356886,64.043361696331 ], "color" : "FFFF00", "trait" : "goalPost", "y" : 80 },
+		{ "radius" : 3.9405255187564, "pos" : [-368.53340356886,-62.053454903872 ], "color" : "FFFF00", "trait" : "goalPost", "y" : -80, "x" : -560 },
+		{ "radius" : 3.9405255187564, "pos" : [368.9681846993,-62.144998272018 ], "color" : "FFFF00", "trait" : "goalPost", "y" : 80 },
+		{ "radius" : 3.9405255187564, "pos" : [368.09926357786,63.94882446641 ], "color" : "FFFF00", "trait" : "goalPost", "y" : -80, "x" : -560 },
 		
 		{ "radius" : 3, "invMass" : 0, "pos" : [-368,-171 ], "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
 		{ "radius" : 3, "invMass" : 0, "pos" : [-368,171 ], "color" : "ff6363", "bCoef" : 0.1, "trait" : "line" },
@@ -7841,7 +7770,7 @@ function getFutx2Map() {
 
 	},
 
-	"ballPhysics" : "disc0",
+"ballPhysics":"disc0",
 
 "joints":[{"d0":0,"d1":1,"length":5.0990195135927845,"color":"transparent"},
 {"d0":0,"d1":2,"length":5.0990195135927845,"color":"transparent"},
@@ -7864,9 +7793,11 @@ function getFutx2Map() {
 {"d0":4,"d1":5,"length":6,"color":"transparent"},
 {"d0":4,"d1":6,"length":5,"color":"transparent"},
 {"d0":5,"d1":6,"length":5,"color":"transparent"}]
+
+
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx2Map;
 }
 
@@ -8248,7 +8179,7 @@ function getFutx3Map() {
 
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx3Map;
 }
 
@@ -8644,7 +8575,7 @@ function getFutx4Map() {
 
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx4Map;
 }
 
@@ -9820,7 +9751,7 @@ function getSkateMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return SkateMap;
 }
 
@@ -10386,7 +10317,7 @@ function getHandballMap() {
 
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return HandballMap;
 }
 
@@ -10898,7 +10829,7 @@ function getTenisCementoMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return TenisCementoMap;
 }
 
@@ -11410,7 +11341,7 @@ function getTenisPastoMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return TenisPastoMap;
 }
 
@@ -11922,7 +11853,7 @@ function getTenisLadrilloMap() {
 	}
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return TenisLadrilloMap;
 }
 
@@ -12707,7 +12638,7 @@ function getRealSoccerMap() {
 	"canBeStored" : false
 }`;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return realSoccerMap;
 }
 
@@ -13401,7 +13332,7 @@ function getRealSoccerMap2() {
 
 `;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return realSoccerMap2;
 }
 
@@ -13968,7 +13899,7 @@ function getRealSoccerMapOveja() {
 
 `;
 	RSRMap = true;
-
+isAFKpaused = false;
 	return realSoccerMapOveja;
 }
 
@@ -14711,312 +14642,448 @@ function getFutx7Map() {
 	"vertexes" : [
 		/* 0 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
 		
-		/* 1 */ { "x" : -1200, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : 12 },
-		/* 2 */ { "x" : -1250, "y" : -110, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : 12 },
-		/* 3 */ { "x" : -1250, "y" : 110, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "radius" : 7, "bias" : 12 },
-		/* 4 */ { "x" : -1200, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : 12 },
-		/* 5 */ { "x" : 1200, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : -12 },
-		/* 6 */ { "x" : 1250, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : 12 },
-		/* 7 */ { "x" : 1250, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : 12 },
-		/* 8 */ { "x" : 1200, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "bias" : -12 },
+		/* 1 */ { "x" : 0, "y" : 600, "trait" : "kickOffBarrier" },
+		/* 2 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 3 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 4 */ { "x" : 0, "y" : -600, "trait" : "kickOffBarrier" },
 		
-		/* 9 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 10 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 11 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
-		/* 12 */ { "x" : 1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
-		/* 13 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
-		/* 14 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
-		/* 15 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 16 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 17 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 18 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 19 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
-		/* 20 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
-		/* 21 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 22 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 23 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 24 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 25 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
-		/* 26 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
-		/* 27 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
-		/* 28 */ { "x" : 1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6", "bias" : 12 },
-		/* 29 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
-		/* 30 */ { "x" : 1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : -12 },
-		/* 31 */ { "x" : -1200, "y" : 110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
-		/* 32 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
-		/* 33 */ { "x" : -1200, "y" : 110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
-		/* 34 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false, "bias" : -12 },
-		/* 35 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
-		/* 36 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0, "bias" : 12 },
-		/* 37 */ { "x" : 1200, "y" : -110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
-		/* 38 */ { "x" : 1200, "y" : -110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 5 */ { "x" : -1200, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 6 */ { "x" : -1250, "y" : -110, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 7 */ { "x" : -1250, "y" : 110, "cMask" : ["ball" ], "trait" : "goalNet", "curve" : 0, "color" : "ffffff", "radius" : 7 },
+		/* 8 */ { "x" : -1200, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 9 */ { "x" : 1200, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 10 */ { "x" : 1250, "y" : -110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 11 */ { "x" : 1250, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
+		/* 12 */ { "x" : 1200, "y" : 110, "trait" : "goalNet", "curve" : 0, "color" : "ffffff" },
 		
-		/* 39 */ { "x" : 1200, "y" : -110, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ffffff" },
-		/* 40 */ { "x" : 1200, "y" : 110, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ffffff" },
-		/* 41 */ { "x" : 0, "y" : -11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "b3b6b6" },
-		/* 42 */ { "x" : 0, "y" : 11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "b3b6b6" },
-		/* 43 */ { "x" : -525.1982581967213, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 44 */ { "x" : -525.1982581967213, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 45 */ { "x" : -267.4933401639344, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 46 */ { "x" : -267.4933401639344, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 47 */ { "x" : 505.62141393442624, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 48 */ { "x" : 505.62141393442624, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 49 */ { "x" : 247.91649590163934, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 50 */ { "x" : 247.91649590163934, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 51 */ { "x" : -828.0015368852459, "y" : 600, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 52 */ { "x" : -828.0015368852459, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 53 */ { "x" : 1220.33349609375, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 54 */ { "x" : 1201.33349609375, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 55 */ { "x" : 1219.33349609375, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 56 */ { "x" : 1200.33349609375, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 57 */ { "x" : -841.1245088945966, "y" : -601, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 58 */ { "x" : -841.1245088945966, "y" : -617, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 59 */ { "x" : 808.4246926229508, "y" : 600, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 60 */ { "x" : 808.4246926229508, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 61 */ { "x" : 837.7690984113394, "y" : -601, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 62 */ { "x" : 837.7690984113394, "y" : -617, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 63 */ { "x" : -1220.0747488827305, "y" : -251.82895884262769, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 64 */ { "x" : -1201.0752587242073, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 65 */ { "x" : -1218.9226063416277, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 66 */ { "x" : -1199.9231161831044, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
-		/* 67 */ { "x" : -1200, "y" : 570.456511053482, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 68 */ { "x" : -1171.6369452864983, "y" : 600, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 69 */ { "x" : -1200, "y" : -569.6420271253103, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 70 */ { "x" : -1170.6369452864983, "y" : -600, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 71 */ { "x" : 1200, "y" : -571.0124590189979, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 72 */ { "x" : 1170.319141439366, "y" : -600, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
-		/* 73 */ { "x" : 1200, "y" : 569.9997004222528, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 74 */ { "x" : 1171.319141439366, "y" : 600, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
-		/* 75 */ { "x" : -787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ff6363" },
-		/* 76 */ { "x" : -787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 44.33638217658901, "color" : "ff6363" },
-		/* 77 */ { "x" : -787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "ff6363" },
-		/* 78 */ { "x" : -1075, "y" : -470, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "ff6363" },
-		/* 79 */ { "x" : -787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 90, "color" : "ff6363" },
-		/* 80 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 81 */ { "x" : -787, "y" : 0.1561968168675687, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 82 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 83 */ { "x" : -787, "y" : 4.614580423494619, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 84 */ { "x" : -787, "y" : 2.3853886201811116, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 85 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 86 */ { "x" : -787, "y" : 5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 87 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
-		/* 88 */ { "x" : -610, "y" : -1.1475001518364962, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 89 */ { "x" : -610, "y" : 2.077131467790089, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 90 */ { "x" : -610, "y" : -4.372131771463081, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 91 */ { "x" : -610, "y" : 5.301763087416674, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 92 */ { "x" : -610, "y" : 3.6894472776033993, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 93 */ { "x" : -610, "y" : -2.759815961649778, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 94 */ { "x" : -610, "y" : 6.107920992323329, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 95 */ { "x" : -610, "y" : -5.178289676369722, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 96 */ { "x" : -610, "y" : -299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 97 */ { "x" : -610, "y" : -296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 98 */ { "x" : -610, "y" : 296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 99 */ { "x" : -610, "y" : 299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 13 */ { "x" : -1200, "y" : 110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 14 */ { "x" : -1200, "y" : 600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 15 */ { "x" : -1200, "y" : -110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 16 */ { "x" : -1200, "y" : -600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 17 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 18 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 19 */ { "x" : 1200, "y" : 110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 20 */ { "x" : 1200, "y" : 600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 21 */ { "x" : 1200, "y" : -600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 22 */ { "x" : 1200, "y" : -110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 23 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
+		/* 24 */ { "x" : 1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
 		
-		/* 100 */ { "x" : -1252, "y" : -110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "e0d5d6", "bias" : 12 },
-		/* 101 */ { "x" : -1252, "y" : 110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "e0d5d6", "bias" : 12 },
-		/* 102 */ { "x" : 1252, "y" : -110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "ffffff" },
-		/* 103 */ { "x" : 1252, "y" : 110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "ffffff" },
+		/* 25 */ { "x" : 0, "y" : -600, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 26 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 27 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 28 */ { "x" : 0, "y" : 600, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 29 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 30 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 31 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 32 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 33 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 34 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
+		/* 35 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
 		
-		/* 104 */ { "x" : -1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
-		/* 105 */ { "x" : -1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
-		/* 106 */ { "x" : -1200, "y" : 110, "bCoef" : 1, "trait" : "line", "color" : "ffffff", "bias" : -12 },
-		/* 107 */ { "x" : -1200, "y" : 75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 108 */ { "x" : -1200, "y" : 39, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 109 */ { "x" : -1200, "y" : 12, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 110 */ { "x" : -1200, "y" : -75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 111 */ { "x" : -1200, "y" : -110, "bCoef" : 1, "trait" : "line", "color" : "ffffff", "bias" : 12 },
-		/* 112 */ { "x" : -1200, "y" : -15, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 113 */ { "x" : -1200, "y" : -42, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 114 */ { "x" : 1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 115 */ { "x" : 1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
-		/* 116 */ { "x" : 1200, "y" : 110, "bCoef" : 1, "trait" : "line", "color" : "ffffff", "bias" : 12 },
-		/* 117 */ { "x" : 1200, "y" : 76, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 118 */ { "x" : 1200, "y" : 39, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 119 */ { "x" : 1200, "y" : 12, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 120 */ { "x" : 1200, "y" : -75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 121 */ { "x" : 1200, "y" : -110, "bCoef" : 1, "trait" : "line", "color" : "ffffff", "bias" : -12 },
-		/* 122 */ { "x" : 1200, "y" : -15, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 123 */ { "x" : 1200, "y" : -42, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
-		/* 124 */ { "x" : -1200, "y" : -470, "bCoef" : 0, "trait" : "line", "curve" : 0, "color" : "ff6363" },
-		/* 125 */ { "x" : -1075, "y" : 470, "bCoef" : 0, "trait" : "line", "curve" : 90, "color" : "ff6363" },
-		/* 126 */ { "x" : -1200, "y" : 470, "bCoef" : 0, "trait" : "line", "color" : "ff6363" },
-		/* 127 */ { "x" : 787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "4fbeff" },
-		/* 128 */ { "x" : 1075, "y" : 470, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "4fbeff" },
-		/* 129 */ { "x" : 787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "4fbeff" },
-		/* 130 */ { "x" : 787, "y" : 5.145341211815264, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 131 */ { "x" : 787, "y" : -0.010663810350735048, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 132 */ { "x" : 787, "y" : 5.145207323606769, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 133 */ { "x" : 787, "y" : -4.468863459043746, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 134 */ { "x" : 787, "y" : -2.2397636346972547, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 135 */ { "x" : 787, "y" : 5.145274267711017, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 136 */ { "x" : 787, "y" : -4.854245235055558, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 137 */ { "x" : 787, "y" : 5.145173851554631, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
-		/* 138 */ { "x" : 1200, "y" : 470, "bCoef" : 0, "trait" : "line", "curve" : 0, "color" : "4fbeff" },
-		/* 139 */ { "x" : 1075, "y" : -470, "bCoef" : 0, "trait" : "line", "curve" : 90, "color" : "4fbeff" },
-		/* 140 */ { "x" : 1200, "y" : -470, "bCoef" : 0, "trait" : "line", "color" : "4fbeff" },
-		/* 141 */ { "x" : 610, "y" : -1.1475001518364962, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 142 */ { "x" : 610, "y" : 2.077131467790089, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 143 */ { "x" : 610, "y" : -4.372131771463081, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 144 */ { "x" : 610, "y" : 5.301763087416674, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 145 */ { "x" : 610, "y" : 3.6894472776033993, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 146 */ { "x" : 610, "y" : -2.759815961649778, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 147 */ { "x" : 610, "y" : 6.107920992323329, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 148 */ { "x" : 610, "y" : -5.178289676369722, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
-		/* 149 */ { "x" : 610, "y" : -299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 150 */ { "x" : 610, "y" : -296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 151 */ { "x" : 610, "y" : 296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 152 */ { "x" : 610, "y" : 299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
-		/* 153 */ { "x" : 0, "y" : -180, "bCoef" : 0, "trait" : "line", "curve" : 0 },
-		/* 154 */ { "x" : 0, "y" : 180, "bCoef" : 0, "trait" : "line", "curve" : 0 },
+		/* 36 */ { "x" : -1200, "y" : 110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 37 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 38 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 39 */ { "x" : -1200, "y" : -110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 40 */ { "x" : 1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 41 */ { "x" : 1200, "y" : -110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 42 */ { "x" : 1200, "y" : 110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 43 */ { "x" : 1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 44 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
+		/* 45 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
 		
-		/* 155 */ { "x" : 0, "y" : 180, "bCoef" : 0, "trait" : "kickOffBarrier" },
-		/* 156 */ { "x" : 0, "y" : 600, "bCoef" : 0, "trait" : "kickOffBarrier" },
-		/* 157 */ { "x" : 0, "y" : -180, "bCoef" : 0, "trait" : "kickOffBarrier" },
-		/* 158 */ { "x" : 0, "y" : -600, "bCoef" : 0, "trait" : "kickOffBarrier" },
-		/* 159 */ { "x" : 0, "y" : -180, "bCoef" : 0, "trait" : "kickOffBarrier", "curve" : 180 },
-		/* 160 */ { "x" : 0, "y" : 180, "bCoef" : 0, "trait" : "kickOffBarrier", "curve" : 180 },
-		/* 161 */ { "x" : 0, "y" : -180, "bCoef" : 0, "trait" : "kickOffBarrier", "curve" : 180 },
-		/* 162 */ { "x" : 0, "y" : 180, "bCoef" : 0, "trait" : "kickOffBarrier", "curve" : 180 },
-		/* 163 */ { "x" : 0, "y" : 600, "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false },
-		/* 164 */ { "x" : 0, "y" : 670, "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false },
-		/* 165 */ { "x" : 0, "y" : -670, "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false },
-		/* 166 */ { "x" : 0, "y" : -600, "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false }
+		/* 46 */ { "x" : 0, "y" : 600, "trait" : "kickOffBarrier" },
+		/* 47 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 48 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 49 */ { "x" : 0, "y" : -600, "trait" : "kickOffBarrier" },
+		
+		/* 50 */ { "x" : -1200, "y" : 110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 51 */ { "x" : -1200, "y" : 600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 52 */ { "x" : -1200, "y" : -110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 53 */ { "x" : -1200, "y" : -600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 54 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 55 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 56 */ { "x" : 1200, "y" : 110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 57 */ { "x" : 1200, "y" : 600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 58 */ { "x" : 1200, "y" : -600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 59 */ { "x" : 1200, "y" : -110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 60 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 61 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		
+		/* 62 */ { "x" : 0, "y" : -600, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 63 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 64 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 65 */ { "x" : 0, "y" : 600, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 66 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 67 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 68 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 69 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 70 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 71 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
+		/* 72 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
+		
+		/* 73 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
+		/* 74 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
+		
+		/* 75 */ { "x" : 0, "y" : 600, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true },
+		/* 76 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 77 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 78 */ { "x" : 0, "y" : -600, "trait" : "kickOffBarrier" },
+		
+		/* 79 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 80 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 81 */ { "x" : 1200, "y" : 110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 82 */ { "x" : 1200, "y" : 600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 83 */ { "x" : 1200, "y" : -600, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 84 */ { "x" : 1200, "y" : -110, "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 85 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 86 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		
+		/* 87 */ { "x" : 0, "y" : -600, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 88 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "color" : "b3b6b6" },
+		/* 89 */ { "x" : 0, "y" : -180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 90 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 91 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 92 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 93 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : -180 },
+		/* 94 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
+		/* 95 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 0 },
+		
+		/* 96 */ { "x" : -1200, "y" : 600, "trait" : "ballArea" },
+		/* 97 */ { "x" : -1200, "y" : -600, "trait" : "ballArea" },
+		
+		/* 98 */ { "x" : 0, "y" : 600, "trait" : "kickOffBarrier", "vis" : false },
+		/* 99 */ { "x" : 0, "y" : 180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 100 */ { "x" : 0, "y" : -180, "trait" : "kickOffBarrier", "color" : "b3b6b6", "vis" : true, "curve" : 180 },
+		/* 101 */ { "x" : 0, "y" : -600, "trait" : "kickOffBarrier", "vis" : false, "color" : "b3b6b6" },
+		
+		/* 102 */ { "x" : -1200, "y" : 110, "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 103 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 104 */ { "x" : -1200, "y" : -110, "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 105 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6", "curve" : 0 },
+		/* 106 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
+		/* 107 */ { "x" : 1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "color" : "b3b6b6" },
+		/* 108 */ { "x" : 1200, "y" : 110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 109 */ { "x" : 1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 110 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 111 */ { "x" : 1200, "y" : -110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "color" : "b3b6b6" },
+		/* 112 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		/* 113 */ { "x" : 1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea" },
+		
+		/* 114 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "trait" : "kickOffBarrier", "vis" : true, "color" : "b3b6b6" },
+		/* 115 */ { "x" : 0, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		/* 116 */ { "x" : -1, "y" : 180, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		
+		/* 117 */ { "x" : -1200, "y" : 110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 118 */ { "x" : -1200, "y" : 600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 119 */ { "x" : -1200, "y" : 110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 120 */ { "x" : -1200, "y" : 600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "curve" : 0, "vis" : false },
+		/* 121 */ { "x" : -1200, "y" : -600, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 122 */ { "x" : -1200, "y" : -600, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 123 */ { "x" : 1200, "y" : -110, "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 124 */ { "x" : 1200, "y" : -110, "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "vis" : false, "curve" : 0 },
+		/* 125 */ { "x" : -1207, "y" : 110, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 126 */ { "x" : -1207, "y" : 600, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 127 */ { "x" : -1207, "y" : -600, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 128 */ { "x" : -1207, "y" : -110, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 129 */ { "x" : 1207, "y" : -600, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 130 */ { "x" : 1207, "y" : -110, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 131 */ { "x" : 1207, "y" : 110, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		/* 132 */ { "x" : 1207, "y" : 600, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		
+		/* 133 */ { "x" : 1200, "y" : -110, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ffffff" },
+		/* 134 */ { "x" : 1200, "y" : 110, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ffffff" },
+		/* 135 */ { "x" : 0, "y" : -180, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "b3b6b6" },
+		/* 136 */ { "x" : 0, "y" : 180, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "b3b6b6" },
+		/* 137 */ { "x" : 0, "y" : -11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 138 */ { "x" : 0, "y" : 11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 139 */ { "x" : 0, "y" : -11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -180, "color" : "b3b6b6" },
+		/* 140 */ { "x" : 0, "y" : 11, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -180, "color" : "b3b6b6" },
+		/* 141 */ { "x" : -525.1982581967213, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 142 */ { "x" : -525.1982581967213, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 143 */ { "x" : -267.4933401639344, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 144 */ { "x" : -267.4933401639344, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 145 */ { "x" : 505.62141393442624, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 146 */ { "x" : 505.62141393442624, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 147 */ { "x" : 247.91649590163934, "y" : 584, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 148 */ { "x" : 247.91649590163934, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 149 */ { "x" : -828.0015368852459, "y" : 600, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 150 */ { "x" : -828.0015368852459, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 151 */ { "x" : 1220.33349609375, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 152 */ { "x" : 1201.33349609375, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 153 */ { "x" : 1219.33349609375, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 154 */ { "x" : 1200.33349609375, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 155 */ { "x" : -841.1245088945966, "y" : -601, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 156 */ { "x" : -841.1245088945966, "y" : -617, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 157 */ { "x" : 808.4246926229508, "y" : 600, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 158 */ { "x" : 808.4246926229508, "y" : 616, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 159 */ { "x" : 837.7690984113394, "y" : -601, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 160 */ { "x" : 837.7690984113394, "y" : -617, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 161 */ { "x" : -1220.0747488827305, "y" : -251.82895884262769, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 162 */ { "x" : -1201.0752587242073, "y" : -251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 163 */ { "x" : -1218.9226063416277, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 164 */ { "x" : -1199.9231161831044, "y" : 251.9681483400014, "bCoef" : 0.1, "trait" : "line", "color" : "b3b6b6" },
+		/* 165 */ { "x" : -1200, "y" : 570.456511053482, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 166 */ { "x" : -1171.6369452864983, "y" : 600, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 167 */ { "x" : -1200, "y" : -569.6420271253103, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 168 */ { "x" : -1170.6369452864983, "y" : -600, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 169 */ { "x" : 1200, "y" : -571.0124590189979, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 170 */ { "x" : 1170.319141439366, "y" : -600, "bCoef" : 0.1, "trait" : "line", "curve" : -90, "color" : "b3b6b6" },
+		/* 171 */ { "x" : 1200, "y" : 569.9997004222528, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 172 */ { "x" : 1171.319141439366, "y" : 600, "bCoef" : 0.1, "trait" : "line", "curve" : 90, "color" : "b3b6b6" },
+		/* 173 */ { "x" : -787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "ff6363" },
+		/* 174 */ { "x" : -787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 44.33638217658901, "color" : "ff6363" },
+		/* 175 */ { "x" : -787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "ff6363" },
+		/* 176 */ { "x" : -1075, "y" : -470, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "ff6363" },
+		/* 177 */ { "x" : -787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 90, "color" : "ff6363" },
+		/* 178 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 179 */ { "x" : -787, "y" : 0.1561968168675687, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 180 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 181 */ { "x" : -787, "y" : 4.614580423494619, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 182 */ { "x" : -787, "y" : 2.3853886201811116, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 183 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 184 */ { "x" : -787, "y" : 5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 185 */ { "x" : -787, "y" : -5, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "ff6363" },
+		/* 186 */ { "x" : -610, "y" : -1.1475001518364962, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 187 */ { "x" : -610, "y" : 2.077131467790089, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 188 */ { "x" : -610, "y" : -4.372131771463081, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 189 */ { "x" : -610, "y" : 5.301763087416674, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 190 */ { "x" : -610, "y" : 3.6894472776033993, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 191 */ { "x" : -610, "y" : -2.759815961649778, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 192 */ { "x" : -610, "y" : 6.107920992323329, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 193 */ { "x" : -610, "y" : -5.178289676369722, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		
+		/* 194 */ { "x" : 0, "y" : -675, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false },
+		/* 195 */ { "x" : 0, "y" : 675, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "vis" : false },
+		
+		/* 196 */ { "x" : -610, "y" : -299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 197 */ { "x" : -610, "y" : -296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 198 */ { "x" : -610, "y" : 296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 199 */ { "x" : -610, "y" : 299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		
+		/* 200 */ { "x" : -1252, "y" : -110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "e0d5d6" },
+		/* 201 */ { "x" : -1252, "y" : 110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "e0d5d6" },
+		/* 202 */ { "x" : 1252, "y" : -110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "ffffff" },
+		/* 203 */ { "x" : 1252, "y" : 110, "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "vis" : false, "curve" : 0, "color" : "ffffff" },
+		
+		/* 204 */ { "x" : -1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
+		/* 205 */ { "x" : -1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ff3030" },
+		/* 206 */ { "x" : -1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 207 */ { "x" : -1200, "y" : 75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 208 */ { "x" : -1200, "y" : 39, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 209 */ { "x" : -1200, "y" : 12, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 210 */ { "x" : -1200, "y" : -75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 211 */ { "x" : -1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 212 */ { "x" : -1200, "y" : -15, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 213 */ { "x" : -1200, "y" : -42, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 214 */ { "x" : 1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
+		/* 215 */ { "x" : 1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "33b4ff" },
+		/* 216 */ { "x" : 1200, "y" : 110, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 217 */ { "x" : 1200, "y" : 76, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 218 */ { "x" : 1200, "y" : 39, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 219 */ { "x" : 1200, "y" : 12, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 220 */ { "x" : 1200, "y" : -75, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 221 */ { "x" : 1200, "y" : -110, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 222 */ { "x" : 1200, "y" : -15, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 223 */ { "x" : 1200, "y" : -42, "bCoef" : 0, "trait" : "line", "color" : "ffffff" },
+		/* 224 */ { "x" : -1200, "y" : -470, "bCoef" : 0, "trait" : "line", "curve" : 0, "color" : "ff6363" },
+		/* 225 */ { "x" : -1075, "y" : 470, "bCoef" : 0, "trait" : "line", "curve" : 90, "color" : "ff6363" },
+		/* 226 */ { "x" : -1200, "y" : 470, "bCoef" : 0, "trait" : "line", "color" : "ff6363" },
+		/* 227 */ { "x" : 787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 0, "color" : "4fbeff" },
+		/* 228 */ { "x" : 787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 44.33638217658901, "color" : "4fbeff" },
+		/* 229 */ { "x" : 787, "y" : 205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "4fbeff" },
+		/* 230 */ { "x" : 1075, "y" : 470, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : -90, "color" : "4fbeff" },
+		/* 231 */ { "x" : 787, "y" : -205, "bCoef" : 0, "cMask" : ["" ], "trait" : "line", "curve" : 90, "color" : "4fbeff" },
+		/* 232 */ { "x" : 787, "y" : 5.145341211815264, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 233 */ { "x" : 787, "y" : -0.010663810350735048, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 234 */ { "x" : 787, "y" : 5.145207323606769, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 235 */ { "x" : 787, "y" : -4.468863459043746, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 236 */ { "x" : 787, "y" : -2.2397636346972547, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 237 */ { "x" : 787, "y" : 5.145274267711017, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 238 */ { "x" : 787, "y" : -4.854245235055558, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 239 */ { "x" : 787, "y" : 5.145173851554631, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "4fbeff" },
+		/* 240 */ { "x" : 1200, "y" : 470, "bCoef" : 0, "trait" : "line", "curve" : 0, "color" : "4fbeff" },
+		/* 241 */ { "x" : 1075, "y" : -470, "bCoef" : 0, "trait" : "line", "curve" : 90, "color" : "4fbeff" },
+		/* 242 */ { "x" : 1200, "y" : -470, "bCoef" : 0, "trait" : "line", "color" : "4fbeff" },
+		/* 243 */ { "x" : 610, "y" : -1.1475001518364962, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 244 */ { "x" : 610, "y" : 2.077131467790089, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 245 */ { "x" : 610, "y" : -4.372131771463081, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 246 */ { "x" : 610, "y" : 5.301763087416674, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 247 */ { "x" : 610, "y" : 3.6894472776033993, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 248 */ { "x" : 610, "y" : -2.759815961649778, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 249 */ { "x" : 610, "y" : 6.107920992323329, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 250 */ { "x" : 610, "y" : -5.178289676369722, "bCoef" : 0.1, "trait" : "line", "curve" : 180, "color" : "b3b6b6" },
+		/* 251 */ { "x" : 610, "y" : -299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 252 */ { "x" : 610, "y" : -296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 253 */ { "x" : 610, "y" : 296, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" },
+		/* 254 */ { "x" : 610, "y" : 299, "bCoef" : 0.1, "trait" : "line", "curve" : 200, "color" : "b3b6b6" }
 
 	],
 
 	"segments" : [
-		{ "v0" : 1, "v1" : 2, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "bias" : 12, "y" : -110 },
-		{ "v0" : 3, "v1" : 4, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "bias" : 12, "y" : 110 },
-		{ "v0" : 5, "v1" : 6, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "bias" : -12, "y" : -110 },
-		{ "v0" : 7, "v1" : 8, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "bias" : -12, "y" : 110 },
+		{ "v0" : 5, "v1" : 6, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "y" : -110 },
+		{ "v0" : 7, "v1" : 8, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "y" : 110 },
+		{ "v0" : 9, "v1" : 10, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "y" : -110 },
+		{ "v0" : 11, "v1" : 12, "curve" : 0, "color" : "ffffff", "trait" : "goalNet", "y" : 110 },
 		
-		{ "v0" : 11, "v1" : 12, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "y" : -600 },
-		{ "v0" : 27, "v1" : 28, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "y" : 600 },
+		{ "v0" : 1, "v1" : 2, "trait" : "kickOffBarrier" },
+		{ "v0" : 3, "v1" : 4, "trait" : "kickOffBarrier" },
 		
-		{ "v0" : 39, "v1" : 40, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
-		{ "v0" : 41, "v1" : 42, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
-		{ "v0" : 43, "v1" : 44, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240 },
-		{ "v0" : 45, "v1" : 46, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -120 },
-		{ "v0" : 47, "v1" : 48, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 240 },
-		{ "v0" : 49, "v1" : 50, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 120 },
-		{ "v0" : 51, "v1" : 52, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
-		{ "v0" : 53, "v1" : 54, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 251.9681483400014 },
-		{ "v0" : 55, "v1" : 56, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -251.9681483400014 },
-		{ "v0" : 57, "v1" : 58, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
-		{ "v0" : 59, "v1" : 60, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
-		{ "v0" : 61, "v1" : 62, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
-		{ "v0" : 63, "v1" : 64, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
-		{ "v0" : 65, "v1" : 66, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 251.9681483400014 },
-		{ "v0" : 68, "v1" : 67, "curve" : -90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 70, "v1" : 69, "curve" : 90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 72, "v1" : 71, "curve" : -90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 74, "v1" : 73, "curve" : 90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
-		{ "v0" : 75, "v1" : 76, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
-		{ "v0" : 77, "v1" : 78, "curve" : -90, "vis" : true, "color" : "ff6363", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
-		{ "v0" : 81, "v1" : 80, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 80, "v1" : 81, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 83, "v1" : 82, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 82, "v1" : 83, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 85, "v1" : 84, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 84, "v1" : 85, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 87, "v1" : 86, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 86, "v1" : 87, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
-		{ "v0" : 89, "v1" : 88, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 88, "v1" : 89, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 91, "v1" : 90, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 90, "v1" : 91, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 93, "v1" : 92, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 92, "v1" : 93, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 95, "v1" : 94, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 94, "v1" : 95, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 96, "v1" : 97, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 97, "v1" : 96, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 98, "v1" : 99, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
-		{ "v0" : 99, "v1" : 98, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 13, "v1" : 14, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		{ "v0" : 15, "v1" : 16, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -1200 },
+		{ "v0" : 19, "v1" : 20, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 21, "v1" : 22, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 23, "v1" : 24, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "y" : -600 },
 		
-		{ "v0" : 3, "v1" : 2, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "trait" : "goalNet" },
-		{ "v0" : 7, "v1" : 6, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "goalNet", "bias" : 12 },
-		{ "v0" : 100, "v1" : 101, "curve" : 0, "vis" : false, "color" : "e0d5d6", "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "bias" : 12, "x" : -1252 },
-		{ "v0" : 102, "v1" : 103, "curve" : 0, "vis" : false, "color" : "ffffff", "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "x" : 1252 },
+		{ "v0" : 25, "v1" : 26, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 27, "v1" : 28, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
 		
-		{ "v0" : 104, "v1" : 105, "curve" : 0, "vis" : true, "color" : "ff3030", "bCoef" : 0, "trait" : "line", "x" : -1200 },
-		{ "v0" : 106, "v1" : 107, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
-		{ "v0" : 108, "v1" : 109, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
-		{ "v0" : 110, "v1" : 111, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
-		{ "v0" : 112, "v1" : 113, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
-		{ "v0" : 114, "v1" : 115, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
-		{ "v0" : 116, "v1" : 117, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
-		{ "v0" : 118, "v1" : 119, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
-		{ "v0" : 120, "v1" : 121, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
-		{ "v0" : 122, "v1" : 123, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
-		{ "v0" : 78, "v1" : 124, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line", "y" : -470 },
-		{ "v0" : 79, "v1" : 125, "curve" : 90, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line" },
-		{ "v0" : 125, "v1" : 126, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line", "y" : 470 },
-		{ "v0" : 127, "v1" : 128, "curve" : -90, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
-		{ "v0" : 131, "v1" : 130, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 130, "v1" : 131, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 133, "v1" : 132, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 132, "v1" : 133, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 135, "v1" : 134, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 134, "v1" : 135, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 137, "v1" : 136, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 136, "v1" : 137, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
-		{ "v0" : 128, "v1" : 138, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line", "y" : -470 },
-		{ "v0" : 129, "v1" : 139, "curve" : 90, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line" },
-		{ "v0" : 139, "v1" : 140, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line", "y" : 470 },
-		{ "v0" : 142, "v1" : 141, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 141, "v1" : 142, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 144, "v1" : 143, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 143, "v1" : 144, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 146, "v1" : 145, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 145, "v1" : 146, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 148, "v1" : 147, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 147, "v1" : 148, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 149, "v1" : 150, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 150, "v1" : 149, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 151, "v1" : 152, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 152, "v1" : 151, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
-		{ "v0" : 127, "v1" : 129, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line" },
+		{ "v0" : 36, "v1" : 37, "curve" : 0, "vis" : false, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -700 },
+		{ "v0" : 38, "v1" : 39, "curve" : 0, "vis" : false, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -1200 },
+		{ "v0" : 40, "v1" : 41, "curve" : 0, "vis" : false, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 42, "v1" : 43, "curve" : 2.50208708167, "vis" : false, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
 		
-		{ "v0" : 34, "v1" : 106, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : -12 },
-		{ "v0" : 36, "v1" : 111, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12 },
-		{ "v0" : 28, "v1" : 116, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : 12 },
-		{ "v0" : 30, "v1" : 121, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "bias" : -12 },
+		{ "v0" : 46, "v1" : 47, "trait" : "kickOffBarrier" },
+		{ "v0" : 48, "v1" : 49, "trait" : "kickOffBarrier" },
 		
-		{ "v0" : 42, "v1" : 41, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line" },
-		{ "v0" : 41, "v1" : 153, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line" },
-		{ "v0" : 42, "v1" : 154, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "line" },
+		{ "v0" : 50, "v1" : 51, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea" },
+		{ "v0" : 52, "v1" : 53, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -1200 },
+		{ "v0" : 56, "v1" : 57, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 58, "v1" : 59, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
 		
-		{ "v0" : 155, "v1" : 156, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "kickOffBarrier", "x" : 0 },
-		{ "v0" : 157, "v1" : 158, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "trait" : "kickOffBarrier", "x" : 0 },
-		{ "v0" : 159, "v1" : 160, "curve" : -180, "vis" : true, "color" : "b3b6b6", "cGroup" : ["blueKO" ], "trait" : "kickOffBarrier" },
-		{ "v0" : 161, "v1" : 162, "curve" : 180, "vis" : true, "color" : "b3b6b6", "cGroup" : ["redKO" ], "trait" : "kickOffBarrier" },
-		{ "v0" : 163, "v1" : 164, "curve" : 0, "vis" : false, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "x" : 0 },
-		{ "v0" : 165, "v1" : 166, "curve" : 0, "vis" : false, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier", "x" : 0 }
+		{ "v0" : 62, "v1" : 63, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 75, "v1" : 76, "vis" : true, "color" : "b3b6b6", "trait" : "kickOffBarrier" },
+		{ "v0" : 77, "v1" : 78, "trait" : "kickOffBarrier" },
+		
+		{ "v0" : 81, "v1" : 82, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 83, "v1" : 84, "vis" : true, "color" : "b3b6b6", "bCoef" : 1.25, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		
+		{ "v0" : 87, "v1" : 88, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 99, "v1" : 100, "curve" : 180, "vis" : true, "color" : "b3b6b6", "cGroup" : ["blueKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 99, "v1" : 100, "curve" : -180, "vis" : true, "color" : "b3b6b6", "cGroup" : ["redKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 100, "v1" : 101, "vis" : true, "color" : "b3b6b6", "trait" : "kickOffBarrier" },
+		
+		{ "v0" : 102, "v1" : 103, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea" },
+		{ "v0" : 104, "v1" : 105, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 2, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "x" : -1200 },
+		{ "v0" : 106, "v1" : 107, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "y" : 600 },
+		{ "v0" : 108, "v1" : 109, "vis" : true, "color" : "b3b6b6", "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 110, "v1" : 111, "vis" : true, "color" : "b3b6b6", "bCoef" : 2, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 1200 },
+		{ "v0" : 125, "v1" : 126, "vis" : false, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "x" : -707 },
+		{ "v0" : 127, "v1" : 128, "vis" : false, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "x" : -1207 },
+		{ "v0" : 129, "v1" : 130, "vis" : false, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "x" : 1207 },
+		{ "v0" : 131, "v1" : 132, "vis" : false, "bCoef" : 1.5, "cMask" : ["ball" ], "cGroup" : ["ball" ], "trait" : "ballArea", "x" : 1207 },
+		
+		{ "v0" : 133, "v1" : 134, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 135, "v1" : 136, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 137, "v1" : 138, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 139, "v1" : 140, "curve" : -180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 141, "v1" : 142, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240 },
+		{ "v0" : 143, "v1" : 144, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -120 },
+		{ "v0" : 145, "v1" : 146, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 240 },
+		{ "v0" : 147, "v1" : 148, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 120 },
+		{ "v0" : 149, "v1" : 150, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
+		{ "v0" : 151, "v1" : 152, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 251.9681483400014 },
+		{ "v0" : 153, "v1" : 154, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : -251.9681483400014 },
+		{ "v0" : 155, "v1" : 156, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -381 },
+		{ "v0" : 157, "v1" : 158, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
+		{ "v0" : 159, "v1" : 160, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 381 },
+		{ "v0" : 161, "v1" : 162, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 123 },
+		{ "v0" : 163, "v1" : 164, "curve" : 0, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -240, "y" : 251.9681483400014 },
+		{ "v0" : 166, "v1" : 165, "curve" : -90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 168, "v1" : 167, "curve" : 90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 170, "v1" : 169, "curve" : -90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 172, "v1" : 171, "curve" : 90, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line" },
+		{ "v0" : 173, "v1" : 174, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 175, "v1" : 176, "curve" : -90, "vis" : true, "color" : "ff6363", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 179, "v1" : 178, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 178, "v1" : 179, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 181, "v1" : 180, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 180, "v1" : 181, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 183, "v1" : 182, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 182, "v1" : 183, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 185, "v1" : 184, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 184, "v1" : 185, "curve" : 180, "vis" : true, "color" : "ff6363", "bCoef" : 0.1, "trait" : "line", "x" : -787 },
+		{ "v0" : 187, "v1" : 186, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 186, "v1" : 187, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 189, "v1" : 188, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 188, "v1" : 189, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 191, "v1" : 190, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 190, "v1" : 191, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 193, "v1" : 192, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 192, "v1" : 193, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		
+		{ "v0" : 101, "v1" : 194, "vis" : false, "color" : "ffffff", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		{ "v0" : 98, "v1" : 195, "vis" : false, "color" : "ffffff", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "trait" : "kickOffBarrier" },
+		
+		{ "v0" : 196, "v1" : 197, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 197, "v1" : 196, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 198, "v1" : 199, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		{ "v0" : 199, "v1" : 198, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : -610 },
+		
+		{ "v0" : 7, "v1" : 6, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "cMask" : ["ball" ], "trait" : "goalNet" },
+		{ "v0" : 11, "v1" : 10, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "goalNet" },
+		{ "v0" : 200, "v1" : 201, "curve" : 0, "vis" : false, "color" : "e0d5d6", "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "x" : -1252 },
+		{ "v0" : 202, "v1" : 203, "curve" : 0, "vis" : false, "color" : "ffffff", "bCoef" : 0.1, "cGroup" : ["wall" ], "trait" : "goalNet", "x" : 1252 },
+		
+		{ "v0" : 204, "v1" : 205, "curve" : 0, "vis" : true, "color" : "ff3030", "bCoef" : 0, "trait" : "line", "x" : -1200 },
+		{ "v0" : 206, "v1" : 207, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
+		{ "v0" : 208, "v1" : 209, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
+		{ "v0" : 210, "v1" : 211, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
+		{ "v0" : 212, "v1" : 213, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : -1200 },
+		{ "v0" : 214, "v1" : 215, "curve" : 0, "vis" : true, "color" : "33b4ff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
+		{ "v0" : 216, "v1" : 217, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
+		{ "v0" : 218, "v1" : 219, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
+		{ "v0" : 220, "v1" : 221, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
+		{ "v0" : 222, "v1" : 223, "curve" : 0, "vis" : true, "color" : "ffffff", "bCoef" : 0, "trait" : "line", "x" : 1200 },
+		{ "v0" : 176, "v1" : 224, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line", "y" : -470 },
+		{ "v0" : 177, "v1" : 225, "curve" : 90, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line" },
+		{ "v0" : 225, "v1" : 226, "curve" : 0, "vis" : true, "color" : "ff6363", "bCoef" : 0, "trait" : "line", "y" : 470 },
+		{ "v0" : 227, "v1" : 228, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 229, "v1" : 230, "curve" : -90, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "cMask" : ["" ], "trait" : "line" },
+		{ "v0" : 233, "v1" : 232, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 232, "v1" : 233, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 235, "v1" : 234, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 234, "v1" : 235, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 237, "v1" : 236, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 236, "v1" : 237, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 239, "v1" : 238, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 238, "v1" : 239, "curve" : 180, "vis" : true, "color" : "4fbeff", "bCoef" : 0.1, "trait" : "line", "x" : 787 },
+		{ "v0" : 230, "v1" : 240, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line", "y" : -470 },
+		{ "v0" : 231, "v1" : 241, "curve" : 90, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line" },
+		{ "v0" : 241, "v1" : 242, "curve" : 0, "vis" : true, "color" : "4fbeff", "bCoef" : 0, "trait" : "line", "y" : 470 },
+		{ "v0" : 244, "v1" : 243, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 243, "v1" : 244, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 246, "v1" : 245, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 245, "v1" : 246, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 248, "v1" : 247, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 247, "v1" : 248, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 250, "v1" : 249, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 249, "v1" : 250, "curve" : 180, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 251, "v1" : 252, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 252, "v1" : 251, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 253, "v1" : 254, "curve" : -197.38121949057748, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 },
+		{ "v0" : 254, "v1" : 253, "curve" : -213.29219661707097, "vis" : true, "color" : "b3b6b6", "bCoef" : 0.1, "trait" : "line", "x" : 610 }
 
 	],
 
 	"goals" : [
-		{ "p0" : [1208.75,109 ], "p1" : [1208.75,-109 ], "team" : "blue" },
-		{ "p0" : [-1208.75,109 ], "p1" : [-1208.75,-109 ], "team" : "red" }
+		{ "p0" : [1208.95,109 ], "p1" : [1208.95,-109 ], "team" : "blue" },
+		{ "p0" : [-1208.95,109 ], "p1" : [-1208.95,-109 ], "team" : "red" }
 
 	],
 
 	"discs" : [
-		{ "radius" : 6.25, "invMass" : 1.5, "pos" : [0,0 ], "color" : "${PelotaFutsal}", "bCoef" : 0.35, "cGroup" : ["ball","kick","score" ], "damping" : 0.99 },
-
+		{"radius":6.4,"color":"${PelotaFutsal}","bCoef":0.4,"invMass":1.5,"damping":0.99,"cGroup":["ball","kick","score"]},
 		{"pos":[-5,-1],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
 		{"pos":[5,-1],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
 		{"pos":[0,-5],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
 		{"pos":[-3,4],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
 		{"pos":[3,4],"radius":0.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
 		{"radius":1.7,"invMass":1e+300,"color":"0","cMask":[],"cGroup":[]},
-		
 		{ "radius" : 6, "pos" : [1200,110 ], "color" : "33b4ff", "trait" : "goalPost" },
 		{ "radius" : 6, "pos" : [1200,-110 ], "color" : "33b4ff", "trait" : "goalPost" },
 		{ "radius" : 6, "pos" : [-1200,110 ], "color" : "ff3030", "trait" : "goalPost" },
-		{ "radius" : 6, "pos" : [-1200,-110 ], "color" : "ff3030", "trait" : "goalPost", "_selected" : true },
+		{ "radius" : 6, "pos" : [-1200,-110 ], "color" : "ff3030", "trait" : "goalPost" },
 		
 		{ "radius" : 3, "invMass" : 0, "pos" : [-1200,600 ], "color" : "ffff00", "bCoef" : 0.1, "trait" : "line" },
 		{ "radius" : 3, "invMass" : 0, "pos" : [-1200,-600 ], "color" : "ffff00", "bCoef" : 0.1, "trait" : "line" },
@@ -15049,23 +15116,15 @@ function getFutx7Map() {
 	},
 
 	"playerPhysics" : {
+		"bCoef" : 0,
 		"acceleration" : 0.11,
 		"kickingAcceleration" : 0.083,
-		"kickStrength" : 5.2,
-		"bCoef" : 0,
-		"radius" : 15,
-		"invMass" : 0.5,
-		"damping" : 0.96,
-		"cGroup" : [ "red", "blue"
-		],
-		"gravity" : [ 0, 0
-		],
-		"kickingDamping" : 0.96,
-		"kickback" : 0
+		"kickStrength" : 5.2
 
 	},
 
 	"ballPhysics" : "disc0",
+
 "joints":[{"d0":0,"d1":1,"length":5.0990195135927845,"color":"transparent"},
 {"d0":0,"d1":2,"length":5.0990195135927845,"color":"transparent"},
 {"d0":0,"d1":3,"length":5,"color":"transparent"},
@@ -15089,7 +15148,7 @@ function getFutx7Map() {
 {"d0":5,"d1":6,"length":5,"color":"transparent"}]
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx7Map;
 }
 
@@ -15199,7 +15258,7 @@ function get2Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return TwoMan;
 }
 
@@ -15333,7 +15392,7 @@ function get3Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return ThreeMan;
 }
 
@@ -15465,7 +15524,7 @@ function get4Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return FourMan;
 }
 
@@ -15615,7 +15674,7 @@ function get5Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return FiveMan;
 }
 
@@ -15782,7 +15841,7 @@ function get6Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return SixMan;
 }
 
@@ -15967,7 +16026,7 @@ function get7Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return SevenMan;
 }
 
@@ -16170,7 +16229,7 @@ function get8Man() {
 
 `;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return EightMan;
 }
 
@@ -16566,7 +16625,7 @@ function getFutx5Map() {
 {"d0":5,"d1":6,"length":5,"color":"transparent"}]
 }`;
 	RSRMap = false;
-
+isAFKpaused = false;
 	return Futx5Map;
 }
 
@@ -17246,8 +17305,7 @@ try {
         password: PasswordDelHost,
         maxPlayers: maxPlayers,
         public: roomPublic,
-    	playerName: NombreBot,
-   	noPlayer: !BotVisible
+        noPlayer: true
     };
 
     // Agregar geoConfig solo si es válido
@@ -17501,49 +17559,6 @@ function parseColors(colorString) {
     };
 }
 
-
-// Función para enviar la IP a Discord cuando un jugador se retira
-function sendIPToDiscord(player) {
-    // Obtiene la IP del jugador que se retiró
-    const playerInfo = playerIPs.find(info => info.nickname === player.name);
-
-    // Si se encuentra la IP, enviamos un mensaje al webhook de Discord
-    if (playerInfo) {
-        const embed = {
-            embeds: [
-                {
-                    title: `⛔ El jugador "${player.name}" se ha retirado del host 🌐`,
-                    description: `🔐📶 IP de **${player.name}**: \`${playerInfo.ip}\``,
-                    color: 0xFF5733, // Color del embed
-                    timestamp: new Date().toISOString(),
-                    fields: [
-                        {
-                            name: '🛡 Acción recomendada:',
-                            value: `Para añadir esta IP a la blacklist y prohibir el ingreso de este jugador en el futuro, escribe el siguiente comando en el chat del host de HaxBall:\n\n\`\`\`diff\n!banip ${playerInfo.ip}\n\`\`\`\n\nEste comando evitará que el jugador con esta IP ingrese a la sala nuevamente.`,
-                        },
-                    ],
-                    footer: {
-                        text: '🔒 Información confidencial',
-                    },
-                },
-            ],
-        };
-
-        // Enviar el mensaje al webhook de Discord
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(embed),
-        };
-
-        // Realizar la solicitud HTTP al webhook
-        fetch(webhookIPJugadores, requestOptions);
-    }
-}
-
-
 var salaCerrada = false; // Variable para rastrear si la sala está cerrada
 
 function verificarEspaciosDisponibles() {
@@ -17607,55 +17622,21 @@ room[_0x3c81f9(0x12f)] = function (_0x4a7fbc) {
 	var _0x338ced = {};
 	_0x338ced['method'] = _0x9060eb(0x175), _0x338ced[_0x9060eb(0x1b2)] = JSON[_0x9060eb(0x141)](_0x436097), _0x338ced[_0x9060eb(0x1bf)] = _0x275f9e, fetch(webhookID, _0x338ced)['then'](_0x169fd3 => _0x169fd3), whisper(_0x9060eb(0x131), _0x4a7fbc['id'], 0x61b3ff, _0x9060eb(0x17a), 0x0), whisper(_0x9060eb(0x137), _0x4a7fbc['id'], 0x61c5ff, 'bold', 0x0), whisper(_0x9060eb(0x1a4), _0x4a7fbc['id'], 0x61cdff, _0x9060eb(0x17a), 0x0), whisper(_0x9060eb(0x1c5), _0x4a7fbc['id'], 0x61ddff, _0x9060eb(0x17a), 0x0), whisper(_0x9060eb(0x151), _0x4a7fbc['id'], 0x61e7ff, _0x9060eb(0x17a), 0x0), displayAdminMessage();
 }, room.onPlayerLeave = function(player) {
-    // Llamamos a la función para enviar la IP al webhook
-    sendIPToDiscord(player);
-// Comando !avatar
-    if (avatarIntervals[player.id]) {
-        clearInterval(avatarIntervals[player.id]);
-        delete avatarIntervals[player.id];
-    }
   verificarEspaciosDisponibles();
     // Verificar si el jugador dejó la sala por ser expulsado
     if (player && room.getPlayer(player.id) && player.id !== room.getPlayer(player.id).id) {
         const expulsionType = room.isPlayerBanned(player.id) ? 'baneado' : 'kickeado';
         enviarMensajeExpulsion(player.name, expulsionType, null, 'Sistema');
     }
-const totalPlayers = room.getPlayerList().length;
-const NombreDelJugadorNickname = player.name;
+  const totalPlayers = room.getPlayerList().length;
+  const NombreDelJugadorNickname = player.name;
 
-
-
-// Verifica si el nombre del jugador contiene "@" "#", o "*"
-if (!containsInvalidCharacters(NombreDelJugadorNickname)) {
-  let message = `➡️🚪 ${NombreDelJugadorNickname} se ha ido del host -- ${totalPlayers}/${maxPlayers} 👋`;
-
-  // Si no está llena la sala, muestra cuántos lugares quedan
-  if (totalPlayers < maxPlayers) {
-    const remainingSpots = maxPlayers - totalPlayers;
-
-    // Verifica si queda solo 1 lugar
-    if (remainingSpots === 1) {
-      message += `\n\n**[🟢] QUEDA 1 LUGAR**`;
-    } else {
-      message += `\n\n**[🟢] QUEDAN ${remainingSpots} LUGARES**`;
-    }
+  // Verifica si el nombre del jugador contiene "@" "#", o "*"
+  if (!containsInvalidCharacters(NombreDelJugadorNickname)) {
+    const message = `➡️🚪 ${NombreDelJugadorNickname} se ha ido del host -- ${totalPlayers}/${maxPlayers} 👋`;
+    sendBoleteroToDiscord(message, roomName, roomLink, 16711680); // Color rojo en formato decimal
   }
 
-
-  // Añadir estado de la sala (cerrada o abierta)
-  if (salaCerrada) {
-    message += `\n\n**🔒 La sala está momentáneamente con contraseña para reservarles el lugar a los administradores.**`;
-  }
-
-  // Verifica si el host tiene contraseña
-  if (PasswordDelHost !== null && PasswordDelHost !== "") {
-    message += `\n\n**🔒 ESTE HOST TIENE CONTRASEÑA**`;
-  } else {
-    message += `\n\n**🌍 HOST PÚBLICO**`;
-  }
-
-  sendBoleteroToDiscord(message, roomName, roomLink, 16711680); // Color rojo en formato decimal
-}
   // Verificar si el jugador que se fue había votado y eliminar su voto
   for (const votedMap in mapVotes) {
     const index = mapVotes[votedMap].indexOf(player.id);
@@ -18434,7 +18415,7 @@ var opciones = [
             teamRed = "ARSENAL FC";
 
             blueAngle = 66;
-            blueTextColor = 0xfbb700;
+            blueTextColor = 0xffffff;
             blueColor = [0x001489];
             room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
             teamBlue = "CHELSEA";
@@ -19275,7 +19256,6 @@ room.onPlayerBallKick = function(player) {
   } else if (player.team === 2) {
     equipoRojoPosesion++;
   }
-  
   game.rsTouchTeam = player.team;
   game.updateLastKicker(player.id, player.name, player.team);
   
@@ -19287,76 +19267,64 @@ room.onPlayerBallKick = function(player) {
       }
     });
   }
+		//=========== POWERSHOT CODE ===========
+		if (powerShotMode == true && RSRMap == false) {
+			if (game.powershotCounter > 52) {
 
-  //=========== GRAVEDAD (INDEPENDIENTE) ===========
-  if (combaMode) { 
-      room.setDiscProperties(0, {
-          xgravity: -room.getPlayerDiscProperties(player.id).yspeed / 30,
-          ygravity: -room.getPlayerDiscProperties(player.id).yspeed / 30
-      });
+				game.rsSwingTimer = 50;
+				room.sendAnnouncement("DISPARO POTENTE REALIZADO!", player.pm, 0x33dddd, "bold", 1);
+			}
+			game.powershotCounter = 0;
+			game.powershotID = 0;
+			game.powershotTrigger = false;
+			if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.5) {
+				room.setDiscProperties(0, {"bCoef":0.4,"invMass":1.5,"damping":0.99, color: `0x${PelotaFutsal}` });
+
+			}
+		}
+		//=========== POWERSHOT CODE ===========
+		
+		if (game.rsReady == true && RSRMap == false) {
+			var players = room.getPlayerList().filter((player) => player.team != 0);
+			players.forEach(function(player) {			
+				if (room.getPlayerDiscProperties(player.id).acceleration.toFixed(1) != 0.11) {
+					room.setPlayerDiscProperties(player.id, {"bCoef" : 0,"acceleration" : 0.11,"kickingAcceleration" : 0.083,"kickStrength" : 5});
+				}
+			});
+		}
 
 
-          setTimeout(() => {
-              room.setDiscProperties(0, { xgravity: 0, ygravity: 0 });
-          }, 500);
-  }
 
-  //=========== POWERSHOT CODE ===========
-  if (powerShotMode == true) { // Se ejecuta el PowerShot sin importar el valor de RSRMap
-    if (game.powershotCounter > 52) {
-        // Aplicar gravedad solo si JabulaniMode está activado
-        if (JabulaniMode) {
-            room.setDiscProperties(0, {
-                xgravity: -room.getPlayerDiscProperties(player.id).yspeed / 30,
-                ygravity: -room.getPlayerDiscProperties(player.id).yspeed / 30
-            });
+		//=========== POWERSHOT CODE ===========
+		if (powerShotMode == true && RSRMap == true) {
+			if (game.powershotCounter > 52) {
+				room.setDiscProperties(0, {xgravity: -room.getPlayerDiscProperties(player.id).yspeed/30, ygravity: -room.getPlayerDiscProperties(player.id).yspeed/30});
+				game.rsSwingTimer = 50;
+				room.sendAnnouncement("DISPARO POTENTE REALIZADO!", player.pm, 0x33dddd, "bold", 1);
+			}
+			game.powershotCounter = 0;
+			game.powershotID = 0;
+			game.powershotTrigger = false;
+			if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.05) {
+				room.setDiscProperties(0, { invMass: 1.05, color: `0x${PelotaRS}` });
+			}
+		}
+		//=========== POWERSHOT CODE ===========
+		
+		if (game.rsReady == true && RSRMap == true) {
+			var players = room.getPlayerList().filter((player) => player.team != 0);
+			players.forEach(function(player) {			
+				if (room.getPlayerDiscProperties(player.id).invMass.toFixed(1) != 0.3) {
+					room.setPlayerDiscProperties(player.id, {invMass: 0.3});
+				}
+			});
+		}
+		  
 
-                setTimeout(() => {
-                    room.setDiscProperties(0, { xgravity: 0, ygravity: 0 });
-                }, 500);
 
-        }
-
-        game.rsSwingTimer = 50;
-        room.sendAnnouncement("DISPARO POTENTE REALIZADO!", player.pm, 0x33dddd, "bold", 1);
-    }
-
-    game.powershotCounter = 0;
-    game.powershotID = 0;
-    game.powershotTrigger = false;
-
-    if (RSRMap == true) {
-        if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.05) {
-            room.setDiscProperties(0, { invMass: 1.05, color: `0x${PelotaRS}` });
-        }
-    } else { // Cuando RSRMap == false
-        if (parseFloat(room.getDiscProperties(0).invMass.toFixed(2)) != 1.5) {
-            room.setDiscProperties(0, { invMass: 1.5, color: `0x${PelotaFutsal}` });
-        }
-    }
-  }
-  //=========== POWERSHOT CODE ===========
-
-  if (game.rsReady == true && RSRMap == false) {
-    var players = room.getPlayerList().filter((player) => player.team != 0);
-    players.forEach(function(player) {			
-      if (room.getPlayerDiscProperties(player.id).acceleration.toFixed(1) != 0.11) {
-        room.setPlayerDiscProperties(player.id, {"bCoef" : 0,"acceleration" : 0.11,"kickingAcceleration" : 0.083,"kickStrength" : 5});
-      }
-    });
-  }
-  
-  if (game.rsReady == true && RSRMap == true) {
-    var players = room.getPlayerList().filter((player) => player.team != 0);
-    players.forEach(function(player) {			
-      if (room.getPlayerDiscProperties(player.id).invMass.toFixed(1) != 0.3) {
-        room.setPlayerDiscProperties(player.id, {invMass: 0.3});
-      }
-    });
-  }
-  
   if (game.rsActive == false && game.rsReady == true && (game.rsCorner == true || game.rsGoalKick == true)) { // make game active on kick from CK/GK
     game.boosterState = true;
+    
     game.rsActive = true;
     game.rsReady = false;
     room.setDiscProperties(1, {x: 2000, y: 2000 });
@@ -19369,9 +19337,11 @@ room.onPlayerBallKick = function(player) {
     if (game.rsCorner == true) {
       if (room.getDiscProperties(0).y < 0) { //top corner
         room.setDiscProperties(0, {xgravity: room.getPlayerDiscProperties(player.id).xspeed/35*-1, ygravity: 0.05});
+        //room.setDiscProperties(0, {xgravity: -0.08, ygravity: 0.05});
       }
       else { //bottom corner
         room.setDiscProperties(0, {xgravity: room.getPlayerDiscProperties(player.id).xspeed/35*-1, ygravity: -0.05});
+        //room.setDiscProperties(0, {xgravity: -0.08, ygravity: -0.05});
       }
     }	
     if (game.rsGoalKick == true) {			
@@ -19393,6 +19363,7 @@ room.onPlayerBallKick = function(player) {
   if (map !== "RSR") {
     // Agrega aquí tu lógica personalizada para cuando el mapa no es "RSR"
   }
+
 }
 
 
@@ -19523,11 +19494,6 @@ function helpFun(player) {
     room.sendAnnouncement(message, player.id, 0xffffff, "small-bold", 1);
   }, 27000);
 
-  setTimeout(function() {
-    message = '⯌ AVATAR: !avatar\n';
-    message += '   Ejemplo de uso: !avatar HO,LA | Ejemplo 2: !avatar 😈,👿\n\n';
-    room.sendAnnouncement(message, player.id, 0xffffff, "small-bold", 1);
-  }, 30000);
 
 }
 
@@ -19587,6 +19553,16725 @@ else if (message == "!acomer")
 room.kickPlayer(player.id, "😋 Bon appetit ! 🍽", false);
 }
 
+
+function UEFAFun(player) { // !camisetas
+    room.sendAnnouncement("UEFA 🌍: !premierleague ✦ !ligue1 ✦  !bundesliga ✦ !seriea ✦ !serieb ✦ !laliga ✦ !eredivisie ✦ !primeiraliga ✦ !superlig ✦ !campeonatoruso ✦ !1hnl ✦ !premierucrania  !superligasuiza ✦ !nb1 ", player.id, 0xea9999, "bold", 0);
+}
+function CONMEBOLFun(player) { // !camisetas
+    room.sendAnnouncement("CONMEBOL 🌎: !primera ✦ !ascenso ✦ !brasileirao ✦ !campeonatouruguayo ✦ !ligaparaguaya ✦ !ligaaguila ✦ !ligapro ✦ !liga1peru ✦ !campeonatochileno ✦ !ligaboliviana ✦ !ligavenezolana", player.id, 0xa4c2f4, "bold", 0);
+}
+function CONCACAFFun(player) { // !camisetas
+    room.sendAnnouncement("CONCACAF 🌎: !ligamx ✦ !mls", player.id, 0xffd966, "bold", 0);
+}
+
+function CamisetasFun(player) { // !camisetas
+    room.sendAnnouncement("!UEFA 🌍✦ !CONMEBOL 🌎✦ !CONCACAF 🌎✦ !paises 🌐✦ !fantasmas  👻 ✦ !amateurs 🛡✦ !superheroes 🦸 | !haxball | !esports", player.id, 0xb4a7d6, "bold", 0);
+    setTimeout(function() {
+      var paso1 = "📢 ¡Hola! ¿Quieres jugar con la camiseta de tu equipo favorito? Es muy fácil, sigue estos pasos:\n\n";
+      paso1 += "1️⃣ Escribe las letras abreviadas de tu equipo (por ejemplo, riv para River Plate, boc para Boca Juniors, arg para Argentina, bra para Brasil, etc.) 🏟️";
+      room.sendAnnouncement(paso1, player.id, 0xffffff, "bold", 0);
+    }, 5000);
+
+    setTimeout(function() {
+      var paso2 = "2️⃣ Luego, escribe qué tipo de camiseta deseas (titular, alternativa, tercera, clásica o bandera para selecciones nacionales) 🌟";
+      room.sendAnnouncement(paso2, player.id, 0xffffff, "bold", 0);
+    }, 8000);
+
+    setTimeout(function() {
+      var paso3 = "3️⃣ Por último, elige si quieres la camiseta para el equipo rojo 🔴 (red) o azul 🔵(blue)";
+      room.sendAnnouncement(paso3, player.id, 0xffffff, "bold", 0);
+    }, 11000);
+
+    setTimeout(function() {
+      var ejemplo = "\nPor ejemplo, si quieres ver la camiseta titular de River Plate en el equipo rojo, escribe: riv/titular/red";
+      ejemplo += "\nSi quieres la camiseta titular de Boca Juniors en el equipo azul, escribe: boc/titular/blue";
+      ejemplo += "\nRecuerda poner el símbolo '/' entre cada parte del comando.";
+      room.sendAnnouncement(ejemplo, player.id, 0xffffff, "bold", 0);
+    }, 14000);
+
+    setTimeout(function() {
+      var final = "\n¡Y listo! 🎉 Verás la camiseta del equipo que elegiste en el equipo que quieras. ¡Disfruta representando a tu equipo favorito! ⚽️👕";
+      room.sendAnnouncement(final, player.id, 0xffffff, "bold", 0);
+    }, 17000);
+}
+
+
+function SuperHeroesFun(player) { // !fantasmas
+    room.sendAnnouncement("💪 SUPERHÉROES: ", player.id, 0xfaebd6, "bold", 0);
+    room.sendAnnouncement("MARVEL: !SPIDERMAN | !HULK | !CAPITANAMERICA", player.id, 0xfaebd6, "bold", 0);
+    room.sendAnnouncement("DC: !BATMAN", player.id, 0xfaebd6, "bold", 0);
+
+}
+function FantasmasFun(player) { // !fantasmas
+    room.sendAnnouncement("📜 👻 EQUIPOS FANTASMAS: ", player.id, 0xfaebd6, "bold", 0);
+    room.sendAnnouncement("🌍 exSelecciones:  | !URSS | !YUG | !CZE", player.id, 0xfaebd6, "bold", 0);
+    room.sendAnnouncement("🛡 exClubes: | !ALU | !LOA | !OCFC | !BAC | !ROAC | !CAPORT", player.id, 0xfaebd6, "bold", 0);
+}
+function SuperligaFun(player) { // !superliga
+    room.sendAnnouncement("🅰 PRIMERA DIVISIÓN: | !RIV | !BOC | !RAC | !IND | !SLO | !EST | !VEL | !LAN | !DYJ", player.id, 0xADF4FF, "bold", 0); 
+    room.sendAnnouncement(" | !AAAJ | !NOB | !CEN | !ARSE | !BAND | !TAL | !CSF | !HUR | !GIM ", player.id, 0xADF4FF, "bold", 0); 
+    room.sendAnnouncement(" | !UNI | !ALD | !ATU | !CCS | !GOD | !PAT | !BARR | !TIG | !PLA | !SAR", player.id, 0xADF4FF, "bold", 0); 
+}
+function AscensoFun(player) { // !ascenso
+    room.sendAnnouncement('🅱 ASCENSO: | !ALB | !FCO | !CHA | !ATL |  !SMT | !OLP | !BEL | !QUI | !MOR | !NCH | !ALM | !SMSJ | !ABROWN', player.id, 0xDB1414, "bold", 0); 
+    room.sendAnnouncement('| !DOC | !SCH | !RIE | !AGR | !ALV | !STEL​ | !MER | !AdQ | !CJA | !GyT | !CADU | !VSC | !EBA | !BOCHZ | !CDE | !SIT | !MDY | !CDN | !LAF | !SM | !DOU', player.id, 0xDB1414, "bold", 0); 
+}
+function EquiposAmateursFun(player) { // !ascenso
+    room.sendAnnouncement('🔰 AMATEURS (LIGAS BARRIALES) : | !CDYBGR', player.id, 0xDB1414, "bold", 0); 
+}
+function LigaHungaraFun(player) { // !NB1
+    room.sendAnnouncement("(🇭🇺) NEMZETI BAJNOKSÁG I: | !PAKS | !DIO | !KISV | !MEZ | !PAFC | !HON | !DVS | !UJP | !VID | !FTC", player.id, 0x7AFF70, "bold", 0); 
+}
+function CampeonatoChilenoFun(player) { // !campeonatochileno
+    room.sendAnnouncement("(🇨🇱) CAMPEONATO CHILENO:  | !CCO | !UDC | !UCA | !CDP | !COB | !EVDM | !ULC |", player.id, 0xFF2A12, "bold", 0); 
+    room.sendAnnouncement("| !AUD | !HUA | !IQU | !OHI | !UES | !SWA | !CUR | !CDA | !UCON | !DLS | !COQ", player.id, 0xFF2A12, "bold", 0); 
+
+}
+function LigaBolivianaFun(player) { // !ligaboliviana
+    room.sendAnnouncement("(🇧🇴) LIGA BOLIVIANA:  | !BLV | !STG | !WTM | !PET | ALWR", player.id, 0x5ACC31, "bold", 0); 
+}
+function MLSFun(player) { // !mls
+    room.sendAnnouncement("(🇺🇸) MLS: | !LA | !TOFC | !NYC | !ATLU | !LAFC | !SEA | !NYRB | !PTIM | !ORL | !MIA", player.id, 0x1930FF, "bold", 0); 
+}
+function LigaUruguayaFun(player) { // !campeonatouruguayo
+    room.sendAnnouncement('(🇺🇾) CAMPEONATO URUGUAYO: | !NAC | !PEN | !DAN | !RAM | !RIU | !WAN | !MCT | !CRL | !DFS | !PCOL', player.id, 0x69CDFF, "bold", 0); 
+}
+function CampeonatoRusoFun(player) { // !campeonatoruso
+    room.sendAnnouncement('(🇷🇺) CAMPEONATO RUSO: | !SPM | !CSK | !ZEN | !LOK | !DIN', player.id, 0xe11a22, "bold", 0); 
+}
+function PremierUcranianaFun(player) { // !premierucrania
+    room.sendAnnouncement('(🇺🇦) LIGA PREMIER UCRANIA: | !SHA | !DYK | !NYV', player.id, 0xFFF954, "bold", 0); 
+}
+function LaLigaFun(player) { // !laliga
+    room.sendAnnouncement('(🇪🇸) LALIGA: | !RMA | !BAR | !ATM | !SEV | !VIL | !VAL | !ATH | !GET | !CEL | !BET | !LEV | !RAY | !RCDE | !MLL', player.id, 0xFF2A00, "bold", 0); 
+}
+function LigaAguilaFun(player) { // !ligaaguila
+    room.sendAnnouncement('(🇨🇴) LIGA ÁGUILA: | !ATN | !MIL | !AME | !SFE | !CAL | !ONC | !DEPTOL', player.id, 0xFFE959, "bold", 0); 
+}
+function LigaParaguayaFun(player) { // !ligaparaguaya
+    room.sendAnnouncement('(🇵🇾) LIGA PARAGUAYA: | !CCP | !OLI | !GUA | !LIB', player.id, 0xa3a3a3, "bold", 0);
+}
+function SerieATIMFun(player) { // !seriea
+    room.sendAnnouncement('(🇮🇹) SERIE A: | !JUV | !INT | !ACM | !ATA | !NAP | !LAZ | !ROM | !FIO | !TOR | !GEN | !PLM | !CHVER', player.id, 0x6699FF, "bold", 0);
+}
+function SerieBItaliaFun(player) { // !seriea
+    room.sendAnnouncement('(🇮🇹) SERIE B: | !VENFC', player.id, 0x6699FF, "bold", 0);
+}
+function BrasilLeagueFun(player) { // !brasileirão
+    room.sendAnnouncement('(🇧🇷) BRASILEIRAO: !SAO | !SAN | !CRU | !FLA | !PAL | !CAM | !SCI | !GRE | !COR | !BOT | !PAR | !FLU | !VAS | !FORT | !RBB |!AMCMIN', player.id, 0xF7FF19, "bold", 0);
+}
+function PremierLeagueFun(player) { // !premierleague
+    room.sendAnnouncement('(🇬🇧) PREMIER LEAGUE: !MCI | !LIV | !CHE | !MUN | !TOT | !LEI | !ARS | !EVE | !WHU | !WOL | !AVL | !NEW | !SOU | !WAT | !CRY | !LEE | !FUL | !WBA | !HUL', player.id, 0xFFFFFF, "bold", 0); 
+}
+function SuperLigFun(player) { // !superlig
+    room.sendAnnouncement('(🇹🇷) SUPER LIG: | !GS | !FB | !BJK ', player.id, 0xFA0000, "bold", 0); 
+}
+function LigaVenezolanaFun(player) { // !ligavenezolana
+    room.sendAnnouncement('(🇻🇪) Liga Venezolana: !TACH | !CARC | !MNG | !DLAR', player.id, 0xF7FF19, "bold", 0);
+}
+function PaisesFun(player) { // !paises
+    room.sendAnnouncement('🌍 EUROPA: !FRA | !ALE | !ITA | !ESP | !ING | !BELG | !POR | !HOL | !CRO | | !GAL | !RUS | !SWE | !SUI | !AUT | !UKR | !POL | !MAR | !SRB | !TUN | !DEN', player.id, 0x5793FA, "bold", 0);  
+    room.sendAnnouncement('🌎 AMÉRICA: !BRA | !ARG | !COL | !URU | !CHI | !USA  | !MEX | !ECU | !PGY | !PER | !VEN | !BOL | !CAN | !CRC', player.id, 0x5793FA, "bold", 0);  
+    room.sendAnnouncement('🌏 ASIA y OCEANIA: !JAP | !QAT | !CNO | !NZE | !IRN | !KOR | !KSA | !AUS', player.id, 0x5793FA, "bold", 0); 
+    room.sendAnnouncement('🌍 AFRICA: !NGA | !CDM | !CMR | !SEN | !GHA', player.id, 0x5793FA, "bold", 0); 
+}
+function BundesligaFun(player) { // !bundesliga
+    room.sendAnnouncement('(🇩🇪) BUNDESLIGA: | !FCB | !BVB | !RBL | !B04 | !HSV', player.id, 0xF5FAF8, "bold", 0); 
+}
+function EredivisieFun(player) { // !eredivisie
+    room.sendAnnouncement('(🇳🇱) EREDIVISIE: | !AJA | !FEY | !PSV | !WIL', player.id, 0xFA6400, "bold", 0); 
+} 
+
+function Ligue1Fun(player) { // !ligue1
+    room.sendAnnouncement('(🇫🇷) LIGUE 1: | !PSG | !OGC | !OM | !OL | !ASM | !FCN | !REN | !STE', player.id, 0x3744FA, "bold", 0); 
+}
+function LigaMXFun(player) { // !ligamx
+    room.sendAnnouncement('(🇲🇽) LIGA MX: | !AMC | !CHV | !CRUZ | !TGS | !MTY', player.id, 0x75FF59, "bold", 0); 
+} 
+function LigaProFun(player) { // !ligapro
+    room.sendAnnouncement('(🇪🇨) LIGA PRO: | !LDU | !BSC | !EME | !IDV | !DEPUCA', player.id, 0xFAFF5C, "bold", 0); 
+}
+function RaiffeisenSuperLeagueFun(player) { // !superligasuiza
+    room.sendAnnouncement('(🇨🇭) RAIFFEISEN SUPER LEAGUE: | !BAS | ', player.id, 0xFF0A0A, "bold", 0); 
+}
+function Liga1PeruFun(player) { // !liga1peru
+    room.sendAnnouncement('(🇵🇪) LIGA 1: | !UNV | !ALI | !CRI | !MEL | !UCV', player.id, 0xFF1C1C, "bold", 0); 
+}
+function PrimeraLigaDeCroaciaFun(player) { // !1hnl
+    room.sendAnnouncement('(🇭🇷) Prva HNL: | !DZG | !HAJ | !RJK | !OSI | !NKLOK | !GOR | !SLB | !IST | !IZA | !VAR', player.id, 0xFF3B3B, "bold", 0); 
+}
+function PrimeiraLigaFun(player) { // !primeiraliga
+    room.sendAnnouncement('(🇵🇹) Primeira Liga: | !BEN | !SPO | !FCP | !SCB', player.id, 0xFF3B3B, "bold", 0); 
+}
+
+function EquiposEsportsFun(player) { // !esports
+    room.sendAnnouncement("(🎮) EQUIPOS ESPORTS:  | !FURIA | !ISURUS | !9Z | !KUNISPORT | !TRONCOS | !PORCINOS | !SAIYANS | !BARRIO | !ANIQUILADORES |", player.id, 0x00FF00, "bold", 0); 
+    room.sendAnnouncement("| !JIJANTES | !MOSTOLES | !RAYO | !XBUYER | !1K | !FURIUS | !PIO |", player.id, 0x00FF00, "bold", 0); 
+}
+
+
+
+
+
+// Definiciones de funciones para River Plate (y otras funciones similares)
+function RiverFun(player) {
+    room.sendAnnouncement('𝘊𝘭𝘶𝘣 𝘈𝘵𝘭𝘦𝘵𝘪𝘤𝘰 𝐑𝐈𝐕𝐄𝐑 𝐏𝐋𝐀𝐓𝐄 - 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('riv/titular/red | riv/titular/blue | riv/alternativa/red | riv/alternativa/blue | riv/tercera/red | riv/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RIVTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 30;
+        redTextColor = 0x231f20;
+        redColor = [0xffffff, 0xee1b2c, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RIVER PLATE";
+    }
+}
+
+function RIVTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 30;
+        blueTextColor = 0x231f20;
+        blueColor = [0xffffff, 0xda291c, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RIVER PLATE";
+    }
+}
+
+function RIVAlternativaRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 64;
+        redTextColor = 0xffffff;
+        redColor = [0xf0232f, 0x312b31, 0x281f22];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RIVER PLATE";
+    }
+}
+
+function RIVAlternativaBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 64;
+        blueTextColor = 0xffffff;
+        blueColor = [0xf0232f, 0x312b31, 0x281f22];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RIVER PLATE";
+    }
+}
+
+function RIVTerceraRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0x271d1c;
+        redColor = [0xf71e26, 0xf0f1f5, 0xf71e26];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RIVER PLATE";
+    }
+}
+
+function RIVTerceraBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0x271d1c;
+        blueColor = [0xf71e26, 0xf0f1f5, 0xf71e26];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RIVER PLATE";
+    }
+}
+function BocaFun(player) { // !BOC
+    room.sendAnnouncement('𝘊𝘭𝘶𝘣 𝘈𝘵𝘭𝘦𝘵𝘪𝘤𝘰 𝐁𝐎𝐂𝐀 𝐉𝐔𝐍𝐈𝐎𝐑𝐒 - 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x0061ce, "bold", 0);
+    room.sendAnnouncement('boc/titular/red | boc/titular/blue | boc/alternativa/red |boc/alternativa/blue | boc/tercera/red |boc/tercera/blue | ', player.id, 0x0061ce, "bold", 0);
+}
+
+function BOCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x033f86, 0xfab900, 0x033f86];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOCA JRS.";
+    }
+}
+
+function BOCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x033f86, 0xfab900, 0x033f86];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOCA JRS.";
+    }
+}
+
+function BOCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 134;
+        redTextColor = 0x00448b;
+        redColor = [0xC9C5D3, 0xD4CEDA, 0xD4CEDA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOCA JRS.";
+    }
+}
+
+function BOCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 134;
+        blueTextColor = 0x00448b;
+        blueColor = [0xC9C5D3, 0xD4CEDA, 0xD4CEDA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOCA JRS.";
+    }
+}
+
+function BOCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 118;
+        redTextColor = 0x142090;
+        redColor = [0xEBE12F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOCA JRS.";
+    }
+}
+
+function BOCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 118;
+        blueTextColor = 0x142090;
+        blueColor = [0xEBE12F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOCA JRS.";
+    }
+}
+
+function SanLorenzoFun(player) { // !SLO
+    room.sendAnnouncement('San Lorenzo | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('slo/titular/red | slo/titular/blue | slo/alternativa/red | slo/alternativa/blue | slo/tercera/red | slo/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SLOTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xe9282d, 0x1d3b56, 0xe9282d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN LORENZO";
+    }
+}
+
+function SLOTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xe9282d, 0x1d3b56, 0xe9282d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN LORENZO";
+    }
+}
+
+function SLOAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1e2631;
+        redColor = [0xF2F3F7, 0xEB212F, 0x1B3146];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN LORENZO";
+    }
+}
+
+function SLOAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1e2631;
+        blueColor = [0xF2F3F7, 0xEB212F, 0x1B3146];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN LORENZO";
+    }
+}
+
+function SLOTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x172025;
+        redColor = [0xBAC3C8, 0xBAC3C8, 0xD50013];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN LORENZO";
+    }
+}
+
+function SLOTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x172025;
+        blueColor = [0xBAC3C8, 0xBAC3C8, 0xD50013];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN LORENZO";
+    }
+}
+function RacingFun(player) { // !RAC
+    room.sendAnnouncement('Racing Club | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rac/titular/red/ | rac/titular/blue/ | rac/alternativa/red | rac/alternativa/blue | rac/tercera/red | rac/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RACTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x002942;
+        redColor = [0x00a5e3, 0xFFFFFF, 0x00a5e3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RACING";
+    }
+}
+
+function RACTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x002942;
+        blueColor = [0x00a5e3, 0xFFFFFF, 0x00a5e3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RACING";
+    }
+}
+
+function RACAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x0e273b, 0x1da3dd, 0x0e273b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RACING";
+    }
+}
+
+function RACAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x0e273b, 0x1da3dd, 0x0e273b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RACING";
+    }
+}
+
+function RACTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 66;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x019bdb, 0x0f2a3d, 0x0f2a3d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RACING";
+    }
+}
+
+function RACTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 66;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x019bdb, 0x0f2a3d, 0x0f2a3d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RACING";
+    }
+}
+function IndependienteFun(player) { // !IND
+    room.sendAnnouncement('Independiente | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ind/titular/red | ind/titular/blue | ind/alternativa/red | ind/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CAITitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xffffff;
+        redColor = [0xec1c24];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INDEPENDIENTE";
+    }
+}
+
+function CAITitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xffffff;
+        blueColor = [0xec1c24];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INDEPENDIENTE";
+    }
+}
+
+function CAIAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1d245c;
+        redColor = [0x002554, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INDEPENDIENTE";
+    }
+}
+
+function CAIAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1d245c;
+        blueColor = [0x002554, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INDEPENDIENTE";
+    }
+}
+
+function AldosiviFun(player) { // !ALD
+    room.sendAnnouncement('Aldosivi | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ald/titular/red | ald/titular/blue | ald/alternativa/red | ald/alternativa/blue | ald/titular/red/2020 | ald/titular/blue/2020', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ALDTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xf5cf00, 0x3E984C , 0xf5cf00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALDOSIVI";
+    }
+}
+
+function ALDTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xf5cf00, 0x3E984C , 0xf5cf00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALDOSIVI";
+    }
+}
+
+function ALDAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xF8F232, 0xB7BBC6, 0xAAAEB7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALDOSIVI";
+    }
+}
+
+function ALDAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xF8F232, 0xB7BBC6, 0xAAAEB7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALDOSIVI";
+    }
+}
+
+function ALDTitular2020RedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xF8F232, 0x0E9E59, 0xF8F232];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALDOSIVI";
+    }
+}
+
+function ALDTitular2020BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xF8F232, 0x0E9E59, 0xF8F232];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALDOSIVI";
+    }
+}
+
+function GimnasiaFun(player) { // !GIM
+    room.sendAnnouncement('Gimnasia (LP) | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gim/titular/red | gim/titular/blue | gim/alternativa/red | gim/alternativa/blue | gim/tercera/red | gim/tercera/blue | gim/alternativa/clasica/red | gim/alternativa/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GIMTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x00afef;
+        redColor = [0xFFFFFF, 0x12175e, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA (LP)";
+    }
+}
+
+function GIMTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x00afef;
+        blueColor = [0xFFFFFF, 0x12175e, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA (LP)";
+    }
+}
+
+function GIMAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1A264F, 0x022C94];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA (LP)";
+    }
+}
+
+function GIMAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1A264F, 0x022C94];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA (LP)";
+    }
+}
+
+function GIMTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x4B4D3F, 0x221F3A, 0x4B4D3F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA (LP)";
+    }
+}
+
+function GIMTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x4B4D3F, 0x221F3A, 0x4B4D3F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA (LP)";
+    }
+}
+
+function GIMAlternativaClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x9E9EB8;
+        redColor = [0x202743, 0xFFFFFF, 0x202743];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA";
+    }
+}
+
+function GIMAlternativaClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x9E9EB8;
+        blueColor = [0x202743, 0xFFFFFF, 0x202743];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA";
+    }
+}
+
+function NewellsFun(player) { // !NOB
+    room.sendAnnouncement('Newell\'s Old Boys | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nob/titular/red | nob/titular/blue | nob/alternativa/red | nob/alternativa/blue | nob/tercera/red | nob/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NOBTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xffffff;
+        redColor = [0xee1d23, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NEWELLS";
+    }
+}
+
+function NOBTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xffffff;
+        blueColor = [0xee1d23, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NEWELLS";
+    }
+}
+
+function NOBAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xD30022, 0x222222, 0xF3F7FA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NEWELLS";
+    }
+}
+
+function NOBAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xD30022, 0x222222, 0xF3F7FA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NEWELLS";
+    }
+}
+
+function NOBTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x191919, 0xD41831, 0xD41831];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NEWELLS";
+    }
+}
+
+function NOBTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x191919, 0xD41831, 0xD41831];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NEWELLS";
+    }
+}
+
+function CentralFun(player) { // !CEN
+    room.sendAnnouncement('Rosario Central | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cen/titular/red | cen/titular/blue | cen/alternativa/red | cen/alternativa/blue | cen/tercera/red | cen/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CENTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xfcd828, 0x144178, 0xfcd828];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ROSARIO CENTRAL";
+    }
+}
+
+function CENTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xfcd828, 0x144178, 0xfcd828];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ROSARIO CENTRAL";
+    }
+}
+
+function CENAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x02487b;
+        redColor = [0xEBC800, 0xFFFFFF, 0xEBC800];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ROSARIO CENTRAL";
+    }
+}
+
+function CENAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x02487b;
+        blueColor = [0xEBC800, 0xFFFFFF, 0xEBC800];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ROSARIO CENTRAL";
+    }
+}
+
+function CENTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 121;
+        redTextColor = 0xffffff;
+        redColor = [0x006B8C, 0x0386CE, 0x02B1DC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ROSARIO CENTRAL";
+    }
+}
+
+function CENTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 121;
+        blueTextColor = 0xffffff;
+        blueColor = [0x006B8C, 0x0386CE, 0x02B1DC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ROSARIO CENTRAL";
+    }
+}
+
+function DefensaFun(player) { // !DYJ
+    room.sendAnnouncement('Defensa y Justicia | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dyj/titular/red | dyj/titular/blue | dyj/alternativa/red | dyj/alternativa/blue | dyj/clasica/red | dyj/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DYJTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x019877;
+        redColor = [0x019b5f, 0xfde101, 0xfde101];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function DYJTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x019877;
+        blueColor = [0x019b5f, 0xfde101, 0xfde101];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function DYJAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x097c55;
+        redColor = [0xaee264, 0xffffff, 0xaee264];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function DYJAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x097c55;
+        blueColor = [0xaee264, 0xffffff, 0xaee264];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function DYJClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x244528;
+        redColor = [0x007a3f, 0xffdd00, 0x007a3f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function DYJClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x244528;
+        blueColor = [0x007a3f, 0xffdd00, 0x007a3f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEFENSA Y JUSTICIA";
+    }
+}
+
+function AtleticoMadridFun(player) { // !ATM
+    room.sendAnnouncement('Atlético Madrid | 🇪🇸', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('atm/titular/red | atm/titular/blue | atm/alternativa/red | atm/alternativa/blue | atm/tercera/red | atm/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ATMTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x334c8c;
+        redColor = [0xdc092a, 0xffffff, 0xdc092a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLÉTICO MADRID";
+    }
+}
+
+function ATMTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x334c8c;
+        blueColor = [0xdc092a, 0xffffff, 0xdc092a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLÉTICO MADRID";
+    }
+}
+
+function ATMAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xe61711;
+        redColor = [0x201F24];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLÉTICO MADRID";
+    }
+}
+
+function ATMAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xe61711;
+        blueColor = [0x201F24];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLÉTICO MADRID";
+    }
+}
+
+function ATMTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 152;
+        redTextColor = 0x0a243f;
+        redColor = [0xAFD4EB, 0xA6CFE8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLÉTICO MADRID";
+    }
+}
+
+function ATMTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 152;
+        blueTextColor = 0x0a243f;
+        blueColor = [0xAFD4EB, 0xA6CFE8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLÉTICO MADRID";
+    }
+}
+
+function SevillaFun(player) { // !SEV
+    room.sendAnnouncement('Sevilla FC | 🇪🇸', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sev/titular/red | sev/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SevillaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfe0000;
+        redColor = [0xD1D1D1, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SEVILLA";
+    }
+}
+
+function SevillaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfe0000;
+        blueColor = [0xD1D1D1, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SEVILLA";
+    }
+}
+
+function BarcelonaFun(player) { // !BAR
+    room.sendAnnouncement('!BAR - 🇪🇸 | Fútbol Club Barcelona | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bar/titular/red | bar/titular/blue | bar/alternativa/red | bar/alternativa/blue | bar/tercera/red | bar/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BARTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xe89e00;
+        redColor = [0x013378, 0x841138, 0x013378];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BARCELONA";
+    }
+}
+
+function BARTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xe89e00;
+        blueColor = [0x013378, 0x841138, 0x013378];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BARCELONA";
+    }
+}
+
+function BARAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x263a7b;
+        redColor = [0xC7C7F9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BARCELONA";
+    }
+}
+
+function BARAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x263a7b;
+        blueColor = [0xC7C7F9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BARCELONA";
+    }
+}
+
+function BARTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 140;
+        redTextColor = 0x2b2e3f;
+        redColor = [0xFAEA35, 0xE32527, 0xFAEA35];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BARCELONA";
+    }
+}
+
+function BARTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 140;
+        blueTextColor = 0x2b2e3f;
+        blueColor = [0xFAEA35, 0xE32527, 0xFAEA35];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BARCELONA";
+    }
+}
+
+function RealMadridFun(player) { // !RMA
+    room.sendAnnouncement('!RMA - 🇪🇸 | Real Madrid | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rma/titular/red | rma/titular/blue | rma/alternativa/red | rma/alternativa/blue | rma/tercera/red | rma/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RMATitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x2b2e41;
+        redColor = [0xFFB333, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "REAL MADRID";
+    }
+}
+
+function RMATitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x2b2e41;
+        blueColor = [0xFFB333, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "REAL MADRID";
+    }
+}
+
+function RMAAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 67;
+        redTextColor = 0xffc94b;
+        redColor = [0x474E64, 0x323D52, 0x212B3A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "REAL MADRID";
+    }
+}
+
+function RMAAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 67;
+        blueTextColor = 0xffc94b;
+        blueColor = [0x474E64, 0x323D52, 0x212B3A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "REAL MADRID";
+    }
+}
+
+function RMATerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x002957;
+        redColor = [0x6EE2C8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "REAL MADRID";
+    }
+}
+
+function RMATerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x002957;
+        blueColor = [0x6EE2C8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "REAL MADRID";
+    }
+}
+
+function InterMilanFun(player) { // !INT
+    room.sendAnnouncement('!INT - 🇮🇹 | Inter de Milán | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('int/titular/red | int/titular/blue | int/alternativa/red | int/alternativa/blue | int/tercera/red | int/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function INTTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x00239c, 0x000000, 0x00239c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INTER MILAN";
+    }
+}
+
+function INTTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x00239c, 0x000000, 0x00239c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INTER MILAN";
+    }
+}
+
+function INTAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0157d2;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INTER MILAN";
+    }
+}
+
+function INTAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0157d2;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INTER MILAN";
+    }
+}
+
+function INTTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x48e4fa;
+        redColor = [0x0D1313];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INTER MILAN";
+    }
+}
+
+function INTTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x48e4fa;
+        blueColor = [0x0D1313];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INTER MILAN";
+    }
+}
+
+function MilanFun(player) { // !ACM
+    room.sendAnnouncement('!ACM - 🇮🇹 | AC Milan | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('acm/titular/red | acm/titular/blue | acm/alternativa/red | acm/alternativa/blue | acm/tercera/red | acm/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MILTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xdf061b, 0x000000, 0xdf061b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AC MILAN";
+    }
+}
+
+function MILTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xdf061b, 0x000000, 0xdf061b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AC MILAN";
+    }
+}
+
+function MILAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xa61726;
+        redColor = [0xFAFAFA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AC MILAN";
+    }
+}
+
+function MILAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xa61726;
+        blueColor = [0xFAFAFA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AC MILAN";
+    }
+}
+
+function MILTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf9f9f9;
+        redColor = [0x2A2A2A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AC MILAN";
+    }
+}
+
+function MILTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf9f9f9;
+        blueColor = [0x2A2A2A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AC MILAN";
+    }
+}
+
+function CruzeiroFun(player) { // !CRU
+    room.sendAnnouncement('!CRU - 🇧🇷 | Cruzeiro | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cru/titular/red | cru/titular/blue | cru/alternativa/red | cru/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CRUTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xe3e7f0;
+        redColor = [0x0146ab, 0x044bb3, 0x0146ab];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CRUZEIRO";
+    }
+}
+
+function CRUTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xe3e7f0;
+        blueColor = [0x0146ab, 0x044bb3, 0x0146ab];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CRUZEIRO";
+    }
+}
+
+function CRUAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x045ab1;
+        redColor = [0xeef1f6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CRUZEIRO";
+    }
+}
+
+function CRUAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x045ab1;
+        blueColor = [0xeef1f6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CRUZEIRO";
+    }
+}
+
+function PalmeirasFun(player) { // !PAL
+    room.sendAnnouncement('!PAL - 🇧🇷 | Palmeiras | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pal/titular/red | pal/titular/blue | pal/alternativa/red | pal/alternativa/blue | pal/tercera/red | pal/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PALTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x006337, 0x00713d, 0x00713d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PALMEIRAS";
+    }
+}
+
+function PALTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x006337, 0x00713d, 0x00713d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PALMEIRAS";
+    }
+}
+
+function PALAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x10372a;
+        redColor = [0xF2F1F2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PALMEIRAS";
+    }
+}
+
+function PALAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x10372a;
+        blueColor = [0xF2F1F2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PALMEIRAS";
+    }
+}
+
+function PALTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x5ADAC5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PALMEIRAS";
+    }
+}
+
+function PALTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x5ADAC5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PALMEIRAS";
+    }
+}
+
+
+function GremioFun(player) { // !GRE
+    room.sendAnnouncement('!GRE - 🇧🇷 | Gremio | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gre/titular/red | gre/titular/blue | gre/alternativa/red | gre/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gre/titular/red/2019 | gre/titular/blue/2019 | gre/clasica/red | gre/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GRETitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x009ee2, 0x05171d, 0x009ee2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GREMIO";
+    }
+}
+
+function GRETitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x009ee2, 0x05171d, 0x009ee2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GREMIO";
+    }
+}
+
+function GREAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0088be;
+        redColor = [0xFAFAFC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GREMIO";
+    }
+}
+
+function GREAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0088be;
+        blueColor = [0xFAFAFC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GREMIO";
+    }
+}
+
+function GRETitular2019RedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0099DB, 0x20181E, 0x0099DB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GREMIO";
+    }
+}
+
+function GRETitular2019BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x19A2FF, 0x20181E, 0x19A2FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GREMIO";
+    }
+}
+
+function GREClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xeeede8;
+        redColor = [0x03a2c9, 0x22191c, 0x03a2c9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GREMIO";
+    }
+}
+
+function GREClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xeeede8;
+        blueColor = [0x03a2c9, 0x22191c, 0x03a2c9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GREMIO";
+    }
+}
+
+function TottenhamFun(player) { // !TOT
+    room.sendAnnouncement('!TOT - 🇬🇧 | Tottenham | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tot/titular/red | tot/titular/blue | tot/alternativa/red | tot/alternativa/blue | tot/tercera/red | tot/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tot/titular/red/2018 | tot/titular/blue/2018 | tot/alternativa/red/2018 | tot/alternativa/blue/2018', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TOTTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1f2652;
+        redColor = [0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TOTTENHAM";
+    }
+}
+
+function TOTTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1f2652;
+        blueColor = [0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TOTTENHAM";
+    }
+}
+
+function TOTAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfffeff;
+        redColor = [0x1B294B, 0x1B294B, 0x232956];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TOTTENHAM";
+    }
+}
+
+function TOTAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfffeff;
+        blueColor = [0x1B294B, 0x1B294B, 0x232956];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TOTTENHAM";
+    }
+}
+
+function TOTTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x161d4f;
+        redColor = [0x3AC0EB, 0x36B4E3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TOTTENHAM";
+    }
+}
+
+function TOTTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x161d4f;
+        blueColor = [0x3AC0EB, 0x36B4E3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TOTTENHAM";
+    }
+}
+
+function TOTTitular2018RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x171c4f;
+        redColor = [0xF5F4F9, 0xF5F4F9, 0x182341];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TOTTENHAM";
+    }
+}
+
+function TOTTitular2018BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x171c4f;
+        blueColor = [0xF5F4F9, 0xF5F4F9, 0x182341];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TOTTENHAM";
+    }
+}
+
+function TOTAlternativa2018RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x20374C, 0x0EAF9B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TOTTENHAM";
+    }
+}
+
+function TOTAlternativa2018BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x20374C, 0x0EAF9B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TOTTENHAM";
+    }
+}
+
+function LiverpoolFun(player) { // !LIV
+    room.sendAnnouncement('!LIV - 🏴 | Liverpool | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('liv/titular/red | liv/titular/blue | liv/alternativa/red | liv/alternativa/blue | liv/tercera/red | liv/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LIVTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf0f0f2;
+        redColor = [0xc4021d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIVERPOOL";
+    }
+}
+
+function LIVTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf0f0f2;
+        blueColor = [0xc4021d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIVERPOOL";
+    }
+}
+
+function LIVAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xEBE8D0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIVERPOOL";
+    }
+}
+
+function LIVAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xEBE8D0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIVERPOOL";
+    }
+}
+
+function LIVTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xff451d;
+        redColor = [0xFCFE1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIVERPOOL";
+    }
+}
+
+function LIVTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xff451d;
+        blueColor = [0xFCFE1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIVERPOOL";
+    }
+}
+
+function ArgentinaFun(player) { // !ARG
+    room.sendAnnouncement('!ARG - 🇦🇷 | Argentina | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('arg/titular/red | arg/titular/blue | arg/alternativa/red | arg/alternativa/blue | arg/bandera/red | arg/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ARGTitularRedFun(player){ // 
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x2a2b2f;
+        redColor = [0xffffff, 0x84CAE4, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINA";
+    }
+}
+
+function ARGTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x2a2b2f;
+        blueColor = [0xffffff, 0x84CAE4, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINA";
+    }
+}
+
+function ARGAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xced3d9;
+        redColor = [0x0b245f, 0x214196, 0x7e6fb8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINA";
+    }
+}
+
+function ARGAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xced3d9;
+        blueColor = [0x0b245f, 0x214196, 0x7e6fb8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINA";
+    }
+}
+
+function ARGBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf6b40e;
+        redColor = [0x74ACDF, 0xFFFFFF, 0x74ACDF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINA";
+    }
+}
+
+function ARGBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf6b40e;
+        blueColor = [0x74ACDF, 0xFFFFFF, 0x74ACDF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINA";
+    }
+}
+
+
+function BelgicaFun(player) { // !BELG
+    room.sendAnnouncement('!BELG - 🇧🇪 | Bélgica | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('belg/titular/red | belg/titular/blue | belg/alternativa/red | belg/alternativa/blue | belg/bandera/red | belg/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BelgicaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 44;
+        redTextColor = 0xf1e73a;
+        redColor = [0xdc0121, 0x391517, 0xdc0121];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BÉLGICA";
+    }
+}
+
+function BelgicaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 44;
+        blueTextColor = 0xf1e73a;
+        blueColor = [0xdc0121, 0x391517, 0xdc0121];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BÉLGICA";
+    }
+}
+
+function BelgicaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xF9C700, 0xF4AC00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BÉLGICA";
+    }
+}
+
+function BelgicaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xF9C700, 0xF4AC00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BÉLGICA";
+    }
+}
+
+function BelgicaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x000000, 0xFAE042, 0xED2939];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BÉLGICA";
+    }
+}
+
+function BelgicaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x000000, 0xFAE042, 0xED2939];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BÉLGICA";
+    }
+}
+
+function BrasilFun(player) { // !BRA
+    room.sendAnnouncement('!BRA - 🇧🇷 | Brasil | Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bra/titular/red | bra/titular/blue | bra/alternativa/red | bra/alternativa/blue | bra/tercera/red | bra/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BRATitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x05a648;
+        redColor = [0xffdd00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BRASIL";
+    }
+}
+
+function BRATitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x05a648;
+        blueColor = [0xffdd00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BRASIL";
+    }
+}
+
+function BRAAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf6d91f;
+        redColor = [0x1c4c90, 0x0d60b1, 0x0e72d6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BRASIL";
+    }
+}
+
+function BRAAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf6d91f;
+        blueColor = [0x1c4c90, 0x0d60b1, 0x0e72d6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BRASIL";
+    }
+}
+
+function BRATerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0053b5;
+        redColor = [0xF8F9FE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BRASIL";
+    }
+}
+
+function BRATerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0053b5;
+        blueColor = [0xF8F9FE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BRASIL";
+    }
+}
+
+function ChileFun(player) { // !CHI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('chi/titular/red | chi/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CHITitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xed3422];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHILE";
+    }
+}
+
+function CHITitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xed3422];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHILE";
+    }
+}
+
+function UruguayFun(player) { // !URU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('uru/titular/red | uru/titular/blue | uru/alternativa/red | uru/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function URUTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2e3035;
+        redColor = [0x80bfe1, 0x76b9de];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "URUGUAY";
+    }
+}
+
+function URUTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2e3035;
+        blueColor = [0x80bfe1, 0x76b9de];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "URUGUAY";
+    }
+}
+
+function URUAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 75;
+        redTextColor = 0x373639;
+        redColor = [0x52abdf, 0xf2f3f7, 0xf2f3f7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "URUGUAY";
+    }
+}
+
+function URUAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 75;
+        blueTextColor = 0x373639;
+        blueColor = [0x52abdf, 0xf2f3f7, 0xf2f3f7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "URUGUAY";
+    }
+}
+
+
+function FranciaFun(player) { // !FRA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fra/titular/red | fra/titular/blue | fra/alternativa/red | fra/alternativa/blue | fra/bandera/red | fra/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FRATitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xeabc78;
+        redColor = [0x1b2a4a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FRANCIA";
+    }
+}
+
+function FRATitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xeabc78;
+        blueColor = [0x1b2a4a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FRANCIA";
+    }
+}
+
+function FRAAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0977c5;
+        redColor = [0xFFFFFF, 0xe2ebf2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FRANCIA";
+    }
+}
+
+function FRAAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0977c5;
+        blueColor = [0xFFFFFF, 0xe2ebf2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FRANCIA";
+    }
+}
+
+function FRABanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 1;
+        redTextColor = 0x939BA3;
+        redColor = [0x002395, 0xFFFFFF, 0xED2939];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FRANCIA";
+    }
+}
+
+function FRABanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 1;
+        blueTextColor = 0x939BA3;
+        blueColor = [0x002395, 0xFFFFFF, 0xED2939];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FRANCIA";
+    }
+}
+
+function CroaciaFun(player) { // !CRO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cro/titular/red | cro/titular/blue | cro/alternativa/red | cro/alternativa/blue | cro/tercera/red | cro/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CROTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0065c9;
+        redColor = [0xD6001E, 0xF2F0F3, 0xF2F0F3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CROACIA";
+    }
+}
+
+function CROTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0065c9;
+        blueColor = [0xD6001E, 0xF2F0F3, 0xF2F0F3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CROACIA";
+    }
+}
+
+function CROAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf6f6f8;
+        redColor = [0xE50738, 0x0151C0, 0x0151C0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CROACIA";
+    }
+}
+
+function CROAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf6f6f8;
+        blueColor = [0xE50738, 0x0151C0, 0x0151C0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CROACIA";
+    }
+}
+
+function CROTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe43840;
+        redColor = [0x272E30, 0x4F5857];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CROACIA";
+    }
+}
+
+function CROTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe43840;
+        blueColor = [0x272E30, 0x4F5857];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CROACIA";
+    }
+}
+
+function NapoliFun(player) { // !NAP
+    room.sendAnnouncement('Napoli | 🇮🇹', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nap/titular/red | nap/titular/blue | nap/alternativa/red | nap/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NAPTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x01b9eb];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NAPOLI";
+    }
+}
+
+function NAPTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x01b9eb];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NAPOLI";
+    }
+}
+
+function NAPAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 299;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x7E8641, 0x7E8641, 0x33392E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NAPOLI";
+    }
+}
+
+function NAPAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 299;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x7E8641, 0x7E8641, 0x33392E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NAPOLI";
+    }
+}
+
+function BayernFun(player) { // !FCB
+    room.sendAnnouncement('Bayern de Múnich | 🇩🇪', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fcb/titular/red | fcb/titular/blue | fcb/alternativa/red | fcb/alternativa/blue | fcb/tercera/red | fcb/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FCBTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xdc052d, 0xed0038, 0xed0038];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BAYERN DE MUNICH";
+    }
+}
+
+function FCBTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xdc052d, 0xed0038, 0xed0038];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BAYERN DE MUNICH";
+    }
+}
+
+function FCBAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x62676a;
+        redColor = [0xF6F8FC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BAYERN DE MUNICH";
+    }
+}
+
+function FCBAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x62676a;
+        blueColor = [0xF6F8FC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BAYERN DE MUNICH";
+    }
+}
+
+function FCBTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xe76352;
+        redColor = [0x132243];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BAYERN DE MUNICH";
+    }
+}
+
+function FCBTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xe76352;
+        blueColor = [0x132243];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BAYERN DE MUNICH";
+    }
+}
+
+function BorussiaFun(player) { // !BVB
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bvb/titular/red | bvb/titular/blue | bvb/alternativa/red | bvb/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function BorussiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2d2317;
+        redColor = [0x2c1d05, 0xf5e200, 0xf5e200];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BORUSSIA DORTMUND";
+    }
+}
+function BorussiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2d2317;
+        blueColor = [0x2c1d05, 0xf5e200, 0xf5e200];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BORUSSIA DORTMUND";
+    }
+}
+function BorussiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xcecfd1;
+        redColor = [0x252525];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BORUSSIA DORTMUND";
+    }
+}
+function BorussiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xcecfd1;
+        blueColor = [0x252525];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BORUSSIA DORTMUND";
+    }
+}
+
+function JuventusFun(player) { // !JUV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('juv/titular/red | juv/titular/blue | juv/alternativa/red | juv/alternativa/blue | juv/tercera/red | juv/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+
+}
+function JuventusTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf7c902;
+        redColor = [0x1f1a20, 0xffffff, 0x1f1a20];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JUVENTUS";
+    }
+}
+function JuventusTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf7c902;
+        blueColor = [0x1f1a20, 0xffffff, 0x1f1a20];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JUVENTUS";
+    }
+}
+function JuventusAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 126;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFAA18D, 0x25242A, 0x25242A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JUVENTUS";
+    }
+}
+function JuventusAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 126;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFAA18D, 0x25242A, 0x25242A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JUVENTUS";
+    }
+}
+function JuventusTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 130;
+        redTextColor = 0x6370f2;
+        redColor = [0xFfffff, 0xF3E757, 0xF3E757];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JUVENTUS";
+    }
+}
+function JuventusTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 130;
+        blueTextColor = 0x6370f2;
+        blueColor = [0xFfffff, 0xF3E757, 0xF3E757];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JUVENTUS";
+    }
+}
+
+function EstudiantesFun(player) { // !EST
+    room.sendAnnouncement('Estudiantes | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('est/titular/red | est/titular/blue | est/alternativa/red | est/alternativa/blue | est/tercera/red | est/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EstudiantesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x323232;
+        redColor = [0xe41815, 0xFFFFFF, 0xe41815];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESTUDIANTES (LP)";
+    }
+}
+
+function EstudiantesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x323232;
+        blueColor = [0xe41815, 0xFFFFFF, 0xe41815];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESTUDIANTES (LP)";
+    }
+}
+
+function EstudiantesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xf51a22;
+        redColor = [0xffffff, 0xffffff, 0xF51A22];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESTUDIANTES (LP)";
+    }
+}
+
+function EstudiantesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xf51a22;
+        blueColor = [0xffffff, 0xffffff, 0xF51A22];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESTUDIANTES (LP)";
+    }
+}
+
+function EstudiantesTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x242424, 0xD9201E, 0xD9201E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESTUDIANTES (LP)";
+    }
+}
+
+function EstudiantesTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x242424, 0xD9201E, 0xD9201E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESTUDIANTES (LP)";
+    }
+}
+function BanfieldFun(player) { // !BAND
+    room.sendAnnouncement('Banfield | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('band/titular/red | band/titular/blue | band/alternativa/red | band/alternativa/blue | band/clasica/red | band/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BanfieldTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xb59859;
+        redColor = [0x007836, 0xffffff, 0x007836];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BANFIELD";
+    }
+}
+
+function BanfieldTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xb59859;
+        blueColor = [0x007836, 0xffffff, 0x007836];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BANFIELD";
+    }
+}
+
+function BanfieldAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 44;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1C1C1C, 0x09694A, 0x1C1C1C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BANFIELD";
+    }
+}
+
+function BanfieldAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 44;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1C1C1C, 0x09694A, 0x1C1C1C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BANFIELD";
+    }
+}
+
+function BanfieldClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0a0a0a;
+        redColor = [0x02953F, 0xFEFFFF, 0x02953F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BANFIELD";
+    }
+}
+
+function BanfieldClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0a0a0a;
+        blueColor = [0x02953F, 0xFEFFFF, 0x02953F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BANFIELD";
+    }
+}
+
+function LanusFun(player) { // !LAN
+    room.sendAnnouncement('Lanús | 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lan/titular/red | lan/titular/blue | lan/alternativa/red | lan/alternativa/blue | lan/tercera/red | lan/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+
+}
+
+function LanusTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x6a2331, 0x74192e, 0x74192e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LANÚS";
+    }
+}
+
+function LanusTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x6a2331, 0x74192e, 0x74192e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LANÚS";
+    }
+}
+
+function LanusAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x6c1921;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LANÚS";
+    }
+}
+
+function LanusAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x6c1921;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LANÚS";
+    }
+}
+
+function LanusTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 133;
+        redTextColor = 0x8c2246;
+        redColor = [0x591733, 0xFCCBDE, 0xFCCBDE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LANÚS";
+    }
+}
+
+function LanusTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 133;
+        blueTextColor = 0x8c2246;
+        blueColor = [0x591733, 0xFCCBDE, 0xFCCBDE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LANÚS";
+    }
+}
+
+function ManUnitedFun(player) { // !MUN
+    room.sendAnnouncement('Manchester United | ⚽️', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mun/titular/red | mun/titular/blue | mun/alternativa/red | mun/alternativa/blue | mun/tercera/red | mun/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ManUnitedTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xc4040f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER UNITED";
+    }
+}
+
+function ManUnitedTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xc4040f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER UNITED";
+    }
+}
+
+function ManUnitedAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x191816;
+        redColor = [0xE1D2BF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER UNITED";
+    }
+}
+
+function ManUnitedAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x231f20;
+        blueColor = [0xF5EAD4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER UNITED";
+    }
+}
+
+function ManUnitedTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x231f20;
+        redColor = [0xF5EAD4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER UNITED";
+    }
+}
+
+function ManUnitedTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 233;
+        blueTextColor = 0xf24134;
+        blueColor = [0x2B2F35, 0x212125];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER UNITED";
+    }
+}
+
+function ManCityFun(player) { // !MCI
+    room.sendAnnouncement('Manchester City | ⚽️', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mci/titular/red | mci/titular/blue | mci/alternativa/red | mci/alternativa/blue | mci/tercera/red | mci/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ManCityTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x006eae;
+        redColor = [0xa3d4f2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER CITY";
+    }
+}
+
+function ManCityTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x006eae;
+        blueColor = [0xa3d4f2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER CITY";
+    }
+}
+
+function ManCityAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -40;
+        redTextColor = 0xf7c100;
+        redColor = [0x1d1417, 0xb20113, 0x1d1417];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER CITY";
+    }
+}
+
+function ManCityAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -40;
+        blueTextColor = 0xf7c100;
+        blueColor = [0x1d1417, 0xb20113, 0x1d1417];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER CITY";
+    }
+}
+
+function ManCityTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x99d5f7, 0x293158, 0x293158];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MANCHESTER CITY";
+    }
+}
+
+function ManCityTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x99d5f7, 0x293158, 0x293158];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MANCHESTER CITY";
+    }
+}
+
+
+function ArsenalFun(player) { // !ARS
+    room.sendAnnouncement('Arsenal FC | ⚽️', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ars/titular/red | ars/titular/blue | ars/alternativa/red | ars/alternativa/blue | ars/tercera/red | ars/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ArsenalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 69;
+        redTextColor = 0xd3a255;
+        redColor = [0xffffff, 0xd10413, 0xd10413];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL FC";
+    }
+}
+
+function ArsenalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 69;
+        blueTextColor = 0xd3a255;
+        blueColor = [0xffffff, 0xd10413, 0xd10413];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL FC";
+    }
+}
+
+function ArsenalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 55;
+        redTextColor = 0x233f67;
+        redColor = [0xfef2ab];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL FC";
+    }
+}
+
+function ArsenalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 55;
+        blueTextColor = 0x233f67;
+        blueColor = [0xfef2ab];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL FC";
+    }
+}
+
+function ArsenalTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfecc00;
+        redColor = [0x27354F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL FC";
+    }
+}
+
+function ArsenalTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfecc00;
+        blueColor = [0x27354F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL FC";
+    }
+}
+
+function ChelseaFun(player) { // !CHE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('che/titular/red | che/titular/blue | che/alternativa/red | che/alternativa/blue | che/tercera/red | che/tercera/blue | che/cuarta/red | che/cuarta/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChelseaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 66;
+        redTextColor = 0xe8d821;
+        redColor = [0x035fc2, 0x043077, 0x043077];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHELSEA";
+    }
+}
+
+function ChelseaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 66;
+        blueTextColor = 0xe8d821;
+        blueColor = [0x035fc2, 0x043077, 0x043077];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHELSEA";
+    }
+}
+
+function ChelseaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 52;
+        redTextColor = 0x003b7d;
+        redColor = [0xF8F8F8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHELSEA";
+    }
+}
+
+function ChelseaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 52;
+        blueTextColor = 0x003b7d;
+        blueColor = [0xF8F8F8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHELSEA";
+    }
+}
+
+function ChelseaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 56;
+        redTextColor = 0xf9500f;
+        redColor = [0x1A1A1A, 0x161616];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHELSEA";
+    }
+}
+
+function ChelseaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 56;
+        blueTextColor = 0xf9500f;
+        blueColor = [0x1A1A1A, 0x161616];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHELSEA";
+    }
+}
+
+function ChelseaCuartaRedFun(player){
+    if (player.admin == true){
+        redAngle = 56;
+        redTextColor = 0xf4da45;
+        redColor = [0x33459F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHELSEA";
+    }
+}
+
+function ChelseaCuartaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 56;
+        blueTextColor = 0xf4da45;
+        blueColor = [0x33459F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHELSEA";
+    }
+}
+
+function ParanaenseFun(player) { // !PAR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('par/titular/red | par/titular/blue | par/alternativa/red | par/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ParanaenseTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 48;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xC6012C, 0xC6012C, 0x100E0F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PARANAENSE";
+    }
+}
+
+function ParanaenseTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 48;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xC6012C, 0xC6012C, 0x100E0F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PARANAENSE";
+    }
+}
+
+function ParanaenseAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 48;
+        redTextColor = 0x0e0e0e;
+        redColor = [0xFFFFFF, 0xFFFFFF, 0xBABABA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PARANAENSE";
+    }
+}
+
+function ParanaenseAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 48;
+        blueTextColor = 0x0e0e0e;
+        blueColor = [0xFFFFFF, 0xFFFFFF, 0xBABABA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PARANAENSE";
+    }
+}
+
+
+function HuracanFun(player) { // !HUR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hur/titular/red | hur/titular/blue | hur/alternativa/red | hur/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HuracanTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 52;
+        redTextColor = 0xff0000;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HURACÁN";
+    }
+}
+
+function HuracanTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 52;
+        blueTextColor = 0xff0000;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HURACÁN";
+    }
+}
+
+function HuracanAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xd02939, 0xa61829, 0xd02939];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HURACÁN";
+    }
+}
+
+function HuracanAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xd02939, 0xa61829, 0xd02939];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HURACÁN";
+    }
+}
+
+function TigreFun(player) { // !TIG
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tig/titular/red | tig/titular/blue | tig/alternativa/red | tig/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TigreTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x304383, 0xcb1b2d, 0x304383];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TIGRE";
+    }
+}
+
+function TigreTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x304383, 0xcb1b2d, 0x304383];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TIGRE";
+    }
+}
+
+function TigreAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2d3e6a;
+        redColor = [0xffffff, 0xe32527, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TIGRE";
+    }
+}
+
+function TigreAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2d3e6a;
+        blueColor = [0xffffff, 0xe32527, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TIGRE";
+    }
+}
+
+function AlemaniaFun(player) { // !ALE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ale/titular/red | ale/titular/blue | ale/alternativa/red | ale/alternativa/blue | ale/bandera/red | ale/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlemaniaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xf0cda5;
+        redColor = [0xffffff, 0x281c26, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALEMANIA";
+    }
+}
+
+function AlemaniaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xf0cda5;
+        blueColor = [0xffffff, 0x281c26, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALEMANIA";
+    }
+}
+
+function AlemaniaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x222222, 0x1b1b1b, 0x1b1b1b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALEMANIA";
+    }
+}
+
+function AlemaniaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x222222, 0x1b1b1b, 0x1b1b1b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALEMANIA";
+    }
+}
+
+function AlemaniaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x000000, 0xDD0000, 0xFFCE00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALEMANIA";
+    }
+}
+
+function AlemaniaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x000000, 0xDD0000, 0xFFCE00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALEMANIA";
+    }
+}
+
+function EspanaFun(player) { // !ESP
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('esp/titular/red | esp/titular/blue | esp/alternativa/red | esp/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EspanaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0xffc000;
+        redColor = [0xbb0c10];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESPAÑA";
+    }
+}
+
+function EspanaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0xffc000;
+        blueColor = [0xbb0c10];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESPAÑA";
+    }
+}
+
+function EspanaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 270;
+        redTextColor = 0x0da2e7;
+        redColor = [0xa9dcf7, 0xbee4f9, 0xdcf0fb];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESPAÑA";
+    }
+}
+
+function EspanaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 270;
+        blueTextColor = 0x0da2e7;
+        blueColor = [0xa9dcf7, 0xbee4f9, 0xdcf0fb];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESPAÑA";
+    }
+}
+
+function EspanaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xad1519;
+        redColor = [0xC60B1E, 0xFFC400, 0xC60B1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ESPAÑA";
+    }
+}
+
+function EspanaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xad1519;
+        blueColor = [0xC60B1E, 0xFFC400, 0xC60B1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ESPAÑA";
+    }
+}
+
+
+function PortugalFun(player) { // !POR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('por/titular/red | por/titular/blue | por/alternativa/red | por/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PortugalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 130;
+        redTextColor = 0xf9cd39;
+        redColor = [0xa92121, 0xa92121, 0x01553e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PORTUGAL";
+    }
+}
+
+function PortugalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 130;
+        blueTextColor = 0xf9cd39;
+        blueColor = [0xa92121, 0xa92121, 0x01553e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PORTUGAL";
+    }
+}
+
+function PortugalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x030303;
+        redColor = [0xe1faf8, 0xe1faf8, 0xf04256];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PORTUGAL";
+    }
+}
+
+function PortugalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x030303;
+        blueColor = [0xe1faf8, 0xe1faf8, 0xf04256];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PORTUGAL";
+    }
+}
+
+function ArgentinosJrsFun(player) { // !AAAJ
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('aaaj/titular/red | aaaj/titular/blue | aaaj/alternativa/red | aaaj/alternativa/blue | aaaj/tercera/red | aaaj/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ArgentinosJrsTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 123;
+        redTextColor = 0x005da4;
+        redColor = [0xeb2a2f, 0xFFFFFF, 0xeb2a2f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINOS JRS.";
+    }
+}
+
+function ArgentinosJrsTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 123;
+        blueTextColor = 0x005da4;
+        blueColor = [0xeb2a2f, 0xFFFFFF, 0xeb2a2f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINOS JRS.";
+    }
+}
+
+function ArgentinosJrsAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xeb2a2f;
+        redColor = [0xeb2a2f, 0xFFFFFF, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINOS JRS.";
+    }
+}
+
+function ArgentinosJrsAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xeb2a2f;
+        blueColor = [0xeb2a2f, 0xFFFFFF, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINOS JRS.";
+    }
+}
+
+function ArgentinosJrsTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 135;
+        redTextColor = 0x585F8A;
+        redColor = [0x0255bd, 0xFFFFFF, 0x0255bd];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINOS JRS.";
+    }
+}
+
+function ArgentinosJrsTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 135;
+        blueTextColor = 0x585F8A;
+        blueColor = [0x0255bd, 0xFFFFFF, 0x0255bd];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINOS JRS.";
+    }
+}
+
+function AllBoysFun(player) { // !ALB
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('alb/titular/red | alb/titular/blue | alb/alternativa/red | alb/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AllBoysTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x282a27;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALL BOYS";
+    }
+}
+
+function AllBoysTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x282a27;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALL BOYS";
+    }
+}
+
+function AllBoysAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 50;
+        redTextColor = 0xD6D6D6;
+        redColor = [0xFFFFFF, 0x1E1A17, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALL BOYS";
+    }
+}
+
+function AllBoysAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 50;
+        blueTextColor = 0xD6D6D6;
+        blueColor = [0xFFFFFF, 0x1E1A17, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALL BOYS";
+    }
+}
+
+function AtlantaFun(player) { // !ATL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('atl/titular/red | atl/titular/blue | atl/alternativa/red | atl/alternativa/blue  | atl/escudo/red | atl/escudo/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AtlantaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xedbf00, 0x34458a, 0xedbf00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLANTA";
+    }
+}
+
+function AtlantaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xedbf00, 0x34458a, 0xedbf00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLANTA";
+    }
+}
+
+function AtlantaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xedd41c;
+        redColor = [0x03264E, 0x09203C, 0x09203C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLANTA";
+    }
+}
+
+function AtlantaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xedd41c;
+        blueColor = [0x03264E, 0x09203C, 0x09203C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLANTA";
+    }
+}
+
+function AtlantaEscudoRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFBBB51, 0x18306E, 0xFBBB51];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATLANTA";
+    }
+}
+
+function AtlantaEscudoBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFBBB51, 0x18306E, 0xFBBB51];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATLANTA";
+    }
+}
+
+function BelgranoFun(player) { // !BEL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bel/titular/red | bel/titular/blue | bel/alternativa/red | bel/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BelgranoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0xffffff;
+        redColor = [0x1a120c, 0x009cd0, 0x009cd0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BELGRANO";
+    }
+}
+
+function BelgranoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0xffffff;
+        blueColor = [0x1a120c, 0x009cd0, 0x009cd0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BELGRANO";
+    }
+}
+
+function BelgranoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0x000000;
+        redColor = [0x10B0FF, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BELGRANO";
+    }
+}
+
+function BelgranoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0x000000;
+        blueColor = [0x10B0FF, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BELGRANO";
+    }
+}
+
+function ChacaritaFun(player) { // !CHA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cha/titular/red | cha/titular/blue | cha/alternativa/red | cha/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChacaritaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x000000, 0xD2191E, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHACARITA JRS";
+    }
+}
+
+function ChacaritaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x000000, 0xD2191E, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHACARITA JRS";
+    }
+}
+
+function ChacaritaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x9C9C9C;
+        redColor = [0xD2191E, 0xFFFFFF, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHACARITA JRS";
+    }
+}
+
+function ChacaritaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x9C9C9C;
+        blueColor = [0xD2191E, 0xFFFFFF, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHACARITA JRS";
+    }
+}
+
+function TalleresFun(player) { // !TAL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tal/titular/red | tal/titular/blue | tal/alternativa/red | tal/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TalleresTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xa7a9ab;
+        redColor = [0x1e315a, 0xFFFFFF, 0x1e315a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TALLERES (C)";
+    }
+}
+
+function TalleresTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xa7a9ab;
+        blueColor = [0x1e315a, 0xFFFFFF, 0x1e315a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TALLERES (C)";
+    }
+}
+
+function TalleresAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x3A4466;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TALLERES (C)";
+    }
+}
+
+function TalleresAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x3A4466;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TALLERES (C)";
+    }
+}
+
+function PlatenseFun(player) { // !PLA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pla/titular/red | pla/titular/blue | pla/alternativa/red | pla/alternativa/blue | pla/tercera/red | pla/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PlatenseTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfd6f21;
+        redColor = [0xFFFFFF, 0x5a3e22, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PLATENSE";
+    }
+}
+
+function PlatenseTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfd6f21;
+        blueColor = [0xFFFFFF, 0x5a3e22, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PLATENSE";
+    }
+}
+
+function PlatenseAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfb7401;
+        redColor = [0x4C3E3B, 0xFFFFFF, 0x4C3E3B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PLATENSE";
+    }
+}
+
+function PlatenseAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfb7401;
+        blueColor = [0x4C3E3B, 0xFFFFFF, 0x4C3E3B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PLATENSE";
+    }
+}
+
+function PlatenseTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x9E6F47;
+        redColor = [0xC9B6A5, 0x4A2C21, 0xC9B6A5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PLATENSE";
+    }
+}
+
+function PlatenseTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x9E6F47;
+        blueColor = [0xC9B6A5, 0x4A2C21, 0xC9B6A5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PLATENSE";
+    }
+}
+
+function OlimpoFun(player) { // !OLI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('olp/titular/red | olp/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OlimpoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x292929, 0xEDC63A, 0x292929];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLIMPO";
+    }
+}
+
+function OlimpoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x292929, 0xEDC63A, 0x292929];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLIMPO";
+    }
+}
+
+function SanMartinTucumanFun(player) { // !SMT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('smt/titular/red | smt/titular/blue | smt/alternativa/red | smt/alternativa/blue | smt/tercera/red | smt/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SanMartinTucumanTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x0F0F0F;
+        redColor = [0xE11A25, 0xFFFFFF, 0xE11A25];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN MARTÍN (T)";
+    }
+}
+
+function SanMartinTucumanTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x0F0F0F;
+        blueColor = [0xE11A25, 0xFFFFFF, 0xE11A25];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN MARTÍN (T)";
+    }
+}
+
+function SanMartinTucumanAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE31515, 0x232326, 0x232326];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN MARTÍN (T)";
+    }
+}
+
+function SanMartinTucumanAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE31515, 0x232326, 0x232326];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN MARTÍN (T)";
+    }
+}
+
+function SanMartinTucumanTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFF3A43, 0x6F3C45, 0x6F3C45];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN MARTÍN (T)";
+    }
+}
+
+function SanMartinTucumanTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFF3A43, 0x6F3C45, 0x6F3C45];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN MARTÍN (T)";
+    }
+}
+function AtlTucumanFun(player) { // !ATU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('atu/titular/red | atu/titular/blue | atu/alternativa/red | atu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AtlTucumanTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x575a5b;
+        redColor = [0x71afdb, 0xffffff, 0x71afdb];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATL. TUCUMÁN";
+    }
+}
+
+function AtlTucumanTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x575a5b;
+        blueColor = [0x71afdb, 0xffffff, 0x71afdb];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATL. TUCUMÁN";
+    }
+}
+
+function AtlTucumanAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xccd5e6;
+        redColor = [0x151A37];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATL. TUCUMÁN";
+    }
+}
+
+function AtlTucumanAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xccd5e6;
+        blueColor = [0x151A37];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATL. TUCUMÁN";
+    }
+}
+
+function FerroFun(player) { // !FCO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fco/titular/red | fco/titular/blue | fco/alternativa/red | fco/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FerroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 66;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x046c43, 0x219a57, 0x2db563];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FERRO";
+    }
+}
+
+function FerroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 66;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x00895B, 0x01935D, 0x01935D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FERRO";
+    }
+}
+
+function FerroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x016c3e;
+        redColor = [0xFAFDFF, 0xC2DCD9, 0x51BDA3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FERRO";
+    }
+}
+
+function FerroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x016c3e;
+        blueColor = [0xFAFDFF, 0xC2DCD9, 0x51BDA3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FERRO";
+    }
+}
+
+
+function NacionalFun(player) { // !NAC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nac/titular/red | nac/titular/blue | nac/alternativa/red | nac/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NacionalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf9020a;
+        redColor = [0xFAF9FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NACIONAL (UY)";
+    }
+}
+
+function NacionalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf9020a;
+        blueColor = [0xFAF9FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NACIONAL (UY)";
+    }
+}
+
+function NacionalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 55;
+        redTextColor = 0xd0142c;
+        redColor = [0x003895, 0xFFFFFF, 0x003895];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NACIONAL (UY)";
+    }
+}
+
+function NacionalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 55;
+        blueTextColor = 0xd0142c;
+        blueColor = [0x003895, 0xFFFFFF, 0x003895];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NACIONAL (UY)";
+    }
+}
+
+function PenarolFun(player) { // !PEN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pen/titular/red | pen/titular/blue | pen/alternativa/red | pen/alternativa/blue | pen/tercera/red | pen/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PenarolTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x272525, 0xF7CF00, 0x272525];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PEÑAROL";
+    }
+}
+
+function PenarolTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x272525, 0xF7CF00, 0x272525];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PEÑAROL";
+    }
+}
+
+function PenarolAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xeaba07;
+        redColor = [0xF5D205, 0x211B1B, 0x211B1B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PEÑAROL";
+    }
+}
+
+function PenarolAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xeaba07;
+        blueColor = [0xF5D205, 0x211B1B, 0x211B1B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PEÑAROL";
+    }
+}
+
+function PenarolTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xEAD300;
+        redColor = [0x8B8A8F, 0xA1A0A5, 0xB2B1B6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PEÑAROL";
+    }
+}
+
+function PenarolTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xEAD300;
+        blueColor = [0x8B8A8F, 0xA1A0A5, 0xB2B1B6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PEÑAROL";
+    }
+}
+
+function QuilmesFun(player) { // !QUI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('qui/titular/red | qui/titular/blue | qui/alternativa/red | qui/alternativa/blue | qui/tercera/red | qui/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function QuilmesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x032051;
+        redColor = [0x9BADBC, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "QUILMES";
+    }
+}
+
+function QuilmesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x032051;
+        blueColor = [0x9BADBC, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "QUILMES";
+    }
+}
+
+function QuilmesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x004FC6, 0x00215E, 0x00215E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "QUILMES";
+    }
+}
+
+function QuilmesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x004FC6, 0x00215E, 0x00215E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "QUILMES";
+    }
+}
+
+function QuilmesTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 152;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x2C2F36, 0x15181F, 0x2C2F36];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "QUILMES";
+    }
+}
+
+function QuilmesTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 152;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x2C2F36, 0x15181F, 0x2C2F36];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "QUILMES";
+    }
+}
+
+function ChicagoFun(player) { // !CHI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nch/titular/red | nch/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChicagoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 360;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x3AC991, 0x000000, 0x3AC991];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "NUEVA CHICAGO";
+    }
+}
+
+function ChicagoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 360;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x3AC991, 0x000000, 0x3AC991];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "NUEVA CHICAGO";
+    }
+}
+
+function MoronFun(player) { // !MOR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mor/titular/red | mor/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MoronTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x242b35;
+        redColor = [0xFFFFFF, 0xE21C1C, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MORÓN";
+    }
+}
+
+function MoronTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x242b35;
+        blueColor = [0xFFFFFF, 0xE21C1C, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MORÓN";
+    }
+}
+
+function UnionFun(player) { // !UNI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('uni/titular/red | uni/titular/blue | uni/alternativa/red | uni/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UnionTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x007fd6;
+        redColor = [0xda251d, 0xffffff, 0xda251d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "UNIÓN";
+    }
+}
+
+function UnionTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x007fd6;
+        blueColor = [0xda251d, 0xffffff, 0xda251d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "UNIÓN";
+    }
+}
+
+function UnionAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 129;
+        redTextColor = 0xf2f3f5;
+        redColor = [0xed1f29, 0x0177cf, 0x0295e3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "UNIÓN";
+    }
+}
+
+function UnionAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 129;
+        blueTextColor = 0xf2f3f5;
+        blueColor = [0xed1f29, 0x0177cf, 0x0295e3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "UNIÓN";
+    }
+}
+
+function ColonFun(player) { // !CSF
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('csf/titular/red | csf/titular/blue | csf/alternativa/red | csf/alternativa/blue | csf/tercera/red | csf/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ColonTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xe0c069;
+        redColor = [0xc80000, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLÓN";
+    }
+}
+
+function ColonTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xe0c069;
+        blueColor = [0xc80000, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLÓN";
+    }
+}
+
+function ColonAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0x000000;
+        redColor = [0x7B0C1D, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLÓN";
+    }
+}
+
+function ColonAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0x000000;
+        blueColor = [0x7B0C1D, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLÓN";
+    }
+}
+
+function ColonTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xf9c78c;
+        redColor = [0x18161b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLÓN";
+    }
+}
+
+function ColonTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xf9c78c;
+        blueColor = [0x18161b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLÓN";
+    }
+}
+
+function SarandiFun(player) { // !ARSE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('arse/titular/red | arse/titular/blue | arse/alternativa/red | arse/alternativa/blue | arse/tercera/red | arse/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SarandiTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x00aeef, 0xee3e34, 0x00aeef];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function SarandiTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x00aeef, 0xee3e34, 0x00aeef];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function SarandiAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1D1E1E, 0xF52626, 0x1D1E1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function SarandiAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1D1E1E, 0xF52626, 0x1D1E1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function SarandiTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xe61b37;
+        redColor = [0xFFFFFF, 0xFFFFFF, 0x3BA1F6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function SarandiTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xe61b37;
+        blueColor = [0xFFFFFF, 0xFFFFFF, 0x3BA1F6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARSENAL DE SARANDÍ";
+    }
+}
+
+function DocksudFun(player) { // !DOC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('doc/titular/red | doc/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DocksudTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x254494, 0xF3C706, 0x254494];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DOCK SUD";
+    }
+}
+
+function DocksudTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x254494, 0xF3C706, 0x254494];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DOCK SUD";
+    }
+}
+
+function ColombiaFun(player) { // !COL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('col/titular/red | col/titular/blue | col/alternativa/red | col/alternativa/blue | col/bandera/red | col/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ColombiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x3c4462;
+        redColor = [0xfdfd02];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLOMBIA";
+    }
+}
+
+function ColombiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x3c4462;
+        blueColor = [0xfdfd02];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLOMBIA";
+    }
+}
+
+function ColombiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xf1eb56;
+        redColor = [0x3671AF, 0x3168A0, 0x1E477C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLOMBIA";
+    }
+}
+
+function ColombiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xf1eb56;
+        blueColor = [0x3671AF, 0x3168A0, 0x1E477C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLOMBIA";
+    }
+}
+
+function ColombiaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFCD116, 0x003893, 0xCE1126];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "COLOMBIA";
+    }
+}
+
+function ColombiaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFCD116, 0x003893, 0xCE1126];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "COLOMBIA";
+    }
+}
+function PeruFun(player) { // !PER
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('per/titular/red | per/titular/blue | per/alternativa/red | per/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function PeruTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 52;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xdf1117, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PERÚ";
+    }
+}
+function PeruTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 52;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xdf1117, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PERÚ";
+    }
+}
+function PeruAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 52;
+        redTextColor = 0x000000;
+        redColor = [0xdc1e1e, 0xffffff, 0xdc1e1e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PERÚ";
+    }
+}
+function PeruAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 52;
+        blueTextColor = 0x000000;
+        blueColor = [0xdc1e1e, 0xffffff, 0xdc1e1e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PERÚ";
+    }
+}
+function WestBromFun(player) { // !WBA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wba/titular/red | wba/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function WestBromTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xde2b2e;
+        redColor = [0xFFFFFF, 0x1B2A41, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "WEST BROM";
+    }
+}
+function WestBromTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xde2b2e;
+        blueColor = [0xFFFFFF, 0x1B2A41, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "WEST BROM";
+    }
+}
+
+function AstonVillaFun(player) { // !AVL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('avl/titular/red | avl/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AstonVillaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 130;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xC5DBF3, 0x97012F, 0x6A0D2A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ASTON VILLA";
+    }
+}
+
+function AstonVillaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 130;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xC5DBF3, 0x97012F, 0x6A0D2A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ASTON VILLA";
+    }
+}
+
+function FulhamFun(player) { // !FUL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ful/titular/red | ful/titular/blue | ful/alternativa/red | ful/alternativa/blue | ful/clasica/red | ful/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FulhamTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1e202c;
+        redColor = [0xF0EFF5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FULHAM FC";
+    }
+}
+
+function FulhamTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1e202c;
+        blueColor = [0xF0EFF5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FULHAM FC";
+    }
+}
+
+function FulhamAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xC71B29, 0x372729, 0xC71B29];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FULHAM FC";
+    }
+}
+
+function FulhamAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xC71B29, 0x372729, 0xC71B29];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FULHAM FC";
+    }
+}
+
+function FulhamClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xe41b15;
+        redColor = [0x000000, 0xFFFFFF, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FULHAM FC";
+    }
+}
+
+function FulhamClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xe41b15;
+        blueColor = [0x000000, 0xFFFFFF, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FULHAM FC";
+    }
+}
+
+function LeicesterFun(player) { // !LEI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lei/titular/red | lei/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LeicesterTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 270;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x364CFA, 0x3035FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LEICESTER";
+    }
+}
+
+function LeicesterTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 270;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x364CFA, 0x3035FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LEICESTER";
+    }
+}
+
+function DanubioFun(player) { // !DAN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dan/titular/red | dan/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DanubioTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 50;
+        redTextColor = 0xdb0d24;
+        redColor = [0xFFFFFF, 0x131514, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DANUBIO";
+    }
+}
+
+function DanubioTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 50;
+        blueTextColor = 0xdb0d24;
+        blueColor = [0xFFFFFF, 0x131514, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DANUBIO";
+    }
+}
+function RamplaJrsFun(player) { // !RAM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ram/titular/red | ram/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RamplaJrsTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFF2E3B, 0x1D836D, 0xFF2E3B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RAMPLA JRS";
+    }
+}
+
+function RamplaJrsTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFF2E3B, 0x1D836D, 0xFF2E3B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RAMPLA JRS";
+    }
+}
+
+function SacachispasFun(player) { // !SCH
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sch/titular/red | sch/titular/blue | sch/alternativa/red | sch/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SacachispasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x201766;
+        redColor = [0xC8B8F8, 0xFFFFFF, 0xC8B8F8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SACACHISPAS";
+    }
+}
+
+function SacachispasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x201766;
+        blueColor = [0xC8B8F8, 0xFFFFFF, 0xC8B8F8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SACACHISPAS";
+    }
+}
+
+function SacachispasAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 56;
+        redTextColor = 0xffffff;
+        redColor = [0x5944A5, 0xAF94D9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SACACHISPAS";
+    }
+}
+
+function SacachispasAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 56;
+        blueTextColor = 0xffffff;
+        blueColor = [0x5944A5, 0xAF94D9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SACACHISPAS";
+    }
+}
+
+function HolandaFun(player) { // !HOL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hol/titular/red | hol/titular/blue | hol/alternativa/red | hol/alternativa/blue | hol/retro/red | hol/retro/blue  hol/bandera/red | hol/bandera/blue | hol/alternativa/2019 | hol/alternativa/2019', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hol/titular/red/2014 | hol/titular/blue/2014', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HolandaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 66;
+        redTextColor = 0x221817;
+        redColor = [0xfea304, 0xfeb71e, 0xffe064];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 66;
+        blueTextColor = 0x221817;
+        blueColor = [0xfea304, 0xfeb71e, 0xffe064];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function HolandaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xff7309;
+        redColor = [0x1d1d1f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xff7309;
+        blueColor = [0x1d1d1f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function HolandaAlternativa2019RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0d285f;
+        redColor = [0x4ECDE4, 0x47BAD9, 0x3CA1C7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaAlternativa2019BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0d285f;
+        blueColor = [0x4ECDE4, 0x47BAD9, 0x3CA1C7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function HolandaRetroRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2e2624;
+        redColor = [0xf87032, 0xf7965f, 0xf2bea6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaRetroBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2e2624;
+        blueColor = [0xf87032, 0xf7965f, 0xf2bea6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function HolandaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xAE1C28, 0xFFFFFF, 0x21468B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xAE1C28, 0xFFFFFF, 0x21468B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function HolandaTitular2014RedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xf9f8f6;
+        redColor = [0xff6f1c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "HOLANDA";
+    }
+}
+
+function HolandaTitular2014BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xf9f8f6;
+        blueColor = [0xff6f1c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "HOLANDA";
+    }
+}
+
+function BoliviaFun(player) { // !BOL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bol/titular/red | bol/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function BoliviaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x26A057];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOLIVIA";
+    }
+}
+function BoliviaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x26A057];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOLIVIA";
+    }
+}
+function ItaliaFun(player) { // !ITA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ita/titular/red | ita/titular/blue | ita/alternativa/red | ita/alternativa/blue | ita/bandera/red | ita/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function ItaliaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0xf1f3f2;
+        redColor = [0x167ED0, 0x1268BF, 0x0959B8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ITALIA";
+    }
+}
+function ItaliaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0xf1f3f2;
+        blueColor = [0x167ED0, 0x1268BF, 0x0959B8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ITALIA";
+    }
+}
+function ItaliaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 69;
+        redTextColor = 0x004fac;
+        redColor = [0x213651, 0xF4F4F2, 0xF4F4F2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ITALIA";
+    }
+}
+function ItaliaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 69;
+        blueTextColor = 0x004fac;
+        blueColor = [0x213651, 0xF4F4F2, 0xF4F4F2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ITALIA";
+    }
+}
+
+function ItaliaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x0064aa;
+        redColor = [0x009e3f, 0xFFFFFF, 0xe40321];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ITALIA";
+    }
+}
+function ItaliaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x0064aa;
+        blueColor = [0x009e3f, 0xFFFFFF, 0xe40321];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ITALIA";
+    }
+}
+function InglaterraFun(player) { // !ING
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ing/titular/red | ing/titular/blue | ing/alternativa/red | ing/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function InglaterraTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf3010f;
+        redColor = [0xf8f8f8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INGLATERRA";
+    }
+}
+
+function InglaterraTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf3010f;
+        blueColor = [0xf8f8f8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INGLATERRA";
+    }
+}
+
+function InglaterraAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xf2f4f3;
+        redColor = [0xf4080a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INGLATERRA";
+    }
+}
+
+function InglaterraAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xf2f4f3;
+        blueColor = [0xf4080a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INGLATERRA";
+    }
+}
+
+function ParaguayFun(player) { // !PGY
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pgy/titular/red | pgy/titular/blue | pgy/alternativa/red | pgy/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ParaguayTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0380dc;
+        redColor = [0xf61527, 0xffffff, 0xf61527];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PARAGUAY";
+    }
+}
+
+function ParaguayTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0380dc;
+        blueColor = [0xf61527, 0xffffff, 0xf61527];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PARAGUAY";
+    }
+}
+
+function ParaguayAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 55;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x024eae, 0x024eae, 0x033c9a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PARAGUAY";
+    }
+}
+
+function ParaguayAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 55;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x024eae, 0x024eae, 0x033c9a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PARAGUAY";
+    }
+}
+
+function VenezuelaFun(player) { // !VEN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ven/titular/red | ven/titular/blue | ven/alternativa/red | ven/alternativa/blue | ven/titular/red/2015 | ven/titular/blue/2015 | ven/alternativa/red/2015 | ven/alternativa/blue/2015', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function VenezuelaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x8f021d];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VENEZUELA";
+    }
+}
+
+function VenezuelaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x8f021d];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VENEZUELA";
+    }
+}
+
+function VenezuelaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x8f2937;
+        redColor = [0xf8faf9, 0xf8faf9, 0xf3f5f4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VENEZUELA";
+    }
+}
+
+function VenezuelaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x8f2937;
+        blueColor = [0xf8faf9, 0xf8faf9, 0xf3f5f4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VENEZUELA";
+    }
+}
+
+function VenezuelaTitular2015RedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xcbeb01;
+        redColor = [0x590616];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VENEZUELA";
+    }
+}
+
+function VenezuelaTitular2015BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xcbeb01;
+        blueColor = [0x590616];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VENEZUELA";
+    }
+}
+
+function VenezuelaAlternativa2015RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x640f08;
+        redColor = [0xe8f600];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VENEZUELA";
+    }
+}
+
+function VenezuelaAlternativa2015BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x640f08;
+        blueColor = [0xe8f600];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VENEZUELA";
+    }
+}
+
+function QatarFun(player) { // !QAT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('qat/titular/red | qat/titular/blue | qat/alternativa/red | qat/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function QatarTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf1eff4;
+        redColor = [0x9b003c, 0x940139, 0x940139];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "QATAR";
+    }
+}
+
+function QatarTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf1eff4;
+        blueColor = [0x9b003c, 0x940139, 0x940139];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "QATAR";
+    }
+}
+
+function QatarAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x9b232f;
+        redColor = [0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "QATAR";
+    }
+}
+
+function QatarAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x9b232f;
+        blueColor = [0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "QATAR";
+    }
+}
+
+function AjaxFun(player) { // !AJA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('aja/titular/red | aja/titular/blue | aja/alternativa/red | aja/alternativa/blue ', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AjaxTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xB8BCC2;
+        redColor = [0xFCFAFC, 0xE11025, 0xFCFAFC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AJAX";
+    }
+}
+
+function AjaxTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xB8BCC2;
+        blueColor = [0xFCFAFC, 0xE11025, 0xFCFAFC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AJAX";
+    }
+}
+
+function AjaxAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xee7024;
+        redColor = [0x255459, 0x05707C, 0x255459];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AJAX";
+    }
+}
+
+function AjaxAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xee7024;
+        blueColor = [0x255459, 0x05707C, 0x255459];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AJAX";
+    }
+}
+
+function PSVFun(player) { // !PSV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('psv/titular/red | psv/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PSVTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x030303;
+        redColor = [0xFFFFFF, 0xFA2747, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PSV";
+    }
+}
+
+function PSVTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x030303;
+        blueColor = [0xFFFFFF, 0xFA2747, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PSV";
+    }
+}
+
+function FeyenoordFun(player) { // !FEY
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fey/titular/red | fey/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FEYTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xFA203B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FEYENOORD";
+    }
+}
+
+function FEYTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xFA203B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FEYENOORD";
+    }
+}
+
+function ParisFun(player) { // !PSG
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('psg/titular/red | psg/titular/blue | psg/alternativa/red | psg/alternativa/blue | psg/tercera/red | psg/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PSGTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf4f5f7;
+        redColor = [0x25406c, 0x203c65, 0x25406c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PSG";
+    }
+}
+
+function PSGTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf4f5f7;
+        blueColor = [0x25406c, 0x203c65, 0x25406c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PSG";
+    }
+}
+
+function PSGAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x3b363c;
+        redColor = [0xf5f4f9, 0xffd4e5, 0xf5f4f9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PSG";
+    }
+}
+
+function PSGAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x3b363c;
+        blueColor = [0xf5f4f9, 0xffd4e5, 0xf5f4f9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PSG";
+    }
+}
+
+function PSGTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf5f5f7;
+        redColor = [0x26252b, 0x75767e, 0x26252b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PSG";
+    }
+}
+
+function PSGTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf5f5f7;
+        blueColor = [0x26252b, 0x75767e, 0x26252b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PSG";
+    }
+}
+
+
+function RiestraFun(player) { // !RIE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rie/titular/red | rie/titular/blue | rie/alternativa/red | rie/alternativa/blue  ', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RiestraTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1D1C21];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEP. RIESTRA";
+    }
+}
+
+function RiestraTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1D1C21];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEP. RIESTRA";
+    }
+}
+
+function RiestraAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0x19161b;
+        redColor = [0xFDFDFD];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEP. RIESTRA";
+    }
+}
+
+function RiestraAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0x19161b;
+        blueColor = [0xFDFDFD];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEP. RIESTRA";
+    }
+}
+
+function CentralCordobaSdEFun(player) { // !CCS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ccs/titular/red | ccs/titular/blue | ccs/alternativa/red | ccs/alternativa/blue | ccs/tercera/red | ccs/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CentralCordobaSdETitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xc22b34;
+        redColor = [0x231f20, 0xFFFFFF, 0x231f20];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CENTRAL CÓRDOBA";
+    }
+}
+
+function CentralCordobaSdETitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xc22b34;
+        blueColor = [0x231f20, 0xFFFFFF, 0x231f20];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CENTRAL CÓRDOBA";
+    }
+}
+
+function CentralCordobaSdEAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x9C181C, 0x9C181C, 0xC02122];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CENTRAL CÓRDOBA";
+    }
+}
+
+function CentralCordobaSdEAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x9C181C, 0x9C181C, 0xC02122];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CENTRAL CÓRDOBA";
+    }
+}
+
+function CentralCordobaSdETerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 50;
+        redTextColor = 0xca0009;
+        redColor = [0xE7E7E7, 0xFBFBFB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CENTRAL CÓRDOBA";
+    }
+}
+
+function CentralCordobaSdETerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 50;
+        blueTextColor = 0xca0009;
+        blueColor = [0xE7E7E7, 0xFBFBFB];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CENTRAL CÓRDOBA";
+    }
+}
+
+function OGCNiceFun(player) { // !OGC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ogc/titular/red | ogc/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OGCNiceTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFD2725, 0x0C0D11, 0xFD2725];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OGC NICE";
+    }
+}
+
+function OGCNiceTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFD2725, 0x0C0D11, 0xFD2725];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OGC NICE";
+    }
+}
+
+function OlympiqueMarsellaFun(player) { // !OM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('om/titular/red | om/titular/blue | om/alternativa/red | om/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OlympiqueMarsellaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 72;
+        redTextColor = 0x43ceec;
+        redColor = [0x29ccf1, 0xf6f4fc, 0xf6f4fc];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLYMPIQUE MARSELLA";
+    }
+}
+
+function OlympiqueMarsellaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 72;
+        blueTextColor = 0x43ceec;
+        blueColor = [0x29ccf1, 0xf6f4fc, 0xf6f4fc];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLYMPIQUE MARSELLA";
+    }
+}
+
+function OlympiqueMarsellaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x24ADEA, 0x1473E5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLYMPIQUE MARSELLA";
+    }
+}
+
+function OlympiqueMarsellaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x24ADEA, 0x1473E5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLYMPIQUE MARSELLA";
+    }
+}
+
+function ASRomaFun(player) { // !ROM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rom/titular/red | rom/titular/blue | rom/alternativa/red | rom/alternativa/blue | rom/tercera/red | rom/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ASRomaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xffb200;
+        redColor = [0x8f001c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AS ROMA";
+    }
+}
+
+function ASRomaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xffb200;
+        blueColor = [0x8f001c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AS ROMA";
+    }
+}
+
+function ASRomaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x6e0f19;
+        redColor = [0xF6F7FA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AS ROMA";
+    }
+}
+
+function ASRomaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x6e0f19;
+        blueColor = [0xF6F7FA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AS ROMA";
+    }
+}
+
+function ASRomaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf9b105;
+        redColor = [0x172952, 0x1C2446];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AS ROMA";
+    }
+}
+
+function ASRomaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf9b105;
+        blueColor = [0x172952, 0x1C2446];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AS ROMA";
+    }
+}
+
+function FiorentinaFun(player) { // !FIO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fio/titular/red | fio/titular/blue | fio/alternativa/red | fio/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FiorentinaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x55338a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FIORENTINA";
+    }
+}
+
+function FiorentinaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x55338a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FIORENTINA";
+    }
+}
+
+function FiorentinaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x8559BD;
+        redColor = [0xffffff, 0x422A6E, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FIORENTINA";
+    }
+}
+
+function FiorentinaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x8559BD;
+        blueColor = [0xffffff, 0x422A6E, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FIORENTINA";
+    }
+}
+
+function LazioFun(player) { // !LAZ
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('laz/titular/red | laz/titular/blue | laz/alternativa/red | laz/alternativa/blue | laz/tercera/red | laz/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+
+}
+function LazioTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x81c6ee, 0x8ccaee , 0x81c6ee];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LAZIO";
+    }
+}
+function LazioTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x81c6ee, 0x8ccaee , 0x81c6ee];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LAZIO";
+    }
+}
+function LazioAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1e2e50;
+        redColor = [0xFFFFFF, 0x86BBEF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LAZIO";
+    }
+}
+function LazioAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1e2e50;
+        blueColor = [0xFFFFFF, 0x86BBEF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LAZIO";
+    }
+}
+function LazioTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xc3e9fe;
+        redColor = [0x0F1217];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LAZIO";
+    }
+}
+function LazioTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xc3e9fe;
+        blueColor = [0x0F1217];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LAZIO";
+    }
+}
+
+function SMSanJuanFun(player) { // !SMSJ
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('smsj/titular/red | smsj/titular/blue | smsj/alternativa/red | smsj/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function SMSanJuanTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x131311, 0x4EA280, 0x131311];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN MARTIN (SJ)";
+    }
+}
+function SMSanJuanTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x131311, 0x4EA280, 0x131311];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN MARTIN (SJ)";
+    }
+}
+function SMSanJuanAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x030303;
+        redColor = [0xFFFFFF, 0x48C079, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAN MARTIN (SJ)";
+    }
+}
+function SMSanJuanAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x030303;
+        blueColor = [0xFFFFFF, 0x48C079, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAN MARTIN (SJ)";
+    }
+}
+
+function GodoyCruzFun(player) { // !GOD
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('god/titular/red | god/titular/blue | god/alternativa/red | god/alternativa/blue | god/tercera/red | god/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GodoyCruzTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x73b0e1;
+        redColor = [0x096fcc, 0xFFFFFF, 0x096fcc];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GODOY CRUZ";
+    }
+}
+
+function GodoyCruzTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x73b0e1;
+        blueColor = [0x096fcc, 0xFFFFFF, 0x096fcc];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GODOY CRUZ";
+    }
+}
+
+function GodoyCruzAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x055bd2;
+        redColor = [0x0060c7, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GODOY CRUZ";
+    }
+}
+
+function GodoyCruzAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x055bd2;
+        blueColor = [0x0060c7, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GODOY CRUZ";
+    }
+}
+
+function GodoyCruzTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x881325, 0x5F0D1A, 0x881325];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GODOY CRUZ";
+    }
+}
+
+function GodoyCruzTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x881325, 0x5F0D1A, 0x881325];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GODOY CRUZ";
+    }
+}
+function VelezFun(player) { // !VEL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('vel/titular/red | vel/titular/blue | vel/alternativa/red | vel/alternativa/blue | vel/tercera/red | vel/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function VelezTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0063a8;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VÉLEZ";
+        room.sendAnnouncement('𝘗𝘢𝘳𝘢 𝘦𝘮𝘶𝘭𝘢𝘳 𝘭𝘢 𝘤𝘢𝘮𝘪𝘴𝘦𝘵𝘢 𝘥𝘦 𝘝𝘦́𝘭𝘦𝘻 𝘱𝘶𝘦𝘥𝘦𝘴 𝘶𝘴𝘢𝘳 𝘥𝘦 𝘢𝘷𝘢𝘵𝘢𝘳 "/avatar ᐯ"', player.id, 0x6BFFB5, "normal", 0); 
+    }
+}
+
+function VelezTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0063a8;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VÉLEZ";
+        room.sendAnnouncement('𝘗𝘢𝘳𝘢 𝘦𝘮𝘶𝘭𝘢𝘳 𝘭𝘢 𝘤𝘢𝘮𝘪𝘴𝘦𝘵𝘢 𝘥𝘦 𝘝𝘦́𝘭𝘦𝘻 𝘱𝘶𝘦𝘥𝘦𝘴 𝘶𝘴𝘢𝘳 𝘥𝘦 𝘢𝘷𝘢𝘵𝘢𝘳 "/avatar ᐯ"', player.id, 0x6BFFB5, "normal", 0); 
+    }
+}
+
+function VelezAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x2C3EA2, 0x2E42B5, 0x3248C4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VÉLEZ";
+        room.sendAnnouncement('𝘗𝘢𝘳𝘢 𝘦𝘮𝘶𝘭𝘢𝘳 𝘭𝘢 𝘤𝘢𝘮𝘪𝘴𝘦𝘵𝘢 𝘥𝘦 𝘝𝘦́𝘭𝘦𝘻 𝘱𝘶𝘦𝘥𝘦𝘴 𝘶𝘴𝘢𝘳 𝘥𝘦 𝘢𝘷𝘢𝘵𝘢𝘳 "/avatar ᐯ"', player.id, 0x6BFFB5, "normal", 0); 
+    }
+}
+
+function VelezAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x2C3EA2, 0x2E42B5, 0x3248C4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VÉLEZ";
+        room.sendAnnouncement('𝘗𝘢𝘳𝘢 𝘦𝘮𝘶𝘭𝘢𝘳 𝘭𝘢 𝘤𝘢𝘮𝘪𝘴𝘦𝘵𝘢 𝘥𝘦 𝘝𝘦́𝘭𝘦𝘻 𝘱𝘶𝘦𝘥𝘦𝘴 𝘶𝘴𝘢𝘳 𝘥𝘦 𝘢𝘷𝘢𝘵𝘢𝘳 "/avatar ᐯ"', player.id, 0x6BFFB5, "normal", 0); 
+    }
+}
+
+function VelezTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x000000;
+        redColor = [0x097C7F, 0xFFFFFF, 0xF11931];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VÉLEZ";
+    }
+}
+
+function VelezTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x000000;
+        blueColor = [0x097C7F, 0xFFFFFF, 0xF11931];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VÉLEZ";
+    }
+}
+
+
+
+
+function FlamengoFun(player) { // !FLA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fla/titular/red | fla/titular/blue | fla/alternativa/red | fla/alternativa/blue | fla/tercera/red | fla/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FlamengoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xdd0125, 0x211f25, 0xdd0125];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FLAMENGO";
+    }
+}
+
+function FlamengoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xdd0125, 0x211f25, 0xdd0125];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FLAMENGO";
+    }
+}
+
+function FlamengoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xde111e;
+        redColor = [0xEEEFF1, 0x1B1F1F, 0x872C32];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FLAMENGO";
+    }
+}
+
+function FlamengoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xde111e;
+        blueColor = [0xEEEFF1, 0x1B1F1F, 0x872C32];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FLAMENGO";
+    }
+}
+
+function FlamengoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xc1e23f;
+        redColor = [0x36363C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FLAMENGO";
+    }
+}
+
+function FlamengoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xc1e23f;
+        blueColor = [0x36363C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FLAMENGO";
+    }
+}
+
+function SCInternacionalFun(player) { // !SCI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sci/titular/red | sci/titular/blue | sci/alternativa/red | sci/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SCInternacionalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xff020c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SC INTERNACIONAL";
+    }
+}
+
+function SCInternacionalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xff020c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SC INTERNACIONAL";
+    }
+}
+
+function SCInternacionalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 64;
+        redTextColor = 0x66020A;
+        redColor = [0xF9F9FA, 0xC71B20, 0xF9F9FA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SC INTERNACIONAL";
+    }
+}
+
+function SCInternacionalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 64;
+        blueTextColor = 0x66020A;
+        blueColor = [0xF9F9FA, 0xC71B20, 0xF9F9FA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SC INTERNACIONAL";
+    }
+}
+
+function SantosFun(player) { // !SAN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('san/titular/red | san/titular/blue | san/alternativa/red | san/alternativa/blue | san/tercera/red | san/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SantosTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x3b4043;
+        redColor = [0xf1f5f6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SANTOS FC";
+    }
+}
+
+function SantosTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x3b4043;
+        blueColor = [0xf1f5f6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SANTOS FC";
+    }
+}
+
+function SantosAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xD6BD62;
+        redColor = [0x2c2b33, 0xf9f8fd, 0x2c2b33];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SANTOS FC";
+    }
+}
+
+function SantosAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xD6BD62;
+        blueColor = [0x2c2b33, 0xf9f8fd, 0x2c2b33];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SANTOS FC";
+    }
+}
+
+function SantosTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 225;
+        redTextColor = 0xa7adb1;
+        redColor = [0x282A35, 0x282A35, 0x393C45];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SANTOS FC";
+    }
+}
+
+function SantosTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 225;
+        blueTextColor = 0xa7adb1;
+        blueColor = [0x282A35, 0x282A35, 0x393C45];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SANTOS FC";
+    }
+}
+
+function SaoPauloFun(player) { // !SAO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sao/titular/red | sao/titular/blue | sao/alternativa/red | sao/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SaoPauloTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x3c3b3e;
+        redColor = [0xf91e0b, 0xf5f5f5, 0x1c1d21];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAO PAULO";
+    }
+}
+
+function SaoPauloTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x3c3b3e;
+        blueColor = [0xf91e0b, 0xf5f5f5, 0x1c1d21];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAO PAULO";
+    }
+}
+
+function SaoPauloAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf2273a;
+        redColor = [0x221c1e, 0xeae8eb, 0xed2436];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAO PAULO";
+    }
+}
+
+function SaoPauloAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf2273a;
+        blueColor = [0x221c1e, 0xeae8eb, 0xed2436];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAO PAULO";
+    }
+}
+
+function CorinthiansFun(player) { // !COR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cor/titular/red | cor/titular/blue | cor/alternativa/red | cor/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CorinthiansTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xF4F4F6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CORINTHIANS";
+    }
+}
+function CorinthiansTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xF4F4F6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CORINTHIANS";
+    }
+}
+function CorinthiansAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 360;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1F1E20];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CORINTHIANS";
+    }
+}
+function CorinthiansAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 360;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1F1E20];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CORINTHIANS";
+    }
+}
+
+function VascoDaGamaFun(player) { // !VAS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('vas/titular/red | vas/titular/blue | vas/alternativa/red | vas/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function VascoDaGamaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 29;
+        redTextColor = 0xd42a2a;
+        redColor = [0x19181B, 0xE6E6E4, 0x19181B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VASCO DA GAMA";
+    }
+}
+function VascoDaGamaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 29;
+        blueTextColor = 0xd42a2a;
+        blueColor = [0x19181B, 0xE6E6E4, 0x19181B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VASCO DA GAMA";
+    }
+}
+function VascoDaGamaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 29;
+        redTextColor = 0xd42a2a;
+        redColor = [0xFEFEFE, 0x1C1C1C, 0xFEFEFE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VASCO DA GAMA";
+    }
+}
+function VascoDaGamaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 29;
+        blueTextColor = 0xd42a2a;
+        blueColor = [0xFEFEFE, 0x1C1C1C, 0xFEFEFE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VASCO DA GAMA";
+    }
+}
+
+function BotafogoFun(player) { // !BOT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bot/titular/red | bot/titular/blue | bot/alternativa/red | bot/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BotafogoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x777B87;
+        redColor = [0x1C1F26, 0xFFFFFF, 0x1C1F26];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOTAFOGO";
+    }
+}
+
+function BotafogoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x777B87;
+        blueColor = [0x1C1F26, 0xFFFFFF, 0x1C1F26];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOTAFOGO";
+    }
+}
+
+function BotafogoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x161719];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BOTAFOGO";
+    }
+}
+
+function BotafogoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x161719];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BOTAFOGO";
+    }
+}
+
+function FluminenseFun(player) { // !FLU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('flu/titular/red | flu/titular/blue | flu/alternativa/red | flu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FluminenseTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x9e0424, 0x1c6137, 0x9e0424];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FLUMINENSE";
+    }
+}
+
+function FluminenseTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x9e0424, 0x1c6137, 0x9e0424];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FLUMINENSE";
+    }
+}
+
+function MineiroFun(player) { // !CAM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cam/titular/red | cam/titular/blue | cam/alternativa/red | cam/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MineiroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf21828;
+        redColor = [0xeff2f7, 0x2b2529, 0xeff2f7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MINEIRO";
+    }
+}
+
+function MineiroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf21828;
+        blueColor = [0xeff2f7, 0x2b2529, 0xeff2f7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MINEIRO";
+    }
+}
+
+function MineiroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x1D1E24;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MINEIRO";
+    }
+}
+
+function MineiroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x1D1E24;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MINEIRO";
+    }
+}
+
+function AtlNacionalFun(player) { // !ATN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('atn/titular/red | atn/titular/blue | atn/alternativa/red | atn/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AtlNacionalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xB2C9BB;
+        redColor = [0x178B36, 0xFCFCFC, 0x178B36];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATL. NACIONAL (COL)";
+    }
+}
+
+function AtlNacionalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xB2C9BB;
+        blueColor = [0x178B36, 0xFCFCFC, 0x178B36];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATL. NACIONAL (COL)";
+    }
+}
+
+function AtlNacionalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -136;
+        redTextColor = 0x008a26;
+        redColor = [0xF6F6F8, 0xE6E8EA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ATL. NACIONAL (COL)";
+    }
+}
+
+function AtlNacionalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -136;
+        blueTextColor = 0x008a26;
+        blueColor = [0xF6F6F8, 0xE6E8EA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ATL. NACIONAL (COL)";
+    }
+}
+function MillonariosFun(player) { // !MIL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mil/titular/red | mil/titular/blue | mil/alternativa/red | mil/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MillonariosTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0846AD];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MILLONARIOS";
+    }
+}
+
+function MillonariosTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0846AD];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MILLONARIOS";
+    }
+}
+
+function MillonariosAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x093794;
+        redColor = [0xF7F7F7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MILLONARIOS";
+    }
+}
+
+function MillonariosAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x093794;
+        blueColor = [0xF7F7F7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MILLONARIOS";
+    }
+}
+
+function AmericaDeCaliFun(player) { // !AME
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ame/titular/red | ame/titular/blue | ame/alternativa/red | ame/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AmericaDeCaliTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE81B1D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AMÉRICA DE CALI";
+    }
+}
+
+function AmericaDeCaliTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE81B1D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AMÉRICA DE CALI";
+    }
+}
+
+function AmericaDeCaliAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xc91212;
+        redColor = [0xF8F8F8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AMÉRICA DE CALI";
+    }
+}
+
+function AmericaDeCaliAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xc91212;
+        blueColor = [0xF8F8F8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AMÉRICA DE CALI";
+    }
+}
+
+function SantaFeFun(player) { // !SFE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sfe/titular/red | sfe/titular/blue | sfe/alternativa/red | sfe/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SantaFeTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xE0E0E0;
+        redColor = [0xF6F6F8, 0xEB0505, 0xEB0505];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SANTA FE (COL)";
+    }
+}
+
+function SantaFeTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xE0E0E0;
+        blueColor = [0xF6F6F8, 0xEB0505, 0xEB0505];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SANTA FE (COL)";
+    }
+}
+
+function SantaFeAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xEB0505;
+        redColor = [0xEB0505, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SANTA FE (COL)";
+    }
+}
+
+function SantaFeAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xEB0505;
+        blueColor = [0xEB0505, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SANTA FE (COL)";
+    }
+}
+
+function DeportivoCaliFun(player) { // !CAL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cal/titular/red | cal/titular/blue | cal/alternativa/red | cal/alternativa/blue | cal/tercera/red | cal/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportivoCaliTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x05393c, 0x013037, 0x05393c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEPORTIVO CALI";
+    }
+}
+
+function DeportivoCaliTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x05393c, 0x013037, 0x05393c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEPORTIVO CALI";
+    }
+}
+
+function DeportivoCaliAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1b474b;
+        redColor = [0xEFEFEF, 0xffffff, 0xEFEFEF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEPORTIVO CALI";
+    }
+}
+
+function DeportivoCaliAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1b474b;
+        blueColor = [0xEFEFEF, 0xffffff, 0xEFEFEF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEPORTIVO CALI";
+    }
+}
+
+function DeportivoCaliTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x4e514d;
+        redColor = [0x7DF356];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DEPORTIVO CALI";
+    }
+}
+
+function DeportivoCaliTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x4e514d;
+        blueColor = [0x7DF356];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DEPORTIVO CALI";
+    }
+}
+
+function OnceCaldasFun(player) { // !ONC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('onc/titular/red | onc/titular/blue | onc/alternativa/red | onc/alternativa/blue | onc/tercera/red | onc/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OnceCaldasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x171717;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ONCE CALDAS";
+    }
+}
+
+function OnceCaldasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x171717;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ONCE CALDAS";
+    }
+}
+
+function OnceCaldasAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x171717];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ONCE CALDAS";
+    }
+}
+
+function OnceCaldasAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x171717];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ONCE CALDAS";
+    }
+}
+
+function OnceCaldasTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1C69BB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ONCE CALDAS";
+    }
+}
+
+function OnceCaldasTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1C69BB];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ONCE CALDAS";
+    }
+}
+
+function CerroFun(player) { // !CCP
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ccp/titular/red | ccp/titular/blue | ccp/alternativa/red | ccp/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CerroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xe10602, 0x00158c, 0xe10602];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CERRO PORTEÑO";
+    }
+}
+
+function CerroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xe10602, 0x00158c, 0xe10602];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CERRO PORTEÑO";
+    }
+}
+
+function CerroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x1a3e7a;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CERRO PORTEÑO";
+    }
+}
+
+function CerroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x1a3e7a;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CERRO PORTEÑO";
+    }
+}
+
+function OlimpiaFun(player) { // !OLI
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('oli/titular/red | oli/titular/blue | oli/alternativa/red | oli/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OlimpiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xa28026;
+        redColor = [0xFFFFFF, 0x0d0d0d, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLIMPIA";
+    }
+}
+
+function OlimpiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xa28026;
+        blueColor = [0xFFFFFF, 0x0d0d0d, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLIMPIA";
+    }
+}
+
+function OlimpiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x48424C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLIMPIA";
+    }
+}
+
+function OlimpiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x48424C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLIMPIA";
+    }
+}
+
+function GuaraniFun(player) { // !GUA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gua/titular/red | gua/titular/blue | gua/alternativa/red | gua/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GuaraniTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFDD537, 0x1C1B16, 0xFDD537];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GUARANÍ";
+    }
+}
+
+function GuaraniTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFDD537, 0x1C1B16, 0xFDD537];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GUARANÍ";
+    }
+}
+
+function GuaraniAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x504B48, 0x201F1B, 0x504B48];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GUARANÍ";
+    }
+}
+
+function GuaraniAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x504B48, 0x201F1B, 0x504B48];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GUARANÍ";
+    }
+}
+
+function LibertadFun(player) { // !LIB
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lib/titular/red | lib/titular/blue | lib/alternativa/red | lib/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LibertadTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x5D636E;
+        redColor = [0xFFFFFF, 0x16161E, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIBERTAD";
+    }
+}
+
+function LibertadTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x5D636E;
+        blueColor = [0xFFFFFF, 0x16161E, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIBERTAD";
+    }
+}
+
+function LibertadAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x171B1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIBERTAD";
+    }
+}
+
+function LibertadAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x171B1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIBERTAD";
+    }
+}
+
+function SouthamptonFun(player) { // !SOU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sou/titular/red | sou/titular/blue | sou/alternativa/red | sou/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SouthamptonTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x191B1F;
+        redColor = [0xFF0028, 0xFFFFFF, 0xFF0028];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SOUTHAMPTON";
+    }
+}
+
+function SouthamptonTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x191B1F;
+        blueColor = [0xFF0028, 0xFFFFFF, 0xFF0028];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SOUTHAMPTON";
+    }
+}
+
+function SouthamptonAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe2fb40;
+        redColor = [0xFDFE4B, 0x283639, 0x283639];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SOUTHAMPTON";
+    }
+}
+
+function SouthamptonAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe2fb40;
+        blueColor = [0xFDFE4B, 0x283639, 0x283639];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SOUTHAMPTON";
+    }
+}
+
+function WatfordFun(player) { // !WAT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wat/titular/red | wat/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function WatfordTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf53117;
+        redColor = [0xFADF09, 0x161616];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "WATFORD";
+    }
+}
+
+function WatfordTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf53117;
+        blueColor = [0xFADF09, 0x161616];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "WATFORD";
+    }
+}
+
+function WillemIIFun(player) { // !WIL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wil/titular/red | wil/titular/blue | wil/alternativa/red | wil/alternativa/blue | wil/tercera/red | wil/tercera/blue  ', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function WillemIITitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0A0A0A;
+        redColor = [0x223263, 0xFFFFFF, 0xF7014C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "WILLEM II";
+    }
+}
+
+function WillemIITitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0A0A0A;
+        blueColor = [0x223263, 0xFFFFFF, 0xF7014C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "WILLEM II";
+    }
+}
+
+function WillemIIAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xA42F62, 0x6B436F, 0xA42F62];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "WILLEM II";
+    }
+}
+
+function WillemIIAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xA42F62, 0x6B436F, 0xA42F62];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "WILLEM II";
+    }
+}
+
+function WillemIITerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xc09926;
+        redColor = [0xC72C27, 0xFFFFFF, 0x0A2245];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "WILLEM II";
+    }
+}
+
+function WillemIITerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xc09926;
+        blueColor = [0xC72C27, 0xFFFFFF, 0x0A2245];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "WILLEM II";
+    }
+}
+
+function AlvaradoFun(player) { // !ALV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('alv/titular/red | alv/titular/blue | alv/alternativa/red | alv/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlvaradoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 44;
+        redTextColor = 0x091021;
+        redColor = [0x1E2F55, 0xFFFFFF, 0x1E2F55];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALVARADO";
+    }
+}
+
+function AlvaradoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 44;
+        blueTextColor = 0x091021;
+        blueColor = [0x1E2F55, 0xFFFFFF, 0x1E2F55];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALVARADO";
+    }
+}
+
+function AlvaradoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x091021;
+        redColor = [0xFFFFFF, 0x022C77, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ALVARADO";
+    }
+}
+
+function AlvaradoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x091021;
+        blueColor = [0xFFFFFF, 0x022C77, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ALVARADO";
+    }
+}
+
+function AgropecuarioFun(player) { // !AGR
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('agr/titular/red | agr/titular/blue | agr/alternativa/red | agr/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AgropecuarioTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFCFCFC;
+        redColor = [0x168C4B, 0xBA2C24, 0x168C4B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AGROPECUARIO";
+    }
+}
+
+function AgropecuarioTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFCFCFC;
+        blueColor = [0x168C4B, 0xBA2C24, 0x168C4B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AGROPECUARIO";
+    }
+}
+
+function AgropecuarioAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x151515;
+        redColor = [0x1C5F3A, 0xFFFFFF, 0xBA2C24];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AGROPECUARIO";
+    }
+}
+
+function AgropecuarioAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x151515;
+        blueColor = [0x1C5F3A, 0xFFFFFF, 0xBA2C24];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AGROPECUARIO";
+    }
+}
+
+function RiverURUFun(player) { // !RIU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('riu/titular/red | riu/titular/blue | riu/alternativa/red | riu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RiverURUTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 360;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xD20502, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RIVER (UY)";
+    }
+}
+
+function RiverURUTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 360;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xD20502, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RIVER (UY)";
+    }
+}
+
+function RiverURUAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFE0002];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RIVER (UY)";
+    }
+}
+
+function RiverURUAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFE0002];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RIVER (UY)";
+    }
+}
+
+function GalatasarayFun(player) { // !GS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gs/titular/red | gs/titular/blue | gs/alternativa/red | gs/alternativa/blue | gs/tercera/red | gs/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GalatasarayTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xfbba00, 0xab092e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GALATASARAY";
+    }
+}
+
+function GalatasarayTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xfbba00, 0xab092e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GALATASARAY";
+    }
+}
+
+function GalatasarayAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x8d1d1d;
+        redColor = [0xE3CFB3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GALATASARAY";
+    }
+}
+
+function GalatasarayAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x8d1d1d;
+        blueColor = [0xE3CFB3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GALATASARAY";
+    }
+}
+
+function GalatasarayTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xab1d28;
+        redColor = [0xC9C5C9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GALATASARAY";
+    }
+}
+
+function GalatasarayTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xab1d28;
+        blueColor = [0xC9C5C9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GALATASARAY";
+    }
+}
+
+function FenerbahceFun(player) { // !FB
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fb/titular/red | fb/titular/blue | fb/alternativa/red | fb/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FenerbahceTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x020E1F;
+        redColor = [0xfff100, 0x014582, 0xfff100];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FENERBAHCE";
+    }
+}
+
+function FenerbahceTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x020E1F;
+        blueColor = [0xfff100, 0x014582, 0xfff100];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FENERBAHCE";
+    }
+}
+
+function FenerbahceAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x2f3a67;
+        redColor = [0xF4E800];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FENERBAHCE";
+    }
+}
+
+function FenerbahceAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x2f3a67;
+        blueColor = [0xF4E800];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FENERBAHCE";
+    }
+}
+
+function BesiktasFun(player) { // !BJK
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bjk/titular/red | bjk/titular/blue | bjk/alternativa/red | bjk/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BesiktasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BESIKTAS";
+    }
+}
+
+function BesiktasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BESIKTAS";
+    }
+}
+
+function BesiktasAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFB3333];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BESIKTAS";
+    }
+}
+
+function BesiktasAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFB3333];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BESIKTAS";
+    }
+}
+
+function AmericaMXFun(player) { // !AMC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('amc/titular/red | amc/titular/blue | amc/alternativa/red | amc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function AmericaMXTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x223346;
+        redColor = [0xFBF993];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AMÉRICA (MX)";
+    }
+}
+function AmericaMXTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x223346;
+        blueColor = [0xFBF993];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AMÉRICA (MX)";
+    }
+}
+function AmericaMXAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xF2F2F2;
+        redColor = [0x1A2C38];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "AMÉRICA (MX)";
+    }
+}
+function AmericaMXAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xF2F2F2;
+        blueColor = [0x1A2C38];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "AMÉRICA (MX)";
+    }
+}
+function CruzAzulFun(player) { // !CRUZ
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cruz/titular/red | cruz/titular/blue | cruz/alternativa/red | cruz/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CruzAzulTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x263D9A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CRUZ AZUL";
+    }
+}
+function CruzAzulTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x263D9A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CRUZ AZUL";
+    }
+}
+function CruzAzulAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x31357e;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CRUZ AZUL";
+    }
+}
+function CruzAzulAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x31357e;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CRUZ AZUL";
+    }
+}
+
+function MonterreyFun(player) { // !MTY
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mty/titular/red | mty/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MonterreyTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x7D7E80;
+        redColor = [0x23354F, 0xffffff, 0x23354F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "MONTERREY";
+    }
+}
+
+function MonterreyTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x7D7E80;
+        blueColor = [0x23354F, 0xffffff, 0x23354F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "MONTERREY";
+    }
+}
+
+function ChivasFun(player) { // !CHV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('chv/titular/red | chv/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChivasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x052e4e;
+        redColor = [0xFFFFFF, 0xFE3548, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "CHIVAS";
+    }
+}
+
+function ChivasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x052e4e;
+        blueColor = [0xFFFFFF, 0xFE3548, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "CHIVAS";
+    }
+}
+
+function TigresFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tgs/titular/red | tgs/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TigresTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x04407A;
+        redColor = [0xfbc026, 0x017cd9, 0xfbc026];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TIGRES";
+    }
+}
+
+function TigresTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x04407A;
+        blueColor = [0xfbc026, 0x017cd9, 0xfbc026];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TIGRES";
+    }
+}
+
+function LigaDeQuitoFun(player) { // !GS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ldu/titular/red | ldu/titular/blue | ldu/alternativa/red | ldu/alternativa/blue | ldu/tercera/red | ldu/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LigaDeQuitoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 360;
+        redTextColor = 0x060541;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIGA DE QUITO";
+    }
+}
+
+function LigaDeQuitoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 360;
+        blueTextColor = 0x060541;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIGA DE QUITO";
+    }
+}
+
+function LigaDeQuitoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd1bf58;
+        redColor = [0xD8060E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIGA DE QUITO";
+    }
+}
+
+function LigaDeQuitoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd1bf58;
+        blueColor = [0xD8060E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIGA DE QUITO";
+    }
+}
+
+function LigaDeQuitoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf53315;
+        redColor = [0x111832];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LIGA DE QUITO";
+    }
+}
+
+function LigaDeQuitoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf53315;
+        blueColor = [0x111832];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LIGA DE QUITO";
+    }
+}
+
+function BarcelonaSCFun(player) { // !BSC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bsc/titular/red | bsc/titular/blue | bsc/alternativa/red | bsc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BarcelonaSCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xc90613;
+        redColor = [0xF9D532];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BARCELONA SC";
+    }
+}
+
+function BarcelonaSCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xc90613;
+        blueColor = [0xF9D532];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BARCELONA SC";
+    }
+}
+
+function BarcelonaSCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xfd6600;
+        redColor = [0x67020F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "BARCELONA SC";
+    }
+}
+
+function BarcelonaSCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xfd6600;
+        blueColor = [0x67020F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "BARCELONA SC";
+    }
+}
+
+function EmelecFun(player) { // !EME
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('eme/titular/red | eme/titular/blue | eme/alternativa/red | eme/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EmelecTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 148;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x025CCC, 0x004390, 0x025CCC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "EMELEC";
+    }
+}
+
+function EmelecTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 148;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x025CCC, 0x004390, 0x025CCC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "EMELEC";
+    }
+}
+
+function EmelecAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0151c2;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "EMELEC";
+    }
+}
+
+function EmelecAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0151c2;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "EMELEC";
+    }
+}
+
+function IndependienteDelValleFun(player) { // !IDV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('idv/titular/red | idv/titular/blue | idv/alternativa/red | idv/alternativa/blue | idv/clasica/red | idv/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function IndependienteDelValleTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x001638, 0x001638, 0x001638];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function IndependienteDelValleTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x001638, 0x001638, 0x001638];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function IndependienteDelValleAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xEC70AC, 0xEC599F, 0xE45195];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function IndependienteDelValleAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xEC70AC, 0xEC599F, 0xE45195];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function IndependienteDelValleClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x012D6B, 0x231F20, 0x012D6B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function IndependienteDelValleClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x012D6B, 0x231F20, 0x012D6B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "INDEPENDIENTE DEL VALLE";
+    }
+}
+
+function OlympiqueLyonFun(player) { // !OL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ol/titular/red | ol/titular/blue | ol/alternativa/red | ol/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OlympiqueLyonTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x113a80;
+        redColor = [0xFBFDFC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLYMPIQUE LYON";
+    }
+}
+
+function OlympiqueLyonTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x113a80;
+        blueColor = [0xFBFDFC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLYMPIQUE LYON";
+    }
+}
+
+function OlympiqueLyonAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xe8e9ea;
+        redColor = [0x212C52, 0x1D3C7F, 0x212C52];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "OLYMPIQUE LYON";
+    }
+}
+
+function OlympiqueLyonAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xe8e9ea;
+        blueColor = [0x222C52, 0x1D3C7F, 0x222C52];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "OLYMPIQUE LYON";
+    }
+}
+
+
+
+function SanTelmoFun(player) { // !STE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('stel/titular/red | stel/titular/blue | stel/alternativa/red | stel/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SanTelmoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x3CADFE, 0x24364C, 0x3CADFE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAN TELMO";
+    }
+}
+
+function SanTelmoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x3CADFE, 0x24364C, 0x3CADFE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAN TELMO";
+    }
+}
+
+function SanTelmoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0D2B43, 0x39A2FE, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAN TELMO";
+    }
+}
+
+function SanTelmoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0D2B43, 0x39A2FE, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAN TELMO";
+    }
+}
+
+function DeportivoMerloFun(player) { // !MER
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mer/titular/red | mer/titular/blue | mer/alternativa/red | mer/alternativa/blue | mer/tercera/red | mer/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportivoMerloTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0x666A78;
+        redColor = [0xFFFFFF, 0x050C40, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. MERLO";
+    }
+}
+
+function DeportivoMerloTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0x666A78;
+        blueColor = [0xFFFFFF, 0x050C40, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. MERLO";
+    }
+}
+
+function DeportivoMerloAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x050505, 0x04113D, 0x050505];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. MERLO";
+    }
+}
+
+function DeportivoMerloAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x050505, 0x04113D, 0x050505];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. MERLO";
+    }
+}
+
+function DeportivoMerloTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x660B0A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. MERLO";
+    }
+}
+
+function DeportivoMerloTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x660B0A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. MERLO";
+    }
+}
+
+function ArgentinoDeQuilmesFun(player) { // !AdQ
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('adq/titular/red | adq/titular/blue | adq/alternativa/red | adq/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ArgentinoDeQuilmesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0A0A0A;
+        redColor = [0xFFFFFF, 0x76C4F0, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINO DE QUILMES";
+    }
+}
+
+function ArgentinoDeQuilmesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0A0A0A;
+        blueColor = [0xFFFFFF, 0x76C4F0, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINO DE QUILMES";
+    }
+}
+
+function ArgentinoDeQuilmesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x777A89, 0x000000, 0x777A89];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ARGENTINO DE QUILMES";
+    }
+}
+
+function ArgentinoDeQuilmesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x777A89, 0x000000, 0x777A89];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ARGENTINO DE QUILMES";
+    }
+}
+
+function ValenciaFun(player) { // !RIV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('val/titular/red | val/titular/blue | val/alternativa/red | val/alternativa/blue | val/tercera/red | val/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ValenciaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x141205;
+        redColor = [0xFE7103, 0xF8F7F8, 0xF8F7F8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VALENCIA";
+    }
+}
+
+function ValenciaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x141205;
+        blueColor = [0xFE7103, 0xF8F7F8, 0xF8F7F8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VALENCIA";
+    }
+}
+
+function ValenciaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xff671e;
+        redColor = [0xE55C19, 0x161419, 0x161419];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VALENCIA";
+    }
+}
+
+function ValenciaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xff671e;
+        blueColor = [0xE55C19, 0x161419, 0x161419];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VALENCIA";
+    }
+}
+
+function ValenciaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 123;
+        redTextColor = 0xf0fdfe;
+        redColor = [0x0C83D5, 0x21BCF4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "VALENCIA";
+    }
+}
+
+function ValenciaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 123;
+        blueTextColor = 0xf0fdfe;
+        blueColor = [0x0C83D5, 0x21BCF4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "VALENCIA";
+    }
+}
+
+function BetisFun(player) { // !BET
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bet/titular/red | bet/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BetisTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0x2CB764, 0xFFFFFF, 0x2CB764];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "REAL BETIS";
+    }
+}
+
+function BetisTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0x2CB764, 0xFFFFFF, 0x2CB764];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "REAL BETIS";
+    }
+}
+
+function CrystalPalaceFun(player) { // !CRY
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cry/titular/red | cry/titular/blue | cry/alternativa/red | cry/alternativa/blue | cry/tercera/red | cry/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CrystalPalaceTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xC11930, 0x01449B, 0xC11930];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRYSTAL PALACE";
+    }
+}
+
+function CrystalPalaceTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xC11930, 0x01449B, 0xC11930];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRYSTAL PALACE";
+    }
+}
+
+function CrystalPalaceAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x242227, 0x01449B, 0x242227];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRYSTAL PALACE";
+    }
+}
+
+function CrystalPalaceAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x242227, 0x01449B, 0x242227];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRYSTAL PALACE";
+    }
+}
+
+function CrystalPalaceTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0x0731c3;
+        redColor = [0xFFFFFF, 0xED1628, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRYSTAL PALACE";
+    }
+}
+
+function CrystalPalaceTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0x0731c3;
+        blueColor = [0xFFFFFF, 0xED1628, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRYSTAL PALACE";
+    }
+}
+
+function JuventudAntonianaFun(player) { // !CJA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cja/titular/red | cja/titular/blue | cja/alternativa/red | cja/alternativa/blue | cja/tercera/red | cja/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function JuventudAntonianaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0x8892A6;
+        redColor = [0xFFFFFF, 0x304268, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "JUVENTUD ANTONIANA";
+    }
+}
+
+function JuventudAntonianaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0x8892A6;
+        blueColor = [0xFFFFFF, 0x304268, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "JUVENTUD ANTONIANA";
+    }
+}
+
+function JuventudAntonianaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x17286E, 0x304268, 0x17286E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "JUVENTUD ANTONIANA";
+    }
+}
+
+function JuventudAntonianaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x17286E, 0x304268, 0x17286E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "JUVENTUD ANTONIANA";
+    }
+}
+
+function JuventudAntonianaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0x0F1014;
+        redColor = [0x113653, 0xFFFFFF, 0x3D2813];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "JUVENTUD ANTONIANA";
+    }
+}
+
+function JuventudAntonianaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0x0F1014;
+        blueColor = [0x113653, 0xFFFFFF, 0x3D2813];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "JUVENTUD ANTONIANA";
+    }
+}
+function GimnasiaYTiroFun(player) { // !GyT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gyt/titular/red | gyt/titular/blue | gyt/alternativa/red | gyt/alternativa/blue | gyt/tercera/red | gyt/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GimnasiaYTiroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xA8E0F9, 0xFFFFFF, 0xA8E0F9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA Y TIRO";
+    }
+}
+
+function GimnasiaYTiroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xA8E0F9, 0xFFFFFF, 0xA8E0F9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA Y TIRO";
+    }
+}
+
+function GimnasiaYTiroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x141657, 0x181965, 0x141657];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA Y TIRO";
+    }
+}
+
+function GimnasiaYTiroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x141657, 0x181965, 0x141657];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA Y TIRO";
+    }
+}
+
+function GimnasiaYTiroTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0A0A0A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "GIMNASIA Y TIRO";
+    }
+}
+
+function GimnasiaYTiroTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0A0A0A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "GIMNASIA Y TIRO";
+    }
+}
+
+function PatronatoFun(player) { // !PAT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pat/titular/red | pat/titular/blue | pat/alternativa/red | pat/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function PatronatoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xb20000, 0x0c0c0c, 0xb20000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PATRONATO";
+    }
+}
+function PatronatoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xb20000, 0x0c0c0c, 0xb20000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PATRONATO";
+    }
+}
+function PatronatoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xE8171F , 0xFFFFFF , 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PATRONATO";
+    }
+}
+function PatronatoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xE8171F , 0xFFFFFF , 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PATRONATO";
+    }
+}
+
+function RayoVallecanoFun(player) { // !RAY
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ray/titular/red | ray/titular/blue | ray/alternativa/red | ray/alternativa/blue | ray/tercera/red | ray/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function RayoVallecanoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 28;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xFF2E29, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RAYO VALLECANO";
+    }
+}
+function RayoVallecanoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 28;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xFF2E29, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RAYO VALLECANO";
+    }
+}
+function RayoVallecanoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 28;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFE322B , 0x130F10 , 0xFE322B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RAYO VALLECANO";
+    }
+}
+function RayoVallecanoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 28;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFE322B , 0x130F10 , 0xFE322B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RAYO VALLECANO";
+    }
+}
+function RayoVallecanoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 28;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x130F10 , 0x00A4D2 , 0x130F10];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RAYO VALLECANO";
+    }
+}
+function RayoVallecanoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 28;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x130F10 , 0x00A4D2 , 0x130F10];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RAYO VALLECANO";
+    }
+}
+
+function LevanteFun(player) { // !LEV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lev/titular/red | lev/titular/blue | lev/alternativa/red | lev/alternativa/blue | lev/tercera/red | lev/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function LevanteTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0A1E97, 0xA60727, 0x0A1E97];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LEVANTE";
+    }
+}
+function LevanteTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0A1E97, 0xA60727, 0x0A1E97];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LEVANTE";
+    }
+}
+function LevanteAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x191717;
+        redColor = [0xFFFFFF , 0x000DD8 , 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LEVANTE";
+    }
+}
+function LevanteAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x191717;
+        blueColor = [0xFFFFFF , 0x000DD8 , 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LEVANTE";
+    }
+}
+function LevanteTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x191717;
+        redColor = [0xE2E2E2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "LEVANTE";
+    }
+}
+function LevanteTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x191717;
+        blueColor = [0xE2E2E2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "LEVANTE";
+    }
+}
+function GetafeFun(player) { // !GET
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('get/titular/red | get/titular/blue | get/alternativa/red | get/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GetafeTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x086BD3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GETAFE";
+    }
+}
+
+function GetafeTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x086BD3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GETAFE";
+    }
+}
+
+function GetafeAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xF34C28];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GETAFE";
+    }
+}
+
+function GetafeAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xF34C28];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GETAFE";
+    }
+}
+
+function ZenitFun(player) { // !ZEN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('zen/titular/red | zen/titular/blue | zen/alternativa/red | zen/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ZenitTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 146;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1BB1E3, 0x0E8BC1, 0x0F649A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ZENIT";
+    }
+}
+
+function ZenitTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 146;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1BB1E3, 0x0E8BC1, 0x0F649A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ZENIT";
+    }
+}
+
+function ZenitAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0099c3;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ZENIT";
+    }
+}
+
+function ZenitAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0099c3;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ZENIT";
+    }
+}
+
+function CSKAMoscuFun(player) { // !CSK
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('csk/titular/red | csk/titular/blue | csk/alternativa/red | csk/alternativa/blue | csk/tercera/red | csk/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CSKAMoscuTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFF2039, 0x016AD7, 0xFF2039];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CSKA MOSCÚ";
+    }
+}
+
+function CSKAMoscuTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFF2039, 0x016AD7, 0xFF2039];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CSKA MOSCÚ";
+    }
+}
+
+function CSKAMoscuAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x024fbb;
+        redColor = [0xFFFFFF, 0xFF2039, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CSKA MOSCÚ";
+    }
+}
+
+function CSKAMoscuAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x024fbb;
+        blueColor = [0xFFFFFF, 0xFF2039, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CSKA MOSCÚ";
+    }
+}
+
+function CSKAMoscuTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 134;
+        redTextColor = 0x082957;
+        redColor = [0xFEAC48, 0xFEAC48, 0x01438F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CSKA MOSCÚ";
+    }
+}
+
+function CSKAMoscuTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 134;
+        blueTextColor = 0x082957;
+        blueColor = [0xFEAC48, 0xFEAC48, 0x01438F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CSKA MOSCÚ";
+    }
+}
+
+function LokomotivFun(player) { // !LOK
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lok/titular/red | lok/titular/blue | lok/alternativa/red | lok/alternativa/blue | lok/tercera/red | lok/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LokomotivTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 236;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x025948, 0x025948, 0xC70B24];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOKOMOTIV";
+    }
+}
+
+function LokomotivTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 236;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x025948, 0x025948, 0xC70B24];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOKOMOTIV";
+    }
+}
+
+function LokomotivAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe71218;
+        redColor = [0x026052, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOKOMOTIV";
+    }
+}
+
+function LokomotivAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe71218;
+        blueColor = [0x026052, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOKOMOTIV";
+    }
+}
+
+function LokomotivTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe0e2e1;
+        redColor = [0xCD090A, 0x525157, 0x525157];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOKOMOTIV";
+    }
+}
+
+function LokomotivTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe0e2e1;
+        blueColor = [0xCD090A, 0x525157, 0x525157];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOKOMOTIV";
+    }
+}
+
+function SpartakFun(player) { // !SPM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('spm/titular/red | spm/titular/blue | spm/alternativa/red | spm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SpartakTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x8A939E;
+        redColor = [0xD4001D, 0xFBFEFD, 0xD4001D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPARTAK MOSCU";
+    }
+}
+
+function SpartakTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x8A939E;
+        blueColor = [0xD4001D, 0xFBFEFD, 0xD4001D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPARTAK MOSCU";
+    }
+}
+
+function SpartakAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x4F0000;
+        redColor = [0xFFFFFF, 0xCE1D31, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPARTAK MOSCU";
+    }
+}
+
+function SpartakAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x4F0000;
+        blueColor = [0xFFFFFF, 0xCE1D31, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPARTAK MOSCU";
+    }
+}
+
+function DynamoMoscowFun(player) { // !DIN
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('din/titular/red | din/titular/blue | din/alternativa/red | din/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function DynamoMoscowTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFDFFFE;
+        redColor = [0x0066CD];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DYNAMO MOSCOW";
+    }
+}
+function DynamoMoscowTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFDFFFE;
+        blueColor = [0x0066CD];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DYNAMO MOSCOW";
+    }
+}
+function DynamoMoscowAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1f71d7;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DYNAMO MOSCOW";
+    }
+}
+function DynamoMoscowAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1f71d7;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DYNAMO MOSCOW";
+    }
+}
+function DynamoKievFun(player) { // !DYK
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dyk/titular/red | dyk/titular/blue | dyk/alternativa/red | dyk/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function DynamoKievTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x146dd3;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DYNAMO KIEV";
+    }
+}
+function DynamoKievTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x146dd3;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DYNAMO KIEV";
+    }
+}
+function DynamoKievAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0167B2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DYNAMO KIEV";
+    }
+}
+function DynamoKievAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0167B2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DYNAMO KIEV";
+    }
+}
+
+function ShakhtarFun(player) { // !DYK
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sha/titular/red | sha/titular/blue | sha/alternativa/red | sha/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ShakhtarTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 1;
+        redTextColor = 0x000000;
+        redColor = [0xF39C4D, 0xEF3B24];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SHAKHTAR DONETSK";
+    }
+}
+
+function ShakhtarTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 1;
+        blueTextColor = 0x000000;
+        blueColor = [0xF39C4D, 0xEF3B24];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SHAKHTAR DONETSK";
+    }
+}
+
+function ShakhtarAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 1;
+        redTextColor = 0x000000;
+        redColor = [0xAC9E9B, 0xDAD0CF, 0xAC9E9B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SHAKHTAR DONETSK";
+    }
+}
+
+function ShakhtarAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 1;
+        blueTextColor = 0x000000;
+        blueColor = [0xAC9E9B, 0xDAD0CF, 0xAC9E9B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SHAKHTAR DONETSK";
+    }
+}
+
+function JaponFun(player) { // !JAP
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('jap/titular/red | jap/titular/blue | jap/alternativa/red | jap/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function JaponTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf4363b;
+        redColor = [0x202531, 0x305797, 0x388BE7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JAPÓN";
+    }
+}
+
+function JaponTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf4363b;
+        blueColor = [0x202531, 0x305797, 0x388BE7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JAPÓN";
+    }
+}
+
+function JaponAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xb52024;
+        redColor = [0xF7FDFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JAPÓN";
+    }
+}
+
+function JaponAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xb52024;
+        blueColor = [0xF7FDFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JAPÓN";
+    }
+}
+
+
+function NuevaZelandaFun(player) { // !NZE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nze/titular/red | nze/titular/blue | nze/alternativa/red | nze/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NuevaZelandaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x191e22;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NUEVA ZELANDA";
+    }
+}
+
+function NuevaZelandaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x191e22;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NUEVA ZELANDA";
+    }
+}
+
+function NuevaZelandaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xF5F5F5;
+        redColor = [0x232323, 0x232323, 0x2E2F33];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NUEVA ZELANDA";
+    }
+}
+
+function NuevaZelandaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xF5F5F5;
+        blueColor = [0x232323, 0x232323, 0x2E2F33];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NUEVA ZELANDA";
+    }
+}
+
+function CoreaDelNorteFun(player) { // !CNO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cno/titular/red | cno/titular/blue | cno/alternativa/red | cno/alternativa/blue | cno/bandera/red | cno/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CoreaDelNorteTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFF0000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COREA DEL NORTE";
+    }
+}
+
+function CoreaDelNorteTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFF0000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COREA DEL NORTE";
+    }
+}
+
+function CoreaDelNorteAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xff0000;
+        redColor = [0xF5F9FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COREA DEL NORTE";
+    }
+}
+
+function CoreaDelNorteAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xff0000;
+        blueColor = [0xF5F9FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COREA DEL NORTE";
+    }
+}
+
+function CoreaDelNorteBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x024FA2, 0xED1C27, 0x024FA2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COREA DEL NORTE";
+    }
+}
+
+function CoreaDelNorteBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x024FA2, 0xED1C27, 0x024FA2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COREA DEL NORTE";
+    }
+}
+
+function AustriaFun(player) { // !AUT
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('aut/titular/red | aut/titular/blue | aut/alternativa/red | aut/alternativa/blue | aut/bandera/red | aut/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AustriaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xD80B2A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUSTRIA";
+    }
+}
+
+function AustriaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xD80B2A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUSTRIA";
+    }
+}
+
+function AustriaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUSTRIA";
+    }
+}
+
+function AustriaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUSTRIA";
+    }
+}
+
+function AustriaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xED2939, 0xFFFFFF, 0xED2939];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUSTRIA";
+    }
+}
+
+function AustriaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xED2939, 0xFFFFFF, 0xED2939];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUSTRIA";
+    }
+}
+
+function AtlantaUnitedFun(player) { // !ATLU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('atlu/titular/red | atlu/titular/blue | atlu/alternativa/red | atlu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AtlantaUnitedTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xc2b28e;
+        redColor = [0x222021, 0xC70C41, 0x222021];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATLANTA UNITED";
+    }
+}
+
+function AtlantaUnitedTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xc2b28e;
+        blueColor = [0x222021, 0xC70C41, 0x222021];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATLANTA UNITED";
+    }
+}
+
+function AtlantaUnitedAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xff774d;
+        redColor = [0xE1E5E6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATLANTA UNITED";
+    }
+}
+
+function AtlantaUnitedAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xff774d;
+        blueColor = [0xE1E5E6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATLANTA UNITED";
+    }
+}
+
+function LAGalaxyFun(player) { // !LA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('la/titular/red | la/titular/blue | la/alternativa/red | la/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LAGalaxyTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 35;
+        redTextColor = 0xfdc904;
+        redColor = [0xFFFFFF, 0x232941, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LA GALAXY";
+    }
+}
+
+function LAGalaxyTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 35;
+        blueTextColor = 0xfdc904;
+        blueColor = [0xFFFFFF, 0x232941, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LA GALAXY";
+    }
+}
+
+function LAGalaxyAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x294A73, 0x1E2037, 0x294A73];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LA GALAXY";
+    }
+}
+
+function LAGalaxyAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x294A73, 0x1E2037, 0x294A73];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LA GALAXY";
+    }
+}
+
+function TorontoFCFun(player) { // !NZE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tofc/titular/red | tofc/titular/blue | tofc/alternativa/red | tofc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TorontoFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE50126];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORONTO FC";
+    }
+}
+
+function TorontoFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE50126];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORONTO FC";
+    }
+}
+
+function TorontoFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x1d1c21;
+        redColor = [0xE6EBEF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORONTO FC";
+    }
+}
+
+function TorontoFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x1d1c21;
+        blueColor = [0xE6EBEF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORONTO FC";
+    }
+}
+
+function NewYorkCityFun(player) { // !NYC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nyc/titular/red | nyc/titular/blue | nyc/alternativa/red | nyc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NewYorkCityTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x102a5b;
+        redColor = [0x82BCEC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEW YORK CITY";
+    }
+}
+
+function NewYorkCityTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x102a5b;
+        blueColor = [0x82BCEC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEW YORK CITY";
+    }
+}
+
+function NewYorkCityAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x7cbfea;
+        redColor = [0x4D5361];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEW YORK CITY";
+    }
+}
+
+function NewYorkCityAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x7cbfea;
+        blueColor = [0x4D5361];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEW YORK CITY";
+    }
+}
+
+function LosAngelesFCFun(player) { // !LAF
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lafc/titular/red | lafc/titular/blue | lafc/alternativa/red | lafc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LosAngelesFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xcbad6f;
+        redColor = [0x322E2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOS ANGELES FC";
+    }
+}
+
+function LosAngelesFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xcbad6f;
+        blueColor = [0x322E2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOS ANGELES FC";
+    }
+}
+
+function LosAngelesFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xaeafb1;
+        redColor = [0xEFEEF3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOS ANGELES FC";
+    }
+}
+
+function LosAngelesFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xaeafb1;
+        blueColor = [0xEFEEF3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOS ANGELES FC";
+    }
+}
+
+function SeattleSoundersFun(player) { // !SEA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sea/titular/red | sea/titular/blue | sea/alternativa/red | sea/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SeattleSoundersTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x98C067];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SEATTLE SOUNDERS";
+    }
+}
+
+function SeattleSoundersTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x98C067];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SEATTLE SOUNDERS";
+    }
+}
+
+function SeattleSoundersAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x2C2A2F, 0x2C2A2F, 0xE18298];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SEATTLE SOUNDERS";
+    }
+}
+
+function SeattleSoundersAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x2C2A2F, 0x2C2A2F, 0xE18298];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SEATTLE SOUNDERS";
+    }
+}
+
+function NewYorkRedBullFun(player) { // !NRB
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nyrb/titular/red | nyrb/titular/blue | nyrb/alternativa/red | nyrb/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NewYorkRedBullTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x8c0c2d;
+        redColor = [0xD0D0D2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEW YORK RB";
+    }
+}
+
+function NewYorkRedBullTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x8c0c2d;
+        blueColor = [0xD0D0D2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEW YORK RB";
+    }
+}
+
+function NewYorkRedBullAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xF1273D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEW YORK RB";
+    }
+}
+
+function NewYorkRedBullAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xF1273D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEW YORK RB";
+    }
+}
+
+function PortlandTimbersFun(player) { // !PTIM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ptim/titular/red | ptim/titular/blue | ptim/alternativa/red | ptim/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PortlandTimbersTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xdfb231;
+        redColor = [0x293728, 0x31492F, 0x293728];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PORTLAND TIMBERS";
+    }
+}
+
+function PortlandTimbersTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xdfb231;
+        blueColor = [0x293728, 0x31492F, 0x293728];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PORTLAND TIMBERS";
+    }
+}
+
+function PortlandTimbersAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x486551;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PORTLAND TIMBERS";
+    }
+}
+
+function PortlandTimbersAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x486551;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PORTLAND TIMBERS";
+    }
+}
+
+function ColoColoFun(player) { // !CCO
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cco/titular/red | cco/titular/blue | cco/alternativa/red | cco/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ColoColoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x000000;
+        redColor = [0xF6F6F7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COLO COLO";
+    }
+}
+
+function ColoColoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x000000;
+        blueColor = [0xF6F6F7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COLO COLO";
+    }
+}
+
+function ColoColoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0xCFCFCF;
+        redColor = [0x212223, 0x212223, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COLO COLO";
+    }
+}
+
+function ColoColoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0xCFCFCF;
+        blueColor = [0x212223, 0x212223, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COLO COLO";
+    }
+}
+
+function UdeChileFun(player) { // !UDC
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('udc/titular/red | udc/titular/blue | udc/alternativa/red | udc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UdeChileTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xf4f4f4;
+        redColor = [0x1C2445];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U DE CHILE";
+    }
+}
+
+function UdeChileTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xf4f4f4;
+        blueColor = [0x1C2445];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U DE CHILE";
+    }
+}
+
+function UdeChileAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf7f7f7;
+        redColor = [0xF33134, 0x611C1C, 0xF33134];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U DE CHILE";
+    }
+}
+
+function UdeChileAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf7f7f7;
+        blueColor = [0xF33134, 0x611C1C, 0xF33134];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U DE CHILE";
+    }
+}
+
+function StrongestFun(player) { // !STG
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('stg/titular/red | stg/titular/blue | stg/alternativa/red | stg/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function StrongestTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFECE2D, 0x1D1B1E, 0xFECE2D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "STRONGEST";
+    }
+}
+
+function StrongestTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFECE2D, 0x1D1B1E, 0xFECE2D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "STRONGEST";
+    }
+}
+
+function StrongestAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x030303;
+        redColor = [0xFFFFFF, 0xEDAE00, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "STRONGEST";
+    }
+}
+
+function StrongestAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x030303;
+        blueColor = [0xFFFFFF, 0xEDAE00, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "STRONGEST";
+    }
+}
+
+function WilstermannFun(player) { // !WTM
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wtm/titular/red | wtm/titular/blue | wtm/alternativa/red | wtm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function WilstermannTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xED1E3C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WILSTERMANN";
+    }
+}
+
+function WilstermannTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xED1E3C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WILSTERMANN";
+    }
+}
+
+function WilstermannAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1F3E70, 0x16304C, 0x1F3E70];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WILSTERMANN";
+    }
+}
+
+function WilstermannAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1F3E70, 0x16304C, 0x1F3E70];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WILSTERMANN";
+    }
+}
+
+function BolivarFun(player) { // !BLV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('blv/titular/red | blv/titular/blue | blv/alternativa/red | blv/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BolivarTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x21406b;
+        redColor = [0x92E2FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BOLIVAR";
+    }
+}
+
+function BolivarTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x21406b;
+        blueColor = [0x92E2FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BOLIVAR";
+    }
+}
+
+function BolivarAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd8ddee;
+        redColor = [0x333B45];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BOLIVAR";
+    }
+}
+
+function BolivarAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd8ddee;
+        blueColor = [0x333B45];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BOLIVAR";
+    }
+}
+
+function EvertonFCFun(player) { // !ING
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('eve/titular/red | eve/titular/blue | eve/alternativa/red | eve/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EvertonFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf9f9f9;
+        redColor = [0x15428A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EVERTON FC";
+    }
+}
+
+function EvertonFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf9f9f9;
+        blueColor = [0x15428A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EVERTON FC";
+    }
+}
+
+function EvertonFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0c1448;
+        redColor = [0xFA6754];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EVERTON FC";
+    }
+}
+
+function EvertonFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0c1448;
+        blueColor = [0xFA6754];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EVERTON FC";
+    }
+}
+
+function ASMonacoFun(player) { // !ING
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('asm/titular/red | asm/titular/blue | asm/alternativa/red | asm/alternativa/blue | asm/tercera/red | asm/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ASMonacoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0xfeb60a;
+        redColor = [0xB8242E, 0xAD232E, 0xFEFEFE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AS MONACO";
+    }
+}
+
+function ASMonacoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0xfeb60a;
+        blueColor = [0xB8242E, 0xAD232E, 0xFEFEFE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AS MONACO";
+    }
+}
+
+function ASMonacoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd5a651;
+        redColor = [0x1F2023];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AS MONACO";
+    }
+}
+
+function ASMonacoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd5a651;
+        blueColor = [0x1F2023];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AS MONACO";
+    }
+}
+
+function ASMonacoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x255e9a;
+        redColor = [0x93D9F5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AS MONACO";
+    }
+}
+
+function ASMonacoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x255e9a;
+        blueColor = [0x93D9F5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AS MONACO";
+    }
+}
+
+function AtalantaFun(player) { // !OL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ata/titular/red | ata/titular/blue | ata/alternativa/red | ata/alternativa/blue | ata/tercera/red | ata/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AtalantaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0269b8, 0x251e25, 0x0269b8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATALANTA";
+    }
+}
+
+function AtalantaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0269b8, 0x251e25, 0x0269b8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATALANTA";
+    }
+}
+
+function AtalantaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x357FFF;
+        redColor = [0x2F71E2, 0x181818, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATALANTA";
+    }
+}
+
+function AtalantaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x357FFF;
+        blueColor = [0x2F71E2, 0x181818, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATALANTA";
+    }
+}
+
+function AtalantaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x874834];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATALANTA";
+    }
+}
+
+function AtalantaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x874834];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATALANTA";
+    }
+}
+
+function FCBaselFun(player) { // !OL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bas/titular/red | bas/titular/blue | bas/alternativa/red | bas/alternativa/blue | bas/tercera/red | bas/tercera/blue | bas/clasica/red | bas/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FCBaselTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xBC051F, 0xBC051F, 0x1B3F86];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC BASEL";
+    }
+}
+
+function FCBaselTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xBC051F, 0xBC051F, 0x1B3F86];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC BASEL";
+    }
+}
+
+function FCBaselAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x1a1a1a;
+        redColor = [0xE1E1E1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC BASEL";
+    }
+}
+
+function FCBaselAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x1a1a1a;
+        blueColor = [0xE1E1E1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC BASEL";
+    }
+}
+
+function FCBaselTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x222222];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC BASEL";
+    }
+}
+
+function FCBaselTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x222222];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC BASEL";
+    }
+}
+
+function FCBaselClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xffe500;
+        redColor = [0xE40327, 0x0E3B85];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC BASEL";
+    }
+}
+
+function FCBaselClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xffe500;
+        blueColor = [0xE40327, 0x0E3B85];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC BASEL";
+    }
+}
+
+function UCatolicaFun(player) { // !UCA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('uca/titular/red | uca/titular/blue | uca/alternativa/red | uca/alternativa/blue | uca/tercera/red | uca/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UCatolicaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFE0000;
+        redColor = [0xFFFFFF, 0x2148A0, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U CATÓLICA";
+    }
+}
+
+function UCatolicaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFE0000;
+        blueColor = [0xFFFFFF, 0x2148A0, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U CATÓLICA";
+    }
+}
+
+function UCatolicaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xD22F1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U CATÓLICA";
+    }
+}
+
+function UCatolicaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xD22F1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U CATÓLICA";
+    }
+}
+
+function UCatolicaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xff0000;
+        redColor = [0x2148A0, 0xFFFFFF, 0x2148A0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U CATÓLICA";
+    }
+}
+
+function UCatolicaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xff0000;
+        blueColor = [0x2148A0, 0xFFFFFF, 0x2148A0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U CATÓLICA";
+    }
+}
+
+function CobreloaFun(player) { // !Cob
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cob/titular/red | cob/titular/blue | cob/alternativa/red | cob/alternativa/blue | cob/tercera/red | cob/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CobreloaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 30;
+        redTextColor = 0xffffff;
+        redColor = [0xFF4B15, 0xCC3900];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COBRELOA";
+    }
+}
+function CobreloaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 30;
+        blueTextColor = 0xffffff;
+        blueColor = [0xFF4B15, 0xCC3900];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COBRELOA";
+    }
+}
+function CobreloaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 30;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xCFCFCF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COBRELOA";
+    }
+}
+function CobreloaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 30;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xCFCFCF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COBRELOA";
+    }
+}
+function CobreloaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 30;
+        redTextColor = 0xffffff;
+        redColor = [0x45485B, 0x1A1A1A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COBRELOA";
+    }
+}
+function CobreloaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 30;
+        blueTextColor = 0xffffff;
+        blueColor = [0x45485B, 0x1A1A1A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COBRELOA";
+    }
+}
+
+function PalestinoFun(player) { // !Cob
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cdp/titular/red | cdp/titular/blue | cdp/alternativa/red | cdp/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function PalestinoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0x047B4E, 0xE30000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PALESTINO";
+    }
+}
+function PalestinoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0x047B4E, 0xE30000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PALESTINO";
+    }
+}
+function PalestinoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFAFAFA;
+        redColor = [0xE30000, 0x000503, 0x047B4E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PALESTINO";
+    }
+}
+function PalestinoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFAFAFA;
+        blueColor = [0xE30000, 0x000503, 0x047B4E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PALESTINO";
+    }
+}
+
+function MelgarFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mel/titular/red | mel/titular/blue | mel/alternativa/red | mel/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MelgarTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xEC1B30, 0x2A2A2A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MELGAR";
+    }
+}
+
+function MelgarTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xEC1B30, 0x2A2A2A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MELGAR";
+    }
+}
+
+function MelgarAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x2a2a2a;
+        redColor = [0xECEFF4, 0xEC1B31, 0xECEFF4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MELGAR";
+    }
+}
+
+function MelgarAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x2a2a2a;
+        blueColor = [0xECEFF4, 0xEC1B31, 0xECEFF4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MELGAR";
+    }
+}
+
+function UniversitarioFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('unv/titular/red | unv/titular/blue | unv/alternativa/red | unv/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UniversitarioTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x812124;
+        redColor = [0xE1DCC5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIVERSITARIO";
+    }
+}
+
+function UniversitarioTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x812124;
+        blueColor = [0xE1DCC5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIVERSITARIO";
+    }
+}
+
+function UniversitarioAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x902C38];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIVERSITARIO";
+    }
+}
+
+function UniversitarioAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x902C38];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIVERSITARIO";
+    }
+}
+
+function AlianzaLimaFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ali/titular/red | ali/titular/blue | ali/alternativa/red | ali/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlianzaLimaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd9030f;
+        redColor = [0x062247, 0xFFFFFF, 0x062247];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALIANZA LIMA";
+    }
+}
+
+function AlianzaLimaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd9030f;
+        blueColor = [0x062247, 0xFFFFFF, 0x062247];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALIANZA LIMA";
+    }
+}
+
+function AlianzaLimaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0xf4f4f4;
+        redColor = [0x1A2639, 0x253143, 0x253143];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALIANZA LIMA";
+    }
+}
+
+function AlianzaLimaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0xf4f4f4;
+        blueColor = [0x1A2639, 0x253143, 0x253143];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALIANZA LIMA";
+    }
+}
+
+function SportingCristalFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cri/titular/red | cri/titular/blue | cri/alternativa/red | cri/alternativa/blue | cri/tercera/red | cri/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SportingCristalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x032543;
+        redColor = [0x61C5ED];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTING CRISTAL";
+    }
+}
+
+function SportingCristalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x032543;
+        blueColor = [0x61C5ED];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTING CRISTAL";
+    }
+}
+
+function SportingCristalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x212C4B, 0x334A7F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTING CRISTAL";
+    }
+}
+
+function SportingCristalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x212C4B, 0x334A7F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTING CRISTAL";
+    }
+}
+
+function SportingCristalTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 41;
+        redTextColor = 0x1C1C1C;
+        redColor = [0xFFFFFF, 0x3CBEEF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTING CRISTAL";
+    }
+}
+
+function SportingCristalTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 41;
+        blueTextColor = 0x1C1C1C;
+        blueColor = [0xFFFFFF, 0x3CBEEF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTING CRISTAL";
+    }
+}
+
+function RusiaFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rus/titular/red | rus/titular/blue | rus/alternativa/red | rus/alternativa/blue | rus/bandera/red | rus/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RusiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xC4021D, 0xC4323F, 0xD43941];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RUSIA";
+    }
+}
+
+function RusiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xC4021D, 0xC4323F, 0xD43941];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RUSIA";
+    }
+}
+
+function RusiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0x114577;
+        redColor = [0xEFEFF0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RUSIA";
+    }
+}
+
+function RusiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0x114577;
+        blueColor = [0xEFEFF0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RUSIA";
+    }
+}
+
+function RusiaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xDECC57;
+        redColor = [0xFFFFFF, 0x0039A6, 0xD52B1E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RUSIA";
+    }
+}
+
+function RusiaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xDECC57;
+        blueColor = [0xFFFFFF, 0x0039A6, 0xD52B1E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RUSIA";
+    }
+}
+
+function EstadosUnidosFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('usa/titular/red | usa/titular/blue | usa/alternativa/red | usa/alternativa/blue | usa/tercera/red | usa/tercera/blue | usa/clasica/red | usa/clasica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EstadosUnidosTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 122;
+        redTextColor = 0x005588;
+        redColor = [0xFFFFFF, 0xFFFFFF, 0xB30119];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EEUU";
+    }
+}
+
+function EstadosUnidosTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 122;
+        blueTextColor = 0x005588;
+        blueColor = [0xFFFFFF, 0xFFFFFF, 0xB30119];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EEUU";
+    }
+}
+
+function EstadosUnidosAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -122;
+        redTextColor = 0xF2F4F5;
+        redColor = [0xE30212, 0x273D87, 0x273D87];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EEUU";
+    }
+}
+
+function EstadosUnidosAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -122;
+        blueTextColor = 0xF2F4F5;
+        blueColor = [0xE30212, 0x273D87, 0x273D87];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EEUU";
+    }
+}
+
+function EstadosUnidosTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0xfbfbfa;
+        redColor = [0x013354];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EEUU";
+    }
+}
+
+function EstadosUnidosTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0xfbfbfa;
+        blueColor = [0x013354];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EEUU";
+    }
+}
+
+function EstadosUnidosClasicaRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0x101085;
+        redColor = [0xFF2E2E, 0xFFFFFF, 0x1C59FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EEUU";
+    }
+}
+
+function EstadosUnidosClasicaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0x101085;
+        blueColor = [0xFF2E2E, 0xFFFFFF, 0x1C59FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EEUU";
+    }
+}
+
+function AlmagroFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('alm/titular/red | alm/titular/blue | alm/alternativa/red | alm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlmagroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0137D5, 0x18181A, 0x0137D5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALMAGRO";
+    }
+}
+
+function AlmagroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0137D5, 0x18181A, 0x0137D5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALMAGRO";
+    }
+}
+
+function AlmagroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1783FF;
+        redColor = [0x003CDB, 0x1F1F21, 0xFDFDFD];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALMAGRO";
+    }
+}
+
+function AlmagroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1783FF;
+        blueColor = [0x003CDB, 0x1F1F21, 0xFDFDFD];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALMAGRO";
+    }
+}
+
+function NigeriaFun(player) { // !nga
+    room.sendAnnouncement('Nigeria | 🇳🇬', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nga/titular/red | nga/titular/blue | nga/alternativa/red |nga/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+
+}
+
+function NigeriaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0x1D633C, 0xF7FAF7, 0x1D633C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NIGERIA";
+    }
+}
+
+function NigeriaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0x1D633C, 0xF7FAF7, 0x1D633C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NIGERIA";
+    }
+}
+
+function NigeriaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0xffffff;
+        redColor = [0x294040];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NIGERIA";
+    }
+}
+
+function NigeriaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x294040];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NIGERIA";
+    }
+}
+
+function EcuadorFun(player) { // !ecu
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ecu/titular/red | ecu/titular/blue | ecu/alternativa/red |ecu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EcuadorTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1e2a52;
+        redColor = [0x042a95, 0xebd301, 0xebd301];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ECUADOR";
+    }
+}
+
+function EcuadorTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1e2a52;
+        blueColor = [0x042a95, 0xebd301, 0xebd301];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ECUADOR";
+    }
+}
+
+function EcuadorAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xedfe2d;
+        redColor = [0x777b6e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ECUADOR";
+    }
+}
+
+function EcuadorAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xedfe2d;
+        blueColor = [0x777b6e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ECUADOR";
+    }
+}
+
+function CADUFun(player) { // !CADU
+    room.sendAnnouncement('Club Atlético Defensores Unidos 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cadu/titular/red | cadu/titular/blue | cadu/alternativa/red | cadu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CADUTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0F0F0F;
+        redColor = [0x0A94DC, 0x2CCAF8, 0x0A94DC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CADU";
+    }
+}
+
+function CADUTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0F0F0F;
+        blueColor = [0x0A94DC, 0x2CCAF8, 0x0A94DC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CADU";
+    }
+}
+
+function CADUAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 135;
+        redTextColor = 0x007EFC;
+        redColor = [0xFFFFFF, 0x47C4FB, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CADU";
+    }
+}
+
+function CADUAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 135;
+        blueTextColor = 0x007EFC;
+        blueColor = [0xFFFFFF, 0x47C4FB, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CADU";
+    }
+}
+
+function URSSFun(player) { // !urss
+    room.sendAnnouncement('Unión Soviética - URSS - ☭', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('urss/titular/red | urss/titular/blue | urss/alternativa/red |urss/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function URSSTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xB00819];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "URSS";
+    }
+}
+
+function URSSTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xB00819];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "URSS";
+    }
+}
+
+function URSSAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xab0818;
+        redColor = [0xFAFAFA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "URSS";
+    }
+}
+
+function URSSAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xab0818;
+        blueColor = [0xFAFAFA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "URSS";
+    }
+}
+
+function YugoslaviaFun(player) { // !yug
+    room.sendAnnouncement('Yugoslavia 🇷🇸', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('yug/titular/red/1990 | yug/titular/blue/1990 | yug/alternativa/red/1990 |yug/alternativa/blue/1990 | yug/titular/red/1984 | yug/titular/blue/1984 | yug/alternativa/red/1984 |yug/alternativa/blue/1984 | yug/bandera/red | yug/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function YugoslaviaTitular1990RedFun(player){
+    if (player.admin == true){
+        redAngle = 153;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0F4BA1, 0x0F4BA1, 0xDE0000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaTitular1990BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 153;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0F4BA1, 0x0F4BA1, 0xDE0000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaAlternativa1990RedFun(player){
+    if (player.admin == true){
+        redAngle = 153;
+        redTextColor = 0x0d4bb2;
+        redColor = [0xFFFFFF, 0xFFFFFF, 0xDD251D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaAlternativa1990BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 153;
+        blueTextColor = 0x0d4bb2;
+        blueColor = [0xFFFFFF, 0xFFFFFF, 0xDD251D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaTitular1984RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x18529D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaTitular1984BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x18529D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaAlternativa1984RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x00388e;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaAlternativa1984BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x00388e;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xde0000;
+        redColor = [0x003893, 0xFFFFFF, 0xDE0000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "YUGOSLAVIA";
+    }
+}
+
+function YugoslaviaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xde0000;
+        blueColor = [0x003893, 0xFFFFFF, 0xDE0000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "YUGOSLAVIA";
+    }
+}
+
+function AlumniFun(player) { // !alu
+    room.sendAnnouncement('Alumni Athletic Club (1895-1913) - 🇦🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('alu/titular/red | alu/titular/blue | alu/alternativa/red | alu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlumniTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFF0000, 0xFFFFFF, 0xFF0000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALUMNI";
+    }
+}
+
+function AlumniTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFF0000, 0xFFFFFF, 0xFF0000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALUMNI";
+    }
+}
+
+function AlumniAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xE30F10, 0xFFFFFF, 0xE30F10];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALUMNI";
+    }
+}
+
+function AlumniAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xE30F10, 0xFFFFFF, 0xE30F10];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALUMNI";
+	}
+}
+function VillaSanCarlosFun(player) { // !vsc
+    room.sendAnnouncement('Villa San Carlos 🇦🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('vsc/titular/red | vsc/titular/blue | vsc/alternativa/red | vsc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function VillaSanCarlosTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 42;
+        redTextColor = 0x131b2a;
+        redColor = [0x48B8E5, 0xFFFFFF, 0x48B8E5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VILLA SAN CARLOS";
+    }
+}
+function VillaSanCarlosTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 42;
+        blueTextColor = 0x131b2a;
+        blueColor = [0x48B8E5, 0xFFFFFF, 0x48B8E5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VILLA SAN CARLOS";
+    }
+}
+function VillaSanCarlosAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 56;
+        redTextColor = 0xF0F0F0;
+        redColor = [0x01C8FF, 0x292C34, 0x292C34];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VILLA SAN CARLOS";
+    }
+}
+function VillaSanCarlosAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 56;
+        blueTextColor = 0xF0F0F0;
+        blueColor = [0x01C8FF, 0x292C34, 0x292C34];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VILLA SAN CARLOS";
+    }
+}
+function LomasAthleticFun(player) { // !loa
+    room.sendAnnouncement('Lomas Athletic (1893-1909) - 🇦🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('loa/titular/red | loa/titular/blue | loa/escudo/red | loa/escudo/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function LomasAthleticTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf5dc00;
+        redColor = [0x336633, 0xD90000, 0x336633];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOMAS ATHLETIC";
+    }
+}
+function LomasAthleticTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf5dc00;
+        blueColor = [0x336633, 0xD90000, 0x336633];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOMAS ATHLETIC";
+    }
+}
+function LomasAthleticEscudoRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xfcc916;
+        redColor = [0x015440, 0xDD191A, 0x015440];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LOMAS ATHLETIC";
+    }
+}
+function LomasAthleticEscudoBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xfcc916;
+        blueColor = [0x015440, 0xDD191A, 0x015440];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LOMAS ATHLETIC";
+    }
+}
+
+function ChecoslovaquiaFun(player) { // !cze
+    room.sendAnnouncement('Checoslovaquia 🇨🇿 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cze/titular/red | cze/titular/blue | cze/alternativa/red | cze/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChecoslovaquiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xBE2620];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CHECOSLOVAQUIA";
+    }
+}
+
+function ChecoslovaquiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xBE2620];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CHECOSLOVAQUIA";
+    }
+}
+
+function ChecoslovaquiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xac1013;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CHECOSLOVAQUIA";
+    }
+}
+
+function ChecoslovaquiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xac1013;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CHECOSLOVAQUIA";
+    }
+}
+
+function NantesFun(player) { // !fcn
+    room.sendAnnouncement('FC Nantes 🇫🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fcn/titular/red | fcn/titular/blue | fcn/alternativa/red | fcn/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NantesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x007037;
+        redColor = [0xFEE030, 0x1AAD67, 0xFEE030];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC NANTES";
+    }
+}
+
+function NantesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x007037;
+        blueColor = [0xFEE030, 0x1AAD67, 0xFEE030];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC NANTES";
+    }
+}
+
+function NantesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xffff00;
+        redColor = [0x228B67, 0x167554, 0x167554];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC NANTES";
+    }
+}
+
+function NantesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xffff00;
+        blueColor = [0x228B67, 0x167554, 0x167554];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC NANTES";
+    }
+}
+
+function SaintEtienneFun(player) { // !STE
+    room.sendAnnouncement('Saint Etienne 🇫🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ste/titular/red | ste/titular/blue | ste/alternativa/red | ste/alternativa/blue | ste/tercera/red | ste/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SaintEtienneTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0F6B46, 0x1B9365, 0x1B9365];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAINT ETIENNE";
+    }
+}
+
+function SaintEtienneTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0F6B46, 0x1B9365, 0x1B9365];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAINT ETIENNE";
+    }
+}
+
+function SaintEtienneAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x4c6e5d;
+        redColor = [0x147858, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAINT ETIENNE";
+    }
+}
+
+function SaintEtienneAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x4c6e5d;
+        blueColor = [0x147858, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAINT ETIENNE";
+    }
+}
+
+function SaintEtienneTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x727085, 0x8E909D, 0x8E909D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAINT ETIENNE";
+    }
+}
+
+function SaintEtienneTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x727085, 0x8E909D, 0x8E909D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAINT ETIENNE";
+    }
+}
+
+function RennesFun(player) { // !REN
+    room.sendAnnouncement('Rennes 🇫🇷', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ren/titular/red | ren/titular/blue | ren/alternativa/red | ren/alternativa/blue | ren/tercera/red | ren/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RennesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xF0F0F0;
+        redColor = [0x000000, 0xDC0D15];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RENNES";
+    }
+}
+
+function RennesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xF0F0F0;
+        blueColor = [0x000000, 0xDC0D15];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RENNES";
+    }
+}
+
+function RennesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x276DD6, 0x1B50B5, 0x276DD6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RENNES";
+    }
+}
+
+function RennesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x276DD6, 0x1B50B5, 0x276DD6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RENNES";
+    }
+}
+
+function RennesTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFDF00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RENNES";
+    }
+}
+
+function RennesTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFDF00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RENNES";
+    }
+}
+
+function FCNyvaVinnytsiaFun(player) { // !nyv
+    room.sendAnnouncement('FC Nyva Vinnytsia (Нива Винница) | 🇺🇦 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nyv/titular/red | nyv/titular/blue | nyv/alternativa/red | nyv/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FCNyvaVinnytsiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x42A161];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC NYVA VINNYTSIA";
+    }
+}
+
+function FCNyvaVinnytsiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x42A161];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC NYVA VINNYTSIA";
+    }
+}
+
+function FCNyvaVinnytsiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x439b73;
+        redColor = [0x3AA070, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC NYVA VINNYTSIA";
+    }
+}
+
+function FCNyvaVinnytsiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x439b73;
+        blueColor = [0x3AA070, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC NYVA VINNYTSIA";
+    }
+}
+
+function OrlandoCityFun(player) { // !ORL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('orl/titular/red | orl/titular/blue | orl/alternativa/red | orl/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OrlandoCityTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x3F0B74, 0x360963, 0x360963];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ORLANDO CITY";
+    }
+}
+
+function OrlandoCityTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x3F0B74, 0x360963, 0x360963];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ORLANDO CITY";
+    }
+}
+
+function OrlandoCityAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x3f0b74;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ORLANDO CITY";
+    }
+}
+
+function OrlandoCityAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x3f0b74;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ORLANDO CITY";
+    }
+}
+
+function EstudiantesBsAsFun(player) { // !EBA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('eba/titular/red | eba/titular/blue | eba/alternativa/red | eba/alternativa/blue ', player.id, 0x6BFFB5, "normal", 0);
+}
+function EstudiantesBsAsTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x8C8C8C;
+        redColor = [0xFFFFFF, 0x000000, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ESTUDIANTES (BA)";
+    }
+}
+function EstudiantesBsAsTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x8C8C8C;
+        blueColor = [0xFFFFFF, 0x000000, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ESTUDIANTES (BA)";
+    }
+}
+function EstudiantesBsAsAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 115;
+        redTextColor = 0x050505;
+        redColor = [0xEAE4E6, 0xFFFFFF, 0xA89D9B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ESTUDIANTES (BA)";
+    }
+}
+function EstudiantesBsAsAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 115;
+        blueTextColor = 0x050505;
+        blueColor = [0xEAE4E6, 0xFFFFFF, 0xA89D9B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ESTUDIANTES (BA)";
+    }
+}
+function FerencvarosiTCFun(player) { // !ftc
+    room.sendAnnouncement('Ferencvarosi TC', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ftc/titular/red | ftc/titular/blue | ftc/alternativa/red | ftc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function FerencvarosiTCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0F0F0F;
+        redColor = [0x00B66C, 0xFFFFFF, 0x00B66C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FERENCVAROSI TC";
+    }
+}
+function FerencvarosiTCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0F0F0F;
+        blueColor = [0x00B66C, 0xFFFFFF, 0x00B66C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FERENCVAROSI TC";
+    }
+}
+function FerencvarosiTCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe6c673;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FERENCVAROSI TC";
+    }
+}
+function FerencvarosiTCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe6c673;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FERENCVAROSI TC";
+    }
+}
+
+function MOLVidiFCFun(player) { // !vid
+    room.sendAnnouncement('MOL Vidi FC:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('vid/titular/red | vid/titular/blue | vid/alternativa/red | vid/alternativa/blue | vid/tercera/red | vid/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MOLVidiFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xD31C2A, 0x3E486E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MOL VIDI FC";
+    }
+}
+
+function MOLVidiFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xD31C2A, 0x3E486E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MOL VIDI FC";
+    }
+}
+
+function MOLVidiFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x1d439b;
+        redColor = [0xBFC5E1, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MOL VIDI FC";
+    }
+}
+
+function MOLVidiFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x1d439b;
+        blueColor = [0xBFC5E1, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MOL VIDI FC";
+    }
+}
+
+function MOLVidiFCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x26499f;
+        redColor = [0x7D97CA, 0x9EBDDE, 0x9EBDDE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MOL VIDI FC";
+    }
+}
+
+function MOLVidiFCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x26499f;
+        blueColor = [0x7D97CA, 0x9EBDDE, 0x9EBDDE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MOL VIDI FC";
+    }
+}
+
+function UjpestFCFun(player) { // !ujp
+    room.sendAnnouncement('Újpest FC:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ujp/titular/red | ujp/titular/blue | ujp/alternativa/red | ujp/alternativa/blue | ujp/tercera/red | ujp/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UjpestFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xd5b97d;
+        redColor = [0xFFFFFF, 0x4B449B, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UJPEST FC";
+    }
+}
+
+function UjpestFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xd5b97d;
+        blueColor = [0xFFFFFF, 0x4B449B, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UJPEST FC";
+    }
+}
+
+function UjpestFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x4b449b;
+        redColor = [0xFFFFFF, 0xF0F0F0, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UJPEST FC";
+    }
+}
+
+function UjpestFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x4b449b;
+        blueColor = [0xFFFFFF, 0xF0F0F0, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UJPEST FC";
+    }
+}
+
+function UjpestFCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x484197, 0x544CA0, 0x484197];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UJPEST FC";
+    }
+}
+
+function UjpestFCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x484197, 0x544CA0, 0x484197];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UJPEST FC";
+    }
+}
+
+function DVSCDebrecenFun(player) { // !dvs
+    room.sendAnnouncement('DVSC Debreceni:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dvs/titular/red | dvs/titular/blue | dvs/alternativa/red | dvs/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DVSCDebrecenTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE31F2B, 0xB82139, 0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VSC DEBRECEN";
+    }
+}
+
+function DVSCDebrecenTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE31F2B, 0xB82139, 0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VSC DEBRECEN";
+    }
+}
+
+function DVSCDebrecenAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe31f2b;
+        redColor = [0xDBDCDD, 0xFFFFFF, 0xDBDCDD];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VSC DEBRECEN";
+    }
+}
+
+function DVSCDebrecenAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe31f2b;
+        blueColor = [0xDBDCDD, 0xFFFFFF, 0xDBDCDD];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VSC DEBRECEN";
+    }
+}
+
+function HonvedFCFun(player) { // !HON
+    room.sendAnnouncement('Honved FC:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hon/titular/red | hon/titular/blue | hon/alternativa/red | hon/alternativa/blue | hon/tercera/red | hon/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HonvedFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xE31F2B, 0xFFFFFF, 0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HONVED FC";
+    }
+}
+
+function HonvedFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xE31F2B, 0xFFFFFF, 0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HONVED FC";
+    }
+}
+
+function HonvedFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFCFCFC;
+        redColor = [0xE31F2B, 0x333333, 0x333333];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HONVED FC";
+    }
+}
+
+function HonvedFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFCFCFC;
+        blueColor = [0xE31F2B, 0x333333, 0x333333];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HONVED FC";
+    }
+}
+
+function HonvedFCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2E2E2E;
+        redColor = [0xF9D100, 0xFEE14E, 0xFFF685];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HONVED FC";
+    }
+}
+
+function HonvedFCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2E2E2E;
+        blueColor = [0xF9D100, 0xFEE14E, 0xFFF685];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HONVED FC";
+    }
+}
+
+function PuskasAkademiaFCFun(player) { // !pafc
+    room.sendAnnouncement('Puskas Akademia FC:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pafc/titular/red | pafc/titular/blue | pafc/alternativa/red | pafc/alternativa/blue | pafc/tercera/red | pafc/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PuskasAkademiaFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE0BE6E, 0x323A5D, 0x323A5D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PUSKAS AKADEMIA";
+    }
+}
+
+function PuskasAkademiaFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE0BE6E, 0x323A5D, 0x323A5D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PUSKAS AKADEMIA";
+    }
+}
+
+function PuskasAkademiaFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x20253B;
+        redColor = [0x323A5D, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PUSKAS AKADEMIA";
+    }
+}
+
+function PuskasAkademiaFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x20253B;
+        blueColor = [0x323A5D, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PUSKAS AKADEMIA";
+    }
+}
+
+function PuskasAkademiaFCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0x2B324F;
+        redColor = [0x323A5D, 0xFDD450, 0xFDD450];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PUSKAS AKADEMIA";
+    }
+}
+
+function PuskasAkademiaFCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0x2B324F;
+        blueColor = [0x323A5D, 0xFDD450, 0xFDD450];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PUSKAS AKADEMIA";
+    }
+}
+
+function MezokovesdiSEFun(player) { // !mez
+    room.sendAnnouncement('Mezokovesdi SE:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mez/titular/red | mez/titular/blue | mez/alternativa/red | mez/alternativa/blue | mez/tercera/red | mez/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MezokovesdiSETitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x01244A;
+        redColor = [0xFFDA3D, 0x034EA2, 0xFFDA3D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MEZOKOVESDI SE";
+    }
+}
+
+function MezokovesdiSETitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x01244A;
+        blueColor = [0xFFDA3D, 0x034EA2, 0xFFDA3D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MEZOKOVESDI SE";
+    }
+}
+
+function MezokovesdiSEAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x212121];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MEZOKOVESDI SE";
+    }
+}
+
+function MezokovesdiSEAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x212121];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MEZOKOVESDI SE";
+    }
+}
+
+function MezokovesdiSETerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0x242424;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MEZOKOVESDI SE";
+    }
+}
+
+function MezokovesdiSETerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0x242424;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MEZOKOVESDI SE";
+    }
+}
+
+function KisvardaFCFun(player) { // !kisv
+    room.sendAnnouncement('Kisvárda FC:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('kisv/titular/red | kisv/titular/blue | kisv/alternativa/red | kisv/alternativa/blue | kisv/tercera/red | kisv/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function KisvardaFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xe31f2b;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "KISVARDA FC";
+    }
+}
+
+function KisvardaFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xe31f2b;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "KISVARDA FC";
+    }
+}
+
+function KisvardaFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "KISVARDA FC";
+    }
+}
+
+function KisvardaFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "KISVARDA FC";
+    }
+}
+
+function KisvardaFCTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x424041, 0x3A393A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "KISVARDA FC";
+    }
+}
+
+function KisvardaFCTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x424041, 0x3A393A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "KISVARDA FC";
+    }
+}
+
+function DiosgyoriVTKFun(player) { // !dio
+    room.sendAnnouncement('Diósgyőri VTK:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dio/titular/red | dio/titular/blue | dio/alternativa/red | dio/alternativa/blue | dio/tercera/red | dio/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DiosgyoriVTKTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xffffff;
+        redColor = [0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DIOSGYORI VTK";
+    }
+}
+
+function DiosgyoriVTKTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xffffff;
+        blueColor = [0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DIOSGYORI VTK";
+    }
+}
+
+function DiosgyoriVTKAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe31f2b;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DIOSGYORI VTK";
+    }
+}
+
+function DiosgyoriVTKAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe31f2b;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DIOSGYORI VTK";
+    }
+}
+
+function DiosgyoriVTKTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2E2E2E;
+        redColor = [0xE31F2B, 0xFFFFFF, 0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DIOSGYORI VTK";
+    }
+}
+
+function DiosgyoriVTKTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2E2E2E;
+        blueColor = [0xE31F2B, 0xFFFFFF, 0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DIOSGYORI VTK";
+    }
+}
+
+function PaksiSEFun(player) { // !paks
+    room.sendAnnouncement('Paksi SE:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('paks/titular/red | paks/titular/blue | paks/alternativa/red | paks/alternativa/blue | paks/tercera/red | paks/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PaksiSETitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xffffff;
+        redColor = [0x0C8D56];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PAKSI SE";
+    }
+}
+
+function PaksiSETitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xffffff;
+        blueColor = [0x0C8D56];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PAKSI SE";
+    }
+}
+
+function PaksiSEAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x212121;
+        redColor = [0xEFF0F0, 0xFFFFFF, 0xEFF0F0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PAKSI SE";
+    }
+}
+
+function PaksiSEAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x212121;
+        blueColor = [0xEFF0F0, 0xFFFFFF, 0xEFF0F0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PAKSI SE";
+    }
+}
+
+function PaksiSETerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 45;
+        redTextColor = 0x313540;
+        redColor = [0x565865, 0xC2BCC0, 0xC2BCC0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PAKSI SE";
+    }
+}
+
+function PaksiSETerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 45;
+        blueTextColor = 0x313540;
+        blueColor = [0x565865, 0xC2BCC0, 0xC2BCC0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PAKSI SE";
+    }
+}
+
+function AlmiranteBrownFun(player) { // !abrown
+    room.sendAnnouncement('Almirante Brown:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('abrown/titular/red | abrown/titular/blue | abrown/alternativa/red | abrown/alternativa/blue | abrown/tercera/red | abrown/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AlmiranteBrownTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xEBC80E, 0x000000, 0xEBC80E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALMIRANTE BROWN";
+    }
+}
+
+function AlmiranteBrownTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xEBC80E, 0x000000, 0xEBC80E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALMIRANTE BROWN";
+    }
+}
+
+function AlmiranteBrownAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFF34F;
+        redColor = [0x131313, 0x131313, 0xEBC80E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALMIRANTE BROWN";
+    }
+}
+
+function AlmiranteBrownAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFF34F;
+        blueColor = [0x131313, 0x131313, 0xEBC80E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALMIRANTE BROWN";
+    }
+}
+
+function AlmiranteBrownTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xE3C10E;
+        redColor = [0x1D1D1D, 0xFFFFFF, 0xEBC60D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALMIRANTE BROWN";
+    }
+}
+
+function AlmiranteBrownTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xE3C10E;
+        blueColor = [0x1D1D1D, 0xFFFFFF, 0xEBC60D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALMIRANTE BROWN";
+    }
+}
+
+function CentroDeportivoRocaFun(player) { // !cdybgr
+    room.sendAnnouncement('Centro Deportivo Roca (C.D.Y.B.G.R):', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cdybgr/titular/red | cdybgr/titular/blue | cdybgr/alternativa/red | cdybgr/alternativa/blue | cdybgr/tercera/red | cdybgr/tercera/blue | cdybgr/cuarta/red | cdybgr/cuarta/blue | cdybgr/quinta/red | cdybgr/quinta/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CentroDeportivoRocaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xF7F3FF;
+        redColor = [0xDC1E37, 0x1C1A26];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xF7F3FF;
+        blueColor = [0xDC1E37, 0x1C1A26];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x000000;
+        redColor = [0xFC224A, 0xFFFFFF, 0xC51641];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x000000;
+        blueColor = [0xFC224A, 0xFFFFFF, 0xC51641];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x757575;
+        redColor = [0x1E1916, 0xFFFFFF, 0xDE231C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x757575;
+        blueColor = [0x1E1916, 0xFFFFFF, 0xDE231C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaCuartaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x817F85;
+        redColor = [0x1E1916, 0xFFFFFF, 0xDC241C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaCuartaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x817F85;
+        blueColor = [0x1E1916, 0xFFFFFF, 0xDC241C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaQuintaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xD6BD8B;
+        redColor = [0x1E1916, 0xFFFFFF, 0xDC1E37];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CENTRO DEP. ROCA";
+    }
+}
+
+function CentroDeportivoRocaQuintaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xD6BD8B;
+        blueColor = [0x1E1916, 0xFFFFFF, 0xDC1E37];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CENTRO DEP. ROCA";
+    }
+}
+
+function BochofiloBochazoFun(player) { // !bchz
+    room.sendAnnouncement('Bochófilo Bochazo:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bochz/titular/red | bochz/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BochofiloBochazoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 40;
+        redTextColor = 0x33376B;
+        redColor = [0xBE2833, 0xFFFFFF, 0x2348A0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BOCHOFILO BOCHAZO";
+    }
+}
+
+function BochofiloBochazoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 40;
+        blueTextColor = 0x33376B;
+        blueColor = [0xBE2833, 0xFFFFFF, 0x2348A0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BOCHOFILO BOCHAZO";
+    }
+}
+
+function DinamoZagrebFun(player) { // !dzg
+    room.sendAnnouncement('GNK Dinamo Zagreb | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dzg/titular/red | dzg/titular/blue | dzg/alternativa/red | dzg/alternativa/blue |  | dzg/tercera/red | dzg/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DinamoZagrebTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0456C6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DINAMO ZAGREB";
+    }
+}
+
+function DinamoZagrebTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0456C6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DINAMO ZAGREB";
+    }
+}
+
+function DinamoZagrebAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x1b1f10;
+        redColor = [0xDDFF51, 0xE1FD5B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DINAMO ZAGREB";
+    }
+}
+
+function DinamoZagrebAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x1b1f10;
+        blueColor = [0xDDFF51, 0xE1FD5B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DINAMO ZAGREB";
+    }
+}
+
+function DinamoZagrebTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0xe5e811;
+        redColor = [0x213C69, 0x1555AC];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DINAMO ZAGREB";
+    }
+}
+
+function DinamoZagrebTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0xe5e811;
+        blueColor = [0x213C69, 0x1555AC];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DINAMO ZAGREB";
+    }
+}
+
+function HajdukSplitFun(player) { // !haj
+    room.sendAnnouncement('HNK Hajduk Split | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('haj/titular/red | haj/titular/blue | haj/alternativa/red | haj/alternativa/blue |  | haj/tercera/red | haj/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function HajdukSplitTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x1c43c9;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAJDUK SPLIT";
+    }
+}
+function HajdukSplitTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x1c43c9;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAJDUK SPLIT";
+    }
+}
+function HajdukSplitAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x0054AE, 0xEC1F24, 0x0054AE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAJDUK SPLIT";
+    }
+}
+function HajdukSplitAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x0054AE, 0xEC1F24, 0x0054AE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAJDUK SPLIT";
+    }
+}
+function HajdukSplitTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0x271b4b;
+        redColor = [0xD1C5D9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAJDUK SPLIT";
+    }
+}
+function HajdukSplitTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0x271b4b;
+        blueColor = [0xD1C5D9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAJDUK SPLIT";
+    }
+}
+function HNKRijekaFun(player) { // !rjk
+    room.sendAnnouncement('HNK Rijeka | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rjk/titular/red | rjk/titular/blue | rjk/alternativa/red | rjk/alternativa/blue |  | rjk/tercera/red | rjk/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function HNKRijekaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x1fa6d5;
+        redColor = [0xFFFFFF, 0x80CFED, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK RIJEKA";
+    }
+}
+function HNKRijekaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x1fa6d5;
+        blueColor = [0xFFFFFF, 0x80CFED, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK RIJEKA";
+    }
+}
+function HNKRijekaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x25242A, 0x91BCEF, 0x25242A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK RIJEKA";
+    }
+}
+function HNKRijekaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x25242A, 0x91BCEF, 0x25242A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK RIJEKA";
+    }
+}
+function HNKRijekaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0xd2ab67;
+        redColor = [0x982834];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK RIJEKA";
+    }
+}
+function HNKRijekaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0xd2ab67;
+        blueColor = [0x982834];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK RIJEKA";
+    }
+}
+
+function NKOsijekFun(player) { // !osi
+    room.sendAnnouncement('NK Osijek | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('osi/titular/red | osi/titular/blue | osi/alternativa/red | osi/alternativa/blue | osi/tercera/red | osi/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NKOsijekTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0C3A8A;
+        redColor = [0x0054A6, 0xFFFFFF, 0x0054A6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK OSIJEK";
+    }
+}
+
+function NKOsijekTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0C3A8A;
+        blueColor = [0x0054A6, 0xFFFFFF, 0x0054A6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK OSIJEK";
+    }
+}
+
+function NKOsijekAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0x0054a6;
+        redColor = [0xF5F6F6, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK OSIJEK";
+    }
+}
+
+function NKOsijekAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0x0054a6;
+        blueColor = [0xF5F6F6, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK OSIJEK";
+    }
+}
+
+function NKOsijekTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xB81F29, 0xB81F29, 0xE31F2B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK OSIJEK";
+    }
+}
+
+function NKOsijekTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xB81F29, 0xB81F29, 0xE31F2B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK OSIJEK";
+    }
+}
+
+function NKLokomotivFun(player) { // !nklok
+    room.sendAnnouncement('NK Lokomotiva Zagreb | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('nklok/titular/red | nklok/titular/blue | nklok/alternativa/red | nklok/alternativa/blue | nklok/tercera/red | nklok/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NKLokomotivTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xdcb452;
+        redColor = [0x789BD1, 0x1E45A0, 0xE5E5ED];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK LOKOMOTIV";
+    }
+}
+
+function NKLokomotivTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xdcb452;
+        blueColor = [0x789BD1, 0x1E45A0, 0xE5E5ED];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK LOKOMOTIV";
+    }
+}
+
+function NKLokomotivAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xFF6899, 0xFFB4D2, 0xFFB4D2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK LOKOMOTIV";
+    }
+}
+
+function NKLokomotivAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xFF6899, 0xFFB4D2, 0xFFB4D2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK LOKOMOTIV";
+    }
+}
+
+function NKLokomotivTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xff5b4e;
+        redColor = [0x544491, 0x32304A, 0x544491];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK LOKOMOTIV";
+    }
+}
+
+function NKLokomotivTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xff5b4e;
+        blueColor = [0x544491, 0x32304A, 0x544491];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK LOKOMOTIV";
+    }
+}
+
+function HNKGoricaFun(player) { // !gor
+    room.sendAnnouncement('HNK Gorica | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gor/titular/red | gor/titular/blue | gor/alternativa/red | gor/alternativa/blue | gor/tercera/red | gor/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HNKGoricaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x4f4b4b;
+        redColor = [0x4f4b4b, 0xF3F1F3, 0xD6D6D9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK GORICA";
+    }
+}
+
+function HNKGoricaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x4f4b4b;
+        blueColor = [0x4f4b4b, 0xF3F1F3, 0xD6D6D9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK GORICA";
+    }
+}
+
+function HNKGoricaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x333333, 0x45464A, 0x79889C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK GORICA";
+    }
+}
+
+function HNKGoricaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x333333, 0x45464A, 0x79889C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK GORICA";
+    }
+}
+
+function HNKGoricaTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE31F2B, 0xCE202A, 0xCA202A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HNK GORICA";
+    }
+}
+
+function HNKGoricaTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE31F2B, 0xCE202A, 0xCA202A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HNK GORICA";
+    }
+}
+
+function NKSlavenBelupoFun(player) { // !slb
+    room.sendAnnouncement('NK Slaven Belupo Koprivnica | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('slb/titular/red | slb/titular/blue | slb/alternativa/red | slb/alternativa/blue | slb/tercera/red | slb/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NKSlavenBelupoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x315CBA, 0x12419D, 0x0E3D97];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK SLAVEN BELUPO";
+    }
+}
+
+function NKSlavenBelupoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x315CBA, 0x12419D, 0x0E3D97];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK SLAVEN BELUPO";
+    }
+}
+
+function NKSlavenBelupoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x262525];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK SLAVEN BELUPO";
+    }
+}
+
+function NKSlavenBelupoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x262525];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK SLAVEN BELUPO";
+    }
+}
+
+function NKSlavenBelupoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe31f2b;
+        redColor = [0x262524, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK SLAVEN BELUPO";
+    }
+}
+
+function NKSlavenBelupoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe31f2b;
+        blueColor = [0x262524, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK SLAVEN BELUPO";
+    }
+}
+
+function Istra1961Fun(player) { // !ist
+    room.sendAnnouncement('NK Istra 1961 | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ist/titular/red | ist/titular/blue | ist/alternativa/red | ist/alternativa/blue | ist/tercera/red | ist/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function Istra1961TitularRedFun(player){
+    if (player.admin == true){
+        redAngle = -90;
+        redTextColor = 0x1b1e23;
+        redColor = [0xfcf533];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ISTRA 1961";
+    }
+}
+
+function Istra1961TitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -90;
+        blueTextColor = 0x1b1e23;
+        blueColor = [0xfcf533];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ISTRA 1961";
+    }
+}
+
+function Istra1961AlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x02db8a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ISTRA 1961";
+    }
+}
+
+function Istra1961AlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x02db8a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ISTRA 1961";
+    }
+}
+
+function Istra1961TerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x01152d, 0x011329, 0x021325];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ISTRA 1961";
+    }
+}
+
+function Istra1961TerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x01152d, 0x011329, 0x021325];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ISTRA 1961";
+    }
+}
+
+function InterZapresicFun(player) { // !iza
+    room.sendAnnouncement('NK Inter Zaprešić | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('iza/titular/red | iza/titular/blue | iza/alternativa/red | iza/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function InterZapresicTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0c63b2;
+        redColor = [0xFCE353, 0xEDEC80, 0x0099C5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "INTER ZAPRESIC";
+    }
+}
+
+function InterZapresicTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0c63b2;
+        blueColor = [0xFCE353, 0xEDEC80, 0x0099C5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "INTER ZAPRESIC";
+    }
+}
+
+function InterZapresicAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xf5dd0e, 0x3169af, 0x3169AF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "INTER ZAPRESIC";
+    }
+}
+
+function InterZapresicAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xf5dd0e, 0x3169af, 0x3169AF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "INTER ZAPRESIC";
+    }
+}
+
+function NKVarazdinFun(player) { // !var
+    room.sendAnnouncement('NK Varaždin | 🇭🇷 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('var/titular/red | var/titular/blue | var/alternativa/red | var/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NKVarazdinTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x012351, 0x012f63, 0x01417e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK VARAZDIN";
+    }
+}
+
+function NKVarazdinTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x012351, 0x012f63, 0x01417e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK VARAZDIN";
+    }
+}
+
+function NKVarazdinAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x242424;
+        redColor = [0xFF8B42];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NK VARAZDIN";
+    }
+}
+
+function NKVarazdinAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x242424;
+        blueColor = [0xFF8B42];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NK VARAZDIN";
+    }
+}
+
+function Bayer04LeverkusenFun(player) { // !b04
+    room.sendAnnouncement('Bayer 04 Leverkusen | 🇩🇪 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('b04/titular/red | b04/titular/blue | b04/alternativa/red | b04/alternativa/blue | b04/tercera/red | b04/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function Bayer04LeverkusenTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf6f8f7;
+        redColor = [0x252526, 0x363636, 0x252526];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BAYER LEVERKUSEN";
+    }
+}
+
+function Bayer04LeverkusenTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf6f8f7;
+        blueColor = [0x252526, 0x363636, 0x252526];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BAYER LEVERKUSEN";
+    }
+}
+
+function Bayer04LeverkusenAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xf1f2f4;
+        redColor = [0xe30720, 0xf12d31, 0xe30720];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BAYER LEVERKUSEN";
+    }
+}
+
+function Bayer04LeverkusenAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xf1f2f4;
+        blueColor = [0xe30720, 0xf12d31, 0xe30720];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BAYER LEVERKUSEN";
+    }
+}
+
+function Bayer04LeverkusenTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 30;
+        redTextColor = 0x262930;
+        redColor = [0xcacfd5, 0xc3ccd3, 0xcacfd5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BAYER LEVERKUSEN";
+    }
+}
+
+function Bayer04LeverkusenTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 30;
+        blueTextColor = 0x262930;
+        blueColor = [0xcacfd5, 0xc3ccd3, 0xcacfd5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BAYER LEVERKUSEN";
+    }
+}
+
+function VeneziaFCFun(player) { // !venfc
+    room.sendAnnouncement('Venezia FC | 🇮🇹 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('venfc/titular/red | venfc/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function VeneziaFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xffffff;
+        redColor = [0xFE7200, 0x161C28, 0x008956];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VENEZIA FC";
+    }
+}
+
+function VeneziaFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xffffff;
+        blueColor = [0xFE7200, 0x161C28, 0x008956];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VENEZIA FC";
+    }
+}
+
+function AthleticDeBilbaoFun(player) { // !ath
+    room.sendAnnouncement('Athletic de Bilbao | 🇪🇸 ', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ath/titular/red | ath/titular/blue | ath/alternativa/red | ath/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AthleticDeBilbaoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x020300;
+        redColor = [0xEA011E, 0xFFFFFF, 0xEA011E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATHLETIC BILBAO";
+    }
+}
+
+function AthleticDeBilbaoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x020300;
+        blueColor = [0xEA011E, 0xFFFFFF, 0xEA011E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATHLETIC BILBAO";
+    }
+}
+
+function AthleticDeBilbaoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 121;
+        redTextColor = 0xdecb89;
+        redColor = [0x225F3E, 0x225F3E, 0x30734A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ATHLETIC BILBAO";
+    }
+}
+
+function AthleticDeBilbaoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 121;
+        blueTextColor = 0xdecb89;
+        blueColor = [0x225F3E, 0x225F3E, 0x30734A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ATHLETIC BILBAO";
+    }
+}
+
+function EspanyolFun(player) { // !RIV
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rcde/titular/red | rcde/titular/blue | rcde/alternativa/red | rcde/alternativa/blue | rcde/tercera/red | rcde/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EspanyolTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x272624;
+        redColor = [0xFFFFFF, 0x006DB5, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ESPANYOL";
+    }
+}
+
+function EspanyolTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x272624;
+        blueColor = [0xFFFFFF, 0x006DB5, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ESPANYOL";
+    }
+}
+
+function EspanyolAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x275F56, 0x1B81D3, 0xEBEDF2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ESPANYOL";
+    }
+}
+
+function EspanyolAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x275F56, 0x1B81D3, 0xEBEDF2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ESPANYOL";
+    }
+}
+
+function EspanyolTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1e1916;
+        redColor = [0xF5CDCD, 0xF5ECE3, 0x39282E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ESPANYOL";
+    }
+}
+
+function EspanyolTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1e1916;
+        blueColor = [0xF5CDCD, 0xF5ECE3, 0x39282E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ESPANYOL";
+    }
+}
+
+function RBLeipzigFun(player) { // !RBL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rbl/titular/red | rbl/titular/blue | rbl/alternativa/red | rbl/alternativa/blue | rbl/tercera/red | rbl/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RBLeipzigTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xdc0741;
+        redColor = [0xF0EDEE, 0xE3E0E1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB LEIPZIG";
+    }
+}
+
+function RBLeipzigTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xdc0741;
+        blueColor = [0xF0EDEE, 0xE3E0E1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB LEIPZIG";
+    }
+}
+
+function RBLeipzigAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xdc0741;
+        redColor = [0x0D1E2D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB LEIPZIG";
+    }
+}
+
+function RBLeipzigAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xdc0741;
+        blueColor = [0x0D1E2D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB LEIPZIG";
+    }
+}
+
+function RBLeipzigTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFEFEFE;
+        redColor = [0x242426, 0x0E4182, 0xA60D17];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB LEIPZIG";
+    }
+}
+
+function RBLeipzigTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFEFEFE;
+        blueColor = [0x242426, 0x0E4182, 0xA60D17];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB LEIPZIG";
+    }
+}
+
+function MontevideoCityTorqueFun(player) { // !TOR
+    room.sendAnnouncement('Montevideo City Torque | 🇺🇾', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mct/titular/red | mct/titular/blue | mct/alternativa/red | mct/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MontevideoCityTorqueTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x76b3e2];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONTEVIDEO CITY";
+    }
+}
+
+function MontevideoCityTorqueTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x76b3e2];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONTEVIDEO CITY";
+    }
+}
+
+function MontevideoCityTorqueAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x322d2a, 0x413c39, 0x484743];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONTEVIDEO CITY";
+    }
+}
+
+function MontevideoCityTorqueAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x322d2a, 0x413c39, 0x484743];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONTEVIDEO CITY";
+    }
+}
+
+function MontevideoWanderersFun(player) { // !WAN
+    room.sendAnnouncement('Montevideo Wanderers| 🇺🇾', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wan/titular/red | wan/titular/blue | wan/alternativa/red | wan/alternativa/blue | wan/tercera/red | wan/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MontevideoWanderersTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xB8B8B8;
+        redColor = [0xFFFFFF, 0x000000, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function MontevideoWanderersTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xB8B8B8;
+        blueColor = [0xFFFFFF, 0x000000, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function MontevideoWanderersAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0x78DEF9, 0xA6E2F9, 0x78DEF9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function MontevideoWanderersAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0x78DEF9, 0xA6E2F9, 0x78DEF9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function MontevideoWanderersTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xF1F1F1, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function MontevideoWanderersTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xF1F1F1, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONTEVIDEO WANDERERS";
+    }
+}
+
+function HamburgerSVFun(player) { // !HSV
+    room.sendAnnouncement('Hamburgo S.V.| 🇩🇪', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hsv/titular/red | hsv/titular/blue | hsv/alternativa/red | hsv/alternativa/blue | hsv/tercera/red | hsv/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HamburgerSVTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0071d7;
+        redColor = [0xd40121, 0xf2f1f7, 0xf2f1f7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAMBURGER SV";
+    }
+}
+
+function HamburgerSVTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0071d7;
+        blueColor = [0xd40121, 0xf2f1f7, 0xf2f1f7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAMBURGER SV";
+    }
+}
+
+function HamburgerSVAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFBB6D5, 0x6D5E7C, 0xFBB6D5];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAMBURGER SV";
+    }
+}
+
+function HamburgerSVAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFBB6D5, 0x6D5E7C, 0xFBB6D5];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAMBURGER SV";
+    }
+}
+
+function HamburgerSVTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x2D2B2C, 0x0D497D, 0x2D2B2C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HAMBURGER SV";
+    }
+}
+
+function HamburgerSVTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x2D2B2C, 0x0D497D, 0x2D2B2C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HAMBURGER SV";
+    }
+}
+
+function NewcastleUnitedFun(player) { // !NEW
+    room.sendAnnouncement('Newcastle United | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('new/titular/red | new/titular/blue | new/alternativa/red | new/alternativa/blue | new/tercera/red | new/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function NewcastleUnitedTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xea323e;
+        redColor = [0xf6f5fa, 0x29242a, 0xf6f5fa];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEWCASTLE UNITED";
+    }
+}
+
+function NewcastleUnitedTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xea323e;
+        blueColor = [0xf6f5fa, 0x29242a, 0xf6f5fa];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEWCASTLE UNITED";
+    }
+}
+
+function NewcastleUnitedAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1C2023, 0x143439, 0x143439];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEWCASTLE UNITED";
+    }
+}
+
+function NewcastleUnitedAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1C2023, 0x143439, 0x143439];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEWCASTLE UNITED";
+    }
+}
+
+function NewcastleUnitedTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x111c4d;
+        redColor = [0xEC440A, 0xF06C0F, 0xF06C0F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "NEWCASTLE UNITED";
+    }
+}
+
+function NewcastleUnitedTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x111c4d;
+        blueColor = [0xEC440A, 0xF06C0F, 0xF06C0F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "NEWCASTLE UNITED";
+    }
+}
+function WestHamUnitedFun(player) { // !WHU
+    room.sendAnnouncement('West Ham United | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('whu/titular/red | whu/titular/blue | whu/alternativa/red | whu/alternativa/blue | whu/tercera/red | whu/tercera/blue | whu/titular/red/2019 | whu/titular/blue/2019', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function WestHamUnitedTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf3f2f7;
+        redColor = [0xc4e0ec, 0x7c0c25, 0x7c0c25];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf3f2f7;
+        blueColor = [0xc4e0ec, 0x7c0c25, 0x7c0c25];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x781a32;
+        redColor = [0xA8D5FF, 0xF4F4F4, 0xF4F4F4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x781a32;
+        blueColor = [0xA8D5FF, 0xF4F4F4, 0xF4F4F4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 58;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xAB2FC3, 0x2C2B54, 0x342F5F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 58;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xAB2FC3, 0x2C2B54, 0x342F5F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedTitular2019RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xA3C3EA, 0x751A2C, 0x751A2C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WEST HAM";
+    }
+}
+
+function WestHamUnitedTitular2019BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xA3C3EA, 0x751A2C, 0x751A2C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WEST HAM";
+    }
+}
+
+function TorontoFCFun(player) { // !NZE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tofc/titular/red | tofc/titular/blue | tofc/alternativa/red | tofc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TorontoFCTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xE50126];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORONTO FC";
+    }
+}
+
+function TorontoFCTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xE50126];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORONTO FC";
+    }
+}
+
+function TorontoFCAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 240;
+        redTextColor = 0x1d1c21;
+        redColor = [0xE6EBEF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORONTO FC";
+    }
+}
+
+function TorontoFCAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 240;
+        blueTextColor = 0x1d1c21;
+        blueColor = [0xE6EBEF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORONTO FC";
+    }
+}
+
+function InterMiamiCFFun(player) { // !MIA
+    room.sendAnnouncement('Inter Miami CF | 🇺🇸', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mia/titular/red | mia/titular/blue | mia/alternativa/red | mia/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function InterMiamiCFTitularRedFun(player){
+    if (player.admin == true){
+        room.setTeamColors(1, 180, 0x2e2322, [0xfea3b4]);
+        teamRed =  "INTER MIAMI";
+    }
+}
+function InterMiamiCFTitularBlueFun(player){
+    if (player.admin == true){
+        room.setTeamColors(2, 180, 0x2e2322, [0xfea3b4]);
+        teamBlue =  "INTER MIAMI";
+    }
+}
+function InterMiamiCFAlternativaRedFun(player){
+    if (player.admin == true){
+        room.setTeamColors(1, 90, 0xfbccd4, [0x212123, 0x2e2e30, 0x212123]);
+        teamRed =  "INTER MIAMI";
+    }
+}
+function InterMiamiCFAlternativaBlueFun(player){
+    if (player.admin == true){
+        room.setTeamColors(2, 90, 0xfbccd4, [0x212123, 0x2e2e30, 0x212123]);
+        teamBlue =  "INTER MIAMI";
+    }
+}
+
+function DeportivoEspanolFun(player) { // !CDE
+    room.sendAnnouncement('Club Deportivo Español | 🇦🇷', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cde/titular/red | cde/titular/blue | cde/alternativa/red | cde/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function DeportivoEspanolTitularRedFun(player){
+    if (player.admin == true){
+        room.setTeamColors(1, 66, 0xFFFFFF, [0xFFC100, 0xCD0000, 0xCD0000]);
+        teamRed =  "DEP. ESPAÑOL";
+    }
+}
+function DeportivoEspanolTitularBlueFun(player){
+    if (player.admin == true){
+        room.setTeamColors(2, 66, 0xFFFFFF, [0xFFC100, 0xCD0000, 0xCD0000]);
+        teamBlue =  "DEP. ESPAÑOL";
+    }
+}
+function DeportivoEspanolAlternativaRedFun(player){
+    if (player.admin == true){
+        room.setTeamColors(1, 66, 0x242d51, [0xC80000, 0xFFFFFF, 0xFFFFFF]);
+        teamRed =  "DEP. ESPAÑOL";
+    }
+}
+function DeportivoEspanolAlternativaBlueFun(player){
+    if (player.admin == true){
+        room.setTeamColors(2, 66, 0x242d51, [0xC80000, 0xFFFFFF, 0xFFFFFF]);
+        teamBlue =  "DEP. ESPAÑOL";
+    }
+}
+
+function SportivoItalianoFun(player) { // !NEW
+    room.sendAnnouncement('Sportivo Italiano | 🇦🇷', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sit/titular/red | sit/titular/blue | sit/alternativa/red | sit/alternativa/blue | sit/tercera/red | sit/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SportivoItalianoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 307;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1367C0, 0x1367C0, 0x374A89];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTIVO ITALIANO";
+    }
+}
+
+function SportivoItalianoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 307;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1367C0, 0x1367C0, 0x374A89];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTIVO ITALIANO";
+    }
+}
+
+function SportivoItalianoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x1e2c94;
+        redColor = [0x0D3986, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTIVO ITALIANO";
+    }
+}
+
+function SportivoItalianoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x1e2c94;
+        blueColor = [0x0D3986, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTIVO ITALIANO";
+    }
+}
+
+function SportivoItalianoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFAF7FF;
+        redColor = [0x0C785B, 0xDF1B2B, 0x0C785B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTIVO ITALIANO";
+    }
+}
+
+function SportivoItalianoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFAF7FF;
+        blueColor = [0x0C785B, 0xDF1B2B, 0x0C785B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTIVO ITALIANO";
+    }
+}
+
+function ClubDeportivoMandiyuFun(player) { // !CDM
+    room.sendAnnouncement('Club Deportivo Mandiyú | 🇦🇷', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mdy/titular/red | mdy/titular/blue | mdy/alternativa/red | mdy/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ClubDeportivoMandiyuTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x1aad69;
+        redColor = [0x11B065, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. MANDIYÚ";
+    }
+}
+
+function ClubDeportivoMandiyuTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x1aad69;
+        blueColor = [0x11B065, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. MANDIYÚ";
+    }
+}
+
+function ClubDeportivoMandiyuAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x81D368, 0x61CA65, 0x61CA65];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. MANDIYÚ";
+    }
+}
+
+function ClubDeportivoMandiyuAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x81D368, 0x61CA65, 0x61CA65];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. MANDIYÚ";
+    }
+}
+
+function HullCityFun(player) { // !HUL
+    room.sendAnnouncement('Hull City | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hul/titular/red | hul/titular/blue | hul/alternativa/red | hul/alternativa/blue | hul/tercera/red | hul/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function HullCityTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 247;
+        redTextColor = 0x000000;
+        redColor = [0xF77F15, 0xF77F15, 0x180602];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 247;
+        blueTextColor = 0x000000;
+        blueColor = [0xF77F15, 0xF77F15, 0x180602];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+function HullCityAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+function HullCityTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 247;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x227592, 0x227592, 0xFFB10F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 247;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x227592, 0x227592, 0xFFB10F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+
+function WolverhamptonFun(player) { // !WOL
+    room.sendAnnouncement('Wolves | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wol/titular/red | wol/titular/blue | wol/alternativa/red | wol/alternativa/blue | wol/tercera/red | wol/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function WolverhamptonTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xF98E29, 0xFB9F33, 0xFDAD3B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xF98E29, 0xFB9F33, 0xFDAD3B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xF99F03, 0x202020, 0x202020];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xF99F03, 0x202020, 0x202020];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xF5F5F5;
+        redColor = [0x1F6452, 0x3AAC88];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xF5F5F5;
+        blueColor = [0x1F6452, 0x3AAC88];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+
+function HullCityFun(player) { // !HUL
+    room.sendAnnouncement('Hull City | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hul/titular/red | hul/titular/blue | hul/alternativa/red | hul/alternativa/blue | hul/tercera/red | hul/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function HullCityTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 247;
+        redTextColor = 0x000000;
+        redColor = [0xF77F15, 0xF77F15, 0x180602];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 247;
+        blueTextColor = 0x000000;
+        blueColor = [0xF77F15, 0xF77F15, 0x180602];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+function HullCityAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+function HullCityTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 247;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x227592, 0x227592, 0xFFB10F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HULL CITY";
+    }
+}
+function HullCityTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 247;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x227592, 0x227592, 0xFFB10F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HULL CITY";
+    }
+}
+
+function WolverhamptonFun(player) { // !WOL
+    room.sendAnnouncement('Wolves | 🇬🇧', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('wol/titular/red | wol/titular/blue | wol/alternativa/red | wol/alternativa/blue | wol/tercera/red | wol/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function WolverhamptonTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xF98E29, 0xFB9F33, 0xFDAD3B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xF98E29, 0xFB9F33, 0xFDAD3B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xF99F03, 0x202020, 0x202020];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xF99F03, 0x202020, 0x202020];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xF5F5F5;
+        redColor = [0x1F6452, 0x3AAC88];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "WOLVERHAMPTON";
+    }
+}
+function WolverhamptonTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xF5F5F5;
+        blueColor = [0x1F6452, 0x3AAC88];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "WOLVERHAMPTON";
+    }
+}
+
+function CerroLargoFun(player) { // !CRL
+    room.sendAnnouncement('Cerro Largo | 🇺🇾', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('crl/titular/red | crl/titular/blue | crl/alternativa/red |crl/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CerroLargoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x1f1e26;
+        redColor = [0xFFFFFF, 0x2454DF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CERRO LARGO";
+    }
+}
+
+function CerroLargoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x1f1e26;
+        blueColor = [0xFFFFFF, 0x2454DF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CERRO LARGO";
+    }
+}
+
+function CerroLargoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 61;
+        redTextColor = 0x1f1e26;
+        redColor = [0x0098CA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CERRO LARGO";
+    }
+}
+
+function CerroLargoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 61;
+        blueTextColor = 0x1f1e26;
+        blueColor = [0x0098CA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CERRO LARGO";
+    }
+}
+
+function OldCaledoniansFootballClubFun(player) { // !OCFC
+    room.sendAnnouncement('Old Caledonians Football Club (1891-1893) | 🇦🇷', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ocfc/titular/red | ocfc/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OldCaledoniansFootballClubTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x191919;
+        redColor = [0xF7F6FB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "OLD CALEDONIANS";
+    }
+}
+
+function OldCaledoniansFootballClubTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x191919;
+        blueColor = [0xF7F6FB];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "OLD CALEDONIANS";
+    }
+}
+
+
+
+function DefensorSportingFun(player) { // !DFS
+    room.sendAnnouncement('Defensor Sporting | 🇺🇾', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dfs/titular/red | dfs/titular/blue | dfs/alternativa/red | dfs/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DefensorSportingTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x6D4DB4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEFENSOR SPORTING";
+    }
+}
+
+function DefensorSportingTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x6D4DB4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEFENSOR SPORTING";
+    }
+}
+
+function DefensorSportingAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x402E6B;
+        redColor = [0xFFFFFF, 0x6D4DB4, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEFENSOR SPORTING";
+    }
+}
+
+function DefensorSportingAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x402E6B;
+        blueColor = [0xFFFFFF, 0x6D4DB4, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEFENSOR SPORTING";
+    }
+}
+
+function EvertonVinaDelMarFun(player) { // !EVDM
+    room.sendAnnouncement('Everton de Viña del Mar | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('evdm/titular/red | evdm/titular/blue | evdm/alternativa/red | evdm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function EvertonVinaDelMarTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x212647, 0xFFE751, 0x212647];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EVERTON VIÑA DEL MAR";
+    }
+}
+
+function EvertonVinaDelMarTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x212647, 0xFFE751, 0x212647];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EVERTON VIÑA DEL MAR";
+    }
+}
+
+function EvertonVinaDelMarAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFFD763, 0x303454, 0xFFD763];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "EVERTON VIÑA DEL MAR";
+    }
+}
+
+function EvertonVinaDelMarAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFFD763, 0x303454, 0xFFD763];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "EVERTON VIÑA DEL MAR";
+    }
+}
+
+function UnionLaCaleraFun(player) { // !DFS
+    room.sendAnnouncement('Unión La Calera | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ulc/titular/red | ulc/titular/blue | ulc/alternativa/red | ulc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UnionLaCaleraTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 50;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xBA1D38, 0xD70100];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIÓN LA CALERA";
+    }
+}
+
+function UnionLaCaleraTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 50;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xBA1D38, 0xD70100];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIÓN LA CALERA";
+    }
+}
+
+function UnionLaCaleraAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 66;
+        redTextColor = 0x000000;
+        redColor = [0xE31D39, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIÓN LA CALERA";
+    }
+}
+
+function UnionLaCaleraAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 66;
+        blueTextColor = 0x000000;
+        blueColor = [0xE31D39, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIÓN LA CALERA";
+    }
+}
+
+function AudaxItalianoFun(player) { // !DFS
+    room.sendAnnouncement('Audax Italiano | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('aud/titular/red | aud/titular/blue | aud/alternativa/red | aud/alternativa/blue | aud/tercera/red | aud/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AudaxItalianoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x045ad1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUDAX ITALIANO";
+    }
+}
+
+function AudaxItalianoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x045ad1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUDAX ITALIANO";
+    }
+}
+
+function AudaxItalianoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x118247];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUDAX ITALIANO";
+    }
+}
+
+function AudaxItalianoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x118247];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUDAX ITALIANO";
+    }
+}
+
+function AudaxItalianoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x339455;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUDAX ITALIANO";
+    }
+}
+
+function AudaxItalianoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x339455;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUDAX ITALIANO";
+    }
+}
+
+function HuachipatoFun(player) { // !DFS
+    room.sendAnnouncement('Huachipato | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hua/titular/red | hua/titular/blue | hua/alternativa/red | hua/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function HuachipatoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xfbfb1d;
+        redColor = [0x2B79F7, 0x1F1F21, 0x2B79F7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HUACHIPATO";
+    }
+}
+function HuachipatoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xfbfb1d;
+        blueColor = [0x2B79F7, 0x1F1F21, 0x2B79F7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HUACHIPATO";
+    }
+}
+function HuachipatoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFCFAFF;
+        redColor = [0xBD1F36, 0x711F2D, 0xBD1F36];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "HUACHIPATO";
+    }
+}
+function HuachipatoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFCFAFF;
+        blueColor = [0xBD1F36, 0x711F2D, 0xBD1F36];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "HUACHIPATO";
+    }
+}
+function DeportesIquiqueFun(player) { // !DFS
+    room.sendAnnouncement('Deportes Iquique | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('iqu/titular/red | iqu/titular/blue | iqu/alternativa/red | iqu/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function DeportesIquiqueTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xA5D4FE, 0x9DD3FF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTES IQUIQUE";
+    }
+}
+function DeportesIquiqueTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xA5D4FE, 0x9DD3FF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTES IQUIQUE";
+    }
+}
+function DeportesIquiqueAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x2557DA, 0xFF1727, 0x2557DA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTES IQUIQUE";
+    }
+}
+function DeportesIquiqueAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x2557DA, 0xFF1727, 0x2557DA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTES IQUIQUE";
+    }
+}
+
+function OhigginsFun(player) { // !DFS
+    room.sendAnnouncement('O Higgins FC | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ohi/titular/red | ohi/titular/blue | ohi/alternativa/red | ohi/alternativa/blue | ohi/tercera/red | ohi/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function OhigginsTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x000000;
+        redColor = [0x90C4EB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "OHIGGINS";
+    }
+}
+
+function OhigginsTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x000000;
+        blueColor = [0x90C4EB];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "OHIGGINS";
+    }
+}
+
+function OhigginsAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1E1E1F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "OHIGGINS";
+    }
+}
+
+function OhigginsAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1E1E1F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "OHIGGINS";
+    }
+}
+
+function OhigginsTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xBCBFC4, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "OHIGGINS";
+    }
+}
+
+function OhigginsTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xBCBFC4, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "OHIGGINS";
+    }
+}
+
+function UnionEspanolaFun(player) { // !DFS
+    room.sendAnnouncement('Unión Española | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ues/titular/red | ues/titular/blue | ues/alternativa/red | ues/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UnionEspanolaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xC5142E, 0xCF0D27, 0xE01A33];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIÓN ESPAÑOLA";
+    }
+}
+
+function UnionEspanolaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xC5142E, 0xCF0D27, 0xE01A33];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIÓN ESPAÑOLA";
+    }
+}
+
+function UnionEspanolaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x5D5D5D, 0x717173, 0x848484];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UNIÓN ESPAÑOLA";
+    }
+}
+
+function UnionEspanolaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x5D5D5D, 0x717173, 0x848484];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UNIÓN ESPAÑOLA";
+    }
+}
+
+function SantiagoWanderersFun(player) { // !DFS
+    room.sendAnnouncement('Santiago Wanderers | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('swa/titular/red | swa/titular/blue | swa/alternativa/red | swa/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SantiagoWanderersTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x78ff28;
+        redColor = [0x017060, 0x024A3E, 0x024A3E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SANTIAGO WANDERERS";
+    }
+}
+
+function SantiagoWanderersTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x78ff28;
+        blueColor = [0x017060, 0x024A3E, 0x024A3E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SANTIAGO WANDERERS";
+    }
+}
+
+function SantiagoWanderersAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x154142;
+        redColor = [0xFFFFFF, 0xC8C7CC, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SANTIAGO WANDERERS";
+    }
+}
+
+function SantiagoWanderersAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x154142;
+        blueColor = [0xFFFFFF, 0xC8C7CC, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SANTIAGO WANDERERS";
+    }
+}
+
+function CuricoUnidoFun(player) { // !DFS
+    room.sendAnnouncement('Curico Unido | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cur/titular/red | cur/titular/blue | cur/alternativa/red | cur/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CuricoUnidoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 35;
+        redTextColor = 0x6E1010;
+        redColor = [0xFFFFFF, 0xD92814, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CURICO UNIDO";
+    }
+}
+
+function CuricoUnidoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 35;
+        blueTextColor = 0x6E1010;
+        blueColor = [0xFFFFFF, 0xD92814, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CURICO UNIDO";
+    }
+}
+
+function CuricoUnidoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 35;
+        redTextColor = 0xABABAB;
+        redColor = [0xD92814, 0xFFFFFF, 0xD92814];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CURICO UNIDO";
+    }
+}
+
+function CuricoUnidoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 35;
+        blueTextColor = 0xABABAB;
+        blueColor = [0xD92814, 0xFFFFFF, 0xD92814];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CURICO UNIDO";
+    }
+}
+
+function DeportesAntofagastaFun(player) { // !DFS
+    room.sendAnnouncement('Deportes Antofagasta | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cda/titular/red | cda/titular/blue | cda/alternativa/red | cda/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportesAntofagastaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x1865a5;
+        redColor = [0xFFFFFF, 0x328AF8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. ANTOFAGASTA";
+    }
+}
+
+function DeportesAntofagastaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x1865a5;
+        blueColor = [0xFFFFFF, 0x328AF8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. ANTOFAGASTA";
+    }
+}
+
+function DeportesAntofagastaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1A1A1A, 0xD71F29];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. ANTOFAGASTA";
+    }
+}
+
+function DeportesAntofagastaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1A1A1A, 0xD71F29];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. ANTOFAGASTA";
+    }
+}
+
+function UdeConcepcionFun(player) { // !UDC
+    room.sendAnnouncement('Universidad de Concepción | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ucon/titular/red | ucon/titular/blue | ucon/alternativa/red | ucon/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UdeConcepcionTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2c3554;
+        redColor = [0xF1E63E, 0xF1E63E, 0xF1E63E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U. DE CONCEPCIÓN";
+    }
+}
+
+function UdeConcepcionTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2c3554;
+        blueColor = [0xF1E63E, 0xF1E63E, 0xF1E63E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U. DE CONCEPCIÓN";
+    }
+}
+
+function UdeConcepcionAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xfeeb2c;
+        redColor = [0x6285ED, 0x293155, 0x293155];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U. DE CONCEPCIÓN";
+    }
+}
+
+function UdeConcepcionAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xfeeb2c;
+        blueColor = [0x6285ED, 0x293155, 0x293155];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U. DE CONCEPCIÓN";
+    }
+}
+
+function DeportesLaSerenaFun(player) { // !DFS
+    room.sendAnnouncement('Deportes La Serena | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dls/titular/red | dls/titular/blue | dls/alternativa/red | dls/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportesLaSerenaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xFEFEFE;
+        redColor = [0x530928, 0x450722, 0x450722];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. LA SERENA";
+    }
+}
+
+function DeportesLaSerenaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xFEFEFE;
+        blueColor = [0x530928, 0x450722, 0x450722];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. LA SERENA";
+    }
+}
+
+function DeportesLaSerenaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0x5d0027;
+        redColor = [0xFFFFFF, 0xEEEEEE, 0xEEEEEE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. LA SERENA";
+    }
+}
+
+function DeportesLaSerenaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0x5d0027;
+        blueColor = [0xFFFFFF, 0xEEEEEE, 0xEEEEEE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. LA SERENA";
+    }
+}
+
+function CoquimboUnidoFun(player) { // !CU
+    room.sendAnnouncement('Coquimbo Unido | 🇨🇱', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('coq/titular/red | coq/titular/blue | coq/alternativa/red | coq/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CoquimboUnidoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x000000;
+        redColor = [0x202020, 0xF4C505];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COQUIMBO UNIDO";
+    }
+}
+
+function CoquimboUnidoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x000000;
+        blueColor = [0x202020, 0xF4C505];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COQUIMBO UNIDO";
+    }
+}
+
+function CoquimboUnidoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 55;
+        redTextColor = 0x000000;
+        redColor = [0xE7E7E7, 0xE7E7E7, 0xF4C606];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COQUIMBO UNIDO";
+    }
+}
+
+function CoquimboUnidoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 55;
+        blueTextColor = 0x000000;
+        blueColor = [0xE7E7E7, 0xE7E7E7, 0xF4C606];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COQUIMBO UNIDO";
+    }
+}
+
+function SpidermanFun(player) { // !spiderman
+    room.sendAnnouncement('Spiderman 🕷️', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('spiderman/red | spiderman/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SpidermanRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xDF1F2D;
+        redColor = [0xDF1F2D, 0x2B3784, 0x2B3784];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TEAM SPIDERMAN";
+    }
+}
+
+function SpidermanBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xDF1F2D;
+        blueColor = [0xDF1F2D, 0x2B3784, 0x2B3784];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TEAM SPIDERMAN";
+    }
+}
+
+function HulkFun(player) { // !hulk
+    room.sendAnnouncement('Hulk 🟩', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('hulk/red | hulk/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function HulkRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xA2CD48;
+        redColor = [0xA2CD48, 0xA2CD48, 0x875094];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TEAM HULK";
+    }
+}
+
+function HulkBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xA2CD48;
+        blueColor = [0xA2CD48, 0xA2CD48, 0x875094];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TEAM HULK";
+    }
+}
+
+function CapitanAmericaFun(player) { // !capitanamerica
+    room.sendAnnouncement('Capitán América ⭐', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('capitanamerica/red | capitanamerica/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CapitanAmericaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x1849CA, 0x1849CA, 0xEC2004];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TEAM CAPITÁN AMÉRICA";
+    }
+}
+
+function CapitanAmericaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x1849CA, 0x1849CA, 0xEC2004];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TEAM CAPITÁN AMÉRICA";
+    }
+}
+
+function BatmanFun(player) { // !spiderman
+    room.sendAnnouncement('Batman 🦇', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('batman/red | batman/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BatmanRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfdff00;
+        redColor = [0x282E3C, 0x282E3C, 0x505C7C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TEAM BATMAN";
+    }
+}
+
+function BatmanBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfdff00;
+        blueColor = [0x282E3C, 0x282E3C, 0x505C7C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TEAM BATMAN";
+    }
+}
+
+function BelgranoAthleticClubFun(player) { // !BAC
+    room.sendAnnouncement('👻 - Belgrano Athletic Club (1895-1916) | 🇦🇷 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('bac/titular/red | bac/titular/blue | bac/alternativa/red | bac/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BelgranoAthleticClubTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFFCC00, 0x994C00, 0xFFCC00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BELGRANO ATHLETIC CLUB";
+    }
+}
+
+function BelgranoAthleticClubTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFFCC00, 0x994C00, 0xFFCC00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BELGRANO ATHLETIC CLUB";
+    }
+}
+
+function BelgranoAthleticClubAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffeb20;
+        redColor = [0x1B7967, 0xFE3045, 0x1B7967];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BELGRANO ATHLETIC CLUB";
+    }
+}
+
+function BelgranoAthleticClubAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffeb20;
+        blueColor = [0x1B7967, 0xFE3045, 0x1B7967];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BELGRANO ATHLETIC CLUB";
+    }
+}
+
+function RosarioAthleticClubFun(player) { // !ROAC
+    room.sendAnnouncement('👻 - Rosario Athletic Club (1900-1916) | 🇦🇷 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('roac/titular/red | roac/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function RosarioAthleticClubTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x8F3A52, 0x229CD8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ROSARIO ATHLETIC CLUB";
+    }
+}
+function RosarioAthleticClubTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x8F3A52, 0x229CD8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ROSARIO ATHLETIC CLUB";
+    }
+}
+function ClubAtleticoPortenoFun(player) { // !CAPORT
+    room.sendAnnouncement('👻 - Club Atlético Porteño (1907-1931) | 🇦🇷 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('caport/titular/red | caport/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function ClubAtleticoPortenoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x2B2B2B;
+        redColor = [0xFFFFFF, 0x4B55D9, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CA. PORTEÑO";
+    }
+}
+function ClubAtleticoPortenoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x2B2B2B;
+        blueColor = [0xFFFFFF, 0x4B55D9, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CA PORTEÑO";
+    }
+}
+function VillarrealFun(player) { // !VIL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('vil/titular/red | vil/titular/blue | vil/alternativa/red | vil/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+
+}
+function VillarrealTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x194667;
+        redColor = [0xf9ea6b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VILLAREAL";
+    }
+}
+function VillarrealTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x194667;
+        blueColor = [0xf9ea6b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VILLAREAL";
+    }
+}
+function VillarrealAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xe1dc06;
+        redColor = [0x143151];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "VILLAREAL";
+    }
+}
+function VillarrealAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xe1dc06;
+        blueColor = [0x143151];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "VILLAREAL";
+    }
+}
+
+function CeltaDeVigoFun(player) { // !CEL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cel/titular/red | cel/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CeltaDeVigoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 136;
+        redTextColor = 0x141414;
+        redColor = [0x43B5F4, 0x8DDDFE, 0x8DDDFE];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CELTA DE VIGO";
+    }
+}
+
+function CeltaDeVigoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 136;
+        blueTextColor = 0x141414;
+        blueColor = [0x43B5F4, 0x8DDDFE, 0x8DDDFE];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CELTA DE VIGO";
+    }
+}
+
+function MallorcaFun(player) { // !MLL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mll/titular/red | mll/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MallorcaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFE5341 , 0xD42A2A, 0xD42A2A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MALLORCA";
+    }
+}
+
+function MallorcaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFE5341 , 0xD42A2A, 0xD42A2A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MALLORCA";
+    }
+}
+
+function LeedsUnitedFun(player) { // !LEE
+    room.sendAnnouncement('Leeds United FC - 🇬🇧 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('lee/titular/red | lee/titular/blue | lee/alternativa/red | lee/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LeedsUnitedTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 123;
+        redTextColor = 0x000000;
+        redColor = [0xE7FE68, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LEEDS UNITED";
+    }
+}
+
+function LeedsUnitedTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 123;
+        blueTextColor = 0x000000;
+        blueColor = [0xE7FE68, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LEEDS UNITED";
+    }
+}
+
+function LeedsUnitedAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 123;
+        redTextColor = 0xffffff;
+        redColor = [0x00113D, 0x021A86, 0x021A86];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LEEDS UNITED";
+    }
+}
+
+function LeedsUnitedAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 123;
+        blueTextColor = 0xffffff;
+        blueColor = [0x00113D, 0x021A86, 0x021A86];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LEEDS UNITED";
+    }
+}
+
+function SuizaFun(player) { // !SUI
+    room.sendAnnouncement('Suiza - 🇨🇭 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sui/titular/red | sui/titular/blue | sui/alternativa/red | sui/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SuizaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf3edf1;
+        redColor = [0xf8f8f8, 0xf6272f, 0xf6272f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SUIZA";
+    }
+}
+
+function SuizaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf3edf1;
+        blueColor = [0xf8f8f8, 0xf6272f, 0xf6272f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SUIZA";
+    }
+}
+
+function SuizaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xa12638;
+        redColor = [0xf6f7fc, 0xf9ebf5, 0xf1dde4];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SUIZA";
+    }
+}
+
+function SuizaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xa12638;
+        blueColor = [0xf6f7fc, 0xf9ebf5, 0xf1dde4];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SUIZA";
+    }
+}
+
+function SuizaTitular2021RedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x770316, 0xe40017, 0xe40017];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SUIZA";
+    }
+}
+
+function SuizaTitular2021BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x770316, 0xe40017, 0xe40017];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SUIZA";
+    }
+}
+
+function SueciaFun(player) { // !SWE
+    room.sendAnnouncement('Suecia - 🇸🇪 ', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('swe/titular/red | swe/titular/blue | swe/alternativa/red | swe/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SueciaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 123;
+        redTextColor = 0x2d4466;
+        redColor = [0xf3e731];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SUECIA";
+    }
+}
+
+function SueciaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 123;
+        blueTextColor = 0x2d4466;
+        blueColor = [0xf3e731];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SUECIA";
+    }
+}
+
+function SueciaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf3ea5d;
+        redColor = [0xf0eb0b, 0x152a49, 0x1b2e4e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SUECIA";
+    }
+}
+
+function SueciaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf3ea5d;
+        blueColor = [0xf0eb0b, 0x152a49, 0x1b2e4e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SUECIA";
+    }
+}
+
+function CruceroDelNorteFun(player) { // !ATL
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cdn/titular/red | cdn/titular/blue | cdn/titular/red/2014 | cdn/titular/blue/2014 | cdn/alternativa/red/2014 | cdn/alternativa/blue/2014 | cdn/titular/red/2013 | cdn/titular/blue/2013', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CruceroDelNorteTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x000000;
+        redColor = [0xFEED6B, 0xFEED6B, 0x5F5D58];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x000000;
+        blueColor = [0xFEED6B, 0xFEED6B, 0x5F5D58];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteTitular2014RedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x1e1e1e;
+        redColor = [0xF8E409, 0xF58603];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteTitular2014BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x1e1e1e;
+        blueColor = [0xF8E409, 0xF58603];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteAlternativa2014RedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x1e1d2d;
+        redColor = [0xEB5C32, 0xEEED33];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteAlternativa2014BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x1e1d2d;
+        blueColor = [0xEB5C32, 0xEEED33];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteTitular2013RedFun(player){
+    if (player.admin == true){
+        redAngle = 116;
+        redTextColor = 0x1d1e10;
+        redColor = [0xE74A03, 0xF8E622, 0xF8E622];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CRUCERO DEL NORTE";
+    }
+}
+
+function CruceroDelNorteTitular2013BlueFun(player){
+    if (player.admin == true){
+        blueAngle = 116;
+        blueTextColor = 0x1d1e10;
+        blueColor = [0xE74A03, 0xF8E622, 0xF8E622];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CRUCERO DEL NORTE";
+    }
+}
+
+function SCBragaFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('scb/titular/red | scb/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SCBragaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 127;
+        redTextColor = 0xC2C2C2;
+        redColor = [0xFFFFFF, 0xFD2F22, 0xFD2F22];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SC BRAGA";
+    }
+}
+
+function SCBragaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 127;
+        blueTextColor = 0xC2C2C2;
+        blueColor = [0xFFFFFF, 0xFD2F22, 0xFD2F22];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SC BRAGA";
+    }
+}
+
+function SportingCPFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('spo/titular/red | spo/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SportingCPTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x252a30;
+        redColor = [0x0F8469, 0xffffff, 0x0F8469];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SPORTING CP";
+    }
+}
+
+function SportingCPTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x252a30;
+        blueColor = [0x0F8469, 0xffffff, 0x0F8469];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SPORTING CP";
+    }
+}
+
+function FCPortoFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fcp/titular/red | fcp/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FCPortoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xf83539;
+        redColor = [0x013FBB, 0xFfffff, 0x013FBB];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FC PORTO";
+    }
+}
+
+function FCPortoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xf83539;
+        blueColor = [0x013FBB, 0xFfffff, 0x013FBB];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FC PORTO";
+    }
+}
+
+function SLBenficaFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ben/titular/red | ben/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SLBenficaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xE62B32];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SL BENFICA";
+    }
+}
+
+function SLBenficaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xE62B32];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SL BENFICA";
+    }
+}
+
+
+function CamerunFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cmr/titular/red | cmr/titular/blue | cmr/alternativa/red | cmr/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CamerunTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 110;
+        redTextColor = 0xf7d504;
+        redColor = [0xcf1f24, 0x016d3c, 0x016d3c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CAMERÚN";
+    }
+}
+function CamerunTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 110;
+        blueTextColor = 0xf7d504;
+        blueColor = [0xcf1f24, 0x016d3c, 0x016d3c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CAMERÚN";
+    }
+}
+function CamerunAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 110;
+        redTextColor = 0x048350;
+        redColor = [0xe22b31, 0xf6e000, 0xfad701];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CAMERÚN";
+    }
+}
+function CamerunAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 110;
+        blueTextColor = 0x048350;
+        blueColor = [0xe22b31, 0xf6e000, 0xfad701];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CAMERÚN";
+    }
+}
+function CostaDeMarfilFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('cdm/titular/red | cdm/titular/blue | cdm/alternativa/red | cdm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CostaDeMarfilTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xeeeeee;
+        redColor = [0x038650, 0xfe9d01, 0xf26909];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COSTA DE MARFIL";
+    }
+}
+function CostaDeMarfilTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xeeeeee;
+        blueColor = [0x038650, 0xfe9d01, 0xf26909];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COSTA DE MARFIL";
+    }
+}
+function CostaDeMarfilAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffad2f;
+        redColor = [0xf7f7f9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COSTA DE MARFIL";
+    }
+}
+function CostaDeMarfilAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffad2f;
+        blueColor = [0xf7f7f9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COSTA DE MARFIL";
+    }
+}
+
+function UcraniaFun(player) { // !IND
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ukr/titular/red | ukr/titular/blue | ukr/alternativa/red | ukr/alternativa/blue | ukr/bandera/red | ukr/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UcraniaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0083d5;
+        redColor = [0x019fe0, 0xfaea59, 0xfaea59];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UCRANIA";
+    }
+}
+
+function UcraniaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0083d5;
+        blueColor = [0x019fe0, 0xfaea59, 0xfaea59];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UCRANIA";
+    }
+}
+
+function UcraniaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xeedd30;
+        redColor = [0x129cea, 0x12a9ed, 0x12a9ed];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UCRANIA";
+    }
+}
+
+function UcraniaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xeedd30;
+        blueColor = [0x129cea, 0x12a9ed, 0x12a9ed];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UCRANIA";
+    }
+}
+
+function UcraniaBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x24167D;
+        redColor = [0x005BBB, 0xFFD500];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "UCRANIA";
+    }
+}
+
+function UcraniaBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x24167D;
+        blueColor = [0x005BBB, 0xFFD500];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "UCRANIA";
+    }
+}
+
+function SanMiguelFun(player) { // !LEE
+    room.sendAnnouncement('Club Atlético San Miguel', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sm/titular/red | sm/titular/blue | sm/alternativa/red | sm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SanMiguelTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x0366c1;
+        redColor = [0x00933f, 0xFFFFFF, 0x00933f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAN MIGUEL";
+    }
+}
+
+function SanMiguelTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x0366c1;
+        blueColor = [0x00933f, 0xFFFFFF, 0x00933f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAN MIGUEL";
+    }
+}
+
+function SanMiguelAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 55;
+        redTextColor = 0x80e7a6;
+        redColor = [0x2F485E, 0x25374D, 0x243145];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SAN MIGUEL";
+    }
+}
+
+function SanMiguelAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 55;
+        blueTextColor = 0x80e7a6;
+        blueColor = [0x2F485E, 0x25374D, 0x243145];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SAN MIGUEL";
+    }
+}
+
+function LaferrereFun(player) { // !LEE
+    room.sendAnnouncement('Club Laferrere', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('laf/titular/red | laf/titular/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function LaferrereTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd71e3e;
+        redColor = [0x346838, 0xFFFFFF, 0x346838];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "LAFERRERE";
+    }
+}
+
+function LaferrereTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd71e3e;
+        blueColor = [0x346838, 0xFFFFFF, 0x346838];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "LAFERRERE";
+    }
+}
+
+function MexicoFun(player) { // !TGS
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mex/titular/red | mex/titular/blue | mex/alternativa/red | mex/alternativa/blue | mex/bandera/red | mex/bandera/blue | mex/tercera/red | mex/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MexicoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x045D55, 0x067957, 0x08A56C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MÉXICO";
+    }
+}
+
+function MexicoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x045D55, 0x067957, 0x08A56C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MÉXICO";
+    }
+}
+
+function MexicoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0xe53a4c;
+        redColor = [0x048545, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MÉXICO";
+    }
+}
+
+function MexicoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0xe53a4c;
+        blueColor = [0x048545, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MÉXICO";
+    }
+}
+
+function MexicoBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x4d2a15;
+        redColor = [0x006847, 0xffffff, 0xce1126];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MÉXICO";
+    }
+}
+
+function MexicoBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x4d2a15;
+        blueColor = [0x006847, 0xffffff, 0xce1126];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MÉXICO";
+    }
+}
+
+function MexicoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0x19744a;
+        redColor = [0x8a2f3e, 0xf1f1f3, 0xf6f6f6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MÉXICO";
+    }
+}
+
+function MexicoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0x19744a;
+        blueColor = [0x8a2f3e, 0xf1f1f3, 0xf6f6f6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MÉXICO";
+    }
+}
+
+function SenegalFun(player) { // !LEE
+    room.sendAnnouncement('Senegal', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sen/titular/red | sen/titular/blue | sen/alternativa/red | sen/alternativa/blue | sen/bandera/red | sen/bandera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SenegalTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x01a283;
+        redColor = [0xe3eff2, 0xf4f2e3, 0xf9e7ec];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SENEGAL";
+    }
+}
+
+function SenegalTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x01a283;
+        blueColor = [0xe3eff2, 0xf4f2e3, 0xf9e7ec];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SENEGAL";
+    }
+}
+
+function SenegalAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xc3ec31;
+        redColor = [0xC0E933, 0x38543F, 0x38543F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SENEGAL";
+    }
+}
+
+function SenegalAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xc3ec31;
+        blueColor = [0xC0E933, 0x38543F, 0x38543F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SENEGAL";
+    }
+}
+
+function SenegalBanderaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x028768;
+        redColor = [0x02af94, 0xf6dc47, 0xfc1a2e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SENEGAL";
+    }
+}
+
+function SenegalBanderaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x028768;
+        blueColor = [0x02af94, 0xf6dc47, 0xfc1a2e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SENEGAL";
+    }
+}
+
+function IranFun(player) { // !LEE
+    room.sendAnnouncement('Iran', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('irn/titular/red | irn/titular/blue | irn/alternativa/red | irn/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function IranTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0xc52936;
+        redColor = [0x5cc26e, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "IRÁN";
+    }
+}
+
+function IranTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0xc52936;
+        blueColor = [0x5cc26e, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "IRÁN";
+    }
+}
+
+function IranAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0xffffff;
+        redColor = [0x88dc91, 0xf0273a, 0xf0273a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "IRÁN";
+    }
+}
+
+function IranAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0xffffff;
+        blueColor = [0x88dc91, 0xf0273a, 0xf0273a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "IRÁN";
+    }
+}
+
+function PoloniaFun(player) { // !LEE
+    room.sendAnnouncement('Polonia', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pol/titular/red | pol/titular/blue | pol/alternativa/red | pol/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PoloniaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xab0c28;
+        redColor = [0xf1f2f7];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "POLONIA";
+    }
+}
+
+function PoloniaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xab0c28;
+        blueColor = [0xf1f2f7];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "POLONIA";
+    }
+}
+
+function PoloniaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0xffffff;
+        redColor = [0xad011b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "POLONIA";
+    }
+}
+
+function PoloniaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0xffffff;
+        blueColor = [0xad011b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "POLONIA";
+    }
+}
+
+function CostaRicaFun(player) { // !LEE
+    room.sendAnnouncement('Costa Rica', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('crc/titular/red | crc/titular/blue | crc/alternativa/red | crc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CostaRicaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x0252b0, 0xd80122, 0xd80122];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COSTA RICA";
+    }
+}
+
+function CostaRicaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x0252b0, 0xd80122, 0xd80122];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COSTA RICA";
+    }
+}
+
+function CostaRicaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x263849;
+        redColor = [0x122a41, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COSTA RICA";
+    }
+}
+
+function CostaRicaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x263849;
+        blueColor = [0x122a41, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COSTA RICA";
+    }
+}
+
+function CanadaFun(player) { // !LEE
+    room.sendAnnouncement('Canada', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('can/titular/red | can/titular/blue | can/alternativa/red | can/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function CanadaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xf11d34, 0xe20025, 0xe20025];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CANADÁ";
+    }
+}
+function CanadaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xf11d34, 0xe20025, 0xe20025];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CANADÁ";
+    }
+}
+function CanadaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0xed4459;
+        redColor = [0xd70125, 0xf8f8fa, 0xf8f8fa];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CANADÁ";
+    }
+}
+function CanadaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0xed4459;
+        blueColor = [0xd70125, 0xf8f8fa, 0xf8f8fa];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CANADÁ";
+    }
+}
+function MarruecosFun(player) { // !LEE
+    room.sendAnnouncement('Marruecos', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mar/titular/red | mar/titular/blue | mar/alternativa/red | mar/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function MarruecosTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x038a4a, 0xf4001a, 0xf4001a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MARRUECOS";
+    }
+}
+function MarruecosTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x038a4a, 0xf4001a, 0xf4001a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MARRUECOS";
+    }
+}
+function MarruecosAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x098468;
+        redColor = [0x7f2830, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MARRUECOS";
+    }
+}
+function MarruecosAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x098468;
+        blueColor = [0x7f2830, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MARRUECOS";
+    }
+}
+
+function SerbiaFun(player) { // !LEE
+    room.sendAnnouncement('Serbia', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('srb/titular/red | srb/titular/blue | srb/alternativa/red | srb/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SerbiaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 120;
+        redTextColor = 0xe1b876;
+        redColor = [0xaf0013, 0xcf0221, 0xcf0221];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SERBIA";
+    }
+}
+
+function SerbiaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 120;
+        blueTextColor = 0xe1b876;
+        blueColor = [0xaf0013, 0xcf0221, 0xcf0221];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SERBIA";
+    }
+}
+
+function SerbiaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xc7de45;
+        redColor = [0x1f2545, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "SERBIA";
+    }
+}
+
+function SerbiaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xc7de45;
+        blueColor = [0x1f2545, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "SERBIA";
+    }
+}
+
+function GhanaFun(player) { // !LEE
+    room.sendAnnouncement('Ghana', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gha/titular/red | gha/titular/blue | gha/alternativa/red | gha/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GhanaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0a745c;
+        redColor = [0x211c22, 0xd3d2d9, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GHANA";
+    }
+}
+
+function GhanaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0a745c;
+        blueColor = [0x211c22, 0xd3d2d9, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GHANA";
+    }
+}
+
+function GhanaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x006e49;
+        redColor = [0x1A241C, 0xF4E100, 0xF4E100];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GHANA";
+    }
+}
+
+function GhanaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x006e49;
+        blueColor = [0x1A241C, 0xF4E100, 0xF4E100];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GHANA";
+    }
+}
+
+function TunezFun(player) { // !LEE
+    room.sendAnnouncement('Tunez', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tun/titular/red | tun/titular/blue | tun/alternativa/red | tun/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TunezTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfe4c4f;
+        redColor = [0xf1f2f8, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TÚNEZ";
+    }
+}
+
+function TunezTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfe4c4f;
+        blueColor = [0xf1f2f8, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TÚNEZ";
+    }
+}
+
+function TunezAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xfc2539, 0xeb0a2f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TÚNEZ";
+    }
+}
+
+function TunezAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xfc2539, 0xeb0a2f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TÚNEZ";
+    }
+}
+
+function DinamarcaFun(player) { // !LEE
+    room.sendAnnouncement('Dinamarca', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('den/titular/red | den/titular/blue | den/alternativa/red | den/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DinamarcaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xf2f1f7, 0xbd0215, 0xdd0023];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DINAMARCA";
+    }
+}
+
+function DinamarcaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xf2f1f7, 0xbd0215, 0xdd0023];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DINAMARCA";
+    }
+}
+
+function DinamarcaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0xe02435;
+        redColor = [0xca0b2c, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DINAMARCA";
+    }
+}
+
+function DinamarcaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0xe02435;
+        blueColor = [0xca0b2c, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DINAMARCA";
+    }
+}
+
+function ArabiaSauditaFun(player) { // !LEE
+    room.sendAnnouncement('Arabia Saudita', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ksa/titular/red | ksa/titular/blue | ksa/alternativa/red | ksa/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ArabiaSauditaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x02906a;
+        redColor = [0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ARABIA SAUDITA";
+    }
+}
+
+function ArabiaSauditaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x02906a;
+        blueColor = [0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ARABIA SAUDITA";
+    }
+}
+
+function ArabiaSauditaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 130;
+        redTextColor = 0xebf0f3;
+        redColor = [0x033d31, 0x033d31, 0x02906a];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ARABIA SAUDITA";
+    }
+}
+
+function ArabiaSauditaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 130;
+        blueTextColor = 0xebf0f3;
+        blueColor = [0x033d31, 0x033d31, 0x02906a];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ARABIA SAUDITA";
+    }
+}
+
+function CoreaDelSurFun(player) { // !JAP
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('kor/titular/red | kor/titular/blue | kor/alternativa/red | kor/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CoreaDelSurTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0f0c0f;
+        redColor = [0xffb6d1, 0xff859e, 0xef3a46];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COREA DEL SUR";
+    }
+}
+
+function CoreaDelSurTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0f0c0f;
+        blueColor = [0xffb6d1, 0xff859e, 0xef3a46];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COREA DEL SUR";
+    }
+}
+
+function CoreaDelSurAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 76;
+        redTextColor = 0xdebf80;
+        redColor = [0x1c1d24, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "COREA DEL SUR";
+    }
+}
+
+function CoreaDelSurAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 76;
+        blueTextColor = 0xdebf80;
+        blueColor = [0x1c1d24, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "COREA DEL SUR";
+    }
+}
+
+
+function PlazaColoniaFun(player) { // !LEE
+    room.sendAnnouncement('Plaza Colonia', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pcol/titular/red | pcol/titular/blue | pcol/alternativa/red | pcol/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PlazaColoniaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 114;
+        redTextColor = 0x095320;
+        redColor = [0x5FB286, 0xA8C3B2, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PLAZA COLONIA";
+    }
+}
+
+function PlazaColoniaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 114;
+        blueTextColor = 0x095320;
+        blueColor = [0x5FB286, 0xA8C3B2, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PLAZA COLONIA";
+    }
+}
+
+function PlazaColoniaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 63;
+        redTextColor = 0x1ba470;
+        redColor = [0x151F29];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PLAZA COLONIA";
+    }
+}
+
+function PlazaColoniaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 63;
+        blueTextColor = 0x1ba470;
+        blueColor = [0x151F29];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PLAZA COLONIA";
+    }
+}
+
+function DeportivoTachiraFun(player) { // !LEE
+    room.sendAnnouncement('Deportivo Tachira', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tach/titular/red | tach/titular/blue | tach/alternativa/red | tach/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportivoTachiraTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xFFD401, 0x171918, 0xFFD401];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTIVO TACHIRA";
+    }
+}
+
+function DeportivoTachiraTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xFFD401, 0x171918, 0xFFD401];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTIVO TACHIRA";
+    }
+}
+
+function DeportivoTachiraAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 124;
+        redTextColor = 0x000100;
+        redColor = [0xFFCD00, 0xCECBD2, 0xF1F1F1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTIVO TACHIRA";
+    }
+}
+
+function DeportivoTachiraAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 124;
+        blueTextColor = 0x000100;
+        blueColor = [0xFFCD00, 0xCECBD2, 0xF1F1F1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTIVO TACHIRA";
+    }
+}
+
+function CaracasFun(player) { // !LEE
+    room.sendAnnouncement('Caracas', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('carc/titular/red | carc/titular/blue | carc/alternativa/red | carc/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function CaracasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 128;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x271B1D, 0xC72F2C, 0xC72F2C];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CARACAS";
+    }
+}
+
+function CaracasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 128;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x271B1D, 0xC72F2C, 0xC72F2C];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CARACAS";
+    }
+}
+
+function CaracasAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 128;
+        redTextColor = 0x000000;
+        redColor = [0xFFFFFF, 0xEAEAEA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CARACAS";
+    }
+}
+
+function CaracasAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 128;
+        blueTextColor = 0x000000;
+        blueColor = [0xFFFFFF, 0xEAEAEA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CARACAS";
+    }
+}
+
+function MonagasFun(player) { // !LEE
+    room.sendAnnouncement('Monagas', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('mng/titular/red | mng/titular/blue | mng/alternativa/red | mng/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function MonagasTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x000045, 0xA10000, 0x000045];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONAGAS";
+    }
+}
+
+function MonagasTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x000045, 0xA10000, 0x000045];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONAGAS";
+    }
+}
+
+function MonagasAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 128;
+        redTextColor = 0x000000;
+        redColor = [0xDDFF00];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "MONAGAS";
+    }
+}
+
+function MonagasAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 128;
+        blueTextColor = 0x000000;
+        blueColor = [0xDDFF00];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "MONAGAS";
+    }
+}
+
+function DeportivoLaraFun(player) { // !LEE
+    room.sendAnnouncement('Deportivo Lara', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dlar/titular/red | dlar/titular/blue | dlar/alternativa/red | dlar/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportivoLaraTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xF0F0F0;
+        redColor = [0xE70026, 0x302A2E, 0xE70026];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. LARA";
+    }
+}
+
+function DeportivoLaraTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xF0F0F0;
+        blueColor = [0xE70026, 0x302A2E, 0xE70026];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. LARA";
+    }
+}
+
+function DeportivoLaraAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 128;
+        redTextColor = 0xb31f2b;
+        redColor = [0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEP. LARA";
+    }
+}
+
+function DeportivoLaraAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 128;
+        blueTextColor = 0xb31f2b;
+        blueColor = [0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEP. LARA";
+    }
+}
+
+function UniversidadCesarVallejoFun(player) { // !LEE
+    room.sendAnnouncement('Universidad Cesar Vallejo', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('ucv/titular/red | ucv/titular/blue | ucv/alternativa/red | ucv/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function UniversidadCesarVallejoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xF9591D, 0xFD6617, 0xFD6617];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U. CESAR VALLEJO";
+    }
+}
+
+function UniversidadCesarVallejoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xF9591D, 0xFD6617, 0xFD6617];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U. CESAR VALLEJO";
+    }
+}
+
+function UniversidadCesarVallejoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x031B47, 0x03173D, 0x03173D];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "U. CESAR VALLEJO";
+    }
+}
+
+function UniversidadCesarVallejoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x031B47, 0x03173D, 0x03173D];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "U. CESAR VALLEJO";
+    }
+}
+
+function ClubDeportivoUniversidadCatolicaFun(player) { // !LEE
+    room.sendAnnouncement('Club Deportivo Universidad Catolica', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('depuca/titular/red | depuca/titular/blue | depuca/alternativa/red | depuca/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ClubDeportivoUniversidadCatolicaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x042544;
+        redColor = [0x9DCCE1, 0x96C8E1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CLUB DEP. UNIVERSIDAD CATOLICA";
+    }
+}
+
+function ClubDeportivoUniversidadCatolicaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x042544;
+        blueColor = [0x9DCCE1, 0x96C8E1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CLUB DEP. UNIVERSIDAD CATOLICA";
+    }
+}
+
+function ClubDeportivoUniversidadCatolicaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xd9ebf4;
+        redColor = [0x141414, 0x000000, 0x141414];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CLUB DEP. UNIVERSIDAD CATOLICA";
+    }
+}
+
+function ClubDeportivoUniversidadCatolicaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xd9ebf4;
+        blueColor = [0x141414, 0x000000, 0x141414];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CLUB DEP. UNIVERSIDAD CATOLICA";
+    }
+}
+
+function DeportesTolimaFun(player) { // !LEE
+    room.sendAnnouncement('Deportes Tolima', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('deptol/titular/red | deptol/titular/blue | deptol/alternativa/red | deptol/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DeportesTolimaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xbf9a4a;
+        redColor = [0x700A1D, 0x771124];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTES TOLIMA";
+    }
+}
+
+function DeportesTolimaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xbf9a4a;
+        blueColor = [0x700A1D, 0x771124];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTES TOLIMA";
+    }
+}
+
+function DeportesTolimaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x771124;
+        redColor = [0xBF9A4A, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "DEPORTES TOLIMA";
+    }
+}
+
+function DeportesTolimaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x771124;
+        blueColor = [0xBF9A4A, 0xFFFFFF, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "DEPORTES TOLIMA";
+    }
+}
+
+function IndependientePetroleroFun(player) { // !LEE
+    room.sendAnnouncement('Independiente Petrolero', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('pet/titular/red | pet/titular/blue | pet/alternativa/red | pet/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function IndependientePetroleroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x636363;
+        redColor = [0xAA0515, 0xffffff, 0xAA0515];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "INDEPENDIENTE PETROLERO";
+    }
+}
+function IndependientePetroleroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x636363;
+        blueColor = [0xAA0515, 0xffffff, 0xAA0515];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "INDEPENDIENTE PETROLERO";
+    }
+}
+function IndependientePetroleroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x8A0D15, 0xC6121E, 0x8A0D15];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "INDEPENDIENTE PETROLERO";
+    }
+}
+function IndependientePetroleroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x8A0D15, 0xC6121E, 0x8A0D15];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "INDEPENDIENTE PETROLERO";
+    }
+}
+
+function AlwaysReadyFun(player) { // !LEE
+    room.sendAnnouncement('Always Ready', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('alwr/titular/red | alwr/titular/blue | alwr/alternativa/red | alwr/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+function AlwaysReadyTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 33;
+        redTextColor = 0x1a1a1c;
+        redColor = [0xFFFFFF, 0xFE323D, 0xFFFFFF];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALWAY READY";
+    }
+}
+function AlwaysReadyTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 33;
+        blueTextColor = 0x1a1a1c;
+        blueColor = [0xFFFFFF, 0xFE323D, 0xFFFFFF];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALWAY READY";
+    }
+}
+function AlwaysReadyAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 34;
+        redTextColor = 0xffffff;
+        redColor = [0x9F2240, 0xD43742, 0x9F2240];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "ALWAY READY";
+    }
+}
+function AlwaysReadyAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 34;
+        blueTextColor = 0xffffff;
+        blueColor = [0x9F2240, 0xD43742, 0x9F2240];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "ALWAY READY";
+    }
+}
+
+function FortalezaFun(player) { // !LEE
+    room.sendAnnouncement('Fortaleza', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('fort/titular/red | fort/titular/blue | fort/alternativa/red | fort/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function FortalezaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0xF91838, 0x11328F, 0xF91838];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FORTALEZA";
+    }
+}
+
+function FortalezaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0xF91838, 0x11328F, 0xF91838];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FORTALEZA";
+    }
+}
+
+function FortalezaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 34;
+        redTextColor = 0x040a5e;
+        redColor = [0xFAFAFA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "FORTALEZA";
+    }
+}
+
+function FortalezaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 34;
+        blueTextColor = 0x040a5e;
+        blueColor = [0xFAFAFA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "FORTALEZA";
+    }
+}
+
+function RBBragantinoFun(player) { // !LEE
+    room.sendAnnouncement('RB Bragrantino', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('rbb/titular/red | rbb/titular/blue | rbb/alternativa/red | rbb/alternativa/blue | rbb/tercera/red | rbb/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function RBBragantinoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = -50;
+        redTextColor = 0xfe0302;
+        redColor = [0xE9E9E9, 0xffffff, 0xE9E9E9];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB BRAGANTINO";
+    }
+}
+
+function RBBragantinoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -50;
+        blueTextColor = 0xfe0302;
+        blueColor = [0xE9E9E9, 0xffffff, 0xE9E9E9];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB BRAGANTINO";
+    }
+}
+
+function RBBragantinoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = -50;
+        redTextColor = 0xffffff;
+        redColor = [0x000000, 0x151515, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB BRAGANTINO";
+    }
+}
+
+function RBBragantinoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -50;
+        blueTextColor = 0xffffff;
+        blueColor = [0x000000, 0x151515, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB BRAGANTINO";
+    }
+}
+
+function RBBragantinoTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = -50;
+        redTextColor = 0xffffff;
+        redColor = [0xFF1112, 0xDE0609, 0xFF1112];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "RB BRAGANTINO";
+    }
+}
+
+function RBBragantinoTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = -50;
+        blueTextColor = 0xffffff;
+        blueColor = [0xFF1112, 0xDE0609, 0xFF1112];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "RB BRAGANTINO";
+    }
+}
+
+function AmericaMineiroFun(player) { // !LEE
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('amcmin/titular/red | amcmin/titular/blue | amcmin/alternativa/red | amcmin/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AmericaMineiroTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x6EC576, 0x27272F, 0x6EC576];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AMÉRICA MINEIRO";
+    }
+}
+
+function AmericaMineiroTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x6EC576, 0x27272F, 0x6EC576];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AMÉRICA MINEIRO";
+    }
+}
+
+function AmericaMineiroAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x107837;
+        redColor = [0x026B2E, 0xEFEFEF, 0xFAFAFA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AMÉRICA MINEIRO";
+    }
+}
+
+function AmericaMineiroAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x107837;
+        blueColor = [0x026B2E, 0xEFEFEF, 0xFAFAFA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AMÉRICA MINEIRO";
+    }
+}
+
+function TorinoFun(player) { // !CRU
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('tor/titular/red | tor/titular/blue | tor/alternativa/red | tor/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function TorinoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xfbfaf8;
+        redColor = [0x900a23];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORINO";
+    }
+}
+
+function TorinoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xfbfaf8;
+        blueColor = [0x900a23];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORINO";
+    }
+}
+
+function TorinoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 60;
+        redTextColor = 0xa2374b;
+        redColor = [0xf0f1f6];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "TORINO";
+    }
+}
+
+function TorinoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 60;
+        blueTextColor = 0xa2374b;
+        blueColor = [0xf0f1f6];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "TORINO";
+    }
+}
+
+function GenoaFun(player) { // !GEN
+    room.sendAnnouncement('Genoa | 🇮🇹', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gen/titular/red | gen/titular/blue | gen/alternativa/red | gen/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GenoaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xe2bf61;
+        redColor = [0xDB001E, 0x262E45];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GENOA";
+    }
+}
+
+function GenoaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xe2bf61;
+        blueColor = [0xDB001E, 0x262E45];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GENOA";
+    }
+}
+
+function GenoaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf6d903;
+        redColor = [0xFFFFFF, 0xF8011E, 0x27305B];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GENOA";
+    }
+}
+
+function GenoaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf6d903;
+        blueColor = [0xFFFFFF, 0xF8011E, 0x27305B];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GENOA";
+    }
+}
+
+function PalermoFun(player) { // !PLM
+    room.sendAnnouncement('Palermo | 🇮🇹', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('plm/titular/red | plm/titular/blue | plm/alternativa/red | plm/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function PalermoTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0x2e272e;
+        redColor = [0xF8C6E1];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PALERMO";
+    }
+}
+
+function PalermoTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0x2e272e;
+        blueColor = [0xF8C6E1];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PALERMO";
+    }
+}
+
+function PalermoAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x2f2c33;
+        redColor = [0xFDC7DF, 0xF0F3FA, 0xF0F3FA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "PALERMO";
+    }
+}
+
+function PalermoAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x2f2c33;
+        blueColor = [0xFDC7DF, 0xF0F3FA, 0xF0F3FA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "PALERMO";
+    }
+}
+
+function ChievoVeronaFun(player) { // !PAL
+    room.sendAnnouncement('Chievo Verona | 🇮🇹', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('chver/titular/red | chver/titular/blue | chver/alternativa/red | chver/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function ChievoVeronaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x0ba3ee;
+        redColor = [0xF8C6E1, 0xF4EF5F, 0xF4EF5F];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CHIEVO VERONA";
+    }
+}
+
+function ChievoVeronaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x0ba3ee;
+        blueColor = [0xF8C6E1, 0xF4EF5F, 0xF4EF5F];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CHIEVO VERONA";
+    }
+}
+
+function ChievoVeronaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 0;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x06ACFA, 0x069DF0, 0x06ACFA];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "CHIEVO VERONA";
+    }
+}
+
+function ChievoVeronaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 0;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x06ACFA, 0x069DF0, 0x06ACFA];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "CHIEVO VERONA";
+    }
+}
+
+function BarracasCentralFun(player) { // !BARR
+    room.sendAnnouncement('Barracas Central', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('barr/titular/red | barr/titular/blue | barr/alternativa/red | barr/alternativa/blue | barr/tercera/red | barr/tercera/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function BarracasCentralTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0x7D1622;
+        redColor = [0xe20613, 0xffffff, 0xe20613];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BARRACAS CENTRAL";
+    }
+}
+
+function BarracasCentralTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0x7D1622;
+        blueColor = [0xe20613, 0xffffff, 0xe20613];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BARRACAS CENTRAL";
+    }
+}
+
+function BarracasCentralAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xef2233;
+        redColor = [0xE8E8E8, 0xFFFFFF, 0xE8E8E8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BARRACAS CENTRAL";
+    }
+}
+
+function BarracasCentralAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xef2233;
+        blueColor = [0xE8E8E8, 0xFFFFFF, 0xE8E8E8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BARRACAS CENTRAL";
+    }
+}
+
+function BarracasCentralTerceraRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xee4f3a;
+        redColor = [0x3D3F3E, 0x768282, 0x3D3F3E];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "BARRACAS CENTRAL";
+    }
+}
+
+function BarracasCentralTerceraBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xee4f3a;
+        blueColor = [0x3D3F3E, 0x768282, 0x3D3F3E];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "BARRACAS CENTRAL";
+    }
+}
+
+function GalesFun(player) { // !GALES
+    room.sendAnnouncement('Gales', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('gal/titular/red | gal/titular/blue | gal/alternativa/red | gal/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function GalesTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0xed051f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GALES";
+    }
+}
+
+function GalesTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0xed051f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GALES";
+    }
+}
+
+function GalesAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xf40719;
+        redColor = [0x017457, 0xf9e10f, 0xf9e10f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "GALES";
+    }
+}
+
+function GalesAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xf40719;
+        blueColor = [0x017457, 0xf9e10f, 0xf9e10f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "GALES";
+    }
+}
+function AustraliaFun(player) { // !LEE
+    room.sendAnnouncement('Australia', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('aus/titular/red | aus/titular/blue | aus/alternativa/red | aus/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function AustraliaTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x204b44;
+        redColor = [0xF4C91A];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUSTRALIA";
+    }
+}
+
+function AustraliaTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x204b44;
+        blueColor = [0xF4C91A];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUSTRALIA";
+    }
+}
+
+function AustraliaAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 70;
+        redTextColor = 0xfde140;
+        redColor = [0x323556, 0x1A8692, 0x1A8692];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed =  "AUSTRALIA";
+    }
+}
+
+function AustraliaAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 70;
+        blueTextColor = 0xfde140;
+        blueColor = [0x323556, 0x1A8692, 0x1A8692];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue =  "AUSTRALIA";
+    }
+}
+
+function SarmientoDeJuninFun(player) { // !PLA
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('sar/titular/red | sar/titular/blue | sar/alternativa/red | sar/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function SarmientoDeJuninTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0xffffff;
+        redColor = [0x377039, 0x2d6332, 0x225228];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SARMIENTO DE JUNÍN";
+    }
+}
+
+function SarmientoDeJuninTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0xffffff;
+        blueColor = [0x377039, 0x2d6332, 0x225228];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SARMIENTO DE JUNÍN";
+    }
+}
+
+function SarmientoDeJuninAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 90;
+        redTextColor = 0x15402f;
+        redColor = [0x9fd2c3, 0xFFFFFF, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SARMIENTO DE JUNÍN";
+    }
+}
+
+function SarmientoDeJuninAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 90;
+        blueTextColor = 0x15402f;
+        blueColor = [0x9fd2c3, 0xFFFFFF, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SARMIENTO DE JUNÍN";
+    }
+}
+
+
+function DouglasHaigFun(player) { 
+    room.sendAnnouncement('Douglas Haig', player.id, 0x6BFFB5, "bold", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x6BFFB5, "normal", 0);
+    room.sendAnnouncement('dou/titular/red | dou/titular/blue | dou/alternativa/red | dou/alternativa/blue', player.id, 0x6BFFB5, "normal", 0);
+}
+
+function DouglasHaigTitularRedFun(player){
+    if (player.admin == true){
+        redAngle = 180;
+        redTextColor = 0xffffff;
+        redColor = [0x000000, 0xff1111, 0x000000];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DOUGLAS HAIG";
+    }
+}
+
+function DouglasHaigTitularBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 180;
+        blueTextColor = 0xffffff;
+        blueColor = [0x000000, 0xff1111, 0x000000];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DOUGLAS HAIG";
+    }
+}
+
+function DouglasHaigAlternativaRedFun(player){
+    if (player.admin == true){
+        redAngle = 65;
+        redTextColor = 0x000000;
+        redColor = [0xff1111, 0xffffff, 0xffffff];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "DOUGLAS HAIG";
+    }
+}
+
+function DouglasHaigAlternativaBlueFun(player){
+    if (player.admin == true){
+        blueAngle = 65;
+        blueTextColor = 0x000000;
+        blueColor = [0xff1111, 0xffffff, 0xffffff];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "DOUGLAS HAIG";
+    }
+}
+
+// Definiciones de funciones para 1K
+function UnoKFun(player) {
+    room.sendAnnouncement('1K - 🇪🇸', player.id, 0xFFBFC6, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFFBFC6, "normal", 0);
+    room.sendAnnouncement('1k/titular/blue - 1k/titular/red', player.id, 0xFFBFC6, "normal", 0);
+}
+
+function UnoKTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 60;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xe873b3, 0x352770, 0x352770];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "1K";
+    }
+}
+
+function UnoKTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 60;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xe873b3, 0x352770, 0x352770];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "1K";
+    }
+}
+
+// Definiciones de funciones para Aniquiladores FC
+function AniquiladoresFun(player) {
+    room.sendAnnouncement('Aniquiladores FC - 🇪🇸', player.id, 0xFF4545, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFF4545, "normal", 0);
+    room.sendAnnouncement('aniquiladores/titular/blue - aniquiladores/titular/red', player.id, 0xFF4545, "normal", 0);
+}
+
+function AniquiladoresTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0x110e0f;
+        blueColor = [0xcb2c37, 0xffffff, 0xcb2c37];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ANIQUILADORES FC";
+    }
+}
+
+function AniquiladoresTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0x110e0f;;
+        redColor = [0xcb2c37, 0xffffff, 0xcb2c37];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ANIQUILADORES FC";
+    }
+}
+
+// Definiciones de funciones para Jijantes FC
+function JijantesFun(player) {
+    room.sendAnnouncement('Jijantes FC - 🇪🇸', player.id, 0xFF3B39, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFF3B39, "normal", 0);
+    room.sendAnnouncement('jijantes/titular/blue - jijantes/titular/red', player.id, 0xFF3B39, "normal", 0);
+}
+
+function JijantesTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x01317e, 0xb50e2a, 0x01317e];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "JIJANTES FC";
+    }
+}
+
+function JijantesTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x01317e, 0xb50e2a, 0x01317e];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "JIJANTES FC";
+    }
+}
+
+// Definiciones de funciones para Ultimate Mostoles
+function MostolesFun(player) {
+    room.sendAnnouncement('Ultimate Mostoles - 🇪🇸', player.id, 0x1C1C1C, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x1C1C1C, "normal", 0);
+    room.sendAnnouncement('mostoles/titular/blue - mostoles/titular/red', player.id, 0x1C1C1C, "normal", 0);
+}
+
+function MostolesTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0xbea06d;
+        blueColor = [0x0a0a0c, 0x17171C, 0x0a0a0c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ULTIMATE MOSTOLES";
+    }
+}
+
+function MostolesTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0xbea06d;
+        redColor = [0x0a0a0c, 0x17171C, 0x0a0a0c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ULTIMATE MOSTOLES";
+    }
+}
+
+// Definiciones de funciones para Xbuyer Team
+function XbuyerFun(player) {
+    room.sendAnnouncement('Xbuyer Team - 🇪🇸', player.id, 0xFF8214, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFF8214, "normal", 0);
+    room.sendAnnouncement('xbuyer/titular/blue - xbuyer/titular/red', player.id, 0xFF8214, "normal", 0);
+}
+
+function XbuyerTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0xeeee65;
+        blueColor = [0x23477a, 0x145eab, 0x0a71d0];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "XBUYER TEAM";
+    }
+}
+
+function XbuyerTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0xeeee65;
+        redColor = [0x23477a, 0x145eab, 0x0a71d0];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "XBUYER TEAM";
+    }
+}
+
+// Definiciones de funciones para Rayo de Barcelona
+function RayoFun(player) {
+    room.sendAnnouncement('Rayo de Barcelona - 🇪🇸', player.id, 0xFFE921, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFFE921, "normal", 0);
+    room.sendAnnouncement('rayo/titular/blue - rayo/titular/red', player.id, 0xFFE921, "normal", 0);
+}
+
+function RayoTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 66;
+        blueTextColor = 0xf5ed07;
+        blueColor = [0x171717, 0x171717, 0xf5ed07];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "RAYO DE BARCELONA";
+    }
+}
+
+function RayoTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 66;
+        redTextColor = 0xf5ed07;
+        redColor = [0x171717, 0x171717, 0xf5ed07];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "RAYO DE BARCELONA";
+    }
+}
+
+// Definiciones de funciones para Pío FC
+function PioFun(player) {
+    room.sendAnnouncement('Pío FC - 🇦🇷', player.id, 0x000000, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x000000, "normal", 0);
+    room.sendAnnouncement('pio/titular/red - pio/titular/blue', player.id, 0x000000, "normal", 0);
+}
+
+function PioTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 1;
+        redTextColor = 0x1d1d1d;
+        redColor = [0xe4e3e8];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PÍO FC";
+    }
+}
+
+function PioTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 1;
+        blueTextColor = 0x1d1d1d;
+        blueColor = [0xe4e3e8];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PÍO FC";
+    }
+}
+
+
+
+// Definiciones de funciones para 9z Team
+function NueveZFun(player) {
+    room.sendAnnouncement('9z Team - 🇦🇷', player.id, 0x3F0E78, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x3F0E78, "normal", 0);
+    room.sendAnnouncement('9z/titular/red', player.id, 0x3F0E78, "normal", 0);
+    room.sendAnnouncement('9z/titular/blue', player.id, 0x3F0E78, "normal", 0);
+}
+
+function NueveZTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 62;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x342971, 0x42266f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "9Z TEAM";
+    }
+}
+
+function NueveZTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 62;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x342971, 0x42266f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "9Z TEAM";
+    }
+}
+
+// Definiciones de funciones para Furia
+function FuriaFun(player) {
+    room.sendAnnouncement('Furia - 🇧🇷', player.id, 0x212121, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x212121, "normal", 0);
+    room.sendAnnouncement('furia/titular/red', player.id, 0x212121, "normal", 0);
+    room.sendAnnouncement('furia/titular/blue', player.id, 0x212121, "normal", 0);
+}
+
+function FuriaTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 62;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x1d2127, 0x1d2127, 0x61646c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FURIA";
+    }
+}
+
+function FuriaTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 62;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x1d2127, 0x1d2127, 0x61646c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FURIA";
+    }
+}
+
+// Definiciones de funciones para Isurus Gaming
+function IsurusFun(player) {
+    room.sendAnnouncement('Isurus Gaming - 🇦🇷', player.id, 0x1069BE, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x1069BE, "normal", 0);
+    room.sendAnnouncement('isurus/titular/red', player.id, 0x1069BE, "normal", 0);
+    room.sendAnnouncement('isurus/titular/blue', player.id, 0x1069BE, "normal", 0);
+}
+
+function IsurusTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0x000000;
+        redColor = [0xebebeb, 0x00ffbb, 0xebebeb];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "ISURUS GAMING";
+    }
+}
+
+function IsurusTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0x000000;
+        blueColor = [0xebebeb, 0x00ffbb, 0xebebeb];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "ISURUS GAMING";
+    }
+}
+
+// Definiciones de funciones para Furius Gaming
+function FuriusFun(player) {
+    room.sendAnnouncement('Furius Gaming - 🇦🇷', player.id, 0xFF9233, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFF9233, "normal", 0);
+    room.sendAnnouncement('furius/titular/red', player.id, 0xFF9233, "normal", 0);
+    room.sendAnnouncement('furius/titular/blue', player.id, 0xFF9233, "normal", 0);
+}
+
+function FuriusTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 40;
+        redTextColor = 0xaf2268;
+        redColor = [0x19232b];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "FURIUS GAMING";
+    }
+}
+
+function FuriusTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 40;
+        blueTextColor = 0xaf2268;
+        blueColor = [0x19232b];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "FURIUS GAMING";
+    }
+}
+
+// Definiciones de funciones para Troncos FC
+function TroncosFun(player) {
+    room.sendAnnouncement('Troncos FC - 🇪🇸', player.id, 0x7DFFCF, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x7DFFCF, "normal", 0);
+    room.sendAnnouncement('troncos/titular/red', player.id, 0x7DFFCF, "normal", 0);
+    room.sendAnnouncement('troncos/titular/blue', player.id, 0x7DFFCF, "normal", 0);
+}
+
+function TroncosTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 180;
+        redTextColor = 0x104D3B;
+        redColor = [0x07b16f, 0xffffff, 0x07b16f];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "TRONCOS FC";
+    }
+}
+
+function TroncosTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 180;
+        blueTextColor = 0x104D3B;
+        blueColor = [0x07b16f, 0xffffff, 0x07b16f];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "TRONCOS FC";
+    }
+}
+
+// Definiciones de funciones para Kunisports
+function KunisportsFun(player) {
+    room.sendAnnouncement('Kunisports - 🇪🇸', player.id, 0xFFABD8, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xFFABD8, "normal", 0);
+    room.sendAnnouncement('kunisports/titular/blue', player.id, 0xFFABD8, "normal", 0);
+    room.sendAnnouncement('kunisports/titular/red', player.id, 0xFFABD8, "normal", 0);
+}
+
+function KunisportsTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 90;
+        blueTextColor = 0xff0165;
+        blueColor = [0xffffff, 0x797677, 0x191418];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "KUNISPORTS";
+    }
+}
+
+function KunisportsTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 90;
+        redTextColor = 0xff0165;
+        redColor = [0xffffff, 0x797677, 0x191418];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "KUNISPORTS";
+    }
+}
+
+// Definiciones de funciones para Saiyans FC
+function SaiyansFun(player) {
+    room.sendAnnouncement('Saiyans FC - 🇪🇸', player.id, 0x509FC1, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x509FC1, "normal", 0);
+    room.sendAnnouncement('saiyans/titular/blue', player.id, 0x509FC1, "normal", 0);
+    room.sendAnnouncement('saiyans/titular/red', player.id, 0x509FC1, "normal", 0);
+}
+
+function SaiyansTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 56;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x033894, 0xe54718, 0xe23d15];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "SAIYANS FC";
+    }
+}
+
+function SaiyansTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 56;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x033894, 0xe54718, 0xe23d15];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "SAIYANS FC";
+    }
+}
+
+// Definiciones de funciones para Porcinos FC
+function PorcinosFun(player) {
+    room.sendAnnouncement('Porcinos FC - 🇪🇸', player.id, 0xC2054E, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0xC2054E, "normal", 0);
+    room.sendAnnouncement('porcinos/titular/blue', player.id, 0xC2054E, "normal", 0);
+    room.sendAnnouncement('porcinos/titular/red', player.id, 0xC2054E, "normal", 0);
+}
+
+function PorcinosTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 65;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0xffbad4, 0xffbad4, 0xfde7f3];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "PORCINOS FC";
+    }
+}
+
+function PorcinosTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 65;
+        redTextColor = 0xFFFFFF;
+        redColor = [0xffbad4, 0xffbad4, 0xfde7f3];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "PORCINOS FC";
+    }
+}
+
+// Definiciones de funciones para El Barrio FC
+function BarrioFun(player) {
+    room.sendAnnouncement('El Barrio FC - 🇦🇷', player.id, 0x01479C, "normal", 0);
+    room.sendAnnouncement('Puedes elegir entre:', player.id, 0x01479C, "normal", 0);
+    room.sendAnnouncement('barrio/titular/blue', player.id, 0x01479C, "normal", 0);
+    room.sendAnnouncement('barrio/titular/red', player.id, 0x01479C, "normal", 0);
+}
+
+function BarrioTitularBlueFun(player) {
+    if (player.admin == true) {
+        blueAngle = 65;
+        blueTextColor = 0xFFFFFF;
+        blueColor = [0x012168, 0x012168, 0x00183c];
+        room.setTeamColors(2, blueAngle, blueTextColor, blueColor);
+        teamBlue = "EL BARRIO FC";
+    }
+}
+
+function BarrioTitularRedFun(player) {
+    if (player.admin == true) {
+        redAngle = 65;
+        redTextColor = 0xFFFFFF;
+        redColor = [0x012168, 0x012168, 0x00183c];
+        room.setTeamColors(1, redAngle, redTextColor, redColor);
+        teamRed = "EL BARRIO FC";
+    }
+}
 
 
 
@@ -19964,7 +36649,7 @@ function BanIpFun(player, message) {
             const targetPlayer = room.getPlayerList().find(p => p.name === NickDelJugador);
             if (targetPlayer) {
                 // Kickea al jugador y lo banea
-                room.kickPlayer(targetPlayer.id, MensajeBaneoPorIp, true);
+                room.kickPlayer(targetPlayer.id, "Ban por IP", true);
             } else {
                 // Envía anuncios si el jugador es desconocido
                 room.sendAnnouncement(`Admin ${player.name}: La forma correcta de usar !banip es: !banip <IP del Jugador> | Ejemplo: !banip 123.456.789`, player.id, 0xFF5252, "normal", 0);
@@ -20266,7 +36951,1855 @@ var comandosGLH = {
     "!nv" : leaveFun,
     "!bb" : leaveFun,
     "!adormir" : leaveFun,
-    "!acomer" : leaveFun
+    "!acomer" : leaveFun,
+    "!camisetas": CamisetasFun,
+    "!ksk": CamisetasFun,
+"!conmebol": CONMEBOLFun,
+"!uefa": UEFAFun,
+"!concacaf": CONCACAFFun,
+"!superheroes": SuperHeroesFun,
+"!primera": SuperligaFun,
+"!fantasmas": FantasmasFun,
+"!amateurs": EquiposAmateursFun,
+"!ascenso": AscensoFun,
+"!ligaboliviana": LigaBolivianaFun,
+"!campeonatochileno": CampeonatoChilenoFun,
+"!mls": MLSFun,
+"!campeonatouruguayo": LigaUruguayaFun,
+"!campeonatoruso": CampeonatoRusoFun,
+"!premierucrania": PremierUcranianaFun,
+"!nb1": LigaHungaraFun,
+"!laliga": LaLigaFun,
+"!seriea": SerieATIMFun,
+"!serieb": SerieBItaliaFun,
+"!brasileirao": BrasilLeagueFun,
+"!premierleague": PremierLeagueFun,
+"!superlig": SuperLigFun,
+"!paises": PaisesFun,
+"!bundesliga": BundesligaFun,
+"!eredivisie": EredivisieFun,
+"!ligaaguila": LigaAguilaFun,
+"!ligaparaguaya": LigaParaguayaFun,
+"!ligue1": Ligue1Fun,
+"!ligamx": LigaMXFun,
+"!ligapro": LigaProFun,
+"!superligasuiza": RaiffeisenSuperLeagueFun,
+"!liga1peru": Liga1PeruFun,
+"!1hnl": PrimeraLigaDeCroaciaFun,
+"!primeiraliga": PrimeiraLigaFun,
+"!ligavenezolana": LigaVenezolanaFun,
+"!esports": EquiposEsportsFun,
+"!riv": RiverFun,
+"!boc": BocaFun,
+"!slo": SanLorenzoFun,
+"!rac": RacingFun,
+"!ind": IndependienteFun,
+"!ald": AldosiviFun,
+"!gim": GimnasiaFun,
+"!nob": NewellsFun,
+"!cen": CentralFun,
+"!dyj": DefensaFun,
+"!atm": AtleticoMadridFun,
+"!bar": BarcelonaFun,
+"!rma": RealMadridFun,
+"!sev": SevillaFun,
+"!int": InterMilanFun,
+"!acm": MilanFun,
+"!cru": CruzeiroFun,
+"!pal": PalmeirasFun,
+"!gre": GremioFun,
+"!tot": TottenhamFun,
+"!liv": LiverpoolFun,
+"!arg": ArgentinaFun,
+"!belg": BelgicaFun,
+"!bra": BrasilFun,
+"!chi": ChileFun,
+"!uru": UruguayFun,
+"!fra": FranciaFun,
+"!cro": CroaciaFun,
+"!nap": NapoliFun,
+"!fcb": BayernFun,
+"!bvb": BorussiaFun,
+"!juv": JuventusFun,
+"!est": EstudiantesFun,
+"!band": BanfieldFun,
+"!lan": LanusFun,
+"!mun": ManUnitedFun,
+"!mci": ManCityFun,
+"!ars": ArsenalFun,
+"!che": ChelseaFun,
+"!par": ParanaenseFun,
+"!hur": HuracanFun,
+"!tig": TigreFun,
+"!ale": AlemaniaFun,
+"!esp": EspanaFun,
+"!por": PortugalFun,
+"!aaaj": ArgentinosJrsFun,
+"!alb": AllBoysFun,
+"!atl": AtlantaFun,
+"!bel": BelgranoFun,
+"!cha": ChacaritaFun,
+"!tal": TalleresFun,
+"!pla": PlatenseFun,
+"!oli": OlimpoFun,
+"!smt": SanMartinTucumanFun,
+"!atu": AtlTucumanFun,
+"!fco": FerroFun,
+"!nac": NacionalFun,
+"!pen": PenarolFun,
+"!qui": QuilmesFun,
+"!nch": ChicagoFun,
+"!mor": MoronFun,
+"!uni": UnionFun,
+"!csf": ColonFun,
+"!arse": SarandiFun,
+"!doc": DocksudFun,
+"!col": ColombiaFun,
+"!per": PeruFun,
+"!qat": QatarFun,
+"!pgy": ParaguayFun,
+"!ven": VenezuelaFun,
+"!wba": WestBromFun,
+"!avl": AstonVillaFun,
+"!ful": FulhamFun,
+"!lei": LeicesterFun,
+"!dan": DanubioFun,
+"!ram": RamplaJrsFun,
+"!sch": SacachispasFun,
+"!hol": HolandaFun,
+"!bol": BoliviaFun,
+"!ita": ItaliaFun,
+"!ing": InglaterraFun,
+"!aja": AjaxFun,
+"!fey": FeyenoordFun,
+"!psv": PSVFun,
+"!psg": ParisFun,
+"!ccs": CentralCordobaSdEFun,
+"!rie": RiestraFun,
+"!ogc": OGCNiceFun,
+"!om": OlympiqueMarsellaFun,
+"!rom": ASRomaFun,
+"!fio": FiorentinaFun,
+"!laz": LazioFun,
+"!smsj": SMSanJuanFun,
+"!god": GodoyCruzFun,
+
+"!vel": VelezFun,
+"!fla": FlamengoFun,
+"!flu": FluminenseFun,
+"!san": SantosFun,
+"!sao": SaoPauloFun,
+"!bot": BotafogoFun,
+"!sci": SCInternacionalFun,
+"!cor": CorinthiansFun,
+"!vas": VascoDaGamaFun,
+"!cam": MineiroFun,
+"!atn": AtlNacionalFun,
+"!mil": MillonariosFun,
+"!ame": AmericaDeCaliFun,
+"!sfe": SantaFeFun,
+"!cal": DeportivoCaliFun,
+"!onc": OnceCaldasFun,
+"!ccp": CerroFun,
+"!oli": OlimpiaFun,
+"!gua": GuaraniFun,
+"!lib": LibertadFun,
+"!sou": SouthamptonFun,
+"!wat": WatfordFun,
+"!wil": WillemIIFun,
+"!alv": AlvaradoFun,
+"!agr": AgropecuarioFun,
+"!gs": GalatasarayFun,
+"!bjk": BesiktasFun,
+"!fb": FenerbahceFun,
+"!riu": RiverURUFun,
+"!mty": MonterreyFun,
+"!tgs": TigresFun,
+"!chv": ChivasFun,
+"!cruz": CruzAzulFun,
+"!amc": AmericaMXFun,
+"!ldu": LigaDeQuitoFun,
+"!bsc": BarcelonaSCFun,
+"!eme": EmelecFun,
+"!idv": IndependienteDelValleFun,
+"!ol": OlympiqueLyonFun,
+"!stel": SanTelmoFun,
+"!mer": DeportivoMerloFun,
+"!adq": ArgentinoDeQuilmesFun,
+"!val": ValenciaFun,
+"!bet": BetisFun,
+"!cry": CrystalPalaceFun,
+"!cja": JuventudAntonianaFun,
+"!gyt": GimnasiaYTiroFun,
+"!get": GetafeFun,
+"!lev": LevanteFun,
+"!ray": RayoVallecanoFun,
+"!pat": PatronatoFun,
+"!zen": ZenitFun,
+"!csk": CSKAMoscuFun,
+"!lok": LokomotivFun,
+"!spm": SpartakFun,
+"!din": DynamoMoscowFun,
+"!dyk": DynamoKievFun,
+"!sha": ShakhtarFun,
+"!jap": JaponFun,
+"!nze": NuevaZelandaFun,
+"!aut": AustriaFun,
+"!cno": CoreaDelNorteFun,
+"!la": LAGalaxyFun,
+"!lafc": LosAngelesFCFun,
+"!ptim": PortlandTimbersFun,
+"!sea": SeattleSoundersFun,
+"!nyrb": NewYorkRedBullFun,
+"!nyc": NewYorkCityFun,
+"!tofc": TorontoFCFun,
+"!atlu": AtlantaUnitedFun,
+"!cco": ColoColoFun,
+"!udc": UdeChileFun,
+"!stg": StrongestFun,
+"!blv": BolivarFun,
+"!wtm": WilstermannFun,
+"!eve": EvertonFCFun,
+"!asm": ASMonacoFun,
+"!cob": CobreloaFun,
+"!cdp": PalestinoFun,
+"!uca": UCatolicaFun,
+"!bas": FCBaselFun,
+"!ata": AtalantaFun,
+"!mel": MelgarFun,
+"!unv": UniversitarioFun,
+"!ali": AlianzaLimaFun,
+"!cri": SportingCristalFun,
+"!rus": RusiaFun,
+"!usa": EstadosUnidosFun,
+"!alm": AlmagroFun,
+"!nga": NigeriaFun,
+"!ecu": EcuadorFun,
+"!cadu": CADUFun,
+"!alu": AlumniFun,
+"!urss": URSSFun,
+"!yug": YugoslaviaFun,
+"!vsc": VillaSanCarlosFun,
+"!loa": LomasAthleticFun,
+"!cze": ChecoslovaquiaFun,
+"!fcn": NantesFun,
+"!ste": SaintEtienneFun,
+"!ren": RennesFun,
+"!nyv": FCNyvaVinnytsiaFun,
+"!orl": OrlandoCityFun,
+"!eba": EstudiantesBsAsFun,
+"!paks": PaksiSEFun,
+"!dio": DiosgyoriVTKFun,
+"!kisv": KisvardaFCFun,
+"!mez": MezokovesdiSEFun,
+"!pafc": PuskasAkademiaFCFun,
+"!hon": HonvedFCFun,
+"!dvs": DVSCDebrecenFun,
+"!ujp": UjpestFCFun,
+"!vid": MOLVidiFCFun,
+"!ftc": FerencvarosiTCFun,
+"!abrown": AlmiranteBrownFun,
+"!cdybgr": CentroDeportivoRocaFun,
+"!bochz": BochofiloBochazoFun,
+"!dzg": DinamoZagrebFun,
+"!haj": HajdukSplitFun,
+"!rjk": HNKRijekaFun,
+"!osi": NKOsijekFun,
+"!nklok": NKLokomotivFun,
+"!gor": HNKGoricaFun,
+"!slb": NKSlavenBelupoFun,
+"!ist": Istra1961Fun,
+"!iza": InterZapresicFun,
+"!var": NKVarazdinFun,
+"!b04": Bayer04LeverkusenFun,
+"!venfc": VeneziaFCFun,
+"!ath": AthleticDeBilbaoFun,
+"!rcde": EspanyolFun,
+"!rbl": RBLeipzigFun,
+"!mct": MontevideoCityTorqueFun,
+"!wan": MontevideoWanderersFun,
+"!hsv": HamburgerSVFun,
+"!new": NewcastleUnitedFun,
+"!whu": WestHamUnitedFun,
+"!mia": InterMiamiCFFun,
+"!cde": DeportivoEspanolFun,
+"!sit": SportivoItalianoFun,
+"!mdy": ClubDeportivoMandiyuFun,
+"!hul": HullCityFun,
+"!wol": WolverhamptonFun,
+"!crl": CerroLargoFun,
+"!ocfc": OldCaledoniansFootballClubFun,
+"!dfs": DefensorSportingFun,
+"!evdm": EvertonVinaDelMarFun,
+"!ulc": UnionLaCaleraFun,
+"!aud": AudaxItalianoFun,
+"!hua": HuachipatoFun,
+"!iqu": DeportesIquiqueFun,
+"!ohi": OhigginsFun,
+"!ues": UnionEspanolaFun,
+"!swa": SantiagoWanderersFun,
+"!cur": CuricoUnidoFun,
+"!cda": DeportesAntofagastaFun,
+"!ucon": UdeConcepcionFun,
+"!dls": DeportesLaSerenaFun,
+"!coq": CoquimboUnidoFun,
+"!spiderman": SpidermanFun,
+"!hulk": HulkFun,
+"!capitanamerica": CapitanAmericaFun,
+"!batman": BatmanFun,
+"!bac": BelgranoAthleticClubFun,
+"!roac": RosarioAthleticClubFun,
+"!caport": ClubAtleticoPortenoFun,
+"!cel": CeltaDeVigoFun,
+"!mll": MallorcaFun,
+"!vil": VillarrealFun,
+"!lee": LeedsUnitedFun,
+"!sui": SuizaFun,
+"!swe": SueciaFun,
+"!cdn": CruceroDelNorteFun,
+"!scb": SCBragaFun,
+"!spo": SportingCPFun,
+"!fcp": FCPortoFun,
+"!ben": SLBenficaFun,
+"!cdm": CostaDeMarfilFun,
+"!cmr": CamerunFun,
+"!ukr": UcraniaFun,
+"!sm": SanMiguelFun,
+"!dou": DouglasHaigFun,
+"!laf": LaferrereFun,
+"!mex": MexicoFun,
+"!sen": SenegalFun,
+"!irn": IranFun,
+"!pol": PoloniaFun,
+"!crc": CostaRicaFun,
+"!can": CanadaFun,
+"!mar": MarruecosFun,
+"!srb": SerbiaFun,
+"!gha": GhanaFun,
+"!kor": CoreaDelSurFun,
+"!tun": TunezFun,
+"!den": DinamarcaFun,
+"!ksa": ArabiaSauditaFun,
+"!pcol": PlazaColoniaFun,
+"!tach": DeportivoTachiraFun,
+"!carc": CaracasFun,
+"!mng": MonagasFun,
+"!dlar": DeportivoLaraFun,
+"!ucv": UniversidadCesarVallejoFun,
+"!depuc": ClubDeportivoUniversidadCatolicaFun,
+"!deptol": DeportesTolimaFun,
+"!pet": IndependientePetroleroFun,
+"!alwr": AlwaysReadyFun,
+"!fort": FortalezaFun,
+"!rbb": RBBragantinoFun,
+"!amcmin": AmericaMineiroFun,
+"!tor": TorinoFun,
+"!gen": GenoaFun,
+"!plm": PalermoFun,
+"!chver": ChievoVeronaFun,
+"!barr": BarracasCentralFun,
+"!gal": GalesFun,
+"!aus": AustraliaFun,
+"!sar": SarmientoDeJuninFun,
+"!1k": UnoKFun,
+"!aniquiladores": AniquiladoresFun,
+"!jijantes": JijantesFun,
+"!mostoles": MostolesFun,
+"!xbuyer": XbuyerFun,
+"!rayo": RayoFun,
+"!pio": PioFun,
+"!9z": NueveZFun,
+"!furia": FuriaFun,
+"!isurus": IsurusFun,
+"!furius": FuriusFun,
+"!troncos": TroncosFun,
+"!kunisports": KunisportsFun,
+"!porcinos": PorcinosFun,
+"!barrio": BarrioFun,
+"!saiyans": SaiyansFun,
+
+
+    "riv/titular/red": RIVTitularRedFun,
+    "riv/titular/blue": RIVTitularBlueFun,
+    "riv/alternativa/red": RIVAlternativaRedFun,
+    "riv/alternativa/blue": RIVAlternativaBlueFun,
+    "riv/tercera/red": RIVTerceraRedFun,
+    "riv/tercera/blue": RIVTerceraBlueFun,
+    "boc/titular/red": BOCTitularRedFun,
+    "boc/titular/blue": BOCTitularBlueFun,
+    "boc/alternativa/red": BOCAlternativaRedFun,
+    "boc/alternativa/blue": BOCAlternativaBlueFun,
+    "boc/tercera/red": BOCTerceraRedFun,
+    "boc/tercera/blue": BOCTerceraBlueFun,
+    "slo/titular/red": SLOTitularRedFun,
+    "slo/titular/blue": SLOTitularBlueFun,
+    "slo/alternativa/red": SLOAlternativaRedFun,
+    "slo/alternativa/blue": SLOAlternativaBlueFun,
+    "slo/tercera/red": SLOTerceraRedFun,
+    "slo/tercera/blue": SLOTerceraBlueFun,
+    "rac/titular/red": RACTitularRedFun,
+    "rac/titular/blue": RACTitularBlueFun,
+    "rac/alternativa/red": RACAlternativaRedFun,
+    "rac/alternativa/blue": RACAlternativaBlueFun,
+    "rac/tercera/red": RACTerceraRedFun,
+    "rac/tercera/blue": RACTerceraBlueFun,
+    "ind/titular/red": CAITitularRedFun,
+    "ind/titular/blue": CAITitularBlueFun,
+    "ind/alternativa/red": CAIAlternativaRedFun,
+    "ind/alternativa/blue": CAIAlternativaBlueFun,
+    "ald/titular/red": ALDTitularRedFun,
+    "ald/titular/blue": ALDTitularBlueFun,
+    "ald/alternativa/red": ALDAlternativaRedFun,
+    "ald/alternativa/blue": ALDAlternativaBlueFun,
+    "ald/titular/red/2020": ALDTitular2020RedFun,
+    "ald/titular/blue/2020": ALDTitular2020BlueFun,
+    "gim/titular/red": GIMTitularRedFun,
+    "gim/titular/blue": GIMTitularBlueFun,
+    "gim/alternativa/red": GIMAlternativaRedFun,
+    "gim/alternativa/blue": GIMAlternativaBlueFun,
+    "gim/tercera/red": GIMTerceraRedFun,
+    "gim/tercera/blue": GIMTerceraBlueFun,
+    "gim/alternativa/clasica/red": GIMAlternativaClasicaRedFun,
+    "gim/alternativa/clasica/blue": GIMAlternativaClasicaBlueFun,
+    "nob/titular/red": NOBTitularRedFun,
+    "nob/titular/blue": NOBTitularBlueFun,
+    "nob/alternativa/red": NOBAlternativaRedFun,
+    "nob/alternativa/blue": NOBAlternativaBlueFun,
+    "nob/tercera/red": NOBTerceraRedFun,
+    "nob/tercera/blue": NOBTerceraBlueFun,
+    "cen/titular/red": CENTitularRedFun,
+    "cen/titular/blue": CENTitularBlueFun,
+    "cen/alternativa/red": CENAlternativaRedFun,
+    "cen/alternativa/blue": CENAlternativaBlueFun,
+    "cen/tercera/red": CENTerceraRedFun,
+    "cen/tercera/blue": CENTerceraBlueFun,
+    "dyj/titular/red": DYJTitularRedFun,
+    "dyj/titular/blue": DYJTitularBlueFun,
+    "dyj/alternativa/red": DYJAlternativaRedFun,
+    "dyj/alternativa/blue": DYJAlternativaBlueFun,
+    "dyj/clasica/red": DYJClasicaRedFun,
+    "dyj/clasica/blue": DYJClasicaBlueFun,
+    "atm/titular/red": ATMTitularRedFun,
+    "atm/titular/blue": ATMTitularBlueFun,
+    "atm/alternativa/red": ATMAlternativaRedFun,
+    "atm/alternativa/blue": ATMAlternativaBlueFun,
+    "atm/tercera/red": ATMTerceraRedFun,
+    "atm/tercera/blue": ATMTerceraBlueFun,
+    "bar/titular/red": BARTitularRedFun,
+    "bar/titular/blue": BARTitularBlueFun,
+    "bar/alternativa/red": BARAlternativaRedFun,
+    "bar/alternativa/blue": BARAlternativaBlueFun,
+    "bar/tercera/red": BARTerceraRedFun,
+    "bar/tercera/blue": BARTerceraBlueFun,
+    "rma/titular/red": RMATitularRedFun,
+    "rma/titular/blue": RMATitularBlueFun,
+    "rma/alternativa/red": RMAAlternativaRedFun,
+    "rma/alternativa/blue": RMAAlternativaBlueFun,
+    "rma/tercera/red": RMATerceraRedFun,
+    "rma/tercera/blue": RMATerceraBlueFun,
+    "sev/titular/red": SevillaTitularRedFun,
+    "sev/titular/blue": SevillaTitularBlueFun,
+    "int/titular/red": INTTitularRedFun,
+    "int/titular/blue": INTTitularBlueFun,
+    "int/alternativa/red": INTAlternativaRedFun,
+    "int/alternativa/blue": INTAlternativaBlueFun,
+    "int/tercera/red": INTTerceraRedFun,
+    "int/tercera/blue": INTTerceraBlueFun,
+    "acm/titular/red": MILTitularRedFun,
+    "acm/titular/blue": MILTitularBlueFun,
+    "acm/alternativa/red": MILAlternativaRedFun,
+    "acm/alternativa/blue": MILAlternativaBlueFun,
+    "acm/tercera/red": MILTerceraRedFun,
+    "acm/tercera/blue": MILTerceraBlueFun,
+    "cru/titular/red": CRUTitularRedFun,
+    "cru/titular/blue": CRUTitularBlueFun,
+    "cru/alternativa/red": CRUAlternativaRedFun,
+    "cru/alternativa/blue": CRUAlternativaBlueFun,
+    "pal/titular/red": PALTitularRedFun,
+    "pal/titular/blue": PALTitularBlueFun,
+    "pal/alternativa/red": PALAlternativaRedFun,
+    "pal/alternativa/blue": PALAlternativaBlueFun,
+    "pal/tercera/red": PALTerceraRedFun,
+    "pal/tercera/blue": PALTerceraBlueFun,
+    "gre/titular/red": GRETitularRedFun,
+    "gre/titular/blue": GRETitularBlueFun,
+    "gre/alternativa/red": GREAlternativaRedFun,
+    "gre/alternativa/blue": GREAlternativaBlueFun,
+    "gre/titular/red/2019": GRETitular2019RedFun,
+    "gre/titular/blue/2019": GRETitular2019BlueFun,
+    "gre/clasica/red": GREClasicaRedFun,
+    "gre/clasica/blue": GREClasicaBlueFun,
+    "tot/titular/red": TOTTitularRedFun,
+    "tot/titular/blue": TOTTitularBlueFun,
+    "tot/alternativa/red": TOTAlternativaRedFun,
+    "tot/alternativa/blue": TOTAlternativaBlueFun,
+    "tot/tercera/red": TOTTerceraRedFun,
+    "tot/tercera/blue": TOTTerceraBlueFun,
+    "tot/titular/red/2018": TOTTitular2018RedFun,
+    "tot/titular/blue/2018": TOTTitular2018BlueFun,
+    "tot/alternativa/red/2018": TOTAlternativa2018RedFun,
+    "tot/alternativa/blue/2018": TOTAlternativa2018BlueFun,
+    "liv/titular/red": LIVTitularRedFun,
+    "liv/titular/blue": LIVTitularBlueFun,
+    "liv/alternativa/red": LIVAlternativaRedFun,
+    "liv/alternativa/blue": LIVAlternativaBlueFun,
+    "liv/tercera/red": LIVTerceraRedFun,
+    "liv/tercera/blue": LIVTerceraBlueFun,
+    "arg/titular/red": ARGTitularRedFun,
+    "arg/titular/blue": ARGTitularBlueFun,
+    "arg/alternativa/red": ARGAlternativaRedFun,
+    "arg/alternativa/blue": ARGAlternativaBlueFun,
+    "arg/bandera/red": ARGBanderaRedFun,
+    "arg/bandera/blue": ARGBanderaBlueFun,
+    "belg/titular/red": BelgicaTitularRedFun,
+    "belg/titular/blue": BelgicaTitularBlueFun,
+    "belg/alternativa/red": BelgicaAlternativaRedFun,
+    "belg/alternativa/blue": BelgicaAlternativaBlueFun,
+    "belg/bandera/red": BelgicaBanderaRedFun,
+    "belg/bandera/blue": BelgicaBanderaBlueFun,
+    "bra/titular/red": BRATitularRedFun,
+    "bra/titular/blue": BRATitularBlueFun,
+    "bra/alternativa/red": BRAAlternativaRedFun,
+    "bra/alternativa/blue": BRAAlternativaBlueFun,
+    "bra/tercera/red": BRATerceraRedFun,
+    "bra/tercera/blue": BRATerceraBlueFun,
+    "chi/titular/red": CHITitularRedFun,
+    "chi/titular/blue": CHITitularBlueFun,
+    "uru/titular/red": URUTitularRedFun,
+    "uru/titular/blue": URUTitularBlueFun,
+    "uru/alternativa/red": URUAlternativaRedFun,
+    "uru/alternativa/blue": URUAlternativaBlueFun,
+    "fra/titular/red": FRATitularRedFun,
+    "fra/titular/blue": FRATitularBlueFun,
+    "fra/alternativa/red": FRAAlternativaRedFun,
+    "fra/alternativa/blue": FRAAlternativaBlueFun,
+    "fra/bandera/red": FRABanderaRedFun,
+    "fra/bandera/blue": FRABanderaBlueFun,
+    "cro/titular/red": CROTitularRedFun,
+    "cro/titular/blue": CROTitularBlueFun,
+    "cro/alternativa/red": CROAlternativaRedFun,
+    "cro/alternativa/blue": CROAlternativaBlueFun,
+    "cro/tercera/red": CROTerceraRedFun,
+    "cro/tercera/blue": CROTerceraBlueFun,
+    "nap/titular/red": NAPTitularRedFun,
+    "nap/titular/blue": NAPTitularBlueFun,
+    "nap/alternativa/red": NAPAlternativaRedFun,
+    "nap/alternativa/blue": NAPAlternativaBlueFun,
+    "fcb/titular/red": FCBTitularRedFun,
+    "fcb/titular/blue": FCBTitularBlueFun,
+    "fcb/alternativa/red": FCBAlternativaRedFun,
+    "fcb/alternativa/blue": FCBAlternativaBlueFun,
+    "fcb/tercera/red": FCBTerceraRedFun,
+    "fcb/tercera/blue": FCBTerceraBlueFun,
+
+    "bvb/titular/red": BorussiaTitularRedFun,
+    "bvb/titular/blue": BorussiaTitularBlueFun,
+    "bvb/alternativa/red": BorussiaAlternativaRedFun,
+    "bvb/alternativa/blue": BorussiaAlternativaBlueFun,
+    "juv/titular/red": JuventusTitularRedFun,
+    "juv/titular/blue": JuventusTitularBlueFun,
+    "juv/alternativa/red": JuventusAlternativaRedFun,
+    "juv/alternativa/blue": JuventusAlternativaBlueFun,
+    "juv/tercera/red": JuventusTerceraRedFun,
+    "juv/tercera/blue": JuventusTerceraBlueFun,
+    "est/titular/red": EstudiantesTitularRedFun,
+    "est/titular/blue": EstudiantesTitularBlueFun,
+    "est/alternativa/red": EstudiantesAlternativaRedFun,
+    "est/alternativa/blue": EstudiantesAlternativaBlueFun,
+    "est/tercera/red": EstudiantesTerceraRedFun,
+    "est/tercera/blue": EstudiantesTerceraBlueFun,
+    "band/titular/red": BanfieldTitularRedFun,
+    "band/titular/blue": BanfieldTitularBlueFun,
+    "band/alternativa/red": BanfieldAlternativaRedFun,
+    "band/alternativa/blue": BanfieldAlternativaBlueFun,
+    "band/clasica/red": BanfieldClasicaRedFun,
+    "band/clasica/blue": BanfieldClasicaBlueFun,
+    "lan/titular/red": LanusTitularRedFun,
+    "lan/titular/blue": LanusTitularBlueFun,
+    "lan/alternativa/red": LanusAlternativaRedFun,
+    "lan/alternativa/blue": LanusAlternativaBlueFun,
+    "lan/tercera/red": LanusTerceraRedFun,
+    "lan/tercera/blue": LanusTerceraBlueFun,
+    "mun/titular/red": ManUnitedTitularRedFun,
+    "mun/titular/blue": ManUnitedTitularBlueFun,
+    "mun/alternativa/red": ManUnitedAlternativaRedFun,
+    "mun/alternativa/blue": ManUnitedAlternativaBlueFun,
+    "mun/tercera/red": ManUnitedTerceraRedFun,
+    "mun/tercera/blue": ManUnitedTerceraBlueFun,
+    "mci/titular/red": ManCityTitularRedFun,
+    "mci/titular/blue": ManCityTitularBlueFun,
+    "mci/alternativa/red": ManCityAlternativaRedFun,
+    "mci/alternativa/blue": ManCityAlternativaBlueFun,
+    "mci/tercera/red": ManCityTerceraRedFun,
+    "mci/tercera/blue": ManCityTerceraBlueFun,
+    "ars/titular/red": ArsenalTitularRedFun,
+    "ars/titular/blue": ArsenalTitularBlueFun,
+    "ars/alternativa/red": ArsenalAlternativaRedFun,
+    "ars/alternativa/blue": ArsenalAlternativaBlueFun,
+    "ars/tercera/red": ArsenalTerceraRedFun,
+    "ars/tercera/blue": ArsenalTerceraBlueFun,
+    "che/titular/red": ChelseaTitularRedFun,
+    "che/titular/blue": ChelseaTitularBlueFun,
+    "che/alternativa/red": ChelseaAlternativaRedFun,
+    "che/alternativa/blue": ChelseaAlternativaBlueFun,
+    "che/tercera/red": ChelseaTerceraRedFun,
+    "che/tercera/blue": ChelseaTerceraBlueFun,
+    "che/cuarta/red": ChelseaCuartaRedFun,
+    "che/cuarta/blue": ChelseaCuartaBlueFun,
+
+    "par/titular/red": ParanaenseTitularRedFun,
+    "par/titular/blue": ParanaenseTitularBlueFun,
+    "par/alternativa/red": ParanaenseAlternativaRedFun,
+    "par/alternativa/blue": ParanaenseAlternativaBlueFun,
+    "hur/titular/red": HuracanTitularRedFun,
+    "hur/titular/blue": HuracanTitularBlueFun,
+    "hur/alternativa/red": HuracanAlternativaRedFun,
+    "hur/alternativa/blue": HuracanAlternativaBlueFun,
+    "tig/titular/red": TigreTitularRedFun,
+    "tig/titular/blue": TigreTitularBlueFun,
+    "tig/alternativa/red": TigreAlternativaRedFun,
+    "tig/alternativa/blue": TigreAlternativaBlueFun,
+    "ale/titular/red": AlemaniaTitularRedFun,
+    "ale/titular/blue": AlemaniaTitularBlueFun,
+    "ale/alternativa/red": AlemaniaAlternativaRedFun,
+    "ale/alternativa/blue": AlemaniaAlternativaBlueFun,
+    "ale/bandera/red": AlemaniaBanderaRedFun,
+    "ale/bandera/blue": AlemaniaBanderaBlueFun,
+    "esp/titular/red": EspanaTitularRedFun,
+    "esp/titular/blue": EspanaTitularBlueFun,
+    "esp/alternativa/red": EspanaAlternativaRedFun,
+    "esp/alternativa/blue": EspanaAlternativaBlueFun,
+    "esp/bandera/red": EspanaBanderaRedFun,
+    "esp/bandera/blue": EspanaBanderaBlueFun,
+    "por/titular/red": PortugalTitularRedFun,
+    "por/titular/blue": PortugalTitularBlueFun,
+    "por/alternativa/red": PortugalAlternativaRedFun,
+    "por/alternativa/blue": PortugalAlternativaBlueFun,
+    "aaaj/titular/red": ArgentinosJrsTitularRedFun,
+    "aaaj/titular/blue": ArgentinosJrsTitularBlueFun,
+    "aaaj/alternativa/red": ArgentinosJrsAlternativaRedFun,
+    "aaaj/alternativa/blue": ArgentinosJrsAlternativaBlueFun,
+    "aaaj/tercera/red": ArgentinosJrsTerceraRedFun,
+    "aaaj/tercera/blue": ArgentinosJrsTerceraBlueFun,
+    "alb/titular/red": AllBoysTitularRedFun,
+    "alb/titular/blue": AllBoysTitularBlueFun,
+    "alb/alternativa/red": AllBoysAlternativaRedFun,
+    "alb/alternativa/blue": AllBoysAlternativaBlueFun,
+    "atl/titular/red": AtlantaTitularRedFun,
+    "atl/titular/blue": AtlantaTitularBlueFun,
+    "atl/alternativa/red": AtlantaAlternativaRedFun,
+    "atl/alternativa/blue": AtlantaAlternativaBlueFun,
+    "atl/escudo/red": AtlantaEscudoRedFun,
+    "atl/escudo/blue": AtlantaEscudoBlueFun,
+    "bel/titular/red": BelgranoTitularRedFun,
+    "bel/titular/blue": BelgranoTitularBlueFun,
+    "bel/alternativa/red": BelgranoAlternativaRedFun,
+    "bel/alternativa/blue": BelgranoAlternativaBlueFun,
+    "cha/titular/red": ChacaritaTitularRedFun,
+    "cha/titular/blue": ChacaritaTitularBlueFun,
+    "cha/alternativa/red": ChacaritaAlternativaRedFun,
+    "cha/alternativa/blue": ChacaritaAlternativaBlueFun,
+    "tal/titular/red": TalleresTitularRedFun,
+    "tal/titular/blue": TalleresTitularBlueFun,
+    "tal/alternativa/red": TalleresAlternativaRedFun,
+    "tal/alternativa/blue": TalleresAlternativaBlueFun,
+    "pla/titular/red": PlatenseTitularRedFun,
+    "pla/titular/blue": PlatenseTitularBlueFun,
+    "pla/alternativa/red": PlatenseAlternativaRedFun,
+    "pla/alternativa/blue": PlatenseAlternativaBlueFun,
+    "pla/tercera/red": PlatenseTerceraRedFun,
+    "pla/tercera/blue": PlatenseTerceraBlueFun,
+    "olp/titular/red": OlimpoTitularRedFun,
+    "olp/titular/blue": OlimpoTitularBlueFun,
+    "smt/titular/red": SanMartinTucumanTitularRedFun,
+    "smt/titular/blue": SanMartinTucumanTitularBlueFun,
+    "smt/alternativa/red": SanMartinTucumanAlternativaRedFun,
+    "smt/alternativa/blue": SanMartinTucumanAlternativaBlueFun,
+    "smt/tercera/red": SanMartinTucumanTerceraRedFun,
+    "smt/tercera/blue": SanMartinTucumanTerceraBlueFun,
+    "atu/titular/red": AtlTucumanTitularRedFun,
+    "atu/titular/blue": AtlTucumanTitularBlueFun,
+    "atu/alternativa/red": AtlTucumanAlternativaRedFun,
+    "atu/alternativa/blue": AtlTucumanAlternativaBlueFun,
+    "fco/titular/red": FerroTitularRedFun,
+    "fco/titular/blue": FerroTitularBlueFun,
+    "fco/alternativa/red": FerroAlternativaRedFun,
+    "fco/alternativa/blue": FerroAlternativaBlueFun,
+
+    "nac/titular/red": NacionalTitularRedFun,
+    "nac/titular/blue": NacionalTitularBlueFun,
+    "nac/alternativa/red": NacionalAlternativaRedFun,
+    "nac/alternativa/blue": NacionalAlternativaBlueFun,
+    "pen/titular/red": PenarolTitularRedFun,
+    "pen/titular/blue": PenarolTitularBlueFun,
+    "pen/alternativa/red": PenarolAlternativaRedFun,
+    "pen/alternativa/blue": PenarolAlternativaBlueFun,
+    "pen/tercera/red": PenarolTerceraRedFun,
+    "pen/tercera/blue": PenarolTerceraBlueFun,
+    "qui/titular/red": QuilmesTitularRedFun,
+    "qui/titular/blue": QuilmesTitularBlueFun,
+    "qui/alternativa/red": QuilmesAlternativaRedFun,
+    "qui/alternativa/blue": QuilmesAlternativaBlueFun,
+    "qui/tercera/red": QuilmesTerceraRedFun,
+    "qui/tercera/blue": QuilmesTerceraBlueFun,
+    "nch/titular/red": ChicagoTitularRedFun,
+    "nch/titular/blue": ChicagoTitularBlueFun,
+    "mor/titular/red": MoronTitularRedFun,
+    "mor/titular/blue": MoronTitularBlueFun,
+    "uni/titular/red": UnionTitularRedFun,
+    "uni/titular/blue": UnionTitularBlueFun,
+    "uni/alternativa/red": UnionAlternativaRedFun,
+    "uni/alternativa/blue": UnionAlternativaBlueFun,
+    "csf/titular/red": ColonTitularRedFun,
+    "csf/titular/blue": ColonTitularBlueFun,
+    "csf/alternativa/red": ColonAlternativaRedFun,
+    "csf/alternativa/blue": ColonAlternativaBlueFun,
+    "csf/tercera/red": ColonTerceraRedFun,
+    "csf/tercera/blue": ColonTerceraBlueFun,
+    "arse/titular/red": SarandiTitularRedFun,
+    "arse/titular/blue": SarandiTitularBlueFun,
+    "arse/alternativa/red": SarandiAlternativaRedFun,
+    "arse/alternativa/blue": SarandiAlternativaBlueFun,
+    "arse/tercera/red": SarandiTerceraRedFun,
+    "arse/tercera/blue": SarandiTerceraBlueFun,
+    "doc/titular/red": DocksudTitularRedFun,
+    "doc/titular/blue": DocksudTitularBlueFun,
+    "col/titular/red": ColombiaTitularRedFun,
+    "col/titular/blue": ColombiaTitularBlueFun,
+    "col/alternativa/red": ColombiaAlternativaRedFun,
+    "col/alternativa/blue": ColombiaAlternativaBlueFun,
+    "col/bandera/red": ColombiaBanderaRedFun,
+    "col/bandera/blue": ColombiaBanderaBlueFun,
+    "per/titular/red": PeruTitularRedFun,
+    "per/titular/blue": PeruTitularBlueFun,
+    "per/alternativa/red": PeruAlternativaRedFun,
+    "per/alternativa/blue": PeruAlternativaBlueFun,
+    "qat/titular/red": QatarTitularRedFun,
+    "qat/titular/blue": QatarTitularBlueFun,
+    "qat/alternativa/red": QatarAlternativaRedFun,
+    "qat/alterntiva/blue": QatarAlternativaBlueFun,
+    "pgy/titular/red": ParaguayTitularRedFun,
+    "pgy/titular/blue": ParaguayTitularBlueFun,
+    "pgy/alternativa/red": ParaguayAlternativaRedFun,
+    "pgy/alternativa/blue": ParaguayAlternativaBlueFun,
+    "ven/titular/red": VenezuelaTitularRedFun,
+    "ven/titular/blue": VenezuelaTitularBlueFun,
+    "ven/alternativa/red": VenezuelaAlternativaRedFun,
+    "ven/alternativa/blue": VenezuelaAlternativaBlueFun,
+    "ven/titular/red/2015": VenezuelaTitular2015RedFun,
+    "ven/titular/blue/2015": VenezuelaTitular2015BlueFun,
+    "ven/alternativa/red/2015": VenezuelaAlternativa2015RedFun,
+    "ven/alternativa/blue/2015": VenezuelaAlternativa2015BlueFun,
+    "wba/titular/red": WestBromTitularRedFun,
+    "wba/titular/blue": WestBromTitularBlueFun,
+    "avl/titular/red": AstonVillaTitularRedFun,
+    "avl/titular/blue": AstonVillaTitularBlueFun,
+    "ful/titular/red": FulhamTitularRedFun,
+    "ful/titular/blue": FulhamTitularBlueFun,
+    "ful/alternativa/red": FulhamAlternativaRedFun,
+    "ful/alternativa/blue": FulhamAlternativaBlueFun,
+    "ful/clasica/red": FulhamClasicaRedFun,
+    "ful/clasica/blue": FulhamClasicaBlueFun,
+    "lei/titular/red": LeicesterTitularRedFun,
+    "lei/titular/blue": LeicesterTitularBlueFun,
+    "dan/titular/red": DanubioTitularRedFun,
+    "dan/titular/blue": DanubioTitularBlueFun,
+    "ram/titular/red": RamplaJrsTitularRedFun,
+    "ram/titular/blue": RamplaJrsTitularBlueFun,
+    "sch/titular/red": SacachispasTitularRedFun,
+    "sch/titular/blue": SacachispasTitularBlueFun,
+    "sch/alternativa/red": SacachispasAlternativaRedFun,
+    "sch/alternativa/blue": SacachispasAlternativaBlueFun,
+    "hol/titular/red": HolandaTitularRedFun,
+    "hol/titular/blue": HolandaTitularBlueFun,
+    "hol/bandera/red": HolandaBanderaRedFun,
+    "hol/bandera/blue": HolandaBanderaBlueFun,
+    "hol/alternativa/red": HolandaAlternativaRedFun,
+    "hol/alternativa/blue": HolandaAlternativaBlueFun,
+    "hol/retro/red": HolandaRetroRedFun,
+    "hol/retro/blue": HolandaRetroBlueFun,
+    "hol/titular/red/2014": HolandaTitular2014RedFun,
+    "hol/titular/blue/2014": HolandaTitular2014BlueFun,
+    "hol/alternativa/red/2019": HolandaAlternativa2019RedFun,
+    "hol/alternativa/blue/2019": HolandaAlternativa2019BlueFun,
+    "bol/titular/red": BoliviaTitularRedFun,
+    "bol/titular/blue": BoliviaTitularBlueFun,
+    "ita/titular/red": ItaliaTitularRedFun,
+    "ita/titular/blue": ItaliaTitularBlueFun,
+    "ita/alternativa/red": ItaliaAlternativaRedFun,
+    "ita/alternativa/blue": ItaliaAlternativaBlueFun,
+    "ita/bandera/red": ItaliaBanderaRedFun,
+    "ita/bandera/blue": ItaliaBanderaBlueFun,
+    "ing/titular/red": InglaterraTitularRedFun,
+    "ing/titular/blue": InglaterraTitularBlueFun,
+    "ing/alternativa/red": InglaterraAlternativaRedFun,
+    "ing/alternativa/blue": InglaterraAlternativaBlueFun,
+    "aja/titular/red": AjaxTitularRedFun,
+    "aja/titular/blue": AjaxTitularBlueFun,
+    "aja/alternativa/red": AjaxAlternativaRedFun,
+    "aja/alternativa/blue": AjaxAlternativaBlueFun,
+    "psv/titular/red": PSVTitularRedFun,
+    "psv/titular/blue": PSVTitularBlueFun,
+    "fey/titular/red": FEYTitularRedFun,
+    "fey/titular/blue": FEYTitularBlueFun,
+    "psg/titular/red": PSGTitularRedFun,
+    "psg/titular/blue": PSGTitularBlueFun,
+    "psg/alternativa/red": PSGAlternativaRedFun,
+    "psg/alternativa/blue": PSGAlternativaBlueFun,
+    "psg/tercera/red": PSGTerceraRedFun,
+    "psg/tercera/blue": PSGTerceraBlueFun,
+    "ccs/titular/red": CentralCordobaSdETitularRedFun,
+    "ccs/titular/blue": CentralCordobaSdETitularBlueFun,
+    "ccs/alternativa/red": CentralCordobaSdEAlternativaRedFun,
+    "ccs/alternativa/blue": CentralCordobaSdEAlternativaBlueFun,
+    "ccs/tercera/red": CentralCordobaSdETerceraRedFun,
+    "ccs/tercera/blue": CentralCordobaSdETerceraBlueFun,
+    "rie/titular/red": RiestraTitularRedFun,
+    "rie/titular/blue": RiestraTitularBlueFun,
+    "rie/alternativa/red": RiestraAlternativaRedFun,
+    "rie/alternativa/blue": RiestraAlternativaBlueFun,
+    "om/titular/red": OlympiqueMarsellaTitularRedFun,
+    "om/titular/blue": OlympiqueMarsellaTitularBlueFun,
+    "om/alternativa/red": OlympiqueMarsellaAlternativaRedFun,
+    "om/alternativa/blue": OlympiqueMarsellaAlternativaBlueFun,
+    "ogc/titular/red": OGCNiceTitularRedFun,
+    "ogc/titular/blue": OGCNiceTitularBlueFun,
+    "rom/titular/red": ASRomaTitularRedFun,
+    "rom/titular/blue": ASRomaTitularBlueFun,
+    "rom/alternativa/red": ASRomaAlternativaRedFun,
+    "rom/alternativa/blue": ASRomaAlternativaBlueFun,
+    "rom/tercera/red": ASRomaTerceraRedFun,
+    "rom/tercera/blue": ASRomaTerceraBlueFun,
+    "fio/titular/red": FiorentinaTitularRedFun,
+    "fio/titular/blue": FiorentinaTitularBlueFun,
+    "fio/alternativa/red": FiorentinaAlternativaRedFun,
+    "fio/alternativa/blue": FiorentinaAlternativaBlueFun,
+    "laz/titular/red": LazioTitularRedFun,
+    "laz/titular/blue": LazioTitularBlueFun,
+    "laz/alternativa/red": LazioAlternativaRedFun,
+    "laz/alternativa/blue": LazioAlternativaBlueFun,
+    "laz/tercera/red": LazioTerceraRedFun,
+    "laz/tercera/blue": LazioTerceraBlueFun,
+    "smsj/titular/red": SMSanJuanTitularRedFun,
+    "smsj/titular/blue": SMSanJuanTitularBlueFun,
+    "smsj/alternativa/red": SMSanJuanAlternativaRedFun,
+    "smsj/alternativa/blue": SMSanJuanAlternativaBlueFun,
+    "god/titular/red": GodoyCruzTitularRedFun,
+    "god/titular/blue": GodoyCruzTitularBlueFun,
+    "god/alternativa/red": GodoyCruzAlternativaRedFun,
+    "god/alternativa/blue": GodoyCruzAlternativaBlueFun,
+    "god/tercera/red": GodoyCruzTerceraRedFun,
+    "god/tercera/blue": GodoyCruzTerceraBlueFun,
+    "vel/titular/red": VelezTitularRedFun,
+    "vel/titular/blue": VelezTitularBlueFun,
+    "vel/alternativa/red": VelezAlternativaRedFun,
+    "vel/alternativa/blue": VelezAlternativaBlueFun,
+    "vel/tercera/red": VelezTerceraRedFun,
+    "vel/tercera/blue": VelezTerceraBlueFun,
+    "san/titular/red": SantosTitularRedFun,
+    "san/titular/blue": SantosTitularBlueFun,
+    "san/alternativa/red": SantosAlternativaRedFun,
+    "san/alternativa/blue": SantosAlternativaBlueFun,
+    "san/tercera/red": SantosTerceraRedFun,
+    "san/tercera/blue": SantosTerceraBlueFun,
+    "fla/titular/red": FlamengoTitularRedFun,
+    "fla/titular/blue": FlamengoTitularBlueFun,
+    "fla/alternativa/red": FlamengoAlternativaRedFun,
+    "fla/alternativa/blue": FlamengoAlternativaBlueFun,
+    "fla/tercera/red": FlamengoTerceraRedFun,
+    "fla/tercera/blue": FlamengoTerceraBlueFun,
+    "sao/titular/red": SaoPauloTitularRedFun,
+    "sao/titular/blue": SaoPauloTitularBlueFun,
+    "sao/alternativa/red": SaoPauloAlternativaRedFun,
+    "sao/alternativa/blue": SaoPauloAlternativaBlueFun,
+    "cor/titular/red": CorinthiansTitularRedFun,
+    "cor/titular/blue": CorinthiansTitularBlueFun,
+    "cor/alternativa/red": CorinthiansAlternativaRedFun,
+    "cor/alternativa/blue": CorinthiansAlternativaBlueFun,
+    "cam/titular/red": MineiroTitularRedFun,
+    "cam/titular/blue": MineiroTitularBlueFun,
+    "cam/alternativa/red": MineiroAlternativaRedFun,
+    "cam/alternativa/blue": MineiroAlternativaBlueFun,
+    "sci/titular/red": SCInternacionalTitularRedFun,
+    "sci/titular/blue": SCInternacionalTitularBlueFun,
+    "sci/alternativa/red": SCInternacionalAlternativaRedFun,
+    "sci/alternativa/blue": SCInternacionalAlternativaBlueFun,
+    "vas/titular/red": VascoDaGamaTitularRedFun,
+    "vas/titular/blue": VascoDaGamaTitularBlueFun,
+    "vas/alternativa/red": VascoDaGamaAlternativaRedFun,
+    "vas/alternativa/blue": VascoDaGamaAlternativaBlueFun,
+    "bot/titular/red": BotafogoTitularRedFun,
+    "bot/titular/blue": BotafogoTitularBlueFun,
+    "bot/alternativa/red": BotafogoAlternativaRedFun,
+    "bot/alternativa/blue": BotafogoAlternativaBlueFun,
+    "flu/titular/red": FluminenseTitularRedFun,
+    "flu/titular/blue": FluminenseTitularBlueFun,
+    "atn/titular/red": AtlNacionalTitularRedFun,
+    "atn/titular/blue": AtlNacionalTitularBlueFun,
+    "atn/alternativa/red": AtlNacionalAlternativaRedFun,
+    "atn/alternativa/blue": AtlNacionalAlternativaBlueFun,
+    "mil/titular/red": MillonariosTitularRedFun,
+    "mil/titular/blue": MillonariosTitularBlueFun,
+    "mil/alternativa/red": MillonariosAlternativaRedFun,
+    "mil/alternativa/blue": MillonariosAlternativaBlueFun,
+    "ame/titular/red": AmericaDeCaliTitularRedFun,
+    "ame/titular/blue": AmericaDeCaliTitularBlueFun,
+    "ame/alternativa/red": AmericaDeCaliAlternativaRedFun,
+    "ame/alternativa/blue": AmericaDeCaliAlternativaBlueFun,
+    "sfe/titular/red": SantaFeTitularRedFun,
+    "sfe/titular/blue": SantaFeTitularBlueFun,
+    "sfe/alternativa/red": SantaFeAlternativaRedFun,
+    "sfe/alternativa/blue": SantaFeAlternativaBlueFun,
+    "cal/titular/red": DeportivoCaliTitularRedFun,
+    "cal/titular/blue": DeportivoCaliTitularBlueFun,
+    "cal/alternativa/red": DeportivoCaliAlternativaRedFun,
+    "cal/alternativa/blue": DeportivoCaliAlternativaBlueFun,
+    "cal/tercera/red": DeportivoCaliTerceraRedFun,
+    "cal/tercera/blue": DeportivoCaliTerceraBlueFun,
+    "onc/titular/red": OnceCaldasTitularRedFun,
+    "onc/titular/blue": OnceCaldasTitularBlueFun,
+    "onc/alternativa/red": OnceCaldasAlternativaRedFun,
+    "onc/alternativa/blue": OnceCaldasAlternativaBlueFun,
+    "onc/tercera/red": OnceCaldasTerceraRedFun,
+    "onc/tercera/blue": OnceCaldasTerceraBlueFun,
+    "ccp/titular/red": CerroTitularRedFun,
+    "ccp/titular/blue": CerroTitularBlueFun,
+    "ccp/alternativa/red": CerroAlternativaRedFun,
+    "ccp/alternativa/blue": CerroAlternativaBlueFun,
+    "oli/titular/red": OlimpiaTitularRedFun,
+    "oli/titular/blue": OlimpiaTitularBlueFun,
+    "oli/alternativa/red": OlimpiaAlternativaRedFun,
+    "oli/alternativa/blue": OlimpiaAlternativaBlueFun,
+    "gua/titular/red": GuaraniTitularRedFun,
+    "gua/titular/blue": GuaraniTitularBlueFun,
+    "gua/alternativa/red": GuaraniAlternativaRedFun,
+    "gua/alternativa/blue": GuaraniAlternativaBlueFun,
+    "lib/titular/red": LibertadTitularRedFun,
+    "lib/titular/blue": LibertadTitularBlueFun,
+    "lib/alternativa/red": LibertadAlternativaRedFun,
+    "lib/alternativa/blue": LibertadAlternativaBlueFun,
+    "sou/titular/red": SouthamptonTitularRedFun,
+    "sou/titular/blue": SouthamptonTitularBlueFun,
+    "sou/alternativa/red": SouthamptonAlternativaRedFun,
+    "sou/alternativa/blue": SouthamptonAlternativaBlueFun,
+    "wat/titular/red": WatfordTitularRedFun,
+    "wat/titular/blue": WatfordTitularBlueFun,
+    "wil/titular/red": WillemIITitularRedFun,
+    "wil/titular/blue": WillemIITitularBlueFun,
+    "wil/alternativa/red": WillemIIAlternativaRedFun,
+    "wil/alternativa/blue": WillemIIAlternativaBlueFun,
+    "wil/tercera/red": WillemIITerceraRedFun,
+    "wil/tercera/blue": WillemIITerceraBlueFun,
+    "alv/titular/red": AlvaradoTitularRedFun,
+    "alv/titular/blue": AlvaradoTitularBlueFun,
+    "alv/alternativa/red": AlvaradoAlternativaRedFun,
+    "alv/alternativa/blue": AlvaradoAlternativaBlueFun,
+    "agr/titular/red": AgropecuarioTitularRedFun,
+    "agr/titular/blue": AgropecuarioTitularBlueFun,
+    "agr/alternativa/red": AgropecuarioAlternativaRedFun,
+    "agr/alternativa/blue": AgropecuarioAlternativaBlueFun,
+    "riu/titular/red": RiverURUTitularRedFun,
+    "riu/titular/blue": RiverURUTitularBlueFun,
+    "riu/alternativa/red": RiverURUAlternativaRedFun,
+    "riu/alternativa/blue": RiverURUAlternativaBlueFun,
+    "gs/titular/red": GalatasarayTitularRedFun,
+    "gs/titular/blue": GalatasarayTitularBlueFun,
+    "gs/alternativa/red": GalatasarayAlternativaRedFun,
+    "gs/alternativa/blue": GalatasarayAlternativaBlueFun,
+    "gs/tercera/red": GalatasarayTerceraRedFun,
+    "gs/tercera/blue": GalatasarayTerceraBlueFun,
+    "fb/titular/red": FenerbahceTitularRedFun,
+    "fb/titular/blue": FenerbahceTitularBlueFun,
+    "fb/alternativa/red": FenerbahceAlternativaRedFun,
+    "fb/alternativa/blue": FenerbahceAlternativaBlueFun,
+    "bjk/titular/red": BesiktasTitularRedFun,
+    "bjk/titular/blue": BesiktasTitularBlueFun,
+    "bjk/alternativa/red": BesiktasAlternativaRedFun,
+    "bjk/alternativa/blue": BesiktasAlternativaBlueFun,
+    "amc/titular/red": AmericaMXTitularRedFun,
+    "amc/titular/blue": AmericaMXTitularBlueFun,
+    "amc/alternativa/red": AmericaMXAlternativaRedFun,
+    "amc/alternativa/blue": AmericaMXAlternativaBlueFun,
+    "cruz/titular/red": CruzAzulTitularRedFun,
+    "cruz/titular/blue": CruzAzulTitularBlueFun,
+    "cruz/alternativa/red": CruzAzulAlternativaRedFun,
+    "cruz/alternativa/blue": CruzAzulAlternativaBlueFun,
+    "mty/titular/red": MonterreyTitularRedFun,
+    "mty/titular/blue": MonterreyTitularBlueFun,
+    "chv/titular/red": ChivasTitularRedFun,
+    "chv/titular/blue": ChivasTitularBlueFun,
+    "tgs/titular/red": TigresTitularRedFun,
+    "tgs/titular/blue": TigresTitularBlueFun,
+    "ldu/titular/red": LigaDeQuitoTitularRedFun,
+    "ldu/titular/blue": LigaDeQuitoTitularBlueFun,
+    "ldu/alternativa/red": LigaDeQuitoAlternativaRedFun,
+    "ldu/alternativa/blue": LigaDeQuitoAlternativaBlueFun,
+    "ldu/tercera/red": LigaDeQuitoTerceraRedFun,
+    "ldu/tercera/blue": LigaDeQuitoTerceraBlueFun,
+    "bsc/titular/red": BarcelonaSCTitularRedFun,
+    "bsc/titular/blue": BarcelonaSCTitularBlueFun,
+    "bsc/alternativa/red": BarcelonaSCAlternativaRedFun,
+    "bsc/alternativa/blue": BarcelonaSCAlternativaBlueFun,
+    "eme/titular/red": EmelecTitularRedFun,
+    "eme/titular/blue": EmelecTitularBlueFun,
+    "eme/alternativa/red": EmelecAlternativaRedFun,
+    "eme/alternativa/blue": EmelecAlternativaBlueFun,
+    "idv/titular/red": IndependienteDelValleTitularRedFun,
+    "idv/titular/blue": IndependienteDelValleTitularBlueFun,
+    "idv/alternativa/red": IndependienteDelValleAlternativaRedFun,
+    "idv/alternativa/blue": IndependienteDelValleAlternativaBlueFun,
+    "idv/clasica/red": IndependienteDelValleClasicaRedFun,
+    "idv/clasica/blue": IndependienteDelValleClasicaBlueFun,
+    "ol/titular/red": OlympiqueLyonTitularRedFun,
+    "ol/titular/blue": OlympiqueLyonTitularBlueFun,
+    "ol/alternativa/red": OlympiqueLyonAlternativaRedFun,
+    "ol/alternativa/blue": OlympiqueLyonAlternativaBlueFun,
+    "stel/titular/red": SanTelmoTitularRedFun,
+    "stel/titular/blue": SanTelmoTitularBlueFun,
+    "stel/alternativa/red": SanTelmoAlternativaRedFun,
+    "stel/alternativa/blue": SanTelmoAlternativaBlueFun,
+    "adq/titular/red": ArgentinoDeQuilmesTitularRedFun,
+    "adq/titular/blue": ArgentinoDeQuilmesTitularBlueFun,
+    "adq/alternativa/red": ArgentinoDeQuilmesAlternativaRedFun,
+    "adq/alternativa/blue": ArgentinoDeQuilmesAlternativaBlueFun,
+    "mer/titular/red": DeportivoMerloTitularRedFun,
+    "mer/titular/blue": DeportivoMerloTitularBlueFun,
+    "mer/alternativa/red": DeportivoMerloAlternativaRedFun,
+    "mer/alternativa/blue": DeportivoMerloAlternativaBlueFun,
+    "mer/tercera/red": DeportivoMerloTerceraRedFun,
+    "mer/tercera/blue": DeportivoMerloTerceraBlueFun,
+    "val/titular/red": ValenciaTitularRedFun,
+    "val/titular/blue": ValenciaTitularBlueFun,
+    "val/alternativa/red": ValenciaAlternativaRedFun,
+    "val/alternativa/blue": ValenciaAlternativaBlueFun,
+    "val/tercera/red": ValenciaTerceraRedFun,
+    "val/tercera/blue": ValenciaTerceraBlueFun,
+    "cry/titular/red": CrystalPalaceTitularRedFun,
+    "cry/titular/blue": CrystalPalaceTitularBlueFun,
+    "cry/alternativa/red": CrystalPalaceAlternativaRedFun,
+    "cry/alternativa/blue": CrystalPalaceAlternativaBlueFun,
+    "cry/tercera/red": CrystalPalaceTerceraRedFun,
+    "cry/tercera/blue": CrystalPalaceTerceraBlueFun,
+    "bet/titular/red": BetisTitularRedFun,
+    "bet/titular/blue": BetisTitularBlueFun,
+    "cja/titular/red": JuventudAntonianaTitularRedFun,
+    "cja/titular/blue": JuventudAntonianaTitularBlueFun,
+    "cja/alternativa/red": JuventudAntonianaAlternativaRedFun,
+    "cja/alternativa/blue": JuventudAntonianaAlternativaBlueFun,
+    "cja/tercera/red": JuventudAntonianaTerceraRedFun,
+    "cja/tercera/blue": JuventudAntonianaTerceraBlueFun,
+    "gyt/titular/red": GimnasiaYTiroTitularRedFun,
+    "gyt/titular/blue": GimnasiaYTiroTitularBlueFun,
+    "gyt/alternativa/red": GimnasiaYTiroAlternativaRedFun,
+    "gyt/alternativa/blue": GimnasiaYTiroAlternativaBlueFun,
+    "gyt/tercera/red": GimnasiaYTiroTerceraRedFun,
+    "gyt/tercera/blue": GimnasiaYTiroTerceraBlueFun,
+    "ray/titular/red": RayoVallecanoTitularRedFun,
+    "ray/titular/blue": RayoVallecanoTitularBlueFun,
+    "ray/alternativa/red": RayoVallecanoAlternativaRedFun,
+    "ray/alternativa/blue": RayoVallecanoAlternativaBlueFun,
+    "ray/tercera/red": RayoVallecanoTerceraRedFun,
+    "ray/tercera/blue": RayoVallecanoTerceraBlueFun,
+    "lev/titular/red": LevanteTitularRedFun,
+    "lev/titular/blue": LevanteTitularBlueFun,
+    "lev/alternativa/red": LevanteAlternativaRedFun,
+    "lev/alternativa/blue": LevanteAlternativaBlueFun,
+    "lev/tercera/red": LevanteTerceraRedFun,
+    "lev/tercera/blue": LevanteTerceraBlueFun,
+    "pat/titular/red": PatronatoTitularRedFun,
+    "pat/titular/blue": PatronatoTitularBlueFun,
+    "pat/alternativa/red": PatronatoAlternativaRedFun,
+    "pat/alternativa/blue": PatronatoAlternativaBlueFun,
+    "get/titular/red": GetafeTitularRedFun,
+    "get/titular/blue": GetafeTitularBlueFun,
+    "get/alternativa/red": GetafeAlternativaRedFun,
+    "get/alternativa/blue": GetafeAlternativaBlueFun,
+    "zen/titular/red": ZenitTitularRedFun,
+    "zen/titular/blue": ZenitTitularBlueFun,
+    "zen/alternativa/red": ZenitAlternativaRedFun,
+    "zen/alternativa/blue": ZenitAlternativaBlueFun,
+    "csk/titular/red": CSKAMoscuTitularRedFun,
+    "csk/titular/blue": CSKAMoscuTitularBlueFun,
+    "csk/alternativa/red": CSKAMoscuAlternativaRedFun,
+    "csk/alternativa/blue": CSKAMoscuAlternativaBlueFun,
+    "csk/tercera/red": CSKAMoscuTerceraRedFun,
+    "csk/tercera/blue": CSKAMoscuTerceraBlueFun,
+    "lok/titular/red": LokomotivTitularRedFun,
+    "lok/titular/blue": LokomotivTitularBlueFun,
+    "lok/alternativa/red": LokomotivAlternativaRedFun,
+    "lok/alternativa/blue": LokomotivAlternativaBlueFun,
+    "lok/tercera/red": LokomotivTerceraRedFun,
+    "lok/tercera/blue": LokomotivTerceraBlueFun,
+    "spm/titular/red": SpartakTitularRedFun,
+    "spm/titular/blue": SpartakTitularBlueFun,
+    "spm/alternativa/red": SpartakAlternativaRedFun,
+    "spm/alternativa/blue": SpartakAlternativaBlueFun,
+    "din/titular/red": DynamoMoscowTitularRedFun,
+    "din/titular/blue": DynamoMoscowTitularBlueFun,
+    "din/alternativa/red": DynamoMoscowAlternativaRedFun,
+    "din/alternativa/blue": DynamoMoscowAlternativaBlueFun,
+    "dyk/titular/red": DynamoKievTitularRedFun,
+    "dyk/titular/blue": DynamoKievTitularBlueFun,
+    "dyk/alternativa/red": DynamoKievAlternativaRedFun,
+    "dyk/alternativa/blue": DynamoKievAlternativaBlueFun,
+    "sha/titular/red": ShakhtarTitularRedFun,
+    "sha/titular/blue": ShakhtarTitularBlueFun,
+    "sha/alternativa/red": ShakhtarAlternativaRedFun,
+    "sha/alternativa/blue": ShakhtarAlternativaBlueFun,
+    "jap/titular/red": JaponTitularRedFun,
+    "jap/titular/blue": JaponTitularBlueFun,
+    "jap/alternativa/red": JaponAlternativaRedFun,
+    "jap/alternativa/blue": JaponAlternativaBlueFun,
+    "nze/titular/red": NuevaZelandaTitularRedFun,
+    "nze/titular/blue": NuevaZelandaTitularBlueFun,
+    "nze/alternativa/red": NuevaZelandaAlternativaRedFun,
+    "nze/alternativa/blue": NuevaZelandaAlternativaBlueFun,
+    "aut/titular/red": AustriaTitularRedFun,
+    "aut/titular/blue": AustriaTitularBlueFun,
+    "aut/alternativa/red": AustriaAlternativaRedFun,
+    "aut/alternativa/blue": AustriaAlternativaBlueFun,
+    "aut/bandera/red": AustriaBanderaRedFun,
+    "aut/bandera/blue": AustriaBanderaBlueFun,
+    "cno/titular/red": CoreaDelNorteTitularRedFun,
+    "cno/titular/blue": CoreaDelNorteTitularBlueFun,
+    "cno/alternativa/red": CoreaDelNorteAlternativaRedFun,
+    "cno/alternativa/blue": CoreaDelNorteAlternativaBlueFun,
+    "cno/bandera/red": CoreaDelNorteBanderaRedFun,
+    "cno/bandera/blue": CoreaDelNorteBanderaBlueFun,
+    "la/titular/red": LAGalaxyTitularRedFun,
+    "la/titular/blue": LAGalaxyTitularBlueFun,
+    "la/alternativa/red": LAGalaxyAlternativaRedFun,
+    "la/alternativa/blue": LAGalaxyAlternativaBlueFun,
+    "lafc/titular/red": LosAngelesFCTitularRedFun,
+    "lafc/titular/blue": LosAngelesFCTitularBlueFun,
+    "lafc/alternativa/red": LosAngelesFCAlternativaRedFun,
+    "lafc/alternativa/blue": LosAngelesFCAlternativaBlueFun,
+    "ptim/titular/red": PortlandTimbersTitularRedFun,
+    "ptim/titular/blue": PortlandTimbersTitularBlueFun,
+    "ptim/alternativa/red": PortlandTimbersAlternativaRedFun,
+    "ptim/alternativa/blue": PortlandTimbersAlternativaBlueFun,
+    "sea/titular/red": SeattleSoundersTitularRedFun,
+    "sea/titular/blue": SeattleSoundersTitularBlueFun,
+    "sea/alternativa/red": SeattleSoundersAlternativaRedFun,
+    "sea/alternativa/blue": SeattleSoundersAlternativaBlueFun,
+    "nyrb/titular/red": NewYorkRedBullTitularRedFun,
+    "nyrb/titular/blue": NewYorkRedBullTitularBlueFun,
+    "nyrb/alternativa/red": NewYorkRedBullAlternativaRedFun,
+    "nyrb/alternativa/blue": NewYorkRedBullAlternativaBlueFun,
+    "nyc/titular/red": NewYorkCityTitularRedFun,
+    "nyc/titular/blue": NewYorkCityTitularBlueFun,
+    "nyc/alternativa/red": NewYorkCityAlternativaRedFun,
+    "nyc/alternativa/blue": NewYorkCityAlternativaBlueFun,
+    "tofc/titular/red": TorontoFCTitularRedFun,
+    "tofc/titular/blue": TorontoFCTitularBlueFun,
+    "tofc/alternativa/red": TorontoFCAlternativaRedFun,
+    "tofc/alternativa/blue": TorontoFCAlternativaBlueFun,
+    "atlu/titular/red": AtlantaUnitedTitularRedFun,
+    "atlu/titular/blue": AtlantaUnitedTitularBlueFun,
+    "atlu/alternativa/red": AtlantaUnitedAlternativaRedFun,
+    "atlu/alternativa/blue": AtlantaUnitedAlternativaBlueFun,
+    "blv/titular/red": BolivarTitularRedFun,
+    "blv/titular/blue": BolivarTitularBlueFun,
+    "blv/alternativa/red": BolivarAlternativaRedFun,
+    "blv/alternativa/blue": BolivarAlternativaBlueFun,
+    "stg/titular/red": StrongestTitularRedFun,
+    "stg/titular/blue": StrongestTitularBlueFun,
+    "stg/alternativa/red": StrongestAlternativaRedFun,
+    "stg/alternativa/blue": StrongestAlternativaBlueFun,
+    "wtm/titular/red": WilstermannTitularRedFun,
+    "wtm/titular/blue": WilstermannTitularBlueFun,
+    "wtm/alternativa/red": WilstermannAlternativaRedFun,
+    "wtm/alternativa/blue": WilstermannAlternativaBlueFun,
+    "cco/titular/red": ColoColoTitularRedFun,
+    "cco/titular/blue": ColoColoTitularBlueFun,
+    "cco/alternativa/red": ColoColoAlternativaRedFun,
+    "cco/alternativa/blue": ColoColoAlternativaBlueFun,
+    "udc/titular/red": UdeChileTitularRedFun,
+    "udc/titular/blue": UdeChileTitularBlueFun,
+    "udc/alternativa/red": UdeChileAlternativaRedFun,
+    "udc/alternativa/blue": UdeChileAlternativaBlueFun,
+    "eve/titular/red": EvertonFCTitularRedFun,
+    "eve/titular/blue": EvertonFCTitularBlueFun,
+    "eve/alternativa/red": EvertonFCAlternativaRedFun,
+    "eve/alternativa/blue": EvertonFCAlternativaBlueFun,
+    "asm/titular/red": ASMonacoTitularRedFun,
+    "asm/titular/blue": ASMonacoTitularBlueFun,
+    "asm/alternativa/red": ASMonacoAlternativaRedFun,
+    "asm/alternativa/blue": ASMonacoAlternativaBlueFun,
+    "asm/tercera/red": ASMonacoTerceraRedFun,
+    "asm/tercera/blue": ASMonacoTerceraBlueFun,
+    "ata/titular/red": AtalantaTitularRedFun,
+    "ata/titular/blue": AtalantaTitularBlueFun,
+    "ata/alternativa/red": AtalantaAlternativaRedFun,
+    "ata/alternativa/blue": AtalantaAlternativaBlueFun,
+    "ata/tercera/red": AtalantaTerceraRedFun,
+    "ata/tercera/blue": AtalantaTerceraBlueFun,
+    "bas/titular/red": FCBaselTitularRedFun,
+    "bas/titular/blue": FCBaselTitularBlueFun,
+    "bas/alternativa/red": FCBaselAlternativaRedFun,
+    "bas/alternativa/blue": FCBaselAlternativaBlueFun,
+    "bas/tercera/red": FCBaselTerceraRedFun,
+    "bas/tercera/blue": FCBaselTerceraBlueFun,
+    "bas/clasica/red": FCBaselClasicaRedFun,
+    "bas/clasica/blue": FCBaselClasicaBlueFun,
+    "uca/titular/red": UCatolicaTitularRedFun,
+    "uca/titular/blue": UCatolicaTitularBlueFun,
+    "uca/alternativa/red": UCatolicaAlternativaRedFun,
+    "uca/alternativa/blue": UCatolicaAlternativaBlueFun,
+    "uca/tercera/red": UCatolicaTerceraRedFun,
+    "uca/tercera/blue": UCatolicaTerceraBlueFun,
+    "cob/titular/red": CobreloaTitularRedFun,
+    "cob/titular/blue": CobreloaTitularBlueFun,
+    "cob/alternativa/red": CobreloaAlternativaRedFun,
+    "cob/alternativa/blue": CobreloaAlternativaBlueFun,
+    "cob/tercera/red": CobreloaTerceraRedFun,
+    "cob/tercera/blue": CobreloaTerceraBlueFun,
+    "cdp/titular/red": PalestinoTitularRedFun,
+    "cdp/titular/blue": PalestinoTitularBlueFun,
+    "cdp/alternativa/red": PalestinoAlternativaRedFun,
+    "cdp/alternativa/blue": PalestinoAlternativaBlueFun,
+    "mel/titular/red": MelgarTitularRedFun,
+    "mel/titular/blue": MelgarTitularBlueFun,
+    "mel/alternativa/red": MelgarAlternativaRedFun,
+    "mel/alternativa/blue": MelgarAlternativaBlueFun,
+    "unv/titular/red": UniversitarioTitularRedFun,
+    "unv/titular/blue": UniversitarioTitularBlueFun,
+    "unv/alternativa/red": UniversitarioAlternativaRedFun,
+    "unv/alternativa/blue": UniversitarioAlternativaBlueFun,
+    "ali/titular/red": AlianzaLimaTitularRedFun,
+    "ali/titular/blue": AlianzaLimaTitularBlueFun,
+    "ali/alternativa/red": AlianzaLimaAlternativaRedFun,
+    "ali/alternativa/blue": AlianzaLimaAlternativaBlueFun,
+    "cri/titular/red": SportingCristalTitularRedFun,
+    "cri/titular/blue": SportingCristalTitularBlueFun,
+    "cri/alternativa/red": SportingCristalAlternativaRedFun,
+    "cri/alternativa/blue": SportingCristalAlternativaBlueFun,
+    "cri/tercera/red": SportingCristalTerceraRedFun,
+    "cri/tercera/blue": SportingCristalTerceraBlueFun,
+    "rus/titular/red": RusiaTitularRedFun,
+    "rus/titular/blue": RusiaTitularBlueFun,
+    "rus/alternativa/red": RusiaAlternativaRedFun,
+    "rus/alternativa/blue": RusiaAlternativaBlueFun,
+    "rus/bandera/red": RusiaBanderaRedFun,
+    "rus/bandera/blue": RusiaBanderaBlueFun,
+    "usa/titular/red": EstadosUnidosTitularRedFun,
+    "usa/titular/blue": EstadosUnidosTitularBlueFun,
+    "usa/alternativa/red": EstadosUnidosAlternativaRedFun,
+    "usa/alternativa/blue": EstadosUnidosAlternativaBlueFun,
+    "usa/tercera/red": EstadosUnidosTerceraRedFun,
+    "usa/tercera/blue": EstadosUnidosTerceraBlueFun,
+    "usa/clasica/red": EstadosUnidosClasicaRedFun,
+    "usa/clasica/blue": EstadosUnidosClasicaBlueFun,
+    "alm/titular/red": AlmagroTitularRedFun,
+    "alm/titular/blue": AlmagroTitularBlueFun,
+    "alm/alternativa/red": AlmagroAlternativaRedFun,
+    "alm/alternativa/blue": AlmagroAlternativaBlueFun,
+    "nga/titular/red": NigeriaTitularRedFun,
+    "nga/titular/blue": NigeriaTitularBlueFun,
+    "nga/alternativa/red": NigeriaAlternativaRedFun,
+    "nga/alternativa/blue": NigeriaAlternativaBlueFun,
+    "ecu/titular/red": EcuadorTitularRedFun,
+    "ecu/titular/blue": EcuadorTitularBlueFun,
+    "ecu/alternativa/red": EcuadorAlternativaRedFun,
+    "ecu/alternativa/blue": EcuadorAlternativaBlueFun,
+    "cadu/titular/red": CADUTitularRedFun,
+    "cadu/titular/blue": CADUTitularBlueFun,
+    "cadu/alternativa/red": CADUAlternativaRedFun,
+    "cadu/alternativa/blue": CADUAlternativaBlueFun,
+    "alu/titular/red": AlumniTitularRedFun,
+    "alu/titular/blue": AlumniTitularBlueFun,
+    "alu/alternativa/red": AlumniAlternativaRedFun,
+    "alu/alternativa/blue": AlumniAlternativaBlueFun,
+    "urss/titular/red": URSSTitularRedFun,
+    "urss/titular/blue": URSSTitularBlueFun,
+    "urss/alternativa/red": URSSAlternativaRedFun,
+    "urss/alternativa/blue": URSSAlternativaBlueFun,
+    "yug/titular/red/1984": YugoslaviaTitular1984RedFun,
+    "yug/titular/blue/1984": YugoslaviaTitular1984BlueFun,
+    "yug/alternativa/redv": YugoslaviaAlternativa1984RedFun,
+    "yug/alternativa/blue/1984": YugoslaviaAlternativa1984BlueFun,
+    "yug/titular/red/1990": YugoslaviaTitular1990RedFun,
+    "yug/titular/blue/1990": YugoslaviaTitular1990BlueFun,
+    "yug/alternativa/red/1990": YugoslaviaAlternativa1990RedFun,
+    "yug/alternativa/blue/1990": YugoslaviaAlternativa1990BlueFun,
+    "yug/bandera/red": YugoslaviaBanderaRedFun,
+    "yug/bandera/blue": YugoslaviaBanderaBlueFun,
+    "vsc/titular/red": VillaSanCarlosTitularRedFun,
+    "vsc/titular/blue": VillaSanCarlosTitularBlueFun,
+    "vsc/alternativa/red": VillaSanCarlosAlternativaRedFun,
+    "vsc/alternativa/blue": VillaSanCarlosAlternativaBlueFun,
+    "loa/titular/red": LomasAthleticTitularRedFun,
+    "loa/titular/blue": LomasAthleticTitularBlueFun,
+    "loa/escudo/red": LomasAthleticEscudoRedFun,
+    "loa/escudo/blue": LomasAthleticEscudoBlueFun,
+    "cze/titular/red": ChecoslovaquiaTitularRedFun,
+    "cze/titular/blue": ChecoslovaquiaTitularBlueFun,
+    "cze/alternativa/red": ChecoslovaquiaAlternativaRedFun,
+    "cze/alternativa/blue": ChecoslovaquiaAlternativaBlueFun,
+    "fcn/titular/red": NantesTitularRedFun,
+    "fcn/titular/blue": NantesTitularBlueFun,
+    "fcn/alternativa/red": NantesAlternativaRedFun,
+    "fcn/alternativa/blue": NantesAlternativaBlueFun,
+    "ste/titular/red": SaintEtienneTitularRedFun,
+    "ste/titular/blue": SaintEtienneTitularBlueFun,
+    "ste/alternativa/red": SaintEtienneAlternativaRedFun,
+    "ste/alternativa/blue": SaintEtienneAlternativaBlueFun,
+    "ste/tercera/red": SaintEtienneTerceraRedFun,
+    "ste/tercera/blue": SaintEtienneTerceraBlueFun,
+    "ren/titular/red": RennesTitularRedFun,
+    "ren/titular/blue": RennesTitularBlueFun,
+    "ren/alternativa/red": RennesAlternativaRedFun,
+    "ren/alternativa/blue": RennesAlternativaBlueFun,
+    "ren/tercera/red": RennesTerceraRedFun,
+    "ren/tercera/blue": RennesTerceraBlueFun,
+    "nyv/titular/red": FCNyvaVinnytsiaTitularRedFun,
+    "nyv/titular/blue": FCNyvaVinnytsiaTitularBlueFun,
+    "nyv/alternativa/red": FCNyvaVinnytsiaAlternativaRedFun,
+    "nyv/alternativa/blue": FCNyvaVinnytsiaAlternativaBlueFun,
+    "orl/titular/red": OrlandoCityTitularRedFun,
+    "orl/titular/blue": OrlandoCityTitularBlueFun,
+    "orl/alternativa/red": OrlandoCityAlternativaRedFun,
+    "orl/alternativa/blue": OrlandoCityAlternativaBlueFun,
+    "eba/titular/red": EstudiantesBsAsTitularRedFun,
+    "eba/titular/blue": EstudiantesBsAsTitularBlueFun,
+    "eba/alternativa/red": EstudiantesBsAsAlternativaRedFun,
+    "eba/alternativa/blue": EstudiantesBsAsAlternativaBlueFun,
+    "paks/titular/red": PaksiSETitularRedFun,
+    "paks/titular/blue": PaksiSETitularBlueFun,
+    "paks/alternativa/red": PaksiSEAlternativaRedFun,
+    "paks/alternativa/blue": PaksiSEAlternativaBlueFun,
+    "paks/tercera/red": PaksiSETerceraRedFun,
+    "paks/tercera/blue": PaksiSETerceraBlueFun,
+    "dio/titular/red": DiosgyoriVTKTitularRedFun,
+    "dio/titular/blue": DiosgyoriVTKTitularBlueFun,
+    "dio/alternativa/red": DiosgyoriVTKAlternativaRedFun,
+    "dio/alternativa/blue": DiosgyoriVTKAlternativaBlueFun,
+    "dio/tercera/red": DiosgyoriVTKTerceraRedFun,
+    "dio/tercera/blue": DiosgyoriVTKTerceraBlueFun,
+    "kisv/titular/red": KisvardaFCTitularRedFun,
+    "kisv/titular/blue": KisvardaFCTitularBlueFun,
+    "kisv/alternativa/red": KisvardaFCAlternativaRedFun,
+    "kisv/alternativa/blue": KisvardaFCAlternativaBlueFun,
+    "kisv/tercera/red": KisvardaFCTerceraRedFun,
+    "kisv/tercera/blue": KisvardaFCTerceraBlueFun,
+    "mez/titular/red": MezokovesdiSETitularRedFun,
+    "mez/titular/blue": MezokovesdiSETitularBlueFun,
+    "mez/alternativa/red": MezokovesdiSEAlternativaRedFun,
+    "mez/alternativa/blue": MezokovesdiSEAlternativaBlueFun,
+    "mez/tercera/red": MezokovesdiSETerceraRedFun,
+    "mez/tercera/blue": MezokovesdiSETerceraBlueFun,
+    "pafc/titular/red": PuskasAkademiaFCTitularRedFun,
+    "pafc/titular/blue": PuskasAkademiaFCTitularBlueFun,
+    "pafc/alternativa/red": PuskasAkademiaFCAlternativaRedFun,
+    "pafc/alternativa/blue": PuskasAkademiaFCAlternativaBlueFun,
+    "pafc/tercera/red": PuskasAkademiaFCTerceraRedFun,
+    "pafc/tercera/blue": PuskasAkademiaFCTerceraBlueFun,
+    "hon/titular/red": HonvedFCTitularRedFun,
+    "hon/titular/blue": HonvedFCTitularBlueFun,
+    "hon/alternativa/red": HonvedFCAlternativaRedFun,
+    "hon/alternativa/blue": HonvedFCAlternativaBlueFun,
+    "hon/tercera/red": HonvedFCTerceraRedFun,
+    "hon/tercera/blue": HonvedFCTerceraBlueFun,
+    "dvs/titular/red": DVSCDebrecenTitularRedFun,
+    "dvs/titular/blue": DVSCDebrecenTitularBlueFun,
+    "dvs/alternativa/red": DVSCDebrecenAlternativaRedFun,
+    "dvs/alternativa/blue": DVSCDebrecenAlternativaBlueFun,
+    "ujp/titular/red": UjpestFCTitularRedFun,
+    "ujp/titular/blue": UjpestFCTitularBlueFun,
+    "ujp/alternativa/red": UjpestFCAlternativaRedFun,
+    "ujp/alternativa/blue": UjpestFCAlternativaBlueFun,
+    "ujp/tercera/red": UjpestFCTerceraRedFun,
+    "ujp/tercera/blue": UjpestFCTerceraBlueFun,
+    "vid/titular/red": MOLVidiFCTitularRedFun,
+    "vid/titular/blue": MOLVidiFCTitularBlueFun,
+    "vid/alternativa/red": MOLVidiFCAlternativaRedFun,
+    "vid/alternativa/blue": MOLVidiFCAlternativaBlueFun,
+    "vid/tercera/red": MOLVidiFCTerceraRedFun,
+    "vid/tercera/blue": MOLVidiFCTerceraBlueFun,
+    "ftc/titular/red": FerencvarosiTCTitularRedFun,
+    "ftc/titular/blue": FerencvarosiTCTitularBlueFun,
+    "ftc/alternativa/red": FerencvarosiTCAlternativaRedFun,
+    "ftc/alternativa/blue": FerencvarosiTCAlternativaBlueFun,
+    "abrown/titular/red": AlmiranteBrownTitularRedFun,
+    "abrown/titular/blue": AlmiranteBrownTitularBlueFun,
+    "abrown/alternativa/red": AlmiranteBrownAlternativaRedFun,
+    "abrown/alternativa/blue": AlmiranteBrownAlternativaBlueFun,
+    "abrown/tercera/red": AlmiranteBrownTerceraRedFun,
+    "abrown/tercera/blue": AlmiranteBrownTerceraBlueFun,
+    "cdybgr/titular/red": CentroDeportivoRocaTitularRedFun,
+    "cdybgr/titular/blue": CentroDeportivoRocaTitularBlueFun,
+    "cdybgr/alternativa/red": CentroDeportivoRocaAlternativaRedFun,
+    "cdybgr/alternativa/blue": CentroDeportivoRocaAlternativaBlueFun,
+    "cdybgr/tercera/red": CentroDeportivoRocaTerceraRedFun,
+    "cdybgr/tercera/blue": CentroDeportivoRocaTerceraBlueFun,
+    "cdybgr/cuarta/red": CentroDeportivoRocaCuartaRedFun,
+    "cdybgr/cuarta/blue": CentroDeportivoRocaCuartaBlueFun,
+    "cdybgr/quinta/red": CentroDeportivoRocaQuintaRedFun,
+    "cdybgr/quinta/blue": CentroDeportivoRocaQuintaBlueFun,
+    "bochz/titular/red": BochofiloBochazoTitularRedFun,
+    "bochz/titular/blue": BochofiloBochazoTitularBlueFun,
+    "dzg/titular/red": DinamoZagrebTitularRedFun,
+    "dzg/titular/blue": DinamoZagrebTitularBlueFun,
+    "dzg/alternativa/red": DinamoZagrebAlternativaRedFun,
+    "dzg/alternativa/blue": DinamoZagrebAlternativaBlueFun,
+    "dzg/tercera/red": DinamoZagrebTerceraRedFun,
+    "dzg/tercera/blue": DinamoZagrebTerceraBlueFun,
+    "haj/titular/red": HajdukSplitTitularRedFun,
+    "haj/titular/blue": HajdukSplitTitularBlueFun,
+    "haj/alternativa/red": HajdukSplitAlternativaRedFun,
+    "haj/alternativa/blue": HajdukSplitAlternativaBlueFun,
+    "haj/tercera/red": HajdukSplitTerceraRedFun,
+    "haj/tercera/blue": HajdukSplitTerceraBlueFun,
+    "rjk/titular/red": HNKRijekaTitularRedFun,
+    "rjk/titular/blue": HNKRijekaTitularBlueFun,
+    "rjk/alternativa/red": HNKRijekaAlternativaRedFun,
+    "rjk/alternativa/blue": HNKRijekaAlternativaBlueFun,
+    "rjk/tercera/red": HNKRijekaTerceraRedFun,
+    "rjk/tercera/blue": HNKRijekaTerceraBlueFun,
+    "osi/titular/red": NKOsijekTitularRedFun,
+    "osi/titular/blue": NKOsijekTitularBlueFun,
+    "osi/alternativa/red": NKOsijekAlternativaRedFun,
+    "osi/alternativa/blue": NKOsijekAlternativaBlueFun,
+    "osi/tercera/red": NKOsijekTerceraRedFun,
+    "osi/tercera/blue": NKOsijekTerceraBlueFun,
+    "nklok/titular/red": NKLokomotivTitularRedFun,
+    "nklok/titular/blue": NKLokomotivTitularBlueFun,
+    "nklok/alternativa/red": NKLokomotivAlternativaRedFun,
+    "nklok/alternativa/blue": NKLokomotivAlternativaBlueFun,
+    "nklok/tercera/red": NKLokomotivTerceraRedFun,
+    "nklok/tercera/blue": NKLokomotivTerceraBlueFun,
+    "gor/titular/red": HNKGoricaTitularRedFun,
+    "gor/titular/blue": HNKGoricaTitularBlueFun,
+    "gor/alternativa/red": HNKGoricaAlternativaRedFun,
+    "gor/alternativa/blue": HNKGoricaAlternativaBlueFun,
+    "gor/tercera/red": HNKGoricaTerceraRedFun,
+    "gor/tercera/blue": HNKGoricaTerceraBlueFun,
+    "slb/titular/red": NKSlavenBelupoTitularRedFun,
+    "slb/titular/blue": NKSlavenBelupoTitularBlueFun,
+    "slb/alternativa/red": NKSlavenBelupoAlternativaRedFun,
+    "slb/alternativa/blue": NKSlavenBelupoAlternativaBlueFun,
+    "slb/tercera/red": NKSlavenBelupoTerceraRedFun,
+    "slb/tercera/blue": NKSlavenBelupoTerceraBlueFun,
+    "ist/titular/red": Istra1961TitularRedFun,
+    "ist/titular/blue": Istra1961TitularBlueFun,
+    "ist/alternativa/red": Istra1961AlternativaRedFun,
+    "ist/alternativa/blue": Istra1961AlternativaBlueFun,
+    "ist/tercera/red": Istra1961TerceraRedFun,
+    "ist/tercera/blue": Istra1961TerceraBlueFun,
+    "iza/titular/red": InterZapresicTitularRedFun,
+    "iza/titular/blue": InterZapresicTitularBlueFun,
+    "iza/alternativa/red": InterZapresicAlternativaRedFun,
+    "iza/alternativa/blue": InterZapresicAlternativaBlueFun,
+    "var/titular/red": NKVarazdinTitularRedFun,
+    "var/titular/blue": NKVarazdinTitularBlueFun,
+    "var/alternativa/red": NKVarazdinAlternativaRedFun,
+    "var/alternativa/blue": NKVarazdinAlternativaBlueFun,
+    "b04/titular/red": Bayer04LeverkusenTitularRedFun,
+    "b04/titular/blue": Bayer04LeverkusenTitularBlueFun,
+    "b04/alternativa/red": Bayer04LeverkusenAlternativaRedFun,
+    "b04/alternativa/blue": Bayer04LeverkusenAlternativaBlueFun,
+    "b04/tercera/red": Bayer04LeverkusenTerceraRedFun,
+    "b04/tercera/blue": Bayer04LeverkusenTerceraBlueFun,
+    "venfc/titular/red": VeneziaFCTitularRedFun,
+    "venfc/titular/blue": VeneziaFCTitularBlueFun,
+    "ath/titular/red": AthleticDeBilbaoTitularRedFun,
+    "ath/titular/blue": AthleticDeBilbaoTitularBlueFun,
+    "ath/alternativa/red": AthleticDeBilbaoAlternativaRedFun,
+    "ath/alternativa/blue": AthleticDeBilbaoAlternativaBlueFun,
+    "rcde/titular/red": EspanyolTitularRedFun,
+    "rcde/titular/blue": EspanyolTitularBlueFun,
+    "rcde/alternativa/red": EspanyolAlternativaRedFun,
+    "rcde/alternativa/blue": EspanyolAlternativaBlueFun,
+    "rcde/tercera/red": EspanyolTerceraRedFun,
+    "rcde/tercera/blue": EspanyolTerceraBlueFun,
+    "rbl/titular/red": RBLeipzigTitularRedFun,
+    "rbl/titular/blue": RBLeipzigTitularBlueFun,
+    "rbl/alternativa/red": RBLeipzigAlternativaRedFun,
+    "rbl/alternativa/blue": RBLeipzigAlternativaBlueFun,
+    "rbl/tercera/red": RBLeipzigTerceraRedFun,
+    "rbl/tercera/blue": RBLeipzigTerceraBlueFun,
+    "wan/titular/red": MontevideoWanderersTitularRedFun,
+    "wan/titular/blue": MontevideoWanderersTitularBlueFun,
+    "wan/alternativa/red": MontevideoWanderersAlternativaRedFun,
+    "wan/alternativa/blue": MontevideoWanderersAlternativaBlueFun,
+    "wan/tercera/red": MontevideoWanderersTerceraRedFun,
+    "wan/tercera/blue": MontevideoWanderersTerceraBlueFun,
+    "mct/titular/red": MontevideoCityTorqueTitularRedFun,
+    "mct/titular/blue": MontevideoCityTorqueTitularBlueFun,
+    "mct/alternativa/red": MontevideoCityTorqueAlternativaRedFun,
+    "mct/alternativa/blue": MontevideoCityTorqueAlternativaBlueFun,
+    "hsv/titular/red": HamburgerSVTitularRedFun,
+    "hsv/titular/blue": HamburgerSVTitularBlueFun,
+    "hsv/alternativa/red": HamburgerSVAlternativaRedFun,
+    "hsv/alternativa/blue": HamburgerSVAlternativaBlueFun,
+    "hsv/tercera/red": HamburgerSVTerceraRedFun,
+    "hsv/tercera/blue": HamburgerSVTerceraBlueFun,
+    "new/titular/red": NewcastleUnitedTitularRedFun,
+    "new/titular/blue": NewcastleUnitedTitularBlueFun,
+    "new/alternativa/red": NewcastleUnitedAlternativaRedFun,
+    "new/alternativa/blue": NewcastleUnitedAlternativaBlueFun,
+    "new/tercera/red": NewcastleUnitedTerceraRedFun,
+    "new/tercera/blue": NewcastleUnitedTerceraBlueFun,
+    "whu/titular/red": WestHamUnitedTitularRedFun,
+    "whu/titular/blue": WestHamUnitedTitularBlueFun,
+    "whu/alternativa/red": WestHamUnitedAlternativaRedFun,
+    "whu/alternativa/blue": WestHamUnitedAlternativaBlueFun,
+    "whu/tercera/red": WestHamUnitedTerceraRedFun,
+    "whu/tercera/blue": WestHamUnitedTerceraBlueFun,
+    "whu/titular/red/2019": WestHamUnitedTitular2019RedFun,
+    "whu/titular/blue/2019": WestHamUnitedTitular2019BlueFun,
+    "mia/titular/red": InterMiamiCFTitularRedFun,
+    "mia/titular/blue": InterMiamiCFTitularBlueFun,
+    "mia/alternativa/red": InterMiamiCFAlternativaRedFun,
+    "mia/alternativa/blue": InterMiamiCFAlternativaBlueFun,
+    "cde/titular/red": DeportivoEspanolTitularRedFun,
+    "cde/titular/blue": DeportivoEspanolTitularBlueFun,
+    "cde/alternativa/red": DeportivoEspanolAlternativaRedFun,
+    "cde/alternativa/blue": DeportivoEspanolAlternativaBlueFun,
+    "sit/titular/red": SportivoItalianoTitularRedFun,
+    "sit/titular/blue": SportivoItalianoTitularBlueFun,
+    "sit/alternativa/red": SportivoItalianoAlternativaRedFun,
+    "sit/alternativa/blue": SportivoItalianoAlternativaBlueFun,
+    "sit/tercera/red": SportivoItalianoTerceraRedFun,
+    "sit/tercera/blue": SportivoItalianoTerceraBlueFun,
+    "mdy/titular/red": ClubDeportivoMandiyuTitularRedFun,
+    "mdy/titular/blue": ClubDeportivoMandiyuTitularBlueFun,
+    "mdy/alternativa/red": ClubDeportivoMandiyuAlternativaRedFun,
+    "mdy/alternativa/blue": ClubDeportivoMandiyuAlternativaBlueFun,
+    "hul/titular/red": HullCityTitularRedFun,
+    "hul/titular/blue": HullCityTitularBlueFun,
+    "hul/alternativa/red": HullCityAlternativaRedFun,
+    "hul/alternativa/blue": HullCityAlternativaBlueFun,
+    "hul/tercera/red": HullCityTerceraRedFun,
+    "hul/tercera/blue": HullCityTerceraBlueFun,
+    "wol/titular/red": WolverhamptonTitularRedFun,
+    "wol/titular/blue": WolverhamptonTitularBlueFun,
+    "wol/alternativa/red": WolverhamptonAlternativaRedFun,
+    "wol/alternativa/blue": WolverhamptonAlternativaBlueFun,
+    "wol/tercera/red": WolverhamptonTerceraRedFun,
+    "wol/tercera/blue": WolverhamptonTerceraBlueFun,
+    "crl/titular/red": CerroLargoTitularRedFun,
+    "crl/titular/blue": CerroLargoTitularBlueFun,
+    "crl/alternativa/red": CerroLargoAlternativaRedFun,
+    "crl/alternativa/blue": CerroLargoAlternativaBlueFun,
+    "ocfc/titular/red": OldCaledoniansFootballClubTitularRedFun,
+    "ocfc/titular/blue": OldCaledoniansFootballClubTitularBlueFun,
+    "dfs/titular/red": DefensorSportingTitularRedFun,
+    "dfs/titular/blue": DefensorSportingTitularBlueFun,
+    "dfs/alternativa/red": DefensorSportingAlternativaRedFun,
+    "dfs/alternativa/blue": DefensorSportingAlternativaBlueFun,
+    "evdm/titular/red": EvertonVinaDelMarTitularRedFun,
+    "evdm/titular/blue": EvertonVinaDelMarTitularBlueFun,
+    "evdm/alternativa/red": EvertonVinaDelMarAlternativaRedFun,
+    "evdm/alternativa/blue": EvertonVinaDelMarAlternativaBlueFun,
+    "ulc/titular/red": UnionLaCaleraTitularRedFun,
+    "ulc/titular/blue": UnionLaCaleraTitularBlueFun,
+    "ulc/alternativa/red": UnionLaCaleraAlternativaRedFun,
+    "ulc/alternativa/blue": UnionLaCaleraAlternativaBlueFun,
+    "aud/titular/red": AudaxItalianoTitularRedFun,
+    "aud/titular/blue": AudaxItalianoTitularBlueFun,
+    "aud/alternativa/red": AudaxItalianoAlternativaRedFun,
+    "aud/alternativa/blue": AudaxItalianoAlternativaBlueFun,
+    "aud/tercera/red": AudaxItalianoTerceraRedFun,
+    "aud/tercera/blue": AudaxItalianoTerceraBlueFun,
+    "hua/titular/red": HuachipatoTitularRedFun,
+    "hua/titular/blue": HuachipatoTitularBlueFun,
+    "hua/alternativa/red": HuachipatoAlternativaRedFun,
+    "hua/alternativa/blue": HuachipatoAlternativaBlueFun,
+    "iqu/titular/red": DeportesIquiqueTitularRedFun,
+    "iqu/titular/blue": DeportesIquiqueTitularBlueFun,
+    "iqu/alternativa/red": DeportesIquiqueAlternativaRedFun,
+    "iqu/alternativa/blue": DeportesIquiqueAlternativaBlueFun,
+    "ohi/titular/red": OhigginsTitularRedFun,
+    "ohi/titular/blue": OhigginsTitularBlueFun,
+    "ohi/alternativa/red": OhigginsAlternativaRedFun,
+    "ohi/alternativa/blue": OhigginsAlternativaBlueFun,
+    "ohi/tercera/red": OhigginsTerceraRedFun,
+    "ohi/tercera/blue": OhigginsTerceraBlueFun,
+    "ues/titular/red": UnionEspanolaTitularRedFun,
+    "ues/titular/blue": UnionEspanolaTitularBlueFun,
+    "ues/alternativa/red": UnionEspanolaAlternativaRedFun,
+    "ues/alternativa/blue": UnionEspanolaAlternativaBlueFun,
+    "swa/titular/red": SantiagoWanderersTitularRedFun,
+    "swa/titular/blue": SantiagoWanderersTitularBlueFun,
+    "swa/alternativa/red": SantiagoWanderersAlternativaRedFun,
+    "swa/alternativa/blue": SantiagoWanderersAlternativaBlueFun,
+    "cur/titular/red": CuricoUnidoTitularRedFun,
+    "cur/titular/blue": CuricoUnidoTitularBlueFun,
+    "cur/alternativa/red": CuricoUnidoAlternativaRedFun,
+    "cur/alternativa/blue": CuricoUnidoAlternativaBlueFun,
+    "cda/titular/red": DeportesAntofagastaTitularRedFun,
+    "cda/titular/blue": DeportesAntofagastaTitularBlueFun,
+    "cda/alternativa/red": DeportesAntofagastaAlternativaRedFun,
+    "cda/alternativa/blue": DeportesAntofagastaAlternativaBlueFun,
+    "ucon/titular/red": UdeConcepcionTitularRedFun,
+    "ucon/titular/blue": UdeConcepcionTitularBlueFun,
+    "ucon/alternativa/red": UdeConcepcionAlternativaRedFun,
+    "ucon/alternativa/blue": UdeConcepcionAlternativaBlueFun,
+    "dls/titular/red": DeportesLaSerenaTitularRedFun,
+    "dls/titular/blue": DeportesLaSerenaTitularBlueFun,
+    "dls/alternativa/red": DeportesLaSerenaAlternativaRedFun,
+    "dls/alternativa/blue": DeportesLaSerenaAlternativaBlueFun,
+    "coq/titular/red": CoquimboUnidoTitularRedFun,
+    "coq/titular/blue": CoquimboUnidoTitularBlueFun,
+    "coq/alternativa/red": CoquimboUnidoAlternativaRedFun,
+    "coq/alternativa/blue": CoquimboUnidoAlternativaBlueFun,
+    "spiderman/red": SpidermanRedFun,
+    "spiderman/blue": SpidermanBlueFun,
+    "hulk/red": HulkRedFun,
+    "hulk/blue": HulkBlueFun,
+    "capitanamerica/red": CapitanAmericaRedFun,
+    "capitanamerica/blue": CapitanAmericaBlueFun,
+    "batman/red": BatmanRedFun,
+    "batman/blue": BatmanBlueFun,
+    "bac/titular/red": BelgranoAthleticClubTitularRedFun,
+    "bac/titular/blue": BelgranoAthleticClubTitularBlueFun,
+    "bac/alternativa/red": BelgranoAthleticClubAlternativaRedFun,
+    "bac/alternativa/blue": BelgranoAthleticClubAlternativaBlueFun,
+    "roac/titular/red": RosarioAthleticClubTitularRedFun,
+    "roac/titular/blue": RosarioAthleticClubTitularBlueFun,
+    "caport/titular/red": ClubAtleticoPortenoTitularRedFun,
+    "caport/titular/blue": ClubAtleticoPortenoTitularBlueFun,
+    "vil/titular/red": VillarrealTitularRedFun,
+    "vil/titular/blue": VillarrealTitularBlueFun,
+    "vil/alternativa/red": VillarrealAlternativaRedFun,
+    "vil/alternativa/blue": VillarrealAlternativaBlueFun,
+    "cel/titular/red": CeltaDeVigoTitularRedFun,
+    "cel/titular/blue": CeltaDeVigoTitularBlueFun,
+    "mll/titular/red": MallorcaTitularRedFun,
+    "mll/titular/blue": MallorcaTitularBlueFun,
+    "lee/titular/red": LeedsUnitedTitularRedFun,
+    "lee/titular/blue": LeedsUnitedTitularBlueFun,
+    "lee/alternativa/red": LeedsUnitedAlternativaRedFun,
+    "lee/alternativa/blue": LeedsUnitedAlternativaBlueFun,
+    "sui/titular/red": SuizaTitularRedFun,
+    "sui/titular/blue": SuizaTitularBlueFun,
+    "sui/alternativa/red": SuizaAlternativaRedFun,
+    "sui/alternativa/blue": SuizaAlternativaBlueFun,
+    "sui/titular/red/2021": SuizaTitular2021RedFun,
+    "sui/titular/blue/2021": SuizaTitular2021BlueFun,
+    "swe/titular/red": SueciaTitularRedFun,
+    "swe/titular/blue": SueciaTitularBlueFun,
+    "swe/alternativa/red": SueciaAlternativaRedFun,
+    "swe/alternativa/blue": SueciaAlternativaBlueFun,
+    "cdn/titular/red": CruceroDelNorteTitularRedFun,
+    "cdn/titular/blue": CruceroDelNorteTitularBlueFun,
+    "cdn/titular/red/2014": CruceroDelNorteTitular2014RedFun,
+    "cdn/titular/blue/2014": CruceroDelNorteTitular2014BlueFun,
+    "cdn/alternativa/red/2014": CruceroDelNorteAlternativa2014RedFun,
+    "cdn/alternativa/blue/2014": CruceroDelNorteAlternativa2014BlueFun,
+    "cdn/titular/red/2013": CruceroDelNorteTitular2013RedFun,
+    "cdn/titular/blue/2013": CruceroDelNorteTitular2013BlueFun,
+    "scb/titular/red": SCBragaTitularRedFun,
+    "scb/titular/blue": SCBragaTitularBlueFun,
+    "spo/titular/red": SportingCPTitularRedFun,
+    "spo/titular/blue": SportingCPTitularBlueFun,
+    "fcp/titular/red": FCPortoTitularRedFun,
+    "fcp/titular/blue": FCPortoTitularBlueFun,
+    "ben/titular/red": SLBenficaTitularRedFun,
+    "ben/titular/blue": SLBenficaTitularBlueFun,
+    "cmr/titular/red": CamerunTitularRedFun,
+    "cmr/titular/blue": CamerunTitularBlueFun,
+    "cmr/alternativa/red": CamerunAlternativaRedFun,
+    "cmr/alternativa/blue": CamerunAlternativaBlueFun,
+    "cdm/titular/red": CostaDeMarfilTitularRedFun,
+    "cdm/titular/blue": CostaDeMarfilTitularBlueFun,
+    "cdm/alternativa/red": CostaDeMarfilAlternativaRedFun,
+    "cdm/alternativa/blue": CostaDeMarfilAlternativaBlueFun,
+    "ukr/titular/red": UcraniaTitularRedFun,
+    "ukr/titular/blue": UcraniaTitularBlueFun,
+    "ukr/alternativa/red": UcraniaAlternativaRedFun,
+    "ukr/alternativa/blue": UcraniaAlternativaBlueFun,
+    "ukr/bandera/red": UcraniaBanderaRedFun,
+    "ukr/bandera/blue": UcraniaBanderaBlueFun,
+    "sm/titular/red": SanMiguelTitularRedFun,
+    "sm/titular/blue": SanMiguelTitularBlueFun,
+    "sm/alternativa/red": SanMiguelAlternativaRedFun,
+    "sm/alternativa/blue": SanMiguelAlternativaBlueFun,
+    "dou/titular/red": DouglasHaigTitularRedFun,
+    "dou/titular/blue": DouglasHaigTitularBlueFun,
+    "dou/alternativa/red": DouglasHaigAlternativaRedFun,
+    "dou/alternativa/blue": DouglasHaigAlternativaBlueFun,
+    "laf/titular/red": LaferrereTitularRedFun,
+    "laf/titular/blue": LaferrereTitularBlueFun,
+    "mex/titular/red": MexicoTitularRedFun,
+    "mex/titular/blue": MexicoTitularBlueFun,
+    "mex/alternativa/red": MexicoAlternativaRedFun,
+    "mex/alternativa/blue": MexicoAlternativaBlueFun,
+    "mex/tercera/red": MexicoTerceraRedFun,
+    "mex/tercera/blue": MexicoTerceraBlueFun,
+    "mex/bandera/red": MexicoBanderaRedFun,
+    "mex/bandera/blue": MexicoBanderaBlueFun,
+    "sen/titular/red": SenegalTitularRedFun,
+    "sen/titular/blue": SenegalTitularBlueFun,
+    "sen/alternativa/red": SenegalAlternativaRedFun,
+    "sen/alternativa/blue": SenegalAlternativaBlueFun,
+    "sen/bandera/red": SenegalBanderaRedFun,
+    "sen/bandera/blue": SenegalBanderaBlueFun,
+    "irn/titular/red": IranTitularRedFun,
+    "irn/titular/blue": IranTitularBlueFun,
+    "irn/alternativa/red": IranAlternativaRedFun,
+    "irn/alternativa/blue": IranAlternativaBlueFun,
+    "pol/titular/red": PoloniaTitularRedFun,
+    "pol/titular/blue": PoloniaTitularBlueFun,
+    "pol/alternativa/red": PoloniaAlternativaRedFun,
+    "pol/alternativa/blue": PoloniaAlternativaBlueFun,
+    "crc/titular/red": CostaRicaTitularRedFun,
+    "crc/titular/blue": CostaRicaTitularBlueFun,
+    "crc/alternativa/red": CostaRicaAlternativaRedFun,
+    "crc/alternativa/blue": CostaRicaAlternativaBlueFun,
+    "can/titular/red": CanadaTitularRedFun,
+    "can/titular/blue": CanadaTitularBlueFun,
+    "can/alternativa/red": CanadaAlternativaRedFun,
+    "can/alternativa/blue": CanadaAlternativaBlueFun,
+    "mar/titular/red": MarruecosTitularRedFun,
+    "mar/titular/blue": MarruecosTitularBlueFun,
+    "mar/alternativa/red": MarruecosAlternativaRedFun,
+    "mar/alternativa/blue": MarruecosAlternativaBlueFun,
+    "srb/titular/red": SerbiaTitularRedFun,
+    "srb/titular/blue": SerbiaTitularBlueFun,
+    "srb/alternativa/red": SerbiaAlternativaRedFun,
+    "srb/alternativa/blue": SerbiaAlternativaBlueFun,
+    "gha/titular/red": GhanaTitularRedFun,
+    "gha/titular/blue": GhanaTitularBlueFun,
+    "gha/alternativa/red": GhanaAlternativaRedFun,
+    "gha/alternativa/blue": GhanaAlternativaBlueFun,
+    "kor/titular/red": CoreaDelSurTitularRedFun,
+    "kor/titular/blue": CoreaDelSurTitularBlueFun,
+    "kor/alternativa/red": CoreaDelSurAlternativaRedFun,
+    "kor/alternativa/blue": CoreaDelSurAlternativaBlueFun,
+    "tun/titular/red": TunezTitularRedFun,
+    "tun/titular/blue": TunezTitularBlueFun,
+    "tun/alternativa/red": TunezAlternativaRedFun,
+    "tun/alternativa/blue": TunezAlternativaBlueFun,
+    "den/titular/red": DinamarcaTitularRedFun,
+    "den/titular/blue": DinamarcaTitularBlueFun,
+    "den/alternativa/red": DinamarcaAlternativaRedFun,
+    "den/alternativa/blue": DinamarcaAlternativaBlueFun,
+    "ksa/titular/red": ArabiaSauditaTitularRedFun,
+    "ksa/titular/blue": ArabiaSauditaTitularBlueFun,
+    "ksa/alternativa/red": ArabiaSauditaAlternativaRedFun,
+    "ksa/alternativa/blue": ArabiaSauditaAlternativaBlueFun,
+    "pcol/titular/red": PlazaColoniaTitularRedFun,
+    "pcol/titular/blue": PlazaColoniaTitularBlueFun,
+    "pcol/alternativa/red": PlazaColoniaAlternativaRedFun,
+    "pcol/alternativa/blue": PlazaColoniaAlternativaBlueFun,
+    "tach/titular/red": DeportivoTachiraTitularRedFun,
+    "tach/titular/blue": DeportivoTachiraTitularBlueFun,
+    "tach/alternativa/red": DeportivoTachiraAlternativaRedFun,
+    "tach/alternativa/blue": DeportivoTachiraAlternativaBlueFun,
+    "carc/titular/red": CaracasTitularRedFun,
+    "carc/titular/blue": CaracasTitularBlueFun,
+    "carc/alternativa/red": CaracasAlternativaRedFun,
+    "carc/alternativa/blue": CaracasAlternativaBlueFun,
+    "mng/titular/red": MonagasTitularRedFun,
+    "mng/titular/blue": MonagasTitularBlueFun,
+    "mng/alternativa/red": MonagasAlternativaRedFun,
+    "mng/alternativa/blue": MonagasAlternativaBlueFun,
+    "dlar/titular/red": DeportivoLaraTitularRedFun,
+    "dlar/titular/blue": DeportivoLaraTitularBlueFun,
+    "dlar/alternativa/red": DeportivoLaraAlternativaRedFun,
+    "dlar/alternativa/blue": DeportivoLaraAlternativaBlueFun,
+    "ucv/titular/red": UniversidadCesarVallejoTitularRedFun,
+    "ucv/titular/blue": UniversidadCesarVallejoTitularBlueFun,
+    "ucv/alternativa/red": UniversidadCesarVallejoAlternativaRedFun,
+    "ucv/alternativa/blue": UniversidadCesarVallejoAlternativaBlueFun,
+    "depuca/titular/red": ClubDeportivoUniversidadCatolicaTitularRedFun,
+    "depuca/titular/blue": ClubDeportivoUniversidadCatolicaTitularBlueFun,
+    "depuca/alternativa/red": ClubDeportivoUniversidadCatolicaAlternativaRedFun,
+    "depuca/alternativa/blue": ClubDeportivoUniversidadCatolicaAlternativaBlueFun,
+    "deptol/titular/red": DeportesTolimaTitularRedFun,
+    "deptol/titular/blue": DeportesTolimaTitularBlueFun,
+    "deptol/alternativa/red": DeportesTolimaAlternativaRedFun,
+    "deptol/alternativa/blue": DeportesTolimaAlternativaBlueFun,
+    "pet/titular/red": IndependientePetroleroTitularRedFun,
+    "pet/titular/blue": IndependientePetroleroTitularBlueFun,
+    "pet/alternativa/red": IndependientePetroleroAlternativaRedFun,
+    "pet/alternativa/blue": IndependientePetroleroAlternativaBlueFun,
+    "alwr/titular/red": AlwaysReadyTitularRedFun,
+    "alwr/titular/blue": AlwaysReadyTitularBlueFun,
+    "alwr/alternativa/red": AlwaysReadyAlternativaRedFun,
+    "alwr/alternativa/blue": AlwaysReadyAlternativaBlueFun,
+    "fort/titular/red": FortalezaTitularRedFun,
+    "fort/titular/blue": FortalezaTitularBlueFun,
+    "fort/alternativa/red": FortalezaAlternativaRedFun,
+    "fort/alternativa/blue": FortalezaAlternativaBlueFun,
+    "rbb/titular/red": RBBragantinoTitularRedFun,
+    "rbb/titular/blue": RBBragantinoTitularBlueFun,
+    "rbb/alternativa/red": RBBragantinoAlternativaRedFun,
+    "rbb/alternativa/blue": RBBragantinoAlternativaBlueFun,
+    "rbb/tercera/red": RBBragantinoTerceraRedFun,
+    "rbb/tercera/blue": RBBragantinoTerceraBlueFun,
+    "amcmin/titular/red": AmericaMineiroTitularRedFun,
+    "amcmin/titular/blue": AmericaMineiroTitularBlueFun,
+    "amcmin/alternativa/red": AmericaMineiroAlternativaRedFun,
+    "amcmin/alternativa/blue": AmericaMineiroAlternativaBlueFun,
+    "tor/titular/red": TorinoTitularRedFun,
+    "tor/titular/blue": TorinoTitularBlueFun,
+    "tor/alternativa/red": TorinoAlternativaRedFun,
+    "tor/alternativa/blue": TorinoAlternativaBlueFun,
+    "gen/titular/red": GenoaTitularRedFun,
+    "gen/titular/blue": GenoaTitularBlueFun,
+    "gen/alternativa/red": GenoaAlternativaRedFun,
+    "gen/alternativa/blue": GenoaAlternativaBlueFun,
+    "plm/titular/red": PalermoTitularRedFun,
+    "plm/titular/blue": PalermoTitularBlueFun,
+    "plm/alternativa/red": PalermoAlternativaRedFun,
+    "plm/alternativa/blue": PalermoAlternativaBlueFun,
+    "chver/titular/red": ChievoVeronaTitularRedFun,
+    "chver/titular/blue": ChievoVeronaTitularBlueFun,
+    "chver/alternativa/red": ChievoVeronaAlternativaRedFun,
+    "chver/alternativa/blue": ChievoVeronaAlternativaBlueFun,
+    "barr/titular/red": BarracasCentralTitularRedFun,
+    "barr/titular/blue": BarracasCentralTitularBlueFun,
+    "barr/alternativa/red": BarracasCentralAlternativaRedFun,
+    "barr/alternativa/blue": BarracasCentralAlternativaBlueFun,
+    "barr/tercera/red": BarracasCentralTerceraRedFun,
+    "barr/tercera/blue": BarracasCentralTerceraBlueFun,
+    "gal/titular/red": GalesTitularRedFun,
+    "gal/titular/blue": GalesTitularBlueFun,
+    "gal/alternativa/red": GalesAlternativaRedFun,
+    "gal/alternativa/blue": GalesAlternativaBlueFun,
+    "aus/titular/red": AustraliaTitularRedFun,
+    "aus/titular/blue": AustraliaTitularBlueFun,
+    "aus/alternativa/red": AustraliaAlternativaRedFun,
+    "aus/alternativa/blue": AustraliaAlternativaBlueFun,
+    "sar/titular/red": SarmientoDeJuninTitularRedFun,
+    "sar/titular/blue": SarmientoDeJuninTitularBlueFun,
+    "sar/alternativa/red": SarmientoDeJuninAlternativaRedFun,
+    "sar/alternativa/blue": SarmientoDeJuninAlternativaBlueFun,
+    "troncos/titular/red": TroncosTitularRedFun,
+    "troncos/titular/blue": TroncosTitularBlueFun,
+    "kunisports/titular/red": KunisportsTitularRedFun,
+    "kunisports/titular/blue": KunisportsTitularBlueFun,
+    "saiyans/titular/blue": SaiyansTitularBlueFun,
+    "saiyans/titular/red": SaiyansTitularRedFun,
+    "porcinos/titular/blue": PorcinosTitularBlueFun,
+    "porcinos/titular/red": PorcinosTitularRedFun,
+    "barrio/titular/blue": BarrioTitularBlueFun,
+    "barrio/titular/red": BarrioTitularRedFun,
+    "aniquiladores/titular/blue": AniquiladoresTitularBlueFun,
+    "aniquiladores/titular/red": AniquiladoresTitularRedFun,
+    "jijantes/titular/blue": JijantesTitularBlueFun,
+    "jijantes/titular/red": JijantesTitularRedFun,
+    "mostoles/titular/blue": MostolesTitularBlueFun,
+    "mostoles/titular/red": MostolesTitularRedFun,
+    "xbuyer/titular/blue": XbuyerTitularBlueFun,
+    "xbuyer/titular/red": XbuyerTitularRedFun,
+    "rayo/titular/blue": RayoTitularBlueFun,
+    "rayo/titular/red": RayoTitularRedFun,
+    "pio/titular/red": PioTitularRedFun,
+    "pio/titular/blue": PioTitularBlueFun,
+    "9z/titular/red": NueveZTitularRedFun,
+    "9z/titular/blue": NueveZTitularBlueFun,
+    "furia/titular/red": FuriaTitularRedFun,
+    "furia/titular/blue": FuriaTitularBlueFun,
+    "isurus/titular/red": IsurusTitularRedFun,
+    "isurus/titular/blue": IsurusTitularBlueFun,
+    "furius/titular/red": FuriusTitularRedFun,
+    "furius/titular/blue": FuriusTitularBlueFun,
+    "1k/titular/red": UnoKTitularRedFun,
+    "1k/titular/blue": UnoKTitularBlueFun,
 
 
 
@@ -20799,6 +39332,10 @@ function activarModoAutomatizado() {
         return p.team !== 0;
     }).length;
     configurarMapaYLimites(numJugadores);
+
+    // Habilitar autoBalance y modoJueganTodos
+    autoBalanceEnabled = true;
+    modoJueganTodos = true;
 }
 
 
@@ -20968,12 +39505,12 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealSoccerMap2());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
     } else if (winningMap === 'handball') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getHandballMap());
 				room.setScoreLimit(0);
@@ -20985,7 +39522,7 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealSoccerMap());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
     }
@@ -20994,7 +39531,7 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealSoccerMap4());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
     }
@@ -21003,7 +39540,7 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealFutsal());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
     }
@@ -21012,7 +39549,7 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealSoccerMap3());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
     }
 
  else if (winningMap === 'rsoveja') {
@@ -21020,7 +39557,7 @@ async function applyMapConfiguration(winningMap, message) {
 				room.setCustomStadium(getRealSoccerMapOveja());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);
     }
@@ -21044,7 +39581,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'basket') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getBasquetMap());
 	room.setScoreLimit(0);
@@ -21053,7 +39590,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx5') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx5Map());
 	room.setScoreLimit(5);
@@ -21061,7 +39598,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx5cesped') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx5cespedMap());
 	room.setScoreLimit(3);
@@ -21069,7 +39606,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx7') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx7Map());
 	room.setScoreLimit(4);
@@ -21077,7 +39614,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'minirs') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getMiniRSMap());
 		room.setScoreLimit(3);
@@ -21086,7 +39623,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'big') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getBigMap());
 		room.setScoreLimit(3);
@@ -21102,7 +39639,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'voley2d') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getVoley2DMap());
 		room.setScoreLimit(25);
@@ -21111,7 +39648,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'voley3d') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getVoley3DMap());
 			room.setScoreLimit(25);
@@ -21120,7 +39657,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx2') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx2Map());
 				room.setScoreLimit(3);
@@ -21128,7 +39665,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx3') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx3Map());
 				room.setScoreLimit(3);
@@ -21136,7 +39673,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'futx4') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx4Map());
 				room.setScoreLimit(4);
@@ -21153,7 +39690,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'sk8') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getSkateMap());
 				room.setScoreLimit(0);
@@ -21162,7 +39699,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '2man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get2Man());
 				room.setScoreLimit(0);
@@ -21171,7 +39708,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '3man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get3Man());
 				room.setScoreLimit(0);
@@ -21180,7 +39717,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '4man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get4Man());
 				room.setScoreLimit(0);
@@ -21189,7 +39726,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '5man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get5Man());
 				room.setScoreLimit(0);
@@ -21198,7 +39735,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '6man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get6Man());
 				room.setScoreLimit(0);
@@ -21207,7 +39744,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '7man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get7Man());
 				room.setScoreLimit(0);
@@ -21216,7 +39753,7 @@ isAFKpaused = true;
     }
  else if (winningMap === '8man') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(get8Man());
 				room.setScoreLimit(0);
@@ -21225,7 +39762,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'tenis-cemento') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getTenisCementoMap());
 				room.setScoreLimit(6);
@@ -21234,7 +39771,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'tenis-pasto') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getTenisPastoMap());
 				room.setScoreLimit(6);
@@ -21243,7 +39780,7 @@ isAFKpaused = true;
     }
  else if (winningMap === 'tenis-ladrillo') {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getTenisLadrilloMap());
 			room.setScoreLimit(6);
@@ -21401,116 +39938,82 @@ function obtenerComentario(valor) {
     }
 }
 
-
 // Función para enviar mensajes de equipo
 function sendTeamMessage(player, teamMsg) {
-    const teamColor = player.team == 1 ? RedTeamChatColor : BlueTeamChatColor;
+    const teamColor = player.team == 1 ? RedChatColor : BlueChatColor;
     const teamIcon = player.team == 1 ? '🔴' : '🔵';
     const teamPlayers = room.getPlayerList().filter(p => p.team == player.team);
     
     teamPlayers.forEach(p => {
-        room.sendAnnouncement(`[TEAM CHAT ${teamIcon}] ${player.name}: ${teamMsg}`, p.id, teamColor, "bold", 2);
+        room.sendAnnouncement(`[TEAM CHAT ${teamIcon}] ${player.name}: ${teamMsg}`, p.id, teamColor, "bold", 1);
     });
 }
 
-
-// Obtener jugadores mencionados
+// Función para obtener jugadores mencionados en el mensaje
 function getMentionedPlayers(message) {
-    return message.split(' ').reduce((mentioned, word) => {
+    const mentionedPlayers = [];
+    const words = message.split(' ');
+
+    words.forEach(word => {
         if (word.startsWith('@')) {
-            const playerName = word.substring(1).replace(/_/g, ' ');
+            const playerName = word.substring(1).replace(/_/g, ' '); // Convierte @Tuto_Rial a Tuto Rial
             const player = room.getPlayerList().find(p => p.name.toLowerCase() === playerName.toLowerCase());
-            if (player) mentioned.push(player);
-        }
-        return mentioned;
-    }, []);
-}
-
-// Función para obtener el prefijo según la configuración
-function getPlayerPrefix(player) {
-    const option = ColocarJuntoAlNickname.toLowerCase(); // Convertir a minúsculas
-
-    if (option === "nivel") {
-        // Obtener puntos y nivel
-        const goals = totalPlayerGoals[player.name] || 0;
-        const assists = totalPlayerAssists[player.name] || 0;
-        const totalPoints = goals + (assists * 0.7);
-        const levelInfo = getLevelInfo(totalPoints);
-
-        return `«${levelInfo.level}»`;
-    } else if (option === "id") {
-        return `« 🆔: ${player.id} »`;
-    } else {
-        // Valor por defecto si no coincide con "nivel" ni "id"
-        return ``;
-    }
-}
-
-
-
-// Enviar mensaje a jugadores mencionados
-function sendMentionedMessage(player, message, mentionedPlayers, color, roleName) {
-    const prefix = getPlayerPrefix(player);
-    mentionedPlayers.forEach(mentionedPlayer => {
-        room.sendAnnouncement(
-            `${prefix} ${roleName} ~ ${player.name}: ${message}`,
-            mentionedPlayer.id,
-            color,
-            "bold",
-            2
-        );
-    });
-}
-
-// Enviar mensaje al resto de los jugadores
-function sendMessageToOthers(player, message, mentionedPlayers, color, roleName) {
-    const prefix = getPlayerPrefix(player);
-    room.getPlayerList().forEach(p => {
-        if (!mentionedPlayers.includes(p)) {
-            const roleAttr = RoleAttributes[roleName] || { style: "normal", sound: 1 };
-            room.sendAnnouncement(
-                `${prefix} ${roleName} ~ ${player.name}: ${message}`,
-                p.id,
-                color,
-                roleAttr.style,
-                roleAttr.sound
-            );
+            if (player) mentionedPlayers.push(player);
         }
     });
+
+    return mentionedPlayers;
 }
 
-// Manejar menciones especiales (@everyone, @here)
-function handleMentions(player, message, color, roleName, isAdmin) {
-    const prefix = getPlayerPrefix(player);
+// Función para gestionar mensajes de rol
+function handleRoleMessage(player, message, color, roleName, isAdmin, mentionedPlayers) {
+    const prefix = isAdmin ? `　　　« 🆔: ${player.id} »` : `« 🆔: ${player.id} »`;
     const allPlayers = room.getPlayerList();
 
-    if (message.toLowerCase().includes('@everyone') && isAdmin) {
-        allPlayers.forEach(p => {
-            room.sendAnnouncement(
-                `${prefix} ${roleName} ~ ${player.name}: ${message}`,
-                p.id,
-                color,
-                "bold",
-                2
-            );
+    // Verificar si el mensaje contiene @everyone y si es administrador
+    if (message.includes('@everyone') && isAdmin) {
+        // Enviar el mensaje a todos los jugadores en bold y con sonido 2
+        allPlayers.forEach(otherPlayer => {
+            room.sendAnnouncement(`${prefix} ${roleName} ~ ${player.name}: ${message}`, otherPlayer.id, color, "bold", 2);
         });
-        return false;
+        return false; // Para evitar que se envíe el mensaje dos veces
     }
 
-    if (message.toLowerCase().includes('@here') && isAdmin) {
-        allPlayers.forEach(p => {
-            const isAFK = afkPlayerIDs.has(p.id);
-            room.sendAnnouncement(
-                `${prefix} ${roleName} ~ ${player.name}: ${message}`,
-                p.id,
-                color,
-                isAFK ? "normal" : "bold",
-                isAFK ? 1 : 2
-            );
+    // Verificar si el mensaje contiene @here y si es administrador
+    if (message.includes('@here') && isAdmin) {
+        // Obtener los jugadores AFK
+        const afkPlayers = room.getPlayerList().filter(player => afkPlayerIDs.has(player.id));
+
+        // Enviar el mensaje en bold y con sonido 2 solo a los jugadores no AFK
+        allPlayers.forEach(otherPlayer => {
+            if (afkPlayers.some(afkPlayer => afkPlayer.id === otherPlayer.id)) {
+                // Jugadores AFK: mensaje normal y sonido 1
+                room.sendAnnouncement(`${prefix} ${roleName} ~ ${player.name}: ${message}`, otherPlayer.id, color, "normal", 1);
+            } else {
+                // Jugadores activos: mensaje en bold y sonido 2
+                room.sendAnnouncement(`${prefix} ${roleName} ~ ${player.name}: ${message}`, otherPlayer.id, color, "bold", 2);
+            }
         });
-        return false;
+        return false; // Para evitar que se envíe el mensaje dos veces
     }
-    return true;
+
+    // Mencionados: enviar mensaje en bold y sonido 2
+    if (mentionedPlayers.length > 0) {
+        mentionedPlayers.forEach(mentionedPlayer => {
+            room.sendAnnouncement(`${prefix} ${roleName} ~ ${player.name}: ${message}`, mentionedPlayer.id, color, "bold", 2);
+        });
+    }
+
+    // No mencionados: enviar mensaje en formato según el rol del remitente
+    allPlayers.forEach(otherPlayer => {
+        // Verificamos que el jugador no esté en la lista de mencionados
+        if (!mentionedPlayers.some(mentionedPlayer => mentionedPlayer.id === otherPlayer.id)) {
+            const roleAttr = RoleAttributes[roleName] || { style: "normal", sound: 1 };
+            room.sendAnnouncement(`${prefix} ${roleName} ~ ${player.name}: ${message}`, otherPlayer.id, color, roleAttr.style, roleAttr.sound);
+        }
+    });
+
+    return false; // Para evitar que se envíe el mensaje dos veces
 }
 
 // Función para gestionar mensajes de cooldown
@@ -21613,136 +40116,7 @@ function isCooldown(player, command) {
   return true;
 }
 
-function obtenerCamiseta(equipoClave) {
-    let equipo = camisetasEquipos[equipoClave];
-    if (!equipo) {
-        room.sendAnnouncement(`[❌] Equipo no encontrado: ${equipoClave}`, null, 0xFF0000, "bold", 2);
-        return null;
-    }
-
-    let datos = parseColors(equipo.codigo);
-    
-    // Actualizamos las variables globales
-    if (equipoClave.includes("red")) {
-        redAngle = datos.angle;
-        redTextColor = datos.textColor;
-        redColor = datos.colors;
-        teamRed = equipo.nombreEquipo;
-    } else if (equipoClave.includes("blue")) {
-        blueAngle = datos.angle;
-        blueTextColor = datos.textColor;
-        blueColor = datos.colors;
-        teamBlue = equipo.nombreEquipo;
-    }
-
-    return {
-        angle: datos.angle,
-        textColor: datos.textColor,
-        colors: datos.colors,
-        nombreEquipo: equipo.nombreEquipo
-    };
-}
-
-
-function asignarCamisetaPorClave(equipoClave) {
-    let equipo = obtenerCamiseta(equipoClave);
-
-    if (!equipo) return;
-
-    if (equipoClave.endsWith("/red")) {
-        room.setTeamColors(1, equipo.angle, equipo.textColor, equipo.colors);
-        teamRed = equipo.nombreEquipo;
-        room.sendAnnouncement(`[✅] Camiseta asignada al equipo rojo: ${teamRed}`, null, 0x00FF00, "bold", 2);
-    } else if (equipoClave.endsWith("/blue")) {
-        room.setTeamColors(2, equipo.angle, equipo.textColor, equipo.colors);
-        teamBlue = equipo.nombreEquipo;
-        room.sendAnnouncement(`[✅] Camiseta asignada al equipo azul: ${teamBlue}`, null, 0x00FF00, "bold", 2);
-    } else {
-        room.sendAnnouncement(`[❌] No se pudo determinar el equipo para la camiseta: ${equipoClave}`, null, 0xFF0000, "bold", 2);
-    }
-}
-
-
-
-// Objeto para almacenar los ciclos de avatar de cada jugador. Comando !avatar
-let avatarIntervals = {};
-const AVATAR_COOLDOWN = 5000; // 5 segundos de cooldown
-const playerAvatarCooldowns = {}; // Almacenar el tiempo del último uso del comando por jugador
-
-
-
 room.onPlayerChat = function(player, message) {
-    if (message.toLowerCase() === "!comba") {
-        if (player.admin) {
-            combaMode = !combaMode;
-            room.sendAnnouncement(`Modo Comba ${combaMode ? "ACTIVADO ✅" : "DESACTIVADO ❌"}`, null, 0xFFD700, "bold", 1);
-        } else {
-            room.sendAnnouncement("❌ No tienes permisos para usar este comando.", player.id, 0xFF0000, "bold", 1);
-        }
-        return false;
-    }
-    if (message.toLowerCase() === "!jabulani") {
-        if (player.admin) { // Solo administradores pueden cambiar el estado
-            JabulaniMode = !JabulaniMode;
-            powerShotMode = JabulaniMode; // Si jabulaniMode está activo, PowerShot también lo estará
-            room.sendAnnouncement(`Modo Jabulani ${JabulaniMode ? "ACTIVADO ✅ (PowerShot también activado)" : "DESACTIVADO ❌"}`, null, 0xFF4500, "bold", 1);
-        } else {
-            room.sendAnnouncement("❌ No tienes permisos para usar este comando.", player.id, 0xFF0000, "bold", 1);
-        }
-        return false; // Evita que el mensaje aparezca en el chat
-    }
-    if (message.startsWith('!avatar ')) {
-        let currentTime = Date.now();
-
-        // Verificar si el jugador está en cooldown
-        if (playerAvatarCooldowns[player.id] && currentTime - playerAvatarCooldowns[player.id] < AVATAR_COOLDOWN) {
-            room.sendAnnouncement("⏳ Espera un momento antes de usar este comando nuevamente.", player.id, 0xFF0000, "bold", 7);
-            return false; // Bloquea el comando mientras esté en cooldown
-        }
-
-        let avatars = message.substring(8).split(',');
-        if (avatars.length < 2) {
-            room.sendAnnouncement('Debes ingresar al menos dos avatares separados por comas.', player.id, 0xFF0000, 'normal', 1);
-            return false;
-        }
-
-        // Detener ciclo si ya existía
-        if (avatarIntervals[player.id]) {
-            clearInterval(avatarIntervals[player.id]);
-        }
-
-        let index = 0;
-        avatarIntervals[player.id] = setInterval(() => {
-            room.setPlayerAvatar(player.id, avatars[index]);
-            index = (index + 1) % avatars.length; // Ciclar avatares
-        }, 1000); // Cambiar avatar cada 1 segundo
-
-        room.sendAnnouncement(`¡Ciclo de avatares iniciado! Usa !avatarstop para detenerlo.`, player.id, 0x00FF00, 'normal', 1);
-        
-        // Enviar anuncio global
-        room.sendAnnouncement(`${player.name} ha utilizado el comando !avatar ${message.substring(8)}`, null, 0xFFFFFF, 'bold', 1);
-        
-        // Registrar el tiempo del último uso del comando
-        playerAvatarCooldowns[player.id] = currentTime;
-
-        return false;
-    }
-
-    // Comando para detener el ciclo de avatares
-    if (message === '!avatarstop') {
-        if (avatarIntervals[player.id]) {
-            clearInterval(avatarIntervals[player.id]);
-            delete avatarIntervals[player.id];
-            room.setPlayerAvatar(player.id, null); // Restablecer avatar original
-            room.sendAnnouncement(`Ciclo de avatares detenido.`, player.id, 0xFFFF00, 'normal', 1);
-        } else {
-            room.sendAnnouncement(`No tienes un ciclo de avatares activo.`, player.id, 0xFF0000, 'normal', 1);
-        }
-        return false;
-    }
-    if (camisetasEquipos.hasOwnProperty(message) && player.admin) {
-        asignarCamisetaPorClave(message);
-    }
     if (message === "!pausarafk" && player.admin) { // Verifica si el jugador es admin
         isAFKpaused = !isAFKpaused; // Alterna entre true y false
 
@@ -22864,106 +41238,70 @@ if (message === "!equilibrar" && player.admin) {
     startAdminVoting();
   }
 
-if (adminVotingActive && message.startsWith('!admin ')) {
-  const votedPlayerId = parseInt(message.slice(7));
-  if (!isNaN(votedPlayerId) && room.getPlayer(votedPlayerId) && votedPlayerId !== player.id && !isPlayerVoted(player.id, adminVotes)) {
-    adminVotes[votedPlayerId] = adminVotes[votedPlayerId] || [];
-    adminVotes[votedPlayerId].push(player.id);
+  // Comando para votar en la votación de administrador
+  if (adminVotingActive && message.startsWith('!admin ')) {
+    const votedPlayerId = parseInt(message.slice(7));
+    if (!isNaN(votedPlayerId) && room.getPlayer(votedPlayerId) && votedPlayerId !== player.id && !isPlayerVoted(player.id, adminVotes)) {
+      adminVotes[votedPlayerId] = adminVotes[votedPlayerId] || [];
+      adminVotes[votedPlayerId].push(player.id);
+      const voteCount = adminVotes[votedPlayerId].length;
+      const votesNeeded = Math.ceil(room.getPlayerList().length / 2) - voteCount;
+      const voteType = voteCount === 1 ? 'voto' : 'votos';
+      const votedPlayer = room.getPlayer(votedPlayerId);
+      const votedPlayerInfo = votedPlayer ? `${votedPlayer.name} (ID: ${votedPlayerId})` : votedPlayerId.toString();
+      room.sendAnnouncement(`🗳️ ¡@${player.name} ha votado a ${votedPlayerInfo} para ser ADMINISTRADOR del host! (${voteCount} ${voteType}). 🗦👑🗧 \n 📢  🗳️ VOTOS OBTENIDOS: ${voteCount} ✅ | ⏳ VOTOS RESTANTES: ${votesNeeded + 1}`, null, 0x00ff59, "bold", 2);
 
-    const voteCount = adminVotes[votedPlayerId].length;
-    const votesNeededToBecomeAdmin = Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosAdmin / 100)); // Calcula los votos según el porcentaje
-    const votesRemaining = votesNeededToBecomeAdmin - voteCount;
-
-    const voteType = voteCount === 1 ? 'voto' : 'votos';
-    const votedPlayer = room.getPlayer(votedPlayerId);
-    const votedPlayerInfo = votedPlayer ? `${votedPlayer.name} (ID: ${votedPlayerId})` : votedPlayerId.toString();
-
-    room.sendAnnouncement(
-      `🗳️ ¡@${player.name} ha votado a ${votedPlayerInfo} para ser ADMINISTRADOR del host! (${voteCount} ${voteType}). 🗦👑🗧 \n 📢 🗳️ VOTOS OBTENIDOS: ${voteCount} ✅ | ⏳ VOTOS RESTANTES: ${votesRemaining > 0 ? votesRemaining : 0}`,
-      null, 0x00ff59, "bold", 2
-    );
-
-    if (voteCount >= votesNeededToBecomeAdmin) {
-      // Si el jugador alcanza o supera los votos necesarios, se convierte en administrador
-      room.setPlayerAdmin(votedPlayerId, true);
-      room.sendAnnouncement(
-        `🎉 ¡El jugador ${votedPlayerInfo} ha sido elegido como el nuevo administrador! (${voteCount} votos a favor) ¡Felicidades! 🥳`,
-        null, 0x00FF00
-      );
-      endAdminVoting(); // Finalizar la votación de administrador ya que se ha seleccionado al nuevo administrador
+      const votesNeededToBecomeAdmin = Math.ceil(room.getPlayerList().length / 2 + 1);
+      if (voteCount >= votesNeededToBecomeAdmin) {
+        // Si el jugador alcanza o supera los votos necesarios, se convierte en administrador
+        room.setPlayerAdmin(votedPlayerId, true);
+        room.sendAnnouncement(`🎉 ¡El jugador ${votedPlayerInfo} ha sido elegido como el nuevo administrador! (${voteCount} votos a favor) ¡Felicidades! 🥳`, null, 0x00FF00);
+        endAdminVoting(); // Finalizar la votación de administrador ya que se ha seleccionado al nuevo administrador
+      }
+    } else {
+      room.sendAnnouncement(`¨[❌] ${player.name}, el jugador que mencionaste no se encuentra en el host, ingresaste un valor incorrecto o ya has votado por ese jugador. Asegúrate de usar "!admin ID" con el número de ID correcto y que no hayas votado previamente. ✅  \n 📋🔍 Lista de IDs de jugadores: !ids`, player.id, 0xffbf00, "small-bold", 1);
     }
-  } else {
-    room.sendAnnouncement(
-      `¨[❌] ${player.name}, el jugador que mencionaste no se encuentra en el host, ingresaste un valor incorrecto o ya has votado por ese jugador. Asegúrate de usar "!admin ID" con el número de ID correcto y que no hayas votado previamente. ✅  \n 📋🔍 Lista de IDs de jugadores: !ids`,
-      player.id, 0xffbf00, "small-bold", 1
-    );
+  } else if (!adminVotingActive && room.getPlayerList().length < MIN_PLAYERS_FOR_ADMIN_VOTE && message.startsWith('!admin ')) {
+    room.sendAnnouncement(`[❗] La votación para elegir administrador no se puede iniciar. \n  ⏬ Se necesitan un mínimo de ${MIN_PLAYERS_FOR_ADMIN_VOTE} jugadores para iniciar una votación de administrador. 🗳️`, player.id, 0xffbf00, "small-bold", 1);
+  } else if (adminVotingActive && message.startsWith('!admin')) {
+    room.sendAnnouncement(`[❗] ${player.name}, para votar a un jugador como administrador, usa "!admin ID" con el número de ID correcto. \n 📋🔍 Lista de IDs de jugadores: !ids`, player.id, 0xffbf00, "small-bold", 1);
   }
-} else if (!adminVotingActive && room.getPlayerList().length < MIN_PLAYERS_FOR_ADMIN_VOTE && message.startsWith('!admin ')) {
-  room.sendAnnouncement(
-    `[❗] La votación para elegir administrador no se puede iniciar. \n ⏬ Se necesitan un mínimo de ${MIN_PLAYERS_FOR_ADMIN_VOTE} jugadores para iniciar una votación de administrador. 🗳️`,
-    player.id, 0xffbf00, "small-bold", 1
-  );
-} else if (adminVotingActive && message.startsWith('!admin')) {
-  room.sendAnnouncement(
-    `[❗] ${player.name}, para votar a un jugador como administrador, usa "!admin ID" con el número de ID correcto. \n 📋🔍 Lista de IDs de jugadores: !ids`,
-    player.id, 0xffbf00, "small-bold", 1
-  );
-}
+
   // Comando para iniciar la votación de expulsión
   if (!kickVotingActive && room.getPlayerList().length >= MIN_PLAYERS_FOR_KICK_VOTE && message.startsWith('!expulsar')) {
     startKickVoting();
   }
 
- if (kickVotingActive && message.startsWith('!expulsar ')) {
-  const kickedPlayerId = parseInt(message.slice(9));
-  if (!isNaN(kickedPlayerId) && room.getPlayer(kickedPlayerId) && kickedPlayerId !== player.id && !isPlayerVoted(player.id, kickVotes)) {
-    kickVotes[kickedPlayerId] = kickVotes[kickedPlayerId] || [];
-    kickVotes[kickedPlayerId].push(player.id);
+  // Comando para votar en la votación de expulsión
+  if (kickVotingActive && message.startsWith('!expulsar ')) {
+    const kickedPlayerId = parseInt(message.slice(9));
+    if (!isNaN(kickedPlayerId) && room.getPlayer(kickedPlayerId) && kickedPlayerId !== player.id && !isPlayerVoted(player.id, kickVotes)) {
+      kickVotes[kickedPlayerId] = kickVotes[kickedPlayerId] || [];
+      kickVotes[kickedPlayerId].push(player.id);
+      const voteCount = kickVotes[kickedPlayerId].length;
+      const votesNeeded = Math.ceil(room.getPlayerList().length / 2) - voteCount;
+      const voteType = voteCount === 1 ? 'voto' : 'votos';
+      const kickedPlayer = room.getPlayer(kickedPlayerId);
+      const kickedPlayerInfo = kickedPlayer ? `${kickedPlayer.name} (ID: ${kickedPlayerId})` : kickedPlayerId.toString();
+      room.sendAnnouncement(`🗳️ ¡@${player.name} ha votado para EXPULSAR a ${kickedPlayerInfo} del host! (${voteCount} ${voteType}). 🚫 \n 📢  🗳️ VOTOS OBTENIDOS: ${voteCount} ✅ | ⏳ VOTOS RESTANTES: ${votesNeeded + 1}`, null, 0xFFE000, "bold", 2);
 
-    const voteCount = kickVotes[kickedPlayerId].length;
-    const votesNeededToKick = Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosBan / 100)); // Calcula los votos según el porcentaje
-    const votesRemaining = votesNeededToKick - voteCount;
-
-    const voteType = voteCount === 1 ? 'voto' : 'votos';
-    const kickedPlayer = room.getPlayer(kickedPlayerId);
-    const kickedPlayerInfo = kickedPlayer ? `${kickedPlayer.name} (ID: ${kickedPlayerId})` : kickedPlayerId.toString();
-
-    room.sendAnnouncement(
-      `🗳️ ¡@${player.name} ha votado para EXPULSAR a ${kickedPlayerInfo} del host! (${voteCount} ${voteType}). 🚫 \n 📢 🗳️ VOTOS OBTENIDOS: ${voteCount} ✅ | ⏳ VOTOS RESTANTES: ${votesRemaining > 0 ? votesRemaining : 0}`,
-      null, 0xFFE000, "bold", 2
-    );
-
-    if (voteCount >= votesNeededToKick) {
-      // Si el jugador alcanza o supera los votos necesarios, se expulsa al jugador
-      room.kickPlayer(kickedPlayerId, "Expulsado por votación de la comunidad", true);
-      room.sendAnnouncement(
-        `👢 ¡El jugador ${kickedPlayerInfo} ha sido expulsado por votación de la comunidad! (${voteCount} votos a favor)`,
-        null, 0xFF0000
-      );
-      endKickVoting(); // Finalizar la votación de expulsión después de expulsar al jugador
+      const votesNeededToKick = Math.ceil(room.getPlayerList().length / 2 + 1);
+      if (voteCount >= votesNeededToKick) {
+        // Si el jugador alcanza o supera los votos necesarios, se expulsa al jugador
+        room.kickPlayer(kickedPlayerId, "Expulsado por votación de la comunidad", true);
+        room.sendAnnouncement(`👢 ¡El jugador ${kickedPlayerInfo} ha sido expulsado por votación de la comunidad! (${voteCount} votos a favor)`, null, 0xFF0000);
+        endKickVoting(); // Finalizar la votación de expulsión después de expulsar al jugador
+      }
+    } else if (isNaN(kickedPlayerId)) {
+      room.sendAnnouncement(`[❗] ${player.name}, después de "!expulsar" debes ingresar el número de ID del jugador que deseas expulsar. \n Ejemplo: !expulsar 123 \n 📋🔍 Lista de IDs de jugadores: !ids`, player.id, 0xffbf00, "small-bold", 1);
+    } else {
+      room.sendAnnouncement(`[❌] ${player.name}, el jugador que mencionaste no se encuentra en el host, ingresaste un valor incorrecto o ya has votado por ese jugador. Asegúrate de usar "!expulsar ID" con el número de ID correcto y que no hayas votado previamente. \n 📋🔍 Lista de IDs de jugadores: !ids`, player.id, 0xffbf00, "small-bold", 1);
     }
-  } else if (isNaN(kickedPlayerId)) {
-    room.sendAnnouncement(
-      `[❗] ${player.name}, después de "!expulsar" debes ingresar el número de ID del jugador que deseas expulsar. \n Ejemplo: !expulsar 123 \n 📋🔍 Lista de IDs de jugadores: !ids`,
-      player.id, 0xffbf00, "small-bold", 1
-    );
-  } else {
-    room.sendAnnouncement(
-      `[❌] ${player.name}, el jugador que mencionaste no se encuentra en el host, ingresaste un valor incorrecto o ya has votado por ese jugador. Asegúrate de usar "!expulsar ID" con el número de ID correcto y que no hayas votado previamente. \n 📋🔍 Lista de IDs de jugadores: !ids`,
-      player.id, 0xffbf00, "small-bold", 1
-    );
+  } else if (!kickVotingActive && room.getPlayerList().length < MIN_PLAYERS_FOR_KICK_VOTE && message.startsWith('!expulsar ')) {
+    room.sendAnnouncement(`[❗] La votación para expulsar a un jugador no se puede iniciar. \n  ⏬ Se necesitan un mínimo de ${MIN_PLAYERS_FOR_KICK_VOTE} jugadores para iniciar una votación de expulsión. 🗳️`, player.id, 0xffbf00, "small-bold", 1);
+  } else if (kickVotingActive && message.startsWith('!expulsar')) {
+    room.sendAnnouncement(`[❗] ${player.name}, para votar la expulsión de un jugador, usa "!expulsar ID" con el número de ID correcto. \n Ejemplo: !expulsar 123 \n 📋🔍 Lista de IDs de jugadores: !ids`, player.id, 0xffbf00, "small-bold", 1);
   }
-} else if (!kickVotingActive && room.getPlayerList().length < MIN_PLAYERS_FOR_KICK_VOTE && message.startsWith('!expulsar ')) {
-  room.sendAnnouncement(
-    `[❗] La votación para expulsar a un jugador no se puede iniciar. \n ⏬ Se necesitan un mínimo de ${MIN_PLAYERS_FOR_KICK_VOTE} jugadores para iniciar una votación de expulsión. 🗳️`,
-    player.id, 0xffbf00, "small-bold", 1
-  );
-} else if (kickVotingActive && message.startsWith('!expulsar')) {
-  room.sendAnnouncement(
-    `[❗] ${player.name}, para votar la expulsión de un jugador, usa "!expulsar ID" con el número de ID correcto. \n Ejemplo: !expulsar 123 \n 📋🔍 Lista de IDs de jugadores: !ids`,
-    player.id, 0xffbf00, "small-bold", 1
-  );
-}
 
   // Verificar si el jugador es el administrador y si el mensaje comienza con "!publicidad"
 // Verificar si el jugador es el administrador y si el mensaje comienza con "!publicidad"
@@ -23209,7 +41547,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealSoccerMap());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
 			}
@@ -23223,7 +41561,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealSoccerMap3());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			}
 			else {
 				whisper("No puedes cambiar el mapa mientras el juego esta en progreso", player.id);
@@ -23235,7 +41573,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealSoccerMap4());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			}
 			else {
 				whisper("No puedes cambiar el mapa mientras el juego esta en progreso", player.id);
@@ -23247,7 +41585,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealFutsal());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			}
 			else {
 				whisper("No puedes cambiar el mapa mientras el juego esta en progreso", player.id);
@@ -23259,7 +41597,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealSoccerMap2());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
 			}
@@ -23274,7 +41612,7 @@ if (comandosGLH.hasOwnProperty(comandoGLH)) {
 				room.setCustomStadium(getRealSoccerMapOveja());
                 automatizadoActivado = false;
 				RSRMap = true;
-
+isAFKpaused = false;
 			room.setScoreLimit(0);
 			room.setTimeLimit(0);	
 			}
@@ -23314,7 +41652,7 @@ isAFKpaused = true;
 	if (message == '!futx5' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx5Map());
 	room.setScoreLimit(5);
@@ -23328,7 +41666,7 @@ isAFKpaused = true;
 	if (message == '!futx5cesped' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx5cespedMap());
 	room.setScoreLimit(3);
@@ -23342,7 +41680,7 @@ isAFKpaused = true;
 	if (message == '!futx7' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx7Map());
 	room.setScoreLimit(4);
@@ -23373,7 +41711,7 @@ if (message == '!basket' && player.admin == true) {
 		room.setCustomStadium(getBasquetMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(5);
 		room.setTimeLimit(3);	
 	} else {
@@ -23387,7 +41725,7 @@ if (message == '!minirs' && player.admin == true) {
 		room.setCustomStadium(getMiniRSMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(4);
 		room.setTimeLimit(5);	
 	} else {
@@ -23401,7 +41739,7 @@ if (message == '!big' && player.admin == true) {
 		room.setCustomStadium(getBigMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(3);
 		room.setTimeLimit(3);	
 	} else {
@@ -23415,7 +41753,7 @@ if (message == '!voley2d' && player.admin == true) {
 		room.setCustomStadium(getVoley2DMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(15);
 		room.setTimeLimit(0);	
 	} else {
@@ -23429,7 +41767,7 @@ if (message == '!voley3d' && player.admin == true) {
 		room.setCustomStadium(getVoley3DMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(15);
 		room.setTimeLimit(0);	
 	} else {
@@ -23443,7 +41781,7 @@ if (message == '!escuela' && player.admin == true) {
 		room.setCustomStadium(getEscuelaMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23457,7 +41795,7 @@ if (message == '!skate' && player.admin == true) {
 		room.setCustomStadium(getSkateMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23471,7 +41809,7 @@ if (message == '!handball' && player.admin == true) {
 		room.setCustomStadium(getHandballMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(5);
 		room.setTimeLimit(5);	
 	} else {
@@ -23485,7 +41823,7 @@ if (message == '!tenisladrillo' && player.admin == true) {
 		room.setCustomStadium(getTenisLadrilloMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(15);
 		room.setTimeLimit(0);	
 	} else {
@@ -23499,7 +41837,7 @@ if (message == '!tenispasto' && player.admin == true) {
 		room.setCustomStadium(getTenisPastoMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(15);
 		room.setTimeLimit(0);	
 	} else {
@@ -23513,7 +41851,7 @@ if (message == '!teniscemento' && player.admin == true) {
 		room.setCustomStadium(getTenisCementoMap());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(7);
 		room.setTimeLimit(0);	
 	} else {
@@ -23527,7 +41865,7 @@ if (message == '!2man' && player.admin == true) {
 		room.setCustomStadium(get2Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23541,7 +41879,7 @@ if (message == '!3man' && player.admin == true) {
 		room.setCustomStadium(get3Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23555,7 +41893,7 @@ if (message == '!4man' && player.admin == true) {
 		room.setCustomStadium(get4Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23569,7 +41907,7 @@ if (message == '!5man' && player.admin == true) {
 		room.setCustomStadium(get5Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23583,7 +41921,7 @@ if (message == '!6man' && player.admin == true) {
 		room.setCustomStadium(get6Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23597,7 +41935,7 @@ if (message == '!7man' && player.admin == true) {
 		room.setCustomStadium(get7Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23611,7 +41949,7 @@ if (message == '!8man' && player.admin == true) {
 		room.setCustomStadium(get8Man());
 		automatizadoActivado = false;
 		RSRMap = false;
-		
+		isAFKpaused = false;
 		room.setScoreLimit(0);
 		room.setTimeLimit(0);	
 	} else {
@@ -23686,7 +42024,7 @@ if (message == '!8man' && player.admin == true) {
 	if (message == '!futx2' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx2Map());
 				room.setScoreLimit(3);
@@ -23700,7 +42038,7 @@ if (message == '!8man' && player.admin == true) {
 	if (message == '!futx3' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx3Map());
 				room.setScoreLimit(3);
@@ -23714,7 +42052,7 @@ if (message == '!8man' && player.admin == true) {
 	if (message == '!futx4' && player.admin == true) { 
 			if (room.getScores() == null) {
 				RSRMap = false;
-
+isAFKpaused = false;
 				currentMap = getMapName(message); 
 				room.setCustomStadium(getFutx4Map());
 				room.setScoreLimit(4);
@@ -23748,77 +42086,55 @@ if (message == '!8man' && player.admin == true) {
         return false;
     }
     
-   const isAdmin = player.admin === true;
-    const mentionedPlayers = getMentionedPlayers(message);
+    const isAdmin = player.admin === true;
+    const mentionedPlayers = getMentionedPlayers(message); // Obtenemos los jugadores mencionados
 
-    if (!handleMentions(player, message, adminChatColor, NombreROLAdmin, isAdmin)) {
+    if (NickNamesRol1.includes(player.name)) {
+        handleRoleMessage(player, message, ColorDelChatROL1, NombreROL1, isAdmin, mentionedPlayers);
         return false;
     }
 
-    // Jugadores mencionados reciben el mensaje una vez
-    if (mentionedPlayers.length > 0) {
-    const prefix = getPlayerPrefix(player);
-        const playerRole = NickNamesRol1.includes(player.name) ? { name: NombreROL1, color: ColorDelChatROL1 } :
-                           NickNamesRol2.includes(player.name) ? { name: NombreROL2, color: ColorDelChatROL2 } :
-                           NickNamesRol3.includes(player.name) ? { name: NombreROL3, color: ColorDelChatROL3 } :
-                           NickNamesRol4.includes(player.name) ? { name: NombreROL4, color: ColorDelChatROL4 } :
-                           NickNamesRol5.includes(player.name) ? { name: NombreROL5, color: ColorDelChatROL5 } :
-                           isAdmin ? { name: NombreROLAdmin, color: adminChatColor } :
-                           player.team === 1 ? { name: NombreROLRed, color: RedChatColor } :
-                           player.team === 2 ? { name: NombreROLBlue, color: BlueChatColor } :
-                           { name: NombreROLSpect, color: SpectChatColor };
-
-        // Enviar mensaje a mencionados
-        mentionedPlayers.forEach(mentionedPlayer => {
-            room.sendAnnouncement(
-                `${prefix} ${playerRole.name} ~ ${player.name}: ${message}`,
-                mentionedPlayer.id,
-                playerRole.color,
-                "bold",
-                2
-            );
-        });
-
-        // Filtrar mencionados para que no reciban el mensaje nuevamente
-        const mentionedIDs = mentionedPlayers.map(p => p.id);
-        const remainingPlayers = room.getPlayerList().filter(p => !mentionedIDs.includes(p.id));
-
-        // Los no mencionados reciben el mensaje con el estilo y color del remitente
-        remainingPlayers.forEach(p => {
-            room.sendAnnouncement(
-                `${prefix} ${playerRole.name} ~ ${player.name}: ${message}`,
-                p.id,
-                playerRole.color,
-                RoleAttributes[playerRole.name]?.style || "normal",
-                RoleAttributes[playerRole.name]?.sound || 1
-            );
-        });
-        
+    if (NickNamesRol2.includes(player.name)) {
+        handleRoleMessage(player, message, ColorDelChatROL2, NombreROL2, isAdmin, mentionedPlayers);
         return false;
     }
 
-    // Mensaje normal para jugadores no mencionados
-    const prefix = getPlayerPrefix(player);
-    const playerRole = NickNamesRol1.includes(player.name) ? { name: NombreROL1, color: ColorDelChatROL1 } :
-                       NickNamesRol2.includes(player.name) ? { name: NombreROL2, color: ColorDelChatROL2 } :
-                       NickNamesRol3.includes(player.name) ? { name: NombreROL3, color: ColorDelChatROL3 } :
-                       NickNamesRol4.includes(player.name) ? { name: NombreROL4, color: ColorDelChatROL4 } :
-                       NickNamesRol5.includes(player.name) ? { name: NombreROL5, color: ColorDelChatROL5 } :
-                       isAdmin ? { name: NombreROLAdmin, color: adminChatColor } :
-                       player.team === 1 ? { name: NombreROLRed, color: RedChatColor } :
-                       player.team === 2 ? { name: NombreROLBlue, color: BlueChatColor } :
-                       { name: NombreROLSpect, color: SpectChatColor };
+    if (NickNamesRol3.includes(player.name)) {
+        handleRoleMessage(player, message, ColorDelChatROL3, NombreROL3, isAdmin, mentionedPlayers);
+        return false;
+    }
 
-    const roleAttr = RoleAttributes[playerRole.name] || { style: "normal", sound: 1 };
-    room.sendAnnouncement(
-        `${prefix} ${playerRole.name} ~ ${player.name}: ${message}`,
-        null,
-        playerRole.color,
-        roleAttr.style,
-        roleAttr.sound
-    );
+    if (NickNamesRol4.includes(player.name)) {
+        handleRoleMessage(player, message, ColorDelChatROL4, NombreROL4, isAdmin, mentionedPlayers);
+        return false;
+    }
 
-    return false;
+    if (NickNamesRol5.includes(player.name)) {
+        handleRoleMessage(player, message, ColorDelChatROL5, NombreROL5, isAdmin, mentionedPlayers);
+        return false;
+    }
+
+    if (isAdmin) {
+        handleRoleMessage(player, message, adminChatColor, NombreROLAdmin, isAdmin, mentionedPlayers);
+        return false;
+    }
+
+    if (player.team === 1) {
+        handleRoleMessage(player, message, RedChatColor, NombreROLRed, isAdmin, mentionedPlayers);
+        return false;
+    }
+
+    if (player.team === 2) {
+        handleRoleMessage(player, message, BlueChatColor, NombreROLBlue, isAdmin, mentionedPlayers);
+        return false;
+    }
+
+    if (player.team === 0) { // Espectadores
+        handleRoleMessage(player, message, SpectChatColor, NombreROLSpect, isAdmin, mentionedPlayers);
+        return false;
+    }
+
+    return true; // Permite que el mensaje pase si no cae en ninguna de las condiciones
 
 	
     if(CensuradorDeSpammeros(message)) return false;
@@ -23925,7 +42241,7 @@ function endAdminVoting() {
       }
     }
 
-    const votesNeeded =  Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosAdmin / 100)); 
+    const votesNeeded = Math.ceil(room.getPlayerList().length / 2 + 1);
 
     if (adminToAdd !== null && maxVotes >= votesNeeded) {
       room.setPlayerAdmin(adminToAdd, true);
@@ -23973,7 +42289,7 @@ function endKickVoting() {
       }
     }
 
-    const votesNeeded =  Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosBan / 100)); 
+    const votesNeeded = Math.ceil(room.getPlayerList().length / 2 + 1);
 
     if (playerToKick !== null && maxVotes >= votesNeeded) {
       room.kickPlayer(playerToKick, "Expulsado por votación de la comunidad", false);
@@ -24193,21 +42509,17 @@ function getRandomScorerMessage() {
   const scorerMessages = [
     "⚽ ¡Golazo de " + game.lastKickerName + "!",
     "🔥 ¡Impresionante remate de " + game.lastKickerName + "!",
-    "💥⚽ ¡Espectacular gol de " + game.lastKickerName + "!",
-    "💥😱 ¡Increíble golazo de " + game.lastKickerName + "!",
+    "💥 ¡Espectacular gol de " + game.lastKickerName + "!",
+    "🚀 ¡Increíble golazo de " + game.lastKickerName + "!",
+    "⭐ ¡Disparo imparable de " + game.lastKickerName + "!",
+    "🎯 ¡Preciso gol de " + game.lastKickerName + "!",
+    "⚡ ¡Impactante tanto de " + game.lastKickerName + "!",
+    "🌟 ¡Majestuoso gol de " + game.lastKickerName + "!",
+    "🔝 ¡Golazo magistral de " + game.lastKickerName + "!",
+    "⛹️‍♂️ ¡Gol brillante de " + game.lastKickerName + "!",
     "👌 ¡Bien definido por " + game.lastKickerName + "!",
     "La definición de " + game.lastKickerName + " definitivamente es cine! 🍷🚬 ",
     "¡Golazo de " + game.lastKickerName + " que está jugando desnudo! 🔞",
-    "🔥 Eduque " + game.lastKickerName + ", eduque 👏 ",
-    "🥵 ¡Golazo de " + game.lastKickerName + ", que definió a lo Czerro! 👑🐐",
-    "Cuando sos crack, sos crack... ¡Y " + game.lastKickerName + " lo acaba de demostrar! 💪🔥",
-    "⚡ ¡Golazo total de " + game.lastKickerName + "! 🚀",
-    "🍾 ¡HaxBall Champagne! " + game.lastKickerName + " acaba de marcar un golazo ⚽🔥",
-    "🤩 ¡Naa, golazo de " + game.lastKickerName + "! 😱",
-    "🎯 ¡99 de definición, " + game.lastKickerName + " lo acaba de demostrar! 🔥",
-    "💥⚽ ¡Ufff, qué golazo de " + game.lastKickerName + "! 😱",
-    "😱 ¡Locura de gol de " + game.lastKickerName + "! 🥵",
-    "👀 ¡Olfato de gol! " + game.lastKickerName + " lo ha hecho otra vez! ⚽"
   ];
   return scorerMessages[Math.floor(Math.random() * scorerMessages.length)];
 }
@@ -24254,15 +42566,14 @@ function getRandomOwnGoalScorerMessage2() {
 
 
 function getRandomGoalEmoji() {
-  const goalEmojis = ["⚽", "🔥", "⭐️", "💥", "🐐"];
+  const goalEmojis = ["⚽", "🔥", "⭐️", "💥", "🎉"];
   return goalEmojis[Math.floor(Math.random() * goalEmojis.length)];
 }
 
 function getRandomAutoGoalEmoji() {
-  const goalEmojis = ["💩", "😭", "🤡", "😅", "💀"];
+  const goalEmojis = ["❌", "😖", "🙈", "🤡", "😅"];
   return goalEmojis[Math.floor(Math.random() * goalEmojis.length)];
 }
-
 
 var playerGoalsReceived = JSON.parse(localStorage.getItem("playerGoalsReceived")) || {};
 var playerCleanSheets = JSON.parse(localStorage.getItem("playerCleanSheets")) || {};
@@ -26456,37 +44767,14 @@ function decryptHex(str) {
 
 
 
-// Lista original de claves API
-const apiKeys = ['041e9455309144cdab1527ae21c925c2', '4a158c1a381f4dadaa5a797030297ece', '844f0f2d3e7c45c3a47f5d2f433bac7b', '208ba847068942e8a53966f5765b0a13', 'c0943ea614d547ba8b5b29503da49d93', '47876cef5b0f4a38889d2d2d1a6ac378', '441b309c470d4458bd93edeb76adcd07', 'af0fca4fb4954fd18e982db2ae21f05b', '8e924d6e57404131bcb4955f77d746f5', '5903e5d666094644949eaa626a009624', '7ba7f8ef9f4543d88d696a60e52538b9', '20b4cc00a9e0494691c9099de64bef11', '4b24dfcbeeb24792a05a3126b6083952', 'f395661119174b8d98aa026c1a41bb65', '1f5bad2a8ab94d52bd9024b1798f2a61', '8a4d55cfbf124c5881785daf6be80753', 'f260bad253f64867948c27db295b60d0', '4efde075a78e4313b98c9a3e03ef1710', 'c66cbb9d2bca49ae949fefde1026f473', '7be5c21189204fb9922cfd08c1baf09c', 'd786c98df4174d3aba4a52e825b7aa0e'];
 
-// Mezclar el array de claves dos veces antes de empezar
-function barajarClaves(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Intercambio de elementos
-  }
-}
+const apiKeys = ['041e9455309144cdab1527ae21c925c2', '4a158c1a381f4dadaa5a797030297ece', '844f0f2d3e7c45c3a47f5d2f433bac7b', '208ba847068942e8a53966f5765b0a13', 'c0943ea614d547ba8b5b29503da49d93', '47876cef5b0f4a38889d2d2d1a6ac378', '441b309c470d4458bd93edeb76adcd07', 'af0fca4fb4954fd18e982db2ae21f05b', '8e924d6e57404131bcb4955f77d746f5', '5903e5d666094644949eaa626a009624', '7ba7f8ef9f4543d88d696a60e52538b9', '20b4cc00a9e0494691c9099de64bef11', '4b24dfcbeeb24792a05a3126b6083952', 'f395661119174b8d98aa026c1a41bb65', '1f5bad2a8ab94d52bd9024b1798f2a61', '8a4d55cfbf124c5881785daf6be80753'];
 
-// Mezcla el array de claves dos veces
-barajarClaves(apiKeys);
-barajarClaves(apiKeys);
-
-let currentApiKeyIndex = 0; // Inicia desde la primera clave de la lista barajada
-let usedKeys = []; // Lista de claves ya usadas
+let currentApiKeyIndex = 0;
 
 function getGeoLocation(ip) {
-  // Si hemos usado todas las claves, reiniciamos y volvemos a mezclar
-  if (usedKeys.length === apiKeys.length) {
-    usedKeys = [];
-    barajarClaves(apiKeys);
-    barajarClaves(apiKeys); // Barajar dos veces nuevamente
-    currentApiKeyIndex = 0; // Volver a empezar desde el inicio
-  }
-
   const apiKey = apiKeys[currentApiKeyIndex];
-  usedKeys.push(currentApiKeyIndex); // Marcamos la clave como usada
-
-  currentApiKeyIndex = (currentApiKeyIndex + 1) % apiKeys.length; // Avanza al siguiente índice
+  currentApiKeyIndex = (currentApiKeyIndex + 1) % apiKeys.length;
 
   const apiUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`;
 
@@ -26541,44 +44829,15 @@ room.onPlayerJoin = function(player) {
             room.setPlayerTeam(player.id, 2); // Equipo rojo (team = 2)
         }
     }
-const totalPlayers = room.getPlayerList().length;
-const NombreDelJugadorNickname = player.name;
-
-// Verifica si el nombre del jugador contiene "@" "#", o "*"
-if (!containsInvalidCharacters(NombreDelJugadorNickname)) {
-  let color = 65280; // Color verde por defecto
-  let message = `🎮 ${NombreDelJugadorNickname} ha ingresado al host -- ${totalPlayers}/${maxPlayers} 🚀`;
-
-  // Si la sala está llena, cambia el color a amarillo y agrega "SALA LLENA"
-  if (totalPlayers >= maxPlayers) {
-    color = 16776960; // Color amarillo en formato decimal
-    message += "\n\n**[❌] SALA LLENA**";
-  } else {
-    // Si hay lugares disponibles, muestra cuántos quedan
-    const remainingSpots = maxPlayers - totalPlayers;
-
-    // Verifica si queda solo 1 lugar
-    if (remainingSpots === 1) {
-      message += `\n\n**[🟢] QUEDA 1 LUGAR**`;
-    } else {
-      message += `\n\n**[🟢] QUEDAN ${remainingSpots} LUGARES**`;
-    }
+  const totalPlayers = room.getPlayerList().length;
+  const NombreDelJugadorNickname = player.name;
+  
+  // Verifica si el nombre del jugador contiene "@" "#", o "*"
+  if (!containsInvalidCharacters(NombreDelJugadorNickname)) {
+    const message = `🎮 ${NombreDelJugadorNickname} ha ingresado al host -- ${totalPlayers}/${maxPlayers} 🚀`;
+    sendBoleteroToDiscord(message, roomName, roomLink, 65280); // Color verde en formato decimal
   }
 
-  // Añadir estado de la sala (cerrada o abierta)
-  if (salaCerrada) {
-    message += `\n\n**🔒 La sala está momentáneamente con contraseña para reservarles el lugar a los administradores.**`;
-  }
-
-  // Verifica si el host tiene contraseña
-  if (PasswordDelHost !== null && PasswordDelHost !== "") {
-    message += `\n\n**🔒 ESTE HOST TIENE CONTRASEÑA**`;
-  } else {
-    message += `\n\n**🌍 HOST PÚBLICO**`;
-  }
-
-  sendBoleteroToDiscord(message, roomName, roomLink, color);
-}
 
     // Recuperar playerFiguraCount almacenado en localStorage
     const storedPlayerFiguraCount = JSON.parse(localStorage.getItem('playerFiguraCount')) || {};
@@ -26686,7 +44945,7 @@ if (!containsInvalidCharacters(NombreDelJugadorNickname)) {
     }
 
   if (IpPlayers.includes(decryptHex(player.conn))) {
-    room.kickPlayer(player.id, MensajeBaneoPorIp, true);
+    room.kickPlayer(player.id, "❌ El admin ha baneado tu IP 📶", true);
     return;
   }
 
@@ -26802,7 +45061,7 @@ setTimeout(function () {
 // Función para actualizar la cantidad de votos necesarios para la votación de administrador
 function updateAdminVotesNeeded() {
   if (adminVotingActive) {
-    const votesNeeded =  Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosAdmin / 100)); // Calcula los votos según el porcentaje
+    const votesNeeded = Math.ceil(room.getPlayerList().length / 2) + 1;
     room.sendAnnouncement(`📢 ¡La cantidad de votos necesarios para la votación de administrador ha sido actualizada a ${votesNeeded}! 🗳️`, null, 0xFF0000);
   }
 }
@@ -26810,7 +45069,7 @@ function updateAdminVotesNeeded() {
 // Función para actualizar la cantidad de votos necesarios para la votación de expulsión
 function updateKickVotesNeeded() {
   if (kickVotingActive) {
-    const votesNeeded =  Math.ceil(room.getPlayerList().length * (PorcentajeDeVotosBan / 100)); // Calcula los votos según el porcentaje
+    const votesNeeded = Math.ceil(room.getPlayerList().length / 2) + 1;
     room.sendAnnouncement(`📢 ¡La cantidad de votos necesarios para la votación de expulsión ha sido actualizada a ${votesNeeded}! 🗳️`, null, 0xFF0000);
   }
 }
@@ -26956,13 +45215,97 @@ room.onTeamVictory = function (scores) {
     // Aplicar cambios de configuración de mapa y límites al final del juego (cuando un equipo gana)
     if (configuracionActual !== null) {
         setTimeout(function() {
+            room.stopGame();
             room.setCustomStadium(configuracionActual.mapa);
             room.setScoreLimit(configuracionActual.scoreLimit);
             room.setTimeLimit(configuracionActual.timeLimit);
             RSRMap = false;
+            room.startGame();
         }, tiempoEsperaCambio);
     }
     if (FairPlayActivado) {
+        var scoreDifference = Math.abs(scores.red - scores.blue);
+
+        if (scoreDifference === 1) {
+            setTimeout(function () {
+                room.stopGame();
+
+                var players = room.getPlayerList().filter(function (player) {
+                    return player.id !== 0;
+                });
+
+                if (players.length === 0) {
+                    return false;
+                }
+
+                players.forEach(function (player) {
+                    if (player.team === 1) {
+                        room.setPlayerTeam(player.id, 2);
+                    }
+                    if (player.team === 2) {
+                        room.setPlayerTeam(player.id, 1);
+                    }
+                });
+
+                room.startGame();
+            }, 4500); // Pausa de 4 segundos (4500 milisegundos)
+        } else if (scoreDifference === 2) {
+            setTimeout(function () {
+                room.stopGame();
+                shuffleTeams();
+                room.startGame();
+            }, 4500); // Pausa de 4 segundos (4500 milisegundos)
+        } else if (scoreDifference >= 3) {
+            setTimeout(function () {
+                room.stopGame();
+                shuffleTeams();
+                const players = room.getPlayerList();
+
+    // Filtrar a los jugadores que están en el campo
+    const activePlayers = players.filter(p => p.team !== 0 && p.position !== null);
+
+    // Ordenar a los jugadores activos por nivel de mayor a menor
+    const sortedPlayers = activePlayers.sort((a, b) => {
+        const aPoints = (totalPlayerGoals[a.name] || 0) + ((totalPlayerAssists[a.name] || 0) * 0.7);
+        const bPoints = (totalPlayerGoals[b.name] || 0) + ((totalPlayerAssists[b.name] || 0) * 0.7);
+        return bPoints - aPoints;
+    });
+
+    // Distribuir a los jugadores en dos equipos equilibrados
+    const team1 = [];
+    const team2 = [];
+    let totalPointsTeam1 = 0;
+    let totalPointsTeam2 = 0;
+
+    // Iterar sobre los jugadores y asignarlos a los equipos de manera equitativa
+    for (let i = 0; i < sortedPlayers.length; i++) {
+        const currentPlayer = sortedPlayers[i];
+        const currentPlayerPoints = (totalPlayerGoals[currentPlayer.name] || 0) + ((totalPlayerAssists[currentPlayer.name] || 0) * 0.7);
+
+        if (totalPointsTeam1 <= totalPointsTeam2) {
+            team1.push(currentPlayer);
+            totalPointsTeam1 += currentPlayerPoints;
+        } else {
+            team2.push(currentPlayer);
+            totalPointsTeam2 += currentPlayerPoints;
+        }
+    }
+
+    // Asignar los equipos a los jugadores
+    team1.forEach(player => room.setPlayerTeam(player.id, 1));
+    team2.forEach(player => room.setPlayerTeam(player.id, 2));
+    balanceTeams();
+}, 3000); // PAUSA DE 3 SEGUNDOS
+setTimeout(function() {
+    balanceTeams();
+}, 4000); // Esperar 
+setTimeout(function() {
+    room.startGame();
+}, 4500); // Esperar 
+
+        }
+    }
+    if (automatizadoActivado) {
         var scoreDifference = Math.abs(scores.red - scores.blue);
 
         if (scoreDifference === 1) {
