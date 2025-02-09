@@ -1,6 +1,6 @@
 // ▇▇▇▇▇▇▇▇▇ ⚙️ CONFIGURACIÓN BÁSICA 😀 ▇▇▇▇▇▇▇▇▇
 
-
+ 
 // 📝 NOMBRE DEL HOST
 var NombreHost = '▶️▶️🟦🟩  UNETE Y JUEGA 🟩🟦◀️◀️';
 // Definimos el nombre del host (dentro de las comillas)
