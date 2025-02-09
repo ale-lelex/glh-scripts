@@ -25,7 +25,7 @@ https://discord.gg/hSg6HAD6tY
 📦 **Size:** 1.3 MB (1338 KB)
 
 **(English version) 🇬🇧:** (1319 KB)
----------------------------------------------------------------------------------------------------
+===================================================================================================
 ## TRADUCCIÓN AL ESPAÑOL
 ## 🏆 **Versión Full (3.1.0)**  
 **Completo con todos los mapas:** futsal, real soccer, handball, big, voley, mini rs, etc.  
